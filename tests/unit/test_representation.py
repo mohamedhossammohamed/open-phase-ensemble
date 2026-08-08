@@ -33,6 +33,18 @@ def test_delay_embed_shape():
     X = delay_embed(v, tau=tau, d=d)
     assert X.shape == (94, 4)
 
+
+def test_latest_delay_vector_only_needs_latest_history():
+    v = np.arange(200, dtype=float)
+    tau = 2
+    d = 8
+    max_lag = (d - 1) * tau
+
+    full_latest = delay_embed(v, tau=tau, d=d)[-1]
+    tail_latest = delay_embed(v[-(max_lag + 1):], tau=tau, d=d)[-1]
+
+    np.testing.assert_array_equal(full_latest, tail_latest)
+
 def test_johnson_lindenstrauss_projection():
     np.random.seed(42)
     X = np.random.randn(100, 12)

@@ -45,6 +45,12 @@ class StreamBuffer:
         """Returns the causal rolling history of standardized observations."""
         return np.array(self.standardized_buffer, dtype=np.float64)
 
+    def get_standardized_tail(self, length: int) -> np.ndarray:
+        """Returns only the recent standardized values needed by an embedding."""
+        if length <= 0:
+            return np.empty(0, dtype=np.float64)
+        return np.array(self.standardized_buffer[-length:], dtype=np.float64)
+
     def __len__(self) -> int:
         """Returns current number of elements stored in buffer."""
         return len(self.raw_buffer)

@@ -34,11 +34,8 @@ class RobustMahalanobisDetector(DetectorABC):
         self.mu = float(np.trace(Sigma_sample) / d)
         
         target = self.mu * np.eye(d)
-        delta_num = 0.0
-        for row in X_centered:
-            out = np.outer(row, row) - Sigma_sample
-            delta_num += np.sum(out ** 2)
-        delta_num /= float(n ** 2)
+        outer_products = X_centered[:, :, None] * X_centered[:, None, :]
+        delta_num = float(np.sum((outer_products - Sigma_sample) ** 2)) / float(n ** 2)
         
         delta_den = np.sum((Sigma_sample - target) ** 2)
         if delta_den < EPSILON:

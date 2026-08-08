@@ -53,7 +53,9 @@ def test_pipeline_embeds_standardized_history(monkeypatch):
         pipeline.step(value)
 
     assert captured
-    assert np.array_equal(captured[-1], pipeline.ingestion.get_standardized_buffer())
+    expected = pipeline.ingestion.get_standardized_buffer()
+    max_lag = (pipeline.d - 1) * pipeline.tau
+    assert np.array_equal(captured[-1], expected[-(max_lag + 1):])
 
 
 def test_mahalanobis_does_not_fit_on_sample_before_scoring():

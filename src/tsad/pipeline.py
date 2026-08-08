@@ -77,11 +77,14 @@ class TSADPipeline:
         v_t = self.ingestion.step(x_t)
         
         # 2. Representation Layer
-        standardized_buf = self.ingestion.get_standardized_buffer()
         max_lag = (self.d - 1) * self.tau
         
-        if len(standardized_buf) > max_lag:
-            X_mat = delay_embed(standardized_buf, tau=self.tau, d=self.d)
+        # Only the newest delay window can affect the newest row.  Keeping the
+        # full history here adds repeated array/window work without changing
+        # the causal representation.
+        embed_buf = self.ingestion.get_standardized_tail(max_lag + 1)
+        if len(embed_buf) > max_lag:
+            X_mat = delay_embed(embed_buf, tau=self.tau, d=self.d)
             X_t = X_mat[-1]
         else:
             X_t = np.ones(self.d, dtype=np.float64) * v_t
