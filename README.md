@@ -79,24 +79,30 @@ for x in [0.1, 0.2, 0.15, 0.18, 8.5, 0.12]:
 ```
 
 ```bash
-# Full test suite (34/34 passing)
+# Test suite
 PYTHONPATH=src pytest tests/ -v
 
-# Benchmark evaluation
-PYTHONPATH=src python scripts/run_benchmark.py
+# Download real MIT-BIH record 100 with annotations
+PYTHONPATH=src python data/download.py --physionet-record 100
+
+# Prepare a transparent CWRU healthy-to-fault proxy from real MAT files
+PYTHONPATH=src python data/download.py \
+  --cwru-healthy data/raw/cwru/97_Normal_0.mat \
+  --cwru-faulty data/raw/cwru/282_B007_0.mat
+
+# Provenance-checked benchmark: 20% chronological warm-up, 20 surrogates
+PYTHONPATH=src python scripts/run_benchmark.py --surrogates 20
 ```
 
 ---
 
-## Preliminary Benchmark Results
+## Scientific Benchmark Status
 
-> **All numbers are preliminary, self-reported, and pending independent external review.**
-> IAAFT surrogate scores are stochastic and vary across runs; system VUS-ROC scores are deterministic.
+No headline performance numbers are treated as validated results yet. The benchmark now requires a provenance manifest beside every `.npz` file, rejects synthetic data by default, uses a chronological warm-up period, reports persistence and per-detector baselines, and estimates an empirical IAAFT null distribution.
 
 | Dataset | $N$ | System VUS-ROC | System VUS-PR | IAAFT Null VUS-ROC | Edge ($\Delta$) | Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| PhysioNet MIT-BIH (record 100) | 5,143 | **0.8592** | 0.6926 | ~0.49 | ~+0.37 | Preliminary |
-| CWRU Bearing | 5,000 | **0.9711** | 0.7111 | ~0.61 | ~+0.37 | Preliminary |
+The CWRU input produced by `data/download.py` is explicitly a healthy-to-fault transition proxy built from two real records; it is not presented as a native point-labeled CWRU anomaly benchmark.
 
 VUS-ROC is computed using standard label-only range buffering (Paparrizos et al., 2022). Predicted scores are never buffered.
 
@@ -104,7 +110,7 @@ VUS-ROC is computed using standard label-only range buffering (Paparrizos et al.
 
 ## Known Limitations
 
-1. **Metric Correction Applied**: An internal audit identified that an earlier version of `vus.py` applied temporal range buffering to both labels and predicted scores, inflating reported numbers. This has been corrected — buffering is now applied strictly to ground-truth labels. All numbers above reflect the corrected evaluation.
+1. **Metric Correction Applied**: An internal audit identified that an earlier version of `vus.py` applied temporal range buffering to both labels and predicted scores, inflating reported numbers. Buffering is now applied strictly to ground-truth labels.
 
 2. **Detector Naming Alignment**: Two detectors were renamed to reflect their actual implementations:
    - **ARFilterDetector**: Online AR($p$) linear ridge regression filter (not full SARIMA).
@@ -112,14 +118,15 @@ VUS-ROC is computed using standard label-only range buffering (Paparrizos et al.
 
 3. **Reference Comparison Not Valid**: Direct numerical comparison to external closed-source references (e.g., `phase_space_matcher` at 83.96–86.02%) is scientifically invalid due to metric type mismatch (VUS-ROC vs. PA-F1), evaluation length differences, and inability to verify the reference evaluation protocol. We report our own VUS-ROC numbers independently without claiming superiority.
 
-4. **Single-Run Point Estimates**: Results are from single deterministic runs. No confidence intervals are provided.
+4. **Validation Still Pending**: A scientifically complete report still requires more datasets, independent baselines, multiple seeds, confidence intervals, and external reproduction.
 
 ---
 
 ## Future Work
 
-- Multi-seed evaluations to generate 95% confidence intervals are planned for a future release to further validate the preliminary point estimates.
-- Standardized cross-system benchmark protocol for fair comparison with external references.
+- More real datasets and independent cross-system baselines.
+- Multi-seed evaluations and confidence intervals.
+- External replication of the provenance manifests and benchmark outputs.
 - Expansion of the detector battery beyond 6 experts.
 
 ---

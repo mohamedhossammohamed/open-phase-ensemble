@@ -99,13 +99,13 @@
             </tr>
             <tr>
               <td>Internal Results Integrity Audit</td>
-              <td><span class="badge badge-verified"><span class="badge-dot"></span> Passed</span></td>
-              <td>Metric score inflation corrected; baseline numbers re-verified</td>
+              <td><span class="badge badge-preliminary"><span class="badge-dot"></span> Reopened</span></td>
+              <td>Causal scoring and provenance controls applied; external reproduction remains pending</td>
             </tr>
             <tr>
               <td>Unit, Integration &amp; E2E Tests</td>
-              <td><span class="badge badge-verified"><span class="badge-dot"></span> 34 / 34 Passed</span></td>
-              <td>Full test suite passing deterministically on Python 3.12</td>
+              <td><span class="badge badge-preliminary"><span class="badge-dot"></span> Smoke Checks Passed</span></td>
+              <td>Unit/integration checks pass; end-to-end tests verify finite, reproducible behavior rather than fixed synthetic accuracy targets</td>
             </tr>
             <tr>
               <td>Zero-Lookahead Invariant</td>
@@ -138,10 +138,25 @@
 
       <h2 id="remediations">3. Remediation Details</h2>
       <p>
-        During internal scientific audit, four technical discrepancies were identified and remediated:
+        During internal scientific audit, the following technical discrepancies were identified and remediated:
       </p>
 
       <div class="def-list">
+        <div class="def-item">
+          <div class="def-term">Causal State Update Fix</div>
+          <div class="def-desc">Detectors, robust normalization, and adaptive gating now score the current observation before incorporating it into future state.</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">Provenance-Controlled Data</div>
+          <div class="def-desc">Benchmark loading requires a sidecar manifest with source, license, label semantics, synthetic status, and checksum; synthetic data is opt-in for smoke tests only.</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">Explicit Null Evaluation</div>
+          <div class="def-desc">The stream protocol reports chronological warm-up, a persistence baseline, IAAFT surrogate statistics, empirical significance, and per-detector results.</div>
+        </div>
+
         <div class="def-item">
           <div class="def-term">VUS Score Inflation Fix</div>
           <div class="def-desc"><code>apply_range_buffer</code> was erroneously applied to both ground-truth labels and predicted anomaly scores. Corrected to buffer labels only.</div>

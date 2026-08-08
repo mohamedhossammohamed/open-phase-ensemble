@@ -42,3 +42,12 @@ def test_iaaft_properties():
     # 3. Kolmogorov-Smirnov test: distributions should be indistinguishable (p-value > 0.05)
     _ks_stat, p_val = stats.ks_2samp(x, surrogate)
     assert p_val > 0.05
+
+
+def test_iaaft_surrogate_is_reproducible_with_explicit_seed():
+    signal = np.sin(np.linspace(0.0, 10.0, 200))
+
+    first = generate_iaaft_surrogate(signal, seed=7)
+    second = generate_iaaft_surrogate(signal, seed=7)
+
+    assert np.array_equal(first, second)

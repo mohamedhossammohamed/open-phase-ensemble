@@ -19,6 +19,7 @@ def test_ledoit_wolf_math_and_shrinkage():
     for row in X_singular:
         score, _forecast = det.score(row, v_t=row[0])
         det.update(row[0])
+        det.add_vector(row)
         
     assert det.delta > 0.0
     det_val = np.linalg.det(det.Sigma_LW)
@@ -33,6 +34,7 @@ def test_isolation_forest_detector():
     for row in normal_data:
         det.score(row, v_t=row[0])
         det.update(row[0])
+        det.add_vector(row)
         
     normal_score, _ = det.score(normal_data[0], v_t=0.0)
     outlier_score, _ = det.score(np.array([10.0] * 8), v_t=10.0)

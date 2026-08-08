@@ -54,7 +54,6 @@ class RobustMahalanobisDetector(DetectorABC):
             self.inv_Sigma = np.eye(d)
 
     def score(self, Z_t: np.ndarray, v_t: float) -> tuple[float, float]:
-        self.add_vector(Z_t)
         diff = Z_t - self.mean
         dist_sq = float(np.dot(np.dot(diff, self.inv_Sigma), diff.T))
         dist = np.sqrt(max(0.0, dist_sq))

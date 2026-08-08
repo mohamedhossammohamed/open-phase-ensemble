@@ -27,6 +27,8 @@ class CUSUMGating:
         self.error_buffer = []
         self.mu_E = 0.0
         self.sigma_E = 1.0
+        self.last_reference_mean = 0.0
+        self.last_reference_sigma = 1.0
         self.current_state = GatingState.NORMAL
 
     def step(self, error: float) -> GatingState:
@@ -34,21 +36,23 @@ class CUSUMGating:
         Updates CUSUM statistics with incoming prediction error E_t.
         Returns current GatingState.
         """
-        self.error_buffer.append(error)
-        if len(self.error_buffer) > 1000:
-            self.error_buffer.pop(0)
-            
         if len(self.error_buffer) >= 5:
             arr = np.array(self.error_buffer, dtype=np.float64)
-            self.mu_E = float(np.mean(arr))
-            self.sigma_E = float(np.std(arr)) + EPSILON
-            
+            reference_mean = float(np.mean(arr))
+            reference_sigma = float(np.std(arr)) + EPSILON
+        else:
+            reference_mean = self.mu_E
+            reference_sigma = self.sigma_E
+
+        self.last_reference_mean = reference_mean
+        self.last_reference_sigma = reference_sigma
+
         # Recursive CUSUM calculation
-        shift = error - (self.mu_E + self.k_c * self.sigma_E)
+        shift = error - (reference_mean + self.k_c * reference_sigma)
         self.c_plus = max(0.0, self.c_plus + shift)
         self.c_minus = max(0.0, self.c_minus - shift)
-        
-        h_c = self.h_c_mult * self.sigma_E
+
+        h_c = self.h_c_mult * reference_sigma
         
         if self.c_plus > h_c:
             self.alarm_counter += 1
@@ -63,6 +67,14 @@ class CUSUMGating:
             self.c_plus = 0.0
             self.c_minus = 0.0
             self.current_state = GatingState.NORMAL
+
+        self.error_buffer.append(error)
+        if len(self.error_buffer) > 1000:
+            self.error_buffer.pop(0)
+        if len(self.error_buffer) >= 5:
+            arr = np.array(self.error_buffer, dtype=np.float64)
+            self.mu_E = float(np.mean(arr))
+            self.sigma_E = float(np.std(arr)) + EPSILON
             
         return self.current_state
 

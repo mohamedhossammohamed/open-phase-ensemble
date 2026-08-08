@@ -40,30 +40,44 @@ class MSETransformerAutoencoder(DetectorABC):
     Detector 6: Transformer Autoencoder with Mean Squared Error (MSE) Reconstruction.
     L=2 encoder layers, H=4 heads, D_model=32.
     """
-    def __init__(self, dim: int = D_TARGET, d_model: int = 32, n_heads: int = 4, n_layers: int = 2):
+    def __init__(
+        self,
+        dim: int = D_TARGET,
+        d_model: int = 32,
+        n_heads: int = 4,
+        n_layers: int = 2,
+        seq_len: int = 10,
+        train_interval: int = 10,
+        learning_rate: float = 1e-3,
+    ):
         self.dim = dim
         self.d_model = d_model
         self.n_heads = n_heads
         self.n_layers = n_layers
+        self.seq_len = max(2, seq_len)
+        self.train_interval = max(1, train_interval)
         self.sequence_buffer = []
-        self.seq_len = 10
+        self.step_counter = 0
+        self._pending_vector = None
         
         if HAS_TORCH:
             torch.manual_seed(SEED)
             self.model = TransformerAutoencoderModule(in_dim=dim, d_model=d_model, n_heads=n_heads, n_layers=n_layers)
             self.model.eval()
+            self.optimizer = torch.optim.Adam(self.model.parameters(), lr=learning_rate)
         else:
             self.model = None
+            self.optimizer = None
 
     def score(self, Z_t: np.ndarray, v_t: float) -> tuple[float, float]:
-        self.sequence_buffer.append(Z_t)
-        if len(self.sequence_buffer) > self.seq_len:
-            self.sequence_buffer.pop(0)
-            
-        if not HAS_TORCH or len(self.sequence_buffer) < self.seq_len:
+        Z_t = np.asarray(Z_t, dtype=np.float32)
+        self._pending_vector = Z_t.copy()
+        sequence = self.sequence_buffer[-(self.seq_len - 1):] + [Z_t]
+
+        if not HAS_TORCH or len(sequence) < self.seq_len:
             return 0.0, v_t
-            
-        seq_arr = np.array(self.sequence_buffer, dtype=np.float32)[np.newaxis, :, :]
+
+        seq_arr = np.array(sequence[-self.seq_len:], dtype=np.float32)[np.newaxis, :, :]
         x_tensor = torch.from_numpy(seq_arr)
         
         with torch.no_grad():
@@ -77,7 +91,31 @@ class MSETransformerAutoencoder(DetectorABC):
         return s_t, v_hat
 
     def update(self, v_true: float):
-        pass
+        if self._pending_vector is None:
+            return
+
+        self.sequence_buffer.append(self._pending_vector)
+        if len(self.sequence_buffer) > self.seq_len:
+            self.sequence_buffer.pop(0)
+        self.step_counter += 1
+
+        if (
+            not HAS_TORCH
+            or len(self.sequence_buffer) < self.seq_len
+            or self.step_counter % self.train_interval != 0
+        ):
+            return
+
+        seq_arr = np.array(self.sequence_buffer, dtype=np.float32)[np.newaxis, :, :]
+        x_tensor = torch.from_numpy(seq_arr)
+        self.model.train()
+        self.optimizer.zero_grad()
+        reconstruction, _forecast = self.model(x_tensor)
+        loss = torch.mean((reconstruction - x_tensor) ** 2)
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
+        self.optimizer.step()
+        self.model.eval()
 
 # Backward compatibility alias
 AnomalyTransformerDetector = MSETransformerAutoencoder

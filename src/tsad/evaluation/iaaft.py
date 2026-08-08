@@ -1,17 +1,27 @@
 import numpy as np
 
 
-def generate_iaaft_surrogate(x: np.ndarray, max_iter: int = 100, tol: float = 1e-6) -> np.ndarray:
+def generate_iaaft_surrogate(
+    x: np.ndarray,
+    max_iter: int = 100,
+    tol: float = 1e-6,
+    seed: int | None = None,
+    rng: np.random.Generator | None = None,
+) -> np.ndarray:
     """
     Generates an Iterative Amplitude Adjusted Fourier Transform (IAAFT) surrogate.
     Preserves linear autocorrelation and amplitude distribution while destroying non-linear phase structures.
     """
+    if seed is not None and rng is not None:
+        raise ValueError("pass either seed or rng, not both")
+    rng = rng or np.random.default_rng(seed)
+
     n = len(x)
     sorted_x = np.sort(x)
     abs_fft_x = np.abs(np.fft.rfft(x))
     
     # Initialize phase-randomized surrogate
-    random_phases = np.random.uniform(0, 2 * np.pi, size=len(abs_fft_x))
+    random_phases = rng.uniform(0, 2 * np.pi, size=len(abs_fft_x))
     # Keep DC component phase zero
     random_phases[0] = 0.0
     if n % 2 == 0:

@@ -25,3 +25,16 @@ def test_no_lookahead_leakage_invariant():
     # Euclidean distance between streaming and sequential outputs must be exactly 0.0
     dist = np.linalg.norm(np.array(scores_stream) - np.array(scores_batch))
     assert dist == 0.0
+
+
+def test_prefix_scores_do_not_depend_on_future_suffix():
+    signal, _labels = get_or_create_sine_fixture()
+    prefix = signal[:160]
+
+    prefix_pipeline = TSADPipeline()
+    prefix_scores = [prefix_pipeline.step(x)[0] for x in prefix]
+
+    full_pipeline = TSADPipeline()
+    full_scores = [full_pipeline.step(x)[0] for x in signal[:400]]
+
+    np.testing.assert_array_equal(prefix_scores, full_scores[: len(prefix)])

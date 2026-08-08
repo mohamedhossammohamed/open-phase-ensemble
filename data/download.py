@@ -1,78 +1,156 @@
+"""Download and normalize real benchmark data with explicit provenance."""
+
+from __future__ import annotations
+
+import argparse
 import os
+import sys
+from pathlib import Path
 
 import numpy as np
 
-DATA_DIR = os.path.dirname(os.path.abspath(__file__))
-RAW_DIR = os.path.join(DATA_DIR, "raw")
-os.makedirs(RAW_DIR, exist_ok=True)
+SRC_DIR = Path(__file__).resolve().parents[1] / "src"
+sys.path.insert(0, str(SRC_DIR))
 
+from tsad.datasets import write_manifest  # noqa: E402
+
+
+DATA_DIR = Path(__file__).resolve().parent
+RAW_DIR = DATA_DIR / "raw"
 PHYSIONET_RECORDS = ["100", "101", "102", "103", "105", "106", "109", "112"]
+PHYSIONET_URL = "https://physionet.org/content/mitdb/1.0.0/"
+ABNORMAL_BEAT_SYMBOLS = {"A", "a", "J", "S", "V", "E", "F", "/", "f", "Q", "?"}
 
-def download_physionet_data():
-    """Downloads MIT-BIH Arrhythmia database records 100, 101, 102, 103, 105, 106, 109, 112."""
-    physio_dir = os.path.join(RAW_DIR, "physionet")
-    os.makedirs(physio_dir, exist_ok=True)
-    print("Downloading PhysioNet MIT-BIH Arrhythmia dataset records...")
-    
+
+def _save_npz_with_manifest(
+    path: Path,
+    signal: np.ndarray,
+    labels: np.ndarray,
+    *,
+    name: str,
+    source: str,
+    source_url: str,
+    label_semantics: str,
+):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(path, signal=signal.astype(np.float64), labels=labels.astype(np.int8))
+    write_manifest(
+        path,
+        name=name,
+        source=source,
+        source_url=source_url,
+        license_name="See upstream dataset terms",
+        label_semantics=label_semantics,
+        synthetic=False,
+    )
+
+
+def download_physionet_data(records: list[str] | None = None):
+    """Download MIT-BIH records and convert beat annotations into binary labels."""
     try:
         import wfdb
-        for rec in PHYSIONET_RECORDS:
-            out_file = os.path.join(physio_dir, f"{rec}.dat")
-            if not os.path.exists(out_file):
-                wfdb.dl_database("mitdb", physio_dir, records=[rec])
-        print("PhysioNet records downloaded successfully.")
-    except Exception as e:  # noqa: BLE001
-        print(f"wfdb download warning: {e}. Generating baseline PhysioNet structures.")
-        for rec in PHYSIONET_RECORDS:
-            npz_path = os.path.join(physio_dir, f"{rec}.npz")
-            if not os.path.exists(npz_path):
-                # Generate realistic ECG cardiac waveform
-                t = np.linspace(0, 100, 36000) # 100s at 360Hz
-                ecg = np.sin(2 * np.pi * 1.2 * t) + 0.5 * np.sin(2 * np.pi * 2.4 * t) + np.random.normal(0, 0.05, len(t))
-                # Add PVC arrhythmia spikes
-                labels = np.zeros(len(t), dtype=int)
-                for spike in [5000, 15000, 25000]:
-                    ecg[spike:spike+100] += 3.0
-                    labels[spike:spike+100] = 1
-                np.savez_compressed(npz_path, signal=ecg, labels=labels)
+    except ImportError as exc:
+        raise RuntimeError("install wfdb to download PhysioNet data") from exc
 
-def download_cwru_data():
-    """Downloads Case Western Reserve University (CWRU) Bearing dataset."""
-    cwru_dir = os.path.join(RAW_DIR, "cwru")
-    os.makedirs(cwru_dir, exist_ok=True)
-    print("Preparing CWRU Bearing dataset...")
-    
-    npz_path = os.path.join(cwru_dir, "cwru_bearing.npz")
-    if not os.path.exists(npz_path):
-        t = np.linspace(0, 50, 120000) # 12kHz sampling
-        # Inner race fault harmonics + Gaussian vibration noise
-        vib = np.sin(2 * np.pi * 30.0 * t) + 0.3 * np.sin(2 * np.pi * 150.0 * t) + np.random.normal(0, 0.1, len(t))
-        labels = np.zeros(len(t), dtype=int)
-        # Injected outer race fault impact burst
-        vib[40000:45000] += np.random.normal(0, 1.5, 5000)
-        labels[40000:45000] = 1
-        np.savez_compressed(npz_path, signal=vib, labels=labels)
-    print("CWRU Bearing dataset ready.")
+    records = records or PHYSIONET_RECORDS
+    physio_dir = RAW_DIR / "physionet"
+    physio_dir.mkdir(parents=True, exist_ok=True)
 
-def download_nasa_ims_data():
-    """Downloads NASA IMS Run-to-Failure Bearing Prognostic dataset."""
-    nasa_dir = os.path.join(RAW_DIR, "nasa_ims")
-    os.makedirs(nasa_dir, exist_ok=True)
-    print("Preparing NASA IMS Bearing dataset...")
-    
-    npz_path = os.path.join(nasa_dir, "nasa_ims_bearing.npz")
-    if not os.path.exists(npz_path):
-        t = np.linspace(0, 100, 100000)
-        # Slow run-to-failure degradation envelope
-        degradation = (t / 100.0) ** 3
-        vib = np.sin(2 * np.pi * 20.0 * t) * (1.0 + degradation * 5.0) + np.random.normal(0, 0.1 + degradation * 0.5, len(t))
-        labels = np.zeros(len(t), dtype=int)
-        labels[80000:] = 1 # Failure phase in last 20%
-        np.savez_compressed(npz_path, signal=vib, labels=labels)
-    print("NASA IMS Bearing dataset ready.")
+    for record_name in records:
+        record_base = physio_dir / record_name
+        if not (record_base.with_suffix(".dat")).exists():
+            wfdb.dl_database("mitdb", str(physio_dir), records=[record_name], keep_subdirs=False)
+
+        record = wfdb.rdrecord(str(record_base))
+        annotations = wfdb.rdann(str(record_base), "atr")
+        signal = np.asarray(record.p_signal[:, 0], dtype=np.float64)
+        labels = np.zeros(len(signal), dtype=np.int8)
+        for sample, symbol in zip(annotations.sample, annotations.symbol):
+            if symbol in ABNORMAL_BEAT_SYMBOLS and 0 <= sample < len(labels):
+                labels[sample] = 1
+
+        _save_npz_with_manifest(
+            physio_dir / f"{record_name}.npz",
+            signal,
+            labels,
+            name=f"MIT-BIH Arrhythmia record {record_name}",
+            source="PhysioNet MIT-BIH Arrhythmia Database v1.0.0",
+            source_url=PHYSIONET_URL,
+            label_semantics="abnormal MIT-BIH beat annotations at annotated sample indices",
+        )
+
+
+def _extract_cwru_signal(mat_path: Path) -> np.ndarray:
+    try:
+        from scipy.io import loadmat
+    except ImportError as exc:
+        raise RuntimeError("install scipy to prepare CWRU MAT files") from exc
+
+    data = loadmat(mat_path)
+    candidates = []
+    for key, value in data.items():
+        if key.startswith("__"):
+            continue
+        array = np.asarray(value).squeeze()
+        if array.ndim == 1 and array.size > 100:
+            priority = 0 if key.endswith("_DE_time") else 1
+            candidates.append((priority, -array.size, key, array))
+    if not candidates:
+        raise ValueError(f"no one-dimensional vibration signal found in {mat_path}")
+    candidates.sort(key=lambda item: item[:3])
+    return np.asarray(candidates[0][3], dtype=np.float64)
+
+
+def prepare_cwru_data(healthy_mat: str | Path, faulty_mat: str | Path):
+    """Create a transparent real-signal transition benchmark from two CWRU MAT files.
+
+    The healthy record is labeled 0 and the fault record is labeled 1. This is a
+    documented proxy protocol, not a claim that CWRU supplies point-level anomaly
+    timestamps inside a single recording.
+    """
+    healthy_path = Path(healthy_mat)
+    faulty_path = Path(faulty_mat)
+    healthy = _extract_cwru_signal(healthy_path)
+    faulty = _extract_cwru_signal(faulty_path)
+    signal = np.concatenate([healthy, faulty])
+    labels = np.concatenate([
+        np.zeros(len(healthy), dtype=np.int8),
+        np.ones(len(faulty), dtype=np.int8),
+    ])
+    output_path = RAW_DIR / "cwru" / "cwru_bearing.npz"
+    _save_npz_with_manifest(
+        output_path,
+        signal,
+        labels,
+        name="CWRU Bearing real healthy-to-fault transition proxy",
+        source="Case Western Reserve University Bearing Dataset via documented mirror",
+        source_url=(
+            "https://engineering.case.edu/bearingdatacenter/download-data-file; "
+            "https://github.com/s-whynot/CWRU-dataset"
+        ),
+        label_semantics="healthy source record labeled 0; faulty source record labeled 1",
+    )
+    return output_path
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--physionet-record", action="append", dest="physionet_records")
+    parser.add_argument("--cwru-healthy", type=Path)
+    parser.add_argument("--cwru-faulty", type=Path)
+    args = parser.parse_args()
+
+    if args.physionet_records:
+        download_physionet_data(args.physionet_records)
+    if args.cwru_healthy or args.cwru_faulty:
+        if not args.cwru_healthy or not args.cwru_faulty:
+            parser.error("--cwru-healthy and --cwru-faulty must be provided together")
+        prepare_cwru_data(args.cwru_healthy, args.cwru_faulty)
+    if not args.physionet_records and not args.cwru_healthy:
+        parser.error(
+            "no dataset requested; use --physionet-record 100 or provide real CWRU MAT files"
+        )
+
 
 if __name__ == "__main__":
-    download_physionet_data()
-    download_cwru_data()
-    download_nasa_ims_data()
-    print("All dataset downloads completed within storage budget (< 5 GB).")
+    main()

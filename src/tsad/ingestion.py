@@ -12,6 +12,7 @@ class StreamBuffer:
     def __init__(self, window_size: int = 200):
         self.window_size = window_size
         self.raw_buffer = []
+        self.standardized_buffer = []
 
     def step(self, x_t: float) -> float:
         """
@@ -20,19 +21,29 @@ class StreamBuffer:
         if np.isnan(x_t) or np.isinf(x_t):
             x_t = float(self.raw_buffer[-1]) if len(self.raw_buffer) > 0 else 0.0
             
+        if self.raw_buffer:
+            buf_arr = np.array(self.raw_buffer, dtype=np.float64)
+            med = float(np.median(buf_arr))
+            mad = float(np.median(np.abs(buf_arr - med))) + EPSILON
+        else:
+            med = float(x_t)
+            mad = EPSILON
+        
+        v_t = (x_t - med) / (1.4826 * mad)
         self.raw_buffer.append(x_t)
         if len(self.raw_buffer) > self.window_size:
             self.raw_buffer.pop(0)
-            
-        buf_arr = np.array(self.raw_buffer, dtype=np.float64)
-        med = float(np.median(buf_arr))
-        mad = float(np.median(np.abs(buf_arr - med))) + EPSILON
-        
-        v_t = (x_t - med) / (1.4826 * mad)
+        self.standardized_buffer.append(v_t)
+        if len(self.standardized_buffer) > self.window_size:
+            self.standardized_buffer.pop(0)
         return float(v_t)
 
     def get_buffer(self) -> np.ndarray:
         return np.array(self.raw_buffer, dtype=np.float64)
+
+    def get_standardized_buffer(self) -> np.ndarray:
+        """Returns the causal rolling history of standardized observations."""
+        return np.array(self.standardized_buffer, dtype=np.float64)
 
     def __len__(self) -> int:
         """Returns current number of elements stored in buffer."""

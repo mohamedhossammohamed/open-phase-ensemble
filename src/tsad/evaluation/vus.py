@@ -29,11 +29,6 @@ def compute_vus_roc(scores: np.ndarray, labels: np.ndarray, max_buffer: int = 20
     Volume Under Surface ROC (VUS-ROC) across continuous temporal buffer sizes l in [0, max_buffer].
     Range buffering is applied strictly to ground truth labels. Predicted scores remain un-buffered.
     """
-    if len(scores) > 5000:
-        step = max(1, len(scores) // 3000)
-        scores = scores[::step]
-        labels = labels[::step]
-        
     auc_list = []
     buffer_steps = list(range(0, max_buffer + 1, max(1, max_buffer // 10)))
     
@@ -53,11 +48,6 @@ def compute_vus_pr(scores: np.ndarray, labels: np.ndarray, max_buffer: int = 20)
     Volume Under Surface PR (VUS-PR) across continuous temporal buffer sizes l in [0, max_buffer].
     Range buffering is applied strictly to ground truth labels. Predicted scores remain un-buffered.
     """
-    if len(scores) > 5000:
-        step = max(1, len(scores) // 3000)
-        scores = scores[::step]
-        labels = labels[::step]
-        
     auc_list = []
     buffer_steps = list(range(0, max_buffer + 1, max(1, max_buffer // 10)))
     

@@ -34,7 +34,6 @@ class IsolationForestDetector(DetectorABC):
             self.is_fitted = True
 
     def score(self, Z_t: np.ndarray, v_t: float) -> tuple[float, float]:
-        self.add_vector(Z_t)
         if not self.is_fitted:
             return 0.0, v_t
             
