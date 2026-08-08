@@ -21,6 +21,11 @@
   --failure-red: oklch(50% 0.15 27);          /* #c83232 - Failure outcome */
   --failure-red-soft: oklch(94% 0.035 27);    /* #fce8e8 */
 
+  /* Matte Black Tokens */
+  --matte-black: #121418;
+  --matte-black-card: #16181d;
+  --matte-black-border: #282c34;
+
   /* Typography Stacks */
   --font-display: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-headline: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -106,27 +111,24 @@ header, nav, .md-header, .md-header__inner, .md-tabs, .md-tabs__inner {
   box-shadow: none !important;
 }
 
-/* ── Remove ALL Intrusive Background Colors, Overlays & Shadows on Navigation ── */
+/* ── MATTE BLACK REPLACEMENT FOR ALL SIDEBAR & NAVIGATION CONTAINERS ── */
 
-.md-nav__item,
-.md-nav__item--active,
-.md-nav__link,
-.md-nav__link--active,
-.md-nav__title,
-.md-nav--secondary,
-.md-nav--secondary .md-nav__title,
-.md-nav--lifted .md-nav__item,
-.md-nav--lifted .md-nav__item--active,
-.md-nav--lifted .md-nav__item--active > .md-nav__link,
-.md-tabs__item,
-.md-tabs__link,
-.md-tabs__link--active {
-  background: transparent !important;
-  background-color: transparent !important;
+body > div.md-container > main > div > div.md-sidebar.md-sidebar--primary > div > div > nav > ul,
+body > div.md-container > main > div > div.md-sidebar.md-sidebar--secondary > div > div > nav > ul,
+.md-sidebar,
+.md-sidebar--primary,
+.md-sidebar--secondary,
+.md-sidebar__inner,
+.md-sidebar__scrollwrap,
+.md-sidebar.md-sidebar--primary nav,
+.md-sidebar.md-sidebar--secondary nav,
+[data-md-color-scheme="slate"] .md-sidebar,
+[data-md-color-scheme="slate"] .md-nav {
+  background-color: var(--matte-black) !important;
+  background: var(--matte-black) !important;
   background-image: none !important;
   box-shadow: none !important;
-  border: none !important;
-  outline: none !important;
+  border-radius: 8px !important;
 }
 
 /* Remove any pseudo-element background overlays / masks */
@@ -135,72 +137,83 @@ header, nav, .md-header, .md-header__inner, .md-tabs, .md-tabs__inner {
 .md-nav__link::before,
 .md-nav__link::after,
 .md-nav__item::before,
-.md-nav__item::after {
+.md-nav__item::after,
+.md-sidebar__inner::before,
+.md-sidebar__inner::after {
   background: none !important;
   background-color: transparent !important;
   background-image: none !important;
   box-shadow: none !important;
 }
 
-/* Table of Contents Header — Clean Flat Text Header (No Background Box) */
+/* Table of Contents Header — Clean Matte Black Header */
 .md-nav--secondary .md-nav__title,
 label.md-nav__title[for="__toc"] {
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-  border: none !important;
+  background-color: var(--matte-black-card) !important;
+  color: #f4f1ea !important;
+  border: 1px solid var(--matte-black-border) !important;
   box-shadow: none !important;
-  padding: 0 !important;
+  border-radius: 6px !important;
+  padding: 0.45rem 0.75rem !important;
   margin-bottom: 0.8rem !important;
   font-family: var(--font-label) !important;
   font-size: 0.78rem !important;
   font-weight: 720 !important;
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
-  color: var(--secondary-ink) !important;
 }
 
-/* Navigation Drawer Title — Clean Header */
+/* Navigation Drawer Title — Matte Black Header */
 .md-nav--primary > .md-nav__title,
 label.md-nav__title[for="__drawer"] {
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-  border-bottom: 1px solid var(--quiet-rule) !important;
+  background-color: var(--matte-black-card) !important;
+  color: #f4f1ea !important;
+  border-bottom: 1px solid var(--matte-black-border) !important;
   padding: 0.8rem 1rem !important;
   font-family: var(--font-label) !important;
   font-size: 0.85rem !important;
   font-weight: 720 !important;
-  color: var(--primary-ink) !important;
   text-transform: none !important;
 }
 
-/* Navigation Links — Clean Text-Only (No Intrusive Box/Gradient) */
-.md-tabs__link, .md-nav__link {
+/* Navigation Links within Matte Black Sidebar */
+.md-sidebar .md-nav__link,
+.md-nav__link {
   font-family: var(--font-label);
   font-size: 0.82rem;
   font-weight: 720;
   letter-spacing: 0.04em;
-  color: var(--secondary-ink) !important;
+  color: #a0a6b5 !important;
   opacity: 1 !important;
   background: transparent !important;
   background-color: transparent !important;
   transition: color 0.15s ease;
 }
 
-.md-tabs__link:hover, .md-tabs__link--active,
-.md-nav__link:hover, .md-nav__link--active,
-.md-nav__item--active > .md-nav__link {
-  color: var(--index-blue) !important;
+.md-sidebar .md-nav__link:hover,
+.md-tabs__link:hover,
+.md-nav__link:hover {
+  color: #ffffff !important;
   background: transparent !important;
   background-color: transparent !important;
 }
 
+.md-sidebar .md-nav__link--active,
+.md-sidebar .md-nav__item--active > .md-nav__link,
+.md-tabs__link--active,
+.md-nav__link--active,
+.md-nav__item--active > .md-nav__link {
+  color: var(--index-blue) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  font-weight: 720 !important;
+}
+
 /* Header Site Title Badge */
 .md-header__title {
-  background-color: var(--raised-paper) !important;
-  color: var(--primary-ink) !important;
-  border: 1px solid var(--quiet-rule) !important;
+  background-color: var(--matte-black-card) !important;
+  color: #f4f1ea !important;
+  border: 1px solid var(--matte-black-border) !important;
   border-radius: 999px !important;
   padding: 0.3rem 0.85rem !important;
   font-family: var(--font-label) !important;
@@ -211,9 +224,9 @@ label.md-nav__title[for="__drawer"] {
 
 /* GitHub Repository Button */
 .md-source {
-  background-color: var(--raised-paper) !important;
-  color: var(--primary-ink) !important;
-  border: 1px solid var(--quiet-rule) !important;
+  background-color: var(--matte-black-card) !important;
+  color: #f4f1ea !important;
+  border: 1px solid var(--matte-black-border) !important;
   border-radius: 999px !important;
   padding: 0.35rem 0.8rem !important;
   font-family: var(--font-label) !important;
@@ -224,25 +237,25 @@ label.md-nav__title[for="__drawer"] {
 }
 
 .md-source:hover {
-  background-color: var(--index-blue-soft) !important;
+  background-color: var(--matte-black) !important;
   border-color: var(--index-blue) !important;
   color: var(--index-blue) !important;
 }
 
 .md-source__icon svg, .md-source svg {
-  fill: var(--primary-ink) !important;
-  color: var(--primary-ink) !important;
+  fill: #f4f1ea !important;
+  color: #f4f1ea !important;
 }
 
 .md-source__repository {
-  color: var(--primary-ink) !important;
+  color: #f4f1ea !important;
 }
 
 /* Search Input */
 .md-search__input {
-  background-color: var(--raised-paper) !important;
-  color: var(--primary-ink) !important;
-  border: 1px solid var(--quiet-rule) !important;
+  background-color: var(--matte-black-card) !important;
+  color: #f4f1ea !important;
+  border: 1px solid var(--matte-black-border) !important;
   border-radius: 999px !important;
 }
 
@@ -454,7 +467,7 @@ div.sim-header,
   color: var(--primary-ink) !important;
 }
 
-/* Footer Customization */
+/* Hide generator links */
 .md-copyright a,
 .md-footer-meta__inner .md-copyright a {
   display: none !important;
