@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Method & Architecture — open-phase-ensemble</title>
+  <meta name="description" content="Mathematical foundations, signal representations, multi-expert battery, online Meta-Judge, and system architecture.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- KaTeX for LaTeX Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="brand">open-phase-ensemble <span class="version">v0.1.0</span></a>
+    <nav class="site-nav">
+      <a href="index.html" class="nav-link">Overview</a>
+      <a href="method.html" class="nav-link active">Method</a>
+      <a href="results.html" class="nav-link">Results</a>
+      <a href="appendix.html" class="nav-link">Appendix</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h1>Technical Foundations & Architecture</h1>
+      <p class="subtitle">A mathematical document unifying phase-space trajectory reconstruction, multi-expert battery algorithms, online multiplicative weight fusion, and causal stream contracts.</p>
+
+      <nav class="page-toc">
+        <span class="toc-title">Contents</span>
+        <a href="#takens" class="toc-link">1. Takens' Embedding</a>
+        <span class="toc-sep">/</span>
+        <a href="#parameters" class="toc-link">2. AMI &amp; FNN</a>
+        <span class="toc-sep">/</span>
+        <a href="#covariance" class="toc-link">3. Covariance Geometry</a>
+        <span class="toc-sep">/</span>
+        <a href="#surrogates" class="toc-link">4. Surrogates</a>
+        <span class="toc-sep">/</span>
+        <a href="#battery" class="toc-link">5. 6-Detector Battery</a>
+        <span class="toc-sep">/</span>
+        <a href="#meta-judge" class="toc-link">6. Meta-Judge</a>
+        <span class="toc-sep">/</span>
+        <a href="#compartments" class="toc-link">7. System Pipeline</a>
+        <span class="toc-sep">/</span>
+        <a href="#config" class="toc-link">8. Config Schema</a>
+        <span class="toc-sep">/</span>
+        <a href="#zero-lookahead" class="toc-link">9. Zero-Lookahead</a>
+      </nav>
+
+      <h2 id="takens">1. Takens' Embedding Theorem & Phase Space Reconstruction</h2>
+      <p>
+        Floris Takens (1981) established that the unobserved multi-dimensional attractor manifold $\mathcal{M}$ of a non-linear dynamical system can be reconstructed from a single observed scalar time series $v_t$ via delay coordinate vectors:
+      </p>
+
+      $$\mathcal{X}_t = [v_t, v_{t-\tau}, v_{t-2\tau}, \dots, v_{t-(d-1)\tau}]^T \in \mathbb{R}^d$$
+
+      <p>
+        where $\tau$ is the time delay lag and $d$ is the embedding dimension. If $d > 2m + 1$ (where $m$ is the manifold dimension), the delay embedding map $\Phi: \mathcal{M} \to \mathbb{R}^d$ forms a smooth topological immersion that preserves original manifold geometry.
+      </p>
+
+      <h2 id="parameters">2. Parameter Selection: AMI and FNN</h2>
+      
+      <h3>Average Mutual Information (AMI)</h3>
+      <p>
+        Fraser & Swinney (1986) demonstrated that the optimal time delay $\tau$ corresponds to the first local minimum of the Average Mutual Information $I(\tau)$:
+      </p>
+
+      $$I(\tau) = \sum_{x, y} P(v_t, v_{t+\tau}) \log_2 \left( \frac{P(v_t, v_{t+\tau})}{P(v_t) P(v_{t+\tau})} \right)$$
+
+      <p>
+        This selects a lag $\tau$ where scalar coordinates $v_t$ and $v_{t+\tau}$ are maximally independent in an information-theoretic sense.
+      </p>
+
+      <h3>False Nearest Neighbors (FNN)</h3>
+      <p>
+        Kennel et al. (1992) introduced False Nearest Neighbors to determine the minimal embedding dimension $d$. Points projected into dimension $d$ may appear adjacent due to geometric overlap rather than manifold proximity. The fraction of FNNs is tracked as $d$ increases:
+      </p>
+
+      $$\frac{|v_{t+d\tau} - v_{nn+d\tau}|}{\|\mathcal{X}_t^{(d)} - \mathcal{X}_{nn}^{(d)}\|} > R_{\text{tol}}$$
+
+      <p>
+        The optimal dimension $d$ is identified where the FNN fraction falls below $1\%$.
+      </p>
+
+      <h2 id="covariance">3. Covariance Geometry: Ledoit-Wolf Shrinkage</h2>
+      <p>
+        When sample window size $N$ is small relative to embedding dimension $d$, the standard sample covariance matrix $\Sigma_{\text{sample}}$ is ill-conditioned. Ledoit & Wolf (2004) analytical shrinkage computes a well-conditioned estimator $\Sigma_{\text{LW}}$:
+      </p>
+
+      $$\Sigma_{\text{LW}} = (1 - \delta) \Sigma_{\text{sample}} + \delta \mu I, \quad \mu = \frac{\text{trace}(\Sigma_{\text{sample}})}{d}$$
+
+      <p>
+        where optimal shrinkage intensity $\delta \in [0, 1]$ minimizes expected Frobenius loss, guaranteeing positive-definiteness and invertibility. The robust Mahalanobis distance is evaluated as:
+      </p>
+
+      $$D_{\text{mahal}}(Z_t) = \sqrt{(Z_t - \mu_Z)^T \Sigma_{\text{LW}}^{-1} (Z_t - \mu_Z)}$$
+
+      <h2 id="surrogates">4. Surrogate Null Models: AR and IAAFT</h2>
+      <p>
+        To test whether dynamic predictability exceeds linear autocorrelation noise, surrogate null series are generated:
+      </p>
+      <ul>
+        <li><strong>Autoregressive (AR) Surrogates:</strong> Linear stochastic processes preserving spectral covariance.</li>
+        <li><strong>Iterative Amplitude Adjusted Fourier Transform (IAAFT):</strong> Schreiber & Schmitz (1996) phase-randomization algorithm that exactly preserves both the empirical amplitude distribution and Fourier power spectrum of the original series.</li>
+      </ul>
+
+      <h2 id="battery">5. The 6-Detector Battery</h2>
+      <p>
+        The ensemble combines six mathematically orthogonal detectors to score each incoming streaming observation:
+      </p>
+
+      <div class="def-list">
+        <div class="def-item">
+          <div class="def-term">1. Simplex Projection (EDM)</div>
+          <div class="def-desc">
+            Sugihara & May (1990) Simplex Projection performs non-parametric forecasting by tracking trajectories of $E+1$ nearest phase-space neighbors:
+            $$w_i = \exp \left( -\frac{\|Z_t - Z_{nn_i}\|}{\|Z_t - Z_{nn_1}\| + \epsilon} \right), \quad \hat{v}_{t+h} = \sum_{i=1}^{E+1} \bar{w}_i v_{nn_i + h}$$
+            Anomaly score $s_t$ measures normalized prediction error $|v_t - \hat{v}_t|$.
+          </div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">2. Robust Mahalanobis (Ledoit-Wolf)</div>
+          <div class="def-desc">Measures geometric spatial deviation from the robust covariance centroid in projected space.</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">3. Subsequence Motifs (STOMP Matrix Profile)</div>
+          <div class="def-desc">Yeh et al. (2016) Matrix Profile computes z-normalized Euclidean distance from every subsequence window $W$ to its nearest non-overlapping historical neighbor. Peaks identify structural discords.</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">4. Subspace Isolation (Isolation Forest)</div>
+          <div class="def-desc">
+            Liu et al. (2008) Isolation Forest isolates point anomalies via axis-aligned random feature splits. Path length $h(x)$ across trees measures anomaly severity:
+            $$s(x, n) = 2^{-\frac{\mathbb{E}(h(x))}{c(n)}}$$
+          </div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">5. AR Linear Ridge Filter</div>
+          <div class="def-desc">Online AR(p) linear ridge regression filter measuring stochastic prediction residuals.</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">6. Transformer Autoencoder (MSE Reconstruction)</div>
+          <div class="def-desc">
+            Lightweight PyTorch Transformer Encoder ($L=2$ layers, $H=4$ heads, $D_{\text{model}}=32$) acting as a sequence autoencoder:
+            $$s_t = 1 - \exp\left(-\frac{1}{L \cdot D} \sum_{l,d} (x_{l,d} - \hat{x}_{l,d})^2\right)$$
+          </div>
+        </div>
+      </div>
+
+      <h2 id="meta-judge">6. Meta-Judge Online Fusion: Hedge Algorithm</h2>
+      <p>
+        Freund & Schapire (1997) Hedge multiplicative weight update algorithm updates expert weights $w_{t, k}$ based on trailing correlation loss $\ell_{t, k} = 1 - \text{PearsonCorr}(S_k, E_k)$:
+      </p>
+
+      $$w_{t+1, k} = \frac{w_{t, k} e^{-\eta \ell_{t, k}}}{\sum_{j=1}^K w_{t, j} e^{-\eta \ell_{t, j}}}$$
+
+      <p>
+        Fixed-share mixing (Herbster & Warmuth, 1998) guarantees a weight floor $w'_{k} \ge \frac{\sigma}{K}$ ($\sigma = 0.01$) to prevent expert weight collapse during sudden regime shifts.
+      </p>
+
+      <h2 id="compartments">7. System Compartments & Streaming Data Flow</h2>
+      <p>
+        The streaming pipeline executes sequentially across five causal compartments:
+      </p>
+
+      <pre><code>[Raw Scalar x_t]
+      │
+      ▼
+┌─────────────────────────────────────────────────────────────┐
+│ Module 1: Ingestion & Preprocessing                         │
+│ - StreamBuffer(window_size=200)                             │
+│ - Standardized output: v_t = (x_t - med) / (1.4826 * mad)   │
+└─────────────────────────────┬───────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│ Module 2: Multidimensional Representation                   │
+│ - Takens Delay Embedding: X_t in R^d (tau=2, d=8)           │
+│ - JL Random Projection: Z_t in R^D_target (D_target=8)      │
+│ - HNSW Graph Index: ANN trajectory indexing                 │
+└─────────────────────────────┬───────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│ Module 3: 6-Detector Battery                                │
+│ [Simplex, Mahalanobis-LW, MatrixProfile, IForest,           │
+│  ARFilterDetector, MSETransformerAutoencoder]               │
+│ Output: Scores S_t in [0,1]^K, Forecasts v_hat in R^K       │
+└─────────────────────────────┬───────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│ Module 4 & 5: Meta-Judge & Online Learning Loop             │
+│ - Pearson Correlation Loss: ell_{t,k} = 1 - PearsonCorr(S,E)│
+│ - Hedge Multiplicative Weight Update + Fixed-Share Floor    │
+│ - Output: Fused Anomaly Score A_t, Fused Forecast v_hat*    │
+└─────────────────────────────┬───────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│ Module 6: CUSUM Change Detection Gating                     │
+│ - C_t+ > H_c: Freeze adaptation during acute alarms         │
+│ - Alarm >= T_drift (200): Flush baseline & reset CUSUM      │
+└─────────────────────────────┴───────────────────────────────┘</code></pre>
+
+      <h2 id="config">8. Configuration Schema</h2>
+      <p>
+        Centralized pipeline hyperparameters defined in <code>src/tsad/config.py</code>:
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>SEED</code></td>
+              <td><code>int</code></td>
+              <td class="num-cell">42</td>
+              <td>Global random seed enforcing 100% execution determinism</td>
+            </tr>
+            <tr>
+              <td><code>MAX_TAU</code></td>
+              <td><code>int</code></td>
+              <td class="num-cell">100</td>
+              <td>Clamped upper bound for time delay lag $\tau$</td>
+            </tr>
+            <tr>
+              <td><code>MAX_D</code></td>
+              <td><code>int</code></td>
+              <td class="num-cell">20</td>
+              <td>Clamped upper bound for embedding dimension $d$</td>
+            </tr>
+            <tr>
+              <td><code>D_TARGET</code></td>
+              <td><code>int</code></td>
+              <td class="num-cell">8</td>
+              <td>Johnson-Lindenstrauss target dimension</td>
+            </tr>
+            <tr>
+              <td><code>K_DETECTORS</code></td>
+              <td><code>int</code></td>
+              <td class="num-cell">6</td>
+              <td>Total number of expert detectors in battery</td>
+            </tr>
+            <tr>
+              <td><code>HEDGE_ETA</code></td>
+              <td><code>float</code></td>
+              <td class="num-cell">0.10</td>
+              <td>Hedge learning rate parameter $\eta$</td>
+            </tr>
+            <tr>
+              <td><code>FIXED_SHARE_SIGMA</code></td>
+              <td><code>float</code></td>
+              <td class="num-cell">0.01</td>
+              <td>Fixed-share mixing floor parameter $\sigma$</td>
+            </tr>
+            <tr>
+              <td><code>CUSUM_KC</code></td>
+              <td><code>float</code></td>
+              <td class="num-cell">0.50</td>
+              <td>CUSUM allowance parameter $k_c$</td>
+            </tr>
+            <tr>
+              <td><code>CUSUM_HC_SIGMA_MULT</code></td>
+              <td><code>float</code></td>
+              <td class="num-cell">5.00</td>
+              <td>CUSUM alarm threshold multiplier $H_c = 5.0 \sigma_E$</td>
+            </tr>
+            <tr>
+              <td><code>T_DRIFT</code></td>
+              <td><code>int</code></td>
+              <td class="num-cell">200</td>
+              <td>Consecutive alarm steps before concept drift reset</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="zero-lookahead">9. Zero-Lookahead Leakage Invariant</h2>
+      <p>
+        The pipeline strictly guarantees zero-lookahead temporal isolation:
+      </p>
+      <ul>
+        <li><strong>Causal Buffer Scope:</strong> All transformations operate exclusively on historical causal buffers $W_t = \{x_1, x_2, \dots, x_t\}$. No future sample is ever accessed.</li>
+        <li><strong>Invariant Verification:</strong> <code>tests/integration/test_no_lookahead.py</code> confirms that element-by-element streaming execution yields an exact Euclidean distance of <strong class="num-cell">0.0000</strong> compared to sequential batch processing.</li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div>open-phase-ensemble &copy; 2026. Released under the Apache 2.0 License.</div>
+    <div class="footer-links">
+      <a href="https://github.com/mohamedhossammohamed/open-phase-ensemble" class="footer-link">GitHub Repository</a>
+      <a href="appendix.html" class="footer-link">Disclaimer</a>
+    </div>
+  </footer>
+
+</body>
+</html>

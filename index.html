@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>open-phase-ensemble — Non-Parametric Streaming Anomaly Detection</title>
+  <meta name="description" content="An open-source, non-parametric, multi-tool ensemble for streaming time-series anomaly detection and forecasting.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="brand">open-phase-ensemble <span class="version">v0.1.0</span></a>
+    <nav class="site-nav">
+      <a href="index.html" class="nav-link active">Overview</a>
+      <a href="method.html" class="nav-link">Method</a>
+      <a href="results.html" class="nav-link">Results</a>
+      <a href="appendix.html" class="nav-link">Appendix</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h1>open-phase-ensemble</h1>
+      <p class="subtitle">An open-source, non-parametric, multi-tool ensemble for streaming time-series anomaly detection and forecasting.</p>
+
+      <p style="margin-bottom: 2rem;">
+        <span class="badge badge-preliminary"><span class="badge-dot"></span> Preliminary Research</span>
+        <span class="badge badge-self-reported"><span class="badge-dot"></span> Self-Reported Metrics</span>
+      </p>
+
+      <p class="lead">
+        Time-series anomaly detection suffers from methodological fragmentation and evaluation pitfalls. Many academic benchmarks rely on flawed point-adjustment protocols that artificially inflate random guessers to >90% accuracy. Meanwhile, heavily parameterized deep neural models remain opaque, computationally expensive, and sensitive to hyperparameter tuning.
+      </p>
+
+      <p>
+        <strong>open-phase-ensemble</strong> takes a fundamentally different path: constructing an open-source, non-parametric streaming pipeline that maps scalar temporal observations into phase-space manifolds via Takens' delay embedding, combined with a battery of six orthogonal expert detectors governed by an online multiplicative-weights Meta-Judge.
+      </p>
+
+      <div class="inline-stats">
+        <div class="stat-item">
+          <span class="stat-num">0.8592</span>
+          <span class="stat-label">MIT-BIH VUS-ROC (<span class="num-cell">+0.37</span> over null)</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">0.9711</span>
+          <span class="stat-label">CWRU Bearing VUS-ROC (<span class="num-cell">+0.37</span> over null)</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">0.0000</span>
+          <span class="stat-label">Stream vs Batch Distance (Zero-Lookahead)</span>
+        </div>
+      </div>
+
+      <h2>System Foundation & Architecture</h2>
+      <p>
+        Rather than attempting to train a single deep network to recognize all possible anomaly signatures, the system decomposes time-series evaluation into five modular, causal compartments:
+      </p>
+
+      <div class="def-list">
+        <div class="def-item">
+          <div class="def-term">Non-Parametric Foundation</div>
+          <div class="def-desc">Reconstructs underlying phase-space manifolds via Takens' delay embedding instead of training millions of opaque parameters.</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">Orthogonal 6-Detector Battery</div>
+          <div class="def-desc">Combines phase-space trajectory prediction, covariance geometry, subsequence motifs, subspace isolation, linear autoregression, and neural MSE reconstruction error.</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">Online Meta-Judge</div>
+          <div class="def-desc">Employs the Hedge multiplicative-weights algorithm with fixed-share mixing floors to dynamically reweight experts in real time without ground-truth labels.</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">Zero-Lookahead Invariant</div>
+          <div class="def-desc">Enforces strict element-by-element streaming execution. No future data points are ever exposed during online scoring.</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">Methodological Rigor</div>
+          <div class="def-desc">Evaluated using un-buffered Volume Under Surface (VUS-ROC/PR) metrics with label-only buffering and IAAFT phase-randomized surrogate null baselines.</div>
+        </div>
+      </div>
+
+      <h2>The Research Journey</h2>
+      <p>
+        The genesis of <strong>open-phase-ensemble</strong> began with a detailed audit of a closed-source time-series verification engine. That reference demonstrated a compelling premise: raw time-series observations could be mapped into multidimensional phase-space manifolds using Takens' delay embeddings to predict future system dynamics via geometric trajectory matching.
+      </p>
+
+      <p>
+        However, as we audited the mathematical bounds of pure phase-space trajectory matching, a critical structural limitation emerged: while trajectory projection excels at capturing non-linear dynamic shifts, it struggles with spatial covariance shifts, variance drops, and isolated global point outliers.
+      </p>
+
+      <blockquote>
+        "No single detection algorithm can be universally optimal across all anomaly types. True robustness demands an ensemble of mathematically orthogonal experts."
+      </blockquote>
+
+      <p>
+        To solve this, we designed a battery of six complementary algorithms:
+      </p>
+
+      <ul>
+        <li><strong>Simplex Projection (EDM)</strong> — Phase-space trajectory geometry & non-linear prediction</li>
+        <li><strong>Robust Mahalanobis (Ledoit-Wolf)</strong> — Covariance geometry & variance shift detection</li>
+        <li><strong>Matrix Profile (STOMP)</strong> — Subsequence motif & discord discovery</li>
+        <li><strong>Isolation Forest</strong> — Subspace partitioning & global point anomalies</li>
+        <li><strong>AR Linear Ridge Filter</strong> — Linear stochastic prediction residuals</li>
+        <li><strong>MSE Transformer Autoencoder</strong> — Neural sequence reconstruction error</li>
+      </ul>
+
+      <h2>Choosing to Build Openly</h2>
+      <p>
+        We chose to develop and release this research entirely in the open for three primary reasons:
+      </p>
+      <ul>
+        <li><strong>Auditable Reproducibility:</strong> Closed-source benchmarks cannot be independently audited. Open code guarantees that every score, calculation, and claim can be verified.</li>
+        <li><strong>Metric Integrity:</strong> By adopting Volume Under Surface (VUS-ROC/PR) with label-only buffering, we eliminate point-adjustment inflation.</li>
+        <li><strong>Community Collaboration:</strong> A clean, modular design allowing researchers to plug in new detectors, surrogate generators, or gating strategies.</li>
+      </ul>
+
+      <h2>Significance & Scientific Outlook</h2>
+      <p>
+        The observations documented in this repository are offered as directions for further investigation, not as established conclusions. We believe this work demonstrates that an open, composable, online-learning ensemble can achieve meaningful predictive edges over phase-randomized null baselines while remaining fully inspectable and deterministic.
+      </p>
+
+      <p>
+        Key open research questions include:
+      </p>
+
+      <ol>
+        <li><strong>Ensemble Scalability:</strong> How does the Hedge Meta-Judge scale as the detector battery expands to 20+ experts?</li>
+        <li><strong>High-Noise Limits:</strong> What is the breakdown threshold of non-parametric delay embeddings when signal-to-noise ratio drops below 0 dB?</li>
+        <li><strong>Cross-Domain Generalization:</strong> How well does the architecture maintain its predictive edge across non-stationary geophysical, financial, and industrial streams?</li>
+      </ol>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div>open-phase-ensemble &copy; 2026. Released under the Apache 2.0 License.</div>
+    <div class="footer-links">
+      <a href="https://github.com/mohamedhossammohamed/open-phase-ensemble" class="footer-link">GitHub Repository</a>
+      <a href="appendix.html" class="footer-link">Disclaimer</a>
+    </div>
+  </footer>
+
+</body>
+</html>

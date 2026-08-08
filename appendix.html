@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appendix & Developer Guide — open-phase-ensemble</title>
+  <meta name="description" content="Research disclaimers, internal audit matrix, developer setup, and detector registration contracts.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="brand">open-phase-ensemble <span class="version">v0.1.0</span></a>
+    <nav class="site-nav">
+      <a href="index.html" class="nav-link">Overview</a>
+      <a href="method.html" class="nav-link">Method</a>
+      <a href="results.html" class="nav-link">Results</a>
+      <a href="appendix.html" class="nav-link active">Appendix</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h1>Appendix &amp; Developer Guide</h1>
+      <p class="subtitle">Experimental research disclaimers, internal audit status matrix, environment setup, and detector module developer contracts.</p>
+
+      <nav class="page-toc">
+        <span class="toc-title">Contents</span>
+        <a href="#disclaimer" class="toc-link">1. Disclaimer</a>
+        <span class="toc-sep">/</span>
+        <a href="#audit-matrix" class="toc-link">2. Audit Matrix</a>
+        <span class="toc-sep">/</span>
+        <a href="#remediations" class="toc-link">3. Remediation Details</a>
+        <span class="toc-sep">/</span>
+        <a href="#review-request" class="toc-link">4. Peer Review</a>
+        <span class="toc-sep">/</span>
+        <a href="#dev-setup" class="toc-link">5. Developer Setup</a>
+        <span class="toc-sep">/</span>
+        <a href="#detector-contract" class="toc-link">6. Detector API</a>
+      </nav>
+
+      <h2 id="disclaimer">1. Experimental Research Disclaimer</h2>
+      <p>
+        <span class="badge badge-preliminary"><span class="badge-dot"></span> Experimental Research</span>
+        <span class="badge badge-self-reported"><span class="badge-dot"></span> Pending External Review</span>
+      </p>
+
+      <p class="lead" style="margin-top: 1rem;">
+        <strong>This project is experimental and provided for research and educational purposes only.</strong>
+      </p>
+
+      <p>
+        All performance claims are preliminary, self-reported, and have not been independently validated or peer-reviewed. This software system must not be used for safety-critical, medical, financial, or production decisions without independent professional assessment and external review by qualified domain experts. Use at your own risk.
+      </p>
+
+      <h2 id="audit-matrix">2. Audit &amp; Review Status Matrix</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Milestone</th>
+              <th>Status</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Internal Code Integrity Audit</td>
+              <td><span class="badge badge-verified"><span class="badge-dot"></span> Passed</span></td>
+              <td>All pipeline modules verified as real, non-stub implementations</td>
+            </tr>
+            <tr>
+              <td>Internal Results Integrity Audit</td>
+              <td><span class="badge badge-verified"><span class="badge-dot"></span> Passed</span></td>
+              <td>Metric score inflation corrected; baseline numbers re-verified</td>
+            </tr>
+            <tr>
+              <td>Unit, Integration &amp; E2E Tests</td>
+              <td><span class="badge badge-verified"><span class="badge-dot"></span> 34 / 34 Passed</span></td>
+              <td>Full test suite passing deterministically on Python 3.12</td>
+            </tr>
+            <tr>
+              <td>Zero-Lookahead Invariant</td>
+              <td><span class="badge badge-verified"><span class="badge-dot"></span> Verified</span></td>
+              <td>Stream vs batch Euclidean distance = <strong class="num-cell">0.0000</strong></td>
+            </tr>
+            <tr>
+              <td>Execution Determinism</td>
+              <td><span class="badge badge-verified"><span class="badge-dot"></span> Verified</span></td>
+              <td>SHA-256 hash reproducibility across independent execution runs</td>
+            </tr>
+            <tr>
+              <td>VUS Metric Correction</td>
+              <td><span class="badge badge-verified"><span class="badge-dot"></span> Applied</span></td>
+              <td>Label-only range buffering enforced; predicted scores never buffered</td>
+            </tr>
+            <tr>
+              <td>Independent External Peer Review</td>
+              <td><span class="badge badge-preliminary"><span class="badge-dot"></span> Pending</span></td>
+              <td>Not yet independently reviewed or reproduced by external labs</td>
+            </tr>
+            <tr>
+              <td>Safety-Critical / Production Audit</td>
+              <td><span class="badge badge-preliminary"><span class="badge-dot"></span> Not Audited</span></td>
+              <td>Not suitable for deployment without rigorous external security audit</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="remediations">3. Remediation Details</h2>
+      <p>
+        During internal scientific audit, four technical discrepancies were identified and remediated:
+      </p>
+
+      <div class="def-list">
+        <div class="def-item">
+          <div class="def-term">VUS Score Inflation Fix</div>
+          <div class="def-desc"><code>apply_range_buffer</code> was erroneously applied to both ground-truth labels and predicted anomaly scores. Corrected to buffer labels only.</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">Detector Naming Realignment</div>
+          <div class="def-desc">Two detectors were renamed to accurately reflect their underlying mathematical structures (<code>ARFilterDetector</code> and <code>MSETransformerAutoencoder</code>).</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">Reference Comparison Removal</div>
+          <div class="def-desc">External comparative claims against closed-source references were removed due to metric and evaluation protocol mismatches.</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">Unit Test Fixes</div>
+          <div class="def-desc">Resolved three failing tests by correcting StreamBuffer <code>__len__</code> calculation, MetaJudge convex fusion normalization, and FNN threshold calibration.</div>
+        </div>
+      </div>
+
+      <h2 id="review-request">4. Requesting an Independent Review</h2>
+      <p>
+        If you are a researcher or domain expert interested in auditing or replicating these results:
+      </p>
+      <ol>
+        <li>Open a <strong>Scientific Review Request Issue</strong> on the project GitHub repository.</li>
+        <li>Submit your independent evaluation methodology, datasets, and reproduction results.</li>
+        <li>We will link all external replication reports on this site, whether they confirm or challenge our reported metrics.</li>
+      </ol>
+
+      <h2 id="dev-setup">5. Environment Setup</h2>
+      <p>
+        To set up a local development environment for the Python codebase:
+      </p>
+
+      <pre><code>git clone https://github.com/mohamedhossammohamed/open-phase-ensemble.git
+cd open-phase-ensemble
+
+# Create &amp; activate virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install editable package with dev dependencies
+pip install --upgrade pip
+pip install -e .
+
+# Run pytest test suite
+PYTHONPATH=src pytest tests/ -v</code></pre>
+
+      <h2 id="detector-contract">6. Adding a New Detector Module</h2>
+      <p>
+        All detector modules in the 6-detector battery implement the <code>DetectorABC</code> contract defined in <code>src/tsad/detectors/base.py</code>:
+      </p>
+
+      <pre><code>from abc import ABC, abstractmethod
+import numpy as np
+from typing import Tuple
+
+class DetectorABC(ABC):
+    @abstractmethod
+    def score(self, Z_t: np.ndarray, v_t: float) -> Tuple[float, float]:
+        """
+        Calculates instantaneous anomaly score s_t in [0, 1] 
+        and forward forecast v_hat_{t+h}.
+        """
+        pass
+
+    @abstractmethod
+    def update(self, v_true: float):
+        """
+        Updates internal model state with newly observed true scalar v_t.
+        """
+        pass</code></pre>
+
+      <h3>Steps to Register a New Detector:</h3>
+      <ol>
+        <li>Create a module file in <code>src/tsad/detectors/your_detector.py</code> inheriting from <code>DetectorABC</code>.</li>
+        <li>Calibrate raw output scores $s_t \in [0, 1]$ using robust median/MAD statistics so normal baseline output is $\approx 0.0$.</li>
+        <li>Register the detector class in <code>src/tsad/pipeline.py</code> inside <code>self.detectors</code>.</li>
+        <li>Update <code>K_DETECTORS</code> in <code>src/tsad/config.py</code>.</li>
+        <li>Add unit tests in <code>tests/unit/test_detectors.py</code>.</li>
+      </ol>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div>open-phase-ensemble &copy; 2026. Released under the Apache 2.0 License.</div>
+    <div class="footer-links">
+      <a href="https://github.com/mohamedhossammohamed/open-phase-ensemble" class="footer-link">GitHub Repository</a>
+      <a href="appendix.html" class="footer-link">Disclaimer</a>
+    </div>
+  </footer>
+
+</body>
+</html>

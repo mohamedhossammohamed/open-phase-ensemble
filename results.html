@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results & Citations — open-phase-ensemble</title>
+  <meta name="description" content="Benchmark evaluation data, Volume Under Surface (VUS) metrics, internal audit findings, and primary academic references.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- KaTeX for LaTeX Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="brand">open-phase-ensemble <span class="version">v0.1.0</span></a>
+    <nav class="site-nav">
+      <a href="index.html" class="nav-link">Overview</a>
+      <a href="method.html" class="nav-link">Method</a>
+      <a href="results.html" class="nav-link active">Results</a>
+      <a href="appendix.html" class="nav-link">Appendix</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h1>Benchmark Results &amp; References</h1>
+      <p class="subtitle">Empirical accuracy evaluation under Volume Under Surface metrics, surrogate null model comparison, audit findings, and academic literature.</p>
+
+      <nav class="page-toc">
+        <span class="toc-title">Contents</span>
+        <a href="#summary" class="toc-link">1. Summary Metrics</a>
+        <span class="toc-sep">/</span>
+        <a href="#benchmarks" class="toc-link">2. Benchmark Table</a>
+        <span class="toc-sep">/</span>
+        <a href="#audit" class="toc-link">3. Audit Findings</a>
+        <span class="toc-sep">/</span>
+        <a href="#definitions" class="toc-link">4. Metric Definitions</a>
+        <span class="toc-sep">/</span>
+        <a href="#replication" class="toc-link">5. Replication Guide</a>
+        <span class="toc-sep">/</span>
+        <a href="#citations" class="toc-link">6. Academic References</a>
+      </nav>
+
+      <h2 id="summary">1. Summary Benchmark Metrics</h2>
+      <p>
+        All performance numbers below reflect un-buffered standard Volume Under Surface (VUS) evaluation with label-only temporal range expansion.
+      </p>
+
+      <div class="inline-stats">
+        <div class="stat-item">
+          <span class="stat-num">0.8592</span>
+          <span class="stat-label">PhysioNet MIT-BIH (rec 100) VUS-ROC</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">0.9711</span>
+          <span class="stat-label">CWRU Bearing Prognostics VUS-ROC</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">+0.37</span>
+          <span class="stat-label">Predictive Edge ($\Delta$) over IAAFT Null</span>
+        </div>
+      </div>
+
+      <h2 id="benchmarks">2. Benchmark Evaluation</h2>
+      <p>
+        The ensemble was evaluated on standard benchmark streams using Volume Under Surface metrics (VUS-ROC and VUS-PR) as defined by Paparrizos et al. (2022). Range buffering is applied <em>strictly to ground-truth labels only</em> — predicted anomaly scores are never expanded. This avoids the artificial score inflation associated with standard Point-Adjustment (PA-F1) protocols.
+      </p>
+
+      <p>
+        Performance is benchmarked against Iterative Amplitude Adjusted Fourier Transform (IAAFT) phase-randomized surrogate null series scored under identical conditions.
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Dataset</th>
+              <th>$N$</th>
+              <th>System VUS-ROC</th>
+              <th>System VUS-PR</th>
+              <th>IAAFT Null VUS-ROC</th>
+              <th>Edge ($\Delta$)</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>PhysioNet MIT-BIH (rec 100)</strong></td>
+              <td class="num-cell">5,143</td>
+              <td class="num-cell"><strong>0.8592</strong></td>
+              <td class="num-cell">0.6926</td>
+              <td class="num-cell">~0.49</td>
+              <td class="num-cell">~+0.37</td>
+              <td><span class="badge badge-preliminary"><span class="badge-dot"></span> Preliminary</span></td>
+            </tr>
+            <tr>
+              <td><strong>CWRU Bearing Prognostics</strong></td>
+              <td class="num-cell">5,000</td>
+              <td class="num-cell"><strong>0.9711</strong></td>
+              <td class="num-cell">0.7111</td>
+              <td class="num-cell">~0.61</td>
+              <td class="num-cell">~+0.37</td>
+              <td><span class="badge badge-preliminary"><span class="badge-dot"></span> Preliminary</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        A positive predictive edge ($\Delta \ge +0.30$) over the IAAFT null confirms that system accuracy stems from genuine non-linear dynamic pattern recognition, not linear autocorrelation.
+      </p>
+
+      <h2 id="audit">3. Known Limitations & Audit Findings</h2>
+      <p>
+        An internal code and scientific integrity audit identified and remediated three major issues prior to release:
+      </p>
+
+      <div class="def-list">
+        <div class="def-item">
+          <div class="def-term">1. Evaluation Metric Correction</div>
+          <div class="def-desc">An earlier version of <code>src/tsad/evaluation/vus.py</code> applied <code>apply_range_buffer</code> to both ground-truth labels and predicted scores. This artificially inflated VUS-ROC by approximately +0.06 to +0.12. The code now buffers labels only, consistent with formal VUS definitions.</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">2. Detector Naming Alignment</div>
+          <div class="def-desc">Two detectors were renamed to accurately describe their actual mathematical implementations: <code>ARFilterDetector</code> (online AR ridge filter, replacing "SARIMADetector") and <code>MSETransformerAutoencoder</code> (MSE sequence reconstruction, replacing "AnomalyTransformerDetector").</div>
+        </div>
+
+        <div class="def-item">
+          <div class="def-term">3. Reference Comparison Validity</div>
+          <div class="def-desc">Direct numerical comparison to the closed-source <code>phase_space_matcher</code> reference (83.96–86.02%) was flagged as scientifically invalid due to metric mismatch (PA-F1 vs VUS-ROC) and subsampling differences. External comparative claims were removed.</div>
+        </div>
+      </div>
+
+      <h2 id="definitions">4. Metric Definitions</h2>
+      <p>
+        <strong>Volume Under Surface ROC (VUS-ROC)</strong> integrates AUC-ROC curves across a continuum of temporal buffer thresholds $l \in [0, L_{\max}]$ ($L_{\max} = 15$). Range buffering expands ground-truth label regions only:
+      </p>
+
+      $$\text{VUS-ROC} = \frac{1}{L_{\max} + 1} \sum_{l=0}^{L_{\max}} \text{AUC-ROC}(\text{labels}_l, \text{scores})$$
+
+      <p>
+        <strong>Predictive Edge ($\Delta$):</strong> Defined as $\Delta = \text{VUS-ROC}_{\text{system}} - \text{VUS-ROC}_{\text{IAAFT}}$. A positive edge $\Delta \ge +0.30$ indicates non-linear predictive power beyond linear autocorrelation.
+      </p>
+
+      <h2 id="replication">5. Independent Replication</h2>
+      <p>
+        To reproduce these benchmark numbers independently:
+      </p>
+
+      <pre><code>git clone https://github.com/mohamedhossammohamed/open-phase-ensemble.git
+cd open-phase-ensemble
+python3 -m venv .venv &amp;&amp; source .venv/bin/activate
+pip install -e .
+python data/download.py
+PYTHONPATH=src python scripts/run_benchmark.py</code></pre>
+
+      <h2 id="citations">6. Academic &amp; Open-Source References</h2>
+      
+      <h3>Phase Space & Dynamic Systems Theory</h3>
+      <ol>
+        <li><strong>Takens, F. (1981).</strong> <em>Detecting strange attractors in turbulence.</em> Dynamical Systems and Turbulence, Lecture Notes in Mathematics, vol 898. Springer.</li>
+        <li><strong>Fraser, A. M., &amp; Swinney, H. L. (1986).</strong> <em>Independent coordinates for strange attractors from mutual information.</em> Physical Review A, 33(2), 1134.</li>
+        <li><strong>Kennel, M. B., Brown, R., &amp; Abarbanel, H. D. (1992).</strong> <em>Determining embedding dimension for phase-space reconstruction using a geometrical technique.</em> Physical Review A, 45(6), 3403.</li>
+        <li><strong>Sugihara, G., &amp; May, R. M. (1990).</strong> <em>Nonlinear forecasting as a way of distinguishing chaos from measurement error in time series.</em> Nature, 344(6268), 734-741.</li>
+      </ol>
+
+      <h3>Covariance Geometry & High-Dimensional Methods</h3>
+      <ol start="5">
+        <li><strong>Ledoit, O., &amp; Wolf, M. (2004).</strong> <em>A well-conditioned estimator for large-dimensional covariance matrices.</em> Journal of Multivariate Analysis, 88(2), 365-411.</li>
+        <li><strong>Johnson, W. B., &amp; Lindenstrauss, J. (1984).</strong> <em>Extensions of Lipschitz mappings into a Hilbert space.</em> Conference in Modern Analysis and Probability, 26, 189-206.</li>
+        <li><strong>Malkov, Y. A., &amp; Yashunin, D. A. (2018).</strong> <em>Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs.</em> IEEE TPAMI, 42(4), 824-836.</li>
+      </ol>
+
+      <h3>Anomaly Detection & Online Learning</h3>
+      <ol start="8">
+        <li><strong>Yeh, C. C. M. et al. (2016).</strong> <em>Matrix profile I: All pairs similarity joins for time series.</em> IEEE ICDM, 1317-1322.</li>
+        <li><strong>Liu, F. T., Ting, K. M., &amp; Zhou, Z. H. (2008).</strong> <em>Isolation forest.</em> IEEE ICDM, 413-422.</li>
+        <li><strong>Xu, K. et al. (2022).</strong> <em>Anomaly Transformer: Time Series Anomaly Detection with Association Discrepancy.</em> ICLR.</li>
+        <li><strong>Freund, Y., &amp; Schapire, R. E. (1997).</strong> <em>A decision-theoretic generalization of on-line learning and an application to boosting.</em> JCSS, 55(1), 119-139.</li>
+        <li><strong>Herbster, M., &amp; Warmuth, M. K. (1998).</strong> <em>Tracking the best expert.</em> Machine Learning, 32(2), 151-178.</li>
+        <li><strong>Page, E. S. (1954).</strong> <em>Continuous inspection schemes.</em> Biometrika, 41(1/2), 100-115.</li>
+        <li><strong>Paparrizos, J. et al. (2022).</strong> <em>Volume Under the Surface: A New Accuracy Metric for Time Series Anomaly Detection.</em> PVLDB, 15(11), 2774-2787.</li>
+        <li><strong>Schreiber, T., &amp; Schmitz, A. (1996).</strong> <em>Improved surrogate data for nonlinearity tests.</em> Physical Review Letters, 77(4), 635.</li>
+      </ol>
+
+      <h3>Canonical Open-Source Implementations Referenced</h3>
+      <ul>
+        <li><strong>STUMPY:</strong> Law, M. D. (2019). <em>STUMPY: A Powerful and Scalable Python Library for Time Series Data Mining.</em> JOSS, 4(39), 1487.</li>
+        <li><strong>HNSWLIB:</strong> Malkov, Y. A. <em>Header-only C++ HNSW implementation with Python bindings.</em></li>
+        <li><strong>PyTorch:</strong> Paszke, A. et al. (2019). <em>PyTorch: An Imperative Style, High-Performance Deep Learning Library.</em></li>
+        <li><strong>Scikit-Learn:</strong> Pedregosa, F. et al. (2011). <em>Scikit-learn: Machine Learning in Python.</em> JMLR, 12, 2825-2830.</li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div>open-phase-ensemble &copy; 2026. Released under the Apache 2.0 License.</div>
+    <div class="footer-links">
+      <a href="https://github.com/mohamedhossammohamed/open-phase-ensemble" class="footer-link">GitHub Repository</a>
+      <a href="appendix.html" class="footer-link">Disclaimer</a>
+    </div>
+  </footer>
+
+</body>
+</html>
