@@ -28,9 +28,9 @@
   --md-code-bg-color: #141414 !important;
 }
 
-/* ── Base Surface & Global Canvas ─────────────────────────── */
+/* ── Base Surface & Global Canvas (Strict Single Color #0a0a0a) ── */
 
-html, body, .md-container, .md-header, .md-main, .md-sidebar {
+html, body, .md-container, .md-main, .md-sidebar {
   background-color: #0a0a0a !important;
   background-image: none !important;
   color: var(--xai-body);
@@ -87,10 +87,17 @@ html, body, .md-container, .md-header, .md-main, .md-sidebar {
   color: var(--xai-body-mid) !important;
 }
 
-/* ── Single-Color Dark Header & Navigation (No Gradients) ─── */
+/* ── Pure Black Header & Navigation Bar (No Gradients) ────── */
 
+header,
+nav,
 .md-header,
-.md-tabs {
+.md-header__inner,
+.md-tabs,
+.md-tabs__inner,
+[data-md-color-scheme="slate"] .md-header,
+[data-md-color-scheme="slate"] .md-tabs {
+  background: #0a0a0a !important;
   background-color: #0a0a0a !important;
   background-image: none !important;
   border-bottom: 1px solid var(--xai-hairline) !important;
@@ -129,6 +136,48 @@ html, body, .md-container, .md-header, .md-main, .md-sidebar {
 .md-nav__link:hover,
 .md-nav__link--active {
   color: #ffffff !important;
+}
+
+/* ── GitHub Repo Button High Visibility Fix ───────────────── */
+
+.md-header__source,
+.md-source,
+.md-source__icon,
+.md-source__repository,
+.md-source__fact,
+.md-source__facts {
+  color: #ffffff !important;
+  opacity: 1 !important;
+  fill: #ffffff !important;
+}
+
+.md-source__icon svg,
+.md-source svg {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.md-source__repository {
+  font-family: var(--md-text-font);
+  font-weight: 500;
+  color: #ffffff !important;
+}
+
+.md-source__fact {
+  color: var(--xai-body-mid) !important;
+}
+
+/* Search bar styling */
+.md-search__input {
+  background-color: #141414 !important;
+  color: #ffffff !important;
+  border: 1px solid var(--xai-hairline) !important;
+  border-radius: 9999px !important;
+}
+
+.md-search__input::placeholder {
+  color: var(--xai-body-mid) !important;
 }
 
 /* ── Buttons (White Outline Pill System) ─────────────────── */
@@ -226,24 +275,30 @@ html, body, .md-container, .md-header, .md-main, .md-sidebar {
 
 /* ── Interactive Simulation Container ─────────────────────── */
 
+div.sim-container,
+div.sim-canvas-container,
+.md-typeset div.sim-container,
+.md-typeset .sim-container,
 .sim-container {
+  background: #191919 !important;
   background-color: #191919 !important;
   background-image: none !important;
-  border: 1px solid var(--xai-hairline) !important;
+  border: 1px solid #212327 !important;
   border-radius: 8px !important;
-  padding: 1.5rem;
-  margin: 2rem 0;
+  padding: 1.5rem !important;
+  margin: 2rem 0 !important;
   box-shadow: none !important;
   color: #ffffff !important;
 }
 
+div.sim-header,
+.md-typeset .sim-header,
 .sim-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.2rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--xai-hairline) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid #212327 !important;
+  padding-bottom: 0.8rem !important;
+  margin-bottom: 1.2rem !important;
 }
 
 .sim-title {
