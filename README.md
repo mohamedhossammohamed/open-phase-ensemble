@@ -2,7 +2,7 @@
 
 [![Tests](https://github.com/mohamedhossammohamed/open-phase-ensemble/actions/workflows/tests.yml/badge.svg)](https://github.com/mohamedhossammohamed/open-phase-ensemble/actions/workflows/tests.yml)
 [![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue.svg)](https://mohamedhossammohamed.github.io/open-phase-ensemble/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.placeholder-blue)](https://zenodo.org/)
 
@@ -129,7 +129,7 @@ Visit our full documentation site at **[mohamedhossammohamed.github.io/open-phas
 
 ## 📄 License & Citation
 
-This project is licensed under the [MIT License](LICENSE). If you cite this repository in academic work:
+This project is licensed under the [Apache License 2.0](LICENSE). If you cite this repository in academic work:
 
 ```bibtex
 @software{open_phase_ensemble2026,
