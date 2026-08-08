@@ -436,9 +436,23 @@ div.sim-header,
   color: var(--primary-ink) !important;
 }
 
-/* Footer */
+/* Footer Customization — Made by MHMZAHRAN */
 .md-footer {
   background-color: var(--reading-paper) !important;
   border-top: 1px solid var(--quiet-rule) !important;
   color: var(--secondary-ink);
+}
+
+.md-copyright {
+  font-family: var(--font-label) !important;
+  font-size: 0.82rem !important;
+  font-weight: 720 !important;
+  letter-spacing: 0.05em !important;
+  color: var(--primary-ink) !important;
+}
+
+/* Hide generator links ("Made with Material for MkDocs") */
+.md-copyright a,
+.md-footer-meta__inner .md-copyright a {
+  display: none !important;
 }

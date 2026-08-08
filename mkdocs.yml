@@ -3,6 +3,7 @@ site_description: Non-Parametric Multi-Tool Ensemble for Time-Series Anomaly Det
 site_url: https://mohamedhossammohamed.github.io/open-phase-ensemble/
 repo_url: https://github.com/mohamedhossammohamed/open-phase-ensemble
 repo_name: open-phase-ensemble
+copyright: Made by MHMZAHRAN
 
 theme:
   name: material
