@@ -1,14 +1,12 @@
 /* open-phase-ensemble — Custom Documentation Styles */
 
-/* ── Typography & Spacing ─────────────────────────────────── */
-
 :root {
   --md-text-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --md-code-font: "JetBrains Mono", "Fira Code", monospace;
 }
 
 .md-typeset {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   line-height: 1.7;
 }
 
@@ -21,44 +19,56 @@
 .md-typeset h2 {
   font-weight: 600;
   letter-spacing: -0.01em;
-  margin-top: 2.4em;
+  margin-top: 2.2em;
   padding-bottom: 0.4em;
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
 }
 
 .md-typeset h3 {
   font-weight: 600;
-  margin-top: 1.8em;
+  margin-top: 1.6em;
 }
 
-/* ── Content Width ────────────────────────────────────────── */
+/* Card Styling from Landing Design */
+.card-formal {
+  background: var(--md-code-bg-color, #111724);
+  border: 1px solid var(--md-default-fg-color--lightest, rgba(255, 255, 255, 0.09));
+  border-radius: 12px;
+  padding: 1.2rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
 
+.card-formal:hover {
+  transform: translateY(-3px);
+  border-color: rgba(45, 212, 191, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Content Width */
 .md-content__inner {
-  max-width: 52em;
+  max-width: 54em;
   margin: 0 auto;
   padding: 2em 1.6em 4em;
 }
 
-/* ── Admonition Refinements ───────────────────────────────── */
-
+/* Admonitions */
 .md-typeset .admonition,
 .md-typeset details {
-  border-radius: 6px;
+  border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   border-left-width: 4px;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
 }
 
 .md-typeset .admonition-title,
 .md-typeset summary {
   font-weight: 600;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
 }
 
-/* ── Tables ───────────────────────────────────────────────── */
-
+/* Tables */
 .md-typeset table:not([class]) {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   border-collapse: collapse;
   width: 100%;
 }
@@ -66,14 +76,14 @@
 .md-typeset table:not([class]) th {
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   letter-spacing: 0.05em;
   padding: 0.8em 1em;
   border-bottom: 2px solid var(--md-default-fg-color--lighter);
 }
 
 .md-typeset table:not([class]) td {
-  padding: 0.7em 1em;
+  padding: 0.75em 1em;
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
 }
 
@@ -81,27 +91,24 @@
   background: var(--md-code-bg-color);
 }
 
-/* ── Code Blocks ──────────────────────────────────────────── */
-
+/* Code Blocks */
 .md-typeset pre > code {
-  font-size: 0.76rem;
-  border-radius: 6px;
+  font-size: 0.78rem;
+  border-radius: 8px;
 }
 
 .md-typeset code {
-  font-size: 0.82em;
-  padding: 0.1em 0.35em;
+  font-size: 0.84em;
+  padding: 0.12em 0.38em;
   border-radius: 4px;
 }
 
-/* ── Mermaid Diagrams ─────────────────────────────────────── */
-
+/* Mermaid Diagrams */
 .mermaid {
   margin: 2em 0;
 }
 
-/* ── Light Theme Refinements ──────────────────────────────── */
-
+/* Light Mode Refinements */
 [data-md-color-scheme="default"] {
   --md-default-fg-color: #1a1a2e;
   --md-default-bg-color: #fafafa;
@@ -110,54 +117,27 @@
   --md-accent-fg-color: #0d9488;
 }
 
-[data-md-color-scheme="default"] .md-header {
+[data-md-color-scheme="default"] .card-formal {
   background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: none;
+  border-color: #e5e7eb;
 }
 
-[data-md-color-scheme="default"] .md-header .md-header__title {
-  color: #1a1a2e;
+[data-md-color-scheme="default"] .card-formal:hover {
+  border-color: #0d9488;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-[data-md-color-scheme="default"] .md-tabs {
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-/* ── Dark Theme Refinements ───────────────────────────────── */
-
+/* Dark Mode Refinements */
 [data-md-color-scheme="slate"] {
-  --md-default-bg-color: #0f0f17;
-  --md-default-fg-color: #d1d5db;
-  --md-primary-fg-color: #0f0f17;
-  --md-primary-bg-color: #d1d5db;
+  --md-default-bg-color: #0a0e17;
+  --md-default-fg-color: #f8fafc;
+  --md-primary-fg-color: #0a0e17;
+  --md-primary-bg-color: #f8fafc;
   --md-accent-fg-color: #2dd4bf;
-  --md-code-bg-color: #161622;
+  --md-code-bg-color: #111724;
 }
 
-[data-md-color-scheme="slate"] .md-header {
-  background: #0f0f17;
-  border-bottom: 1px solid #1f2937;
-}
-
-[data-md-color-scheme="slate"] .md-tabs {
-  background: #0f0f17;
-  border-bottom: 1px solid #1f2937;
-}
-
-/* ── Footer ───────────────────────────────────────────────── */
-
+/* Footer Spacing */
 .md-footer {
   margin-top: 4em;
-}
-
-/* ── Smooth Transitions ───────────────────────────────────── */
-
-.md-typeset a {
-  transition: color 0.15s ease;
-}
-
-.md-nav__link {
-  transition: color 0.15s ease, opacity 0.15s ease;
 }
