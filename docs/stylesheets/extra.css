@@ -39,6 +39,28 @@
   padding: 2em 1.6em 4em;
 }
 
+/* ── Deep Blue Linear Gradient Header & Navigation ────────── */
+
+.md-header,
+.md-tabs {
+  background: #0d1f34 !important; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #000000, #0d1f34) !important; /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #000000, #0d1f34) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.md-header__title,
+.md-header__button,
+.md-nav__link,
+.md-tabs__link {
+  color: #f3f4f6 !important;
+}
+
+.md-tabs__link--active {
+  color: #2dd4bf !important;
+  font-weight: 600;
+}
+
 /* ── Material Cards & Metric Grids ────────────────────────── */
 
 .mat-card-grid {
@@ -99,8 +121,8 @@
 }
 
 [data-md-color-scheme="slate"] .mat-card {
-  --md-card-bg: #161622;
-  --md-card-border: #242436;
+  --md-card-bg: #0f1c2e;
+  --md-card-border: #1e2f47;
 }
 
 /* ── Interactive Simulation Container ─────────────────────── */
@@ -236,44 +258,19 @@
   --md-default-fg-color: #1a1a2e;
   --md-default-bg-color: #fafafa;
   --md-primary-fg-color: #ffffff;
-  --md-primary-bg-color: #1a1a2e;
+  --md-primary-bg-color: #0d1f34;
   --md-accent-fg-color: #0d9488;
-}
-
-[data-md-color-scheme="default"] .md-header {
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: none;
-}
-
-[data-md-color-scheme="default"] .md-header .md-header__title {
-  color: #1a1a2e;
-}
-
-[data-md-color-scheme="default"] .md-tabs {
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
 }
 
 /* ── Dark Theme Refinements ───────────────────────────────── */
 
 [data-md-color-scheme="slate"] {
-  --md-default-bg-color: #0f0f17;
+  --md-default-bg-color: #070d18;
   --md-default-fg-color: #d1d5db;
-  --md-primary-fg-color: #0f0f17;
-  --md-primary-bg-color: #d1d5db;
+  --md-primary-fg-color: #070d18;
+  --md-primary-bg-color: #0d1f34;
   --md-accent-fg-color: #2dd4bf;
-  --md-code-bg-color: #161622;
-}
-
-[data-md-color-scheme="slate"] .md-header {
-  background: #0f0f17;
-  border-bottom: 1px solid #1f2937;
-}
-
-[data-md-color-scheme="slate"] .md-tabs {
-  background: #0f0f17;
-  border-bottom: 1px solid #1f2937;
+  --md-code-bg-color: #0f1c2e;
 }
 
 .md-footer {
