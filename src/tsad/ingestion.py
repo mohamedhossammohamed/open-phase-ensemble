@@ -11,8 +11,8 @@ class StreamBuffer:
     """
     def __init__(self, window_size: int = 200):
         self.window_size = window_size
-        self.raw_buffer = []
-        self.standardized_buffer = []
+        self.raw_buffer: list[float] = []
+        self.standardized_buffer: list[float] = []
 
     def step(self, x_t: float) -> float:
         """

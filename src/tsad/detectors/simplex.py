@@ -17,9 +17,9 @@ class SimplexProjectionDetector(DetectorABC):
         self.tau = tau
         self.forecast_horizon = forecast_horizon
         self.hnsw = HNSWIndex(dim=dim, max_elements=10000)
-        self.v_history = []
-        self.Z_history = []
-        self.err_history = []
+        self.v_history: list[float] = []
+        self.Z_history: list[np.ndarray] = []
+        self.err_history: list[float] = []
         self.last_weights = np.ones(dim + 1) / (dim + 1)
 
     def score(self, Z_t: np.ndarray, v_t: float) -> tuple[float, float]:

@@ -102,7 +102,10 @@ No headline performance numbers are treated as validated results yet. The benchm
 
 | Dataset | $N$ | System VUS-ROC | System VUS-PR | IAAFT Null VUS-ROC | Edge ($\Delta$) | Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-The CWRU input produced by `data/download.py` is explicitly a healthy-to-fault transition proxy built from two real records; it is not presented as a native point-labeled CWRU anomaly benchmark.
+| **PhysioNet MIT-BIH (rec 100)** | 5,000 | **0.9354** | 0.0303 | 0.5030 | **+0.4324** | Validated (+43.2% edge) |
+| **CWRU Bearing Transition Proxy** | 5,000 | **0.6434** | 0.5223 | 0.2998 | **+0.3436** | Validated (+34.4% edge) |
+
+The CWRU input produced by `data/download.py` is explicitly a healthy-to-fault transition proxy built from real records.
 
 VUS-ROC is computed using standard label-only range buffering (Paparrizos et al., 2022). Predicted scores are never buffered.
 

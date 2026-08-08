@@ -24,7 +24,7 @@ class CUSUMGating:
         self.c_minus = 0.0
         self.alarm_counter = 0
         
-        self.error_buffer = []
+        self.error_buffer: list[float] = []
         self.mu_E = 0.0
         self.sigma_E = 1.0
         self.last_reference_mean = 0.0
@@ -48,13 +48,14 @@ class CUSUMGating:
         self.last_reference_sigma = reference_sigma
 
         # Recursive CUSUM calculation
-        shift = error - (reference_mean + self.k_c * reference_sigma)
-        self.c_plus = max(0.0, self.c_plus + shift)
-        self.c_minus = max(0.0, self.c_minus - shift)
+        shift_plus = error - (reference_mean + self.k_c * reference_sigma)
+        shift_minus = (reference_mean - self.k_c * reference_sigma) - error
+        self.c_plus = max(0.0, self.c_plus + shift_plus)
+        self.c_minus = max(0.0, self.c_minus + shift_minus)
 
         h_c = self.h_c_mult * reference_sigma
         
-        if self.c_plus > h_c:
+        if self.c_plus > h_c or self.c_minus > h_c:
             self.alarm_counter += 1
             if self.alarm_counter >= self.t_drift:
                 # Permanent concept drift confirmed -> total baseline flush

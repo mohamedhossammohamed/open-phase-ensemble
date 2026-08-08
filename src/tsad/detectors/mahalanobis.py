@@ -13,13 +13,13 @@ class RobustMahalanobisDetector(DetectorABC):
     def __init__(self, dim: int = D_TARGET, block_size: int = 1000):
         self.dim = dim
         self.block_size = block_size
-        self.buffer = []
+        self.buffer: list[np.ndarray] = []
         self.mu = 0.0
         self.delta = 0.0
         self.Sigma_LW = np.eye(dim, dtype=np.float64)
         self.inv_Sigma = np.eye(dim, dtype=np.float64)
         self.mean = np.zeros(dim, dtype=np.float64)
-        self.dist_history = []
+        self.dist_history: list[float] = []
 
     def _update_covariance(self):
         if len(self.buffer) < 2:

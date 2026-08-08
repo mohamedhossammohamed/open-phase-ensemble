@@ -42,6 +42,30 @@ def _metric_pair(scores: np.ndarray, labels: np.ndarray, max_buffer: int) -> dic
     }
 
 
+def _causal_block_downsample(
+    signal: np.ndarray,
+    labels: np.ndarray,
+    max_points: int,
+) -> tuple[np.ndarray, np.ndarray, int]:
+    """Downsample by causal blocks while retaining any label in each block.
+
+    The last observed signal value represents each completed block.  A block is
+    positive when any source annotation falls inside it; selecting labels by
+    ``signal[::stride]`` would silently discard sparse events.
+    """
+    if max_points < 1:
+        raise ValueError("max_points must be positive")
+    if len(signal) <= max_points:
+        return signal, labels, 1
+
+    stride = int(np.ceil(len(signal) / max_points))
+    starts = np.arange(0, len(signal), stride, dtype=np.int64)
+    ends = np.minimum(starts + stride, len(signal))
+    representative_indices = ends - 1
+    block_labels = np.maximum.reduceat(labels, starts).astype(np.int8, copy=False)
+    return signal[representative_indices], block_labels, stride
+
+
 def evaluate_stream(
     signal: np.ndarray,
     labels: np.ndarray,
@@ -64,10 +88,12 @@ def evaluate_stream(
     if signal.ndim != 1 or labels.ndim != 1 or len(signal) != len(labels):
         raise ValueError("signal and labels must be one-dimensional arrays of equal length")
 
-    if max_points is not None and len(signal) > max_points:
-        stride = int(np.ceil(len(signal) / max_points))
-        signal = signal[::stride]
-        labels = labels[::stride]
+    n_raw = len(signal)
+    downsample_stride = 1
+    if max_points is not None:
+        signal, labels, downsample_stride = _causal_block_downsample(
+            signal, labels, max_points
+        )
 
     warmup_points = int(len(signal) * warmup_fraction)
     evaluation_slice = slice(warmup_points, None)
@@ -106,6 +132,9 @@ def evaluate_stream(
     )
     return {
         "n_total": len(signal),
+        "n_raw": n_raw,
+        "downsample_stride": downsample_stride,
+        "positive_labels_total": int(np.sum(labels)),
         "n_evaluated": len(signal) - warmup_points,
         "warmup_points": warmup_points,
         "n_surrogates": n_surrogates,

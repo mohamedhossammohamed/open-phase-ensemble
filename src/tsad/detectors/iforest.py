@@ -1,6 +1,6 @@
 
 import numpy as np
-from sklearn.ensemble import IsolationForest
+from sklearn.ensemble import IsolationForest  # type: ignore[import-untyped]
 
 from tsad.config import D_TARGET, SEED
 from tsad.detectors.base import DetectorABC
@@ -15,7 +15,7 @@ class IsolationForestDetector(DetectorABC):
         self.dim = dim
         self.n_estimators = n_estimators
         self.subsample = subsample
-        self.buffer = []
+        self.buffer: list[np.ndarray] = []
         self.model = IsolationForest(
             n_estimators=n_estimators,
             max_samples=min(subsample, 256),
@@ -25,7 +25,7 @@ class IsolationForestDetector(DetectorABC):
         )
         self.is_fitted = False
         self.step_counter = 0
-        self.raw_scores_history = []
+        self.raw_scores_history: list[float] = []
 
     def fit_from_buffer(self, buffer_data: np.ndarray):
         """Fit Isolation Forest model from buffer data."""

@@ -14,9 +14,9 @@ class ARFilterDetector(DetectorABC):
         self.p = p
         self.d = d
         self.q = q
-        self.history = []
+        self.history: list[float] = []
         self.coeffs = np.ones(p) / max(1, p)
-        self.residuals = []
+        self.residuals: list[float] = []
 
     def score(self, Z_t: np.ndarray, v_t: float) -> tuple[float, float]:
         if len(self.history) < self.p:

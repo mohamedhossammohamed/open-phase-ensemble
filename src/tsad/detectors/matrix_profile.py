@@ -13,9 +13,9 @@ class MatrixProfileDetector(DetectorABC):
     def __init__(self, w_mp: int = 10, max_history: int = 500):
         self.w_mp = max(3, w_mp)
         self.max_history = max_history
-        self.history = []
+        self.history: list[float] = []
         self.last_profile_val = 0.0
-        self.profile_history = []
+        self.profile_history: list[float] = []
 
     def score(self, Z_t: np.ndarray, v_t: float) -> tuple[float, float]:
         n = len(self.history)

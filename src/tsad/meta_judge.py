@@ -55,28 +55,53 @@ class MetaJudge:
 class StratifiedReplayBuffer:
     """
     Stratified Replay Buffer storing past state vectors Z_t and fused scores A_t.
+    Divides storage into quantile bins based on anomaly score A_t to preserve
+    statistically representative samples of both rare anomalies and nominal states.
     """
     def __init__(self, capacity: int = REPLAY_BUFFER_SIZE, n_quantiles: int = 5):
         self.capacity = capacity
-        self.n_quantiles = n_quantiles
-        self.buffer = []
+        self.n_quantiles = max(1, n_quantiles)
+        self.quantile_capacity = max(1, capacity // self.n_quantiles)
+        self.bins: list[list[tuple[np.ndarray, float]]] = [[] for _ in range(self.n_quantiles)]
+
+    def _get_bin_index(self, A_t: float) -> int:
+        clamped = float(np.clip(A_t, 0.0, 0.999999))
+        return min(self.n_quantiles - 1, int(clamped * self.n_quantiles))
 
     def add(self, Z_t: np.ndarray, A_t: float):
-        if len(self.buffer) >= self.capacity:
-            self.buffer.pop(0)
-        self.buffer.append((Z_t.copy(), float(A_t)))
+        bin_idx = self._get_bin_index(A_t)
+        target_bin = self.bins[bin_idx]
+        if len(target_bin) >= self.quantile_capacity:
+            target_bin.pop(0)
+        target_bin.append((Z_t.copy(), float(A_t)))
 
-    def sample(self, batch_size: int = 32, n: int | None = None):
+    def sample(self, batch_size: int = 32, n: int | None = None) -> tuple[list[np.ndarray], list[float]] | np.ndarray:
         if n is not None:
             batch_size = n
-        if len(self.buffer) == 0:
+
+        non_empty_bins = [b for b in self.bins if len(b) > 0]
+        if not non_empty_bins:
             return np.empty((0, 8)) if n is not None else ([], [])
-        indices = np.random.choice(len(self.buffer), size=min(batch_size, len(self.buffer)), replace=False)
-        Z_batch = [self.buffer[i][0] for i in indices]
-        A_batch = [self.buffer[i][1] for i in indices]
+
+        per_bin_count = max(1, batch_size // len(non_empty_bins))
+        sampled_pairs: list[tuple[np.ndarray, float]] = []
+
+        for b in non_empty_bins:
+            sample_size = min(len(b), per_bin_count)
+            indices = np.random.choice(len(b), size=sample_size, replace=False)
+            for idx in indices:
+                sampled_pairs.append(b[idx])
+
+        if len(sampled_pairs) > batch_size:
+            sampled_pairs = sampled_pairs[:batch_size]
+
+        Z_batch = [pair[0] for pair in sampled_pairs]
+        A_batch = [pair[1] for pair in sampled_pairs]
+
         if n is not None:
-            return np.array(Z_batch)
+            return np.array(Z_batch) if Z_batch else np.empty((0, 8))
         return Z_batch, A_batch
 
     def __len__(self) -> int:
-        return len(self.buffer)
+        return sum(len(b) for b in self.bins)
+

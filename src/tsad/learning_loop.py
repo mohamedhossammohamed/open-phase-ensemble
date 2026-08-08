@@ -15,8 +15,8 @@ class OnlineLearningLoop:
     def __init__(self, k_detectors: int = K_DETECTORS, window_size: int = W_CORR):
         self.k = k_detectors
         self.window_size = window_size
-        self.score_history = [[] for _ in range(k_detectors)]
-        self.error_history = [[] for _ in range(k_detectors)]
+        self.score_history: list[list[float]] = [[] for _ in range(k_detectors)]
+        self.error_history: list[list[float]] = [[] for _ in range(k_detectors)]
 
     def step(self, true_v: float, forecasts: np.ndarray, scores: np.ndarray) -> np.ndarray:
         """

@@ -1,6 +1,10 @@
 import numpy as np
 
-from tsad.evaluation.protocol import evaluate_stream, persistence_scores
+from tsad.evaluation.protocol import (
+    _causal_block_downsample,
+    evaluate_stream,
+    persistence_scores,
+)
 
 
 class FakePipeline:
@@ -19,6 +23,18 @@ def test_persistence_scores_are_causal_first_differences():
     scores = persistence_scores(np.array([1.0, 3.0, 2.0]))
 
     assert np.array_equal(scores, np.array([0.0, 2.0, 1.0]))
+
+
+def test_causal_block_downsampling_preserves_sparse_labels():
+    signal = np.arange(10, dtype=np.float64)
+    labels = np.zeros(10, dtype=np.int8)
+    labels[3] = 1
+
+    sampled_signal, sampled_labels, stride = _causal_block_downsample(signal, labels, 4)
+
+    assert stride == 3
+    assert np.array_equal(sampled_signal, np.array([2.0, 5.0, 8.0, 9.0]))
+    assert np.array_equal(sampled_labels, np.array([0, 1, 0, 0], dtype=np.int8))
 
 
 def test_evaluation_protocol_reports_warmup_baseline_and_surrogate_count():

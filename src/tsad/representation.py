@@ -4,7 +4,7 @@ import numpy as np
 from tsad.config import A_TOL, D_TARGET, EPSILON, MAX_D, MAX_TAU, R_TOL, SEED
 
 try:
-    import hnswlib
+    import hnswlib  # type: ignore[import-untyped]
     HAS_HNSW = True
 except ImportError:
     HAS_HNSW = False
@@ -25,7 +25,6 @@ def compute_ami(v: np.ndarray, max_lag: int = MAX_TAU, n_bins: int = 30) -> int:
     hist_v, _bin_edges = np.histogram(v, bins=n_bins, range=(v_min, v_max))
     p_v = hist_v / float(n)
     p_v = p_v[p_v > 0]
-    -np.sum(p_v * np.log2(p_v))
     
     ami_list = []
     for lag in range(1, max_lag + 1):
@@ -138,7 +137,7 @@ class HNSWIndex:
             self.index.init_index(max_elements=max_elements, M=M, ef_construction=ef_construction)
             self.index.set_ef(50)
         else:
-            self.data = []
+            self.data: list[np.ndarray] = []
 
     def add_items(self, data: np.ndarray):
         if data.ndim == 1:
