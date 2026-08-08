@@ -30,35 +30,35 @@ The interactive canvas below simulates the live streaming data flow through the 
 
 ## System Compartments & Module Contracts
 
-<div class="stat-grid">
-  <div class="stat-card">
-    <div class="stat-label">Module 01 // Ingestion</div>
-    <div class="stat-value" style="font-size: 1.35rem;">StreamBuffer</div>
-    <div class="stat-sub">Rolling Median & MAD Z-Score Standardization</div>
+<div class="module-grid">
+  <div class="module-card">
+    <div class="module-label">Module 01 // Ingestion</div>
+    <div class="module-value">StreamBuffer</div>
+    <div class="module-sub">Rolling Median &amp; MAD Z-Score Standardization</div>
   </div>
 
-  <div class="stat-card">
-    <div class="stat-label">Module 02 // Representation</div>
-    <div class="stat-value" style="font-size: 1.35rem;">Takens & JL</div>
-    <div class="stat-sub">Phase-Space Reconstruction & HNSW ANN Index</div>
+  <div class="module-card">
+    <div class="module-label">Module 02 // Representation</div>
+    <div class="module-value">Takens &amp; JL</div>
+    <div class="module-sub">Phase-Space Reconstruction &amp; HNSW ANN Index</div>
   </div>
 
-  <div class="stat-card">
-    <div class="stat-label">Module 03 // Battery</div>
-    <div class="stat-value" style="font-size: 1.35rem;">6 Detectors</div>
-    <div class="stat-sub">Orthogonal Dynamic, Covariance & Neural Experts</div>
+  <div class="module-card">
+    <div class="module-label">Module 03 // Battery</div>
+    <div class="module-value">6 Detectors</div>
+    <div class="module-sub">Orthogonal Dynamic, Covariance &amp; Neural Experts</div>
   </div>
 
-  <div class="stat-card">
-    <div class="stat-label">Module 04 // Meta-Judge</div>
-    <div class="stat-value" style="font-size: 1.35rem;">Hedge Fusion</div>
-    <div class="stat-sub">Multiplicative Weights + Fixed-Share Floor</div>
+  <div class="module-card">
+    <div class="module-label">Module 04 // Meta-Judge</div>
+    <div class="module-value">Hedge Fusion</div>
+    <div class="module-sub">Multiplicative Weights + Fixed-Share Floor</div>
   </div>
 
-  <div class="stat-card">
-    <div class="stat-label">Module 05 // Gating</div>
-    <div class="stat-value" style="font-size: 1.35rem;">CUSUM Chart</div>
-    <div class="stat-sub">Freeze on Alarm / Flush on Concept Drift</div>
+  <div class="module-card">
+    <div class="module-label">Module 05 // Gating</div>
+    <div class="module-value">CUSUM Chart</div>
+    <div class="module-sub">Freeze on Alarm / Flush on Concept Drift</div>
   </div>
 </div>
 
