@@ -1,27 +1,32 @@
 /* open-phase-ensemble — Scientific Research Design System */
 
 :root {
-  /* Dark Charcoal Surface Palette */
-  --bg-base: #0d0f12;
-  --bg-surface: #14171c;
-  --bg-surface-elevated: #1a1e26;
-  --bg-canvas: #0d0f12;
-  --border-color: #242831;
-  --border-subtle: #1c2027;
+  /* Enforced Dark Palette Tokens */
+  --bg-base: #000000;
+  --bg-surface: #16181C;
+  --bg-surface-elevated: #202327;
+  --bg-canvas: #000000;
+  --border-color: #2F3336;
+  --border-subtle: #202327;
 
   /* Typography Colors */
-  --text-primary: #e6e8ec;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
+  --text-primary: #E7E9EA;
+  --text-secondary: #93979B;
+  --text-muted: #71767B;
 
-  /* Single Restrained Accent: Cool Blue / Cyan */
-  --accent: #38bdf8;
-  --accent-subtle: rgba(56, 189, 248, 0.08);
+  /* Restrained Accent Token */
+  --accent: #1D9BF0;
+  --accent-subtle: rgba(29, 155, 240, 0.1);
 
-  /* Status Tones (Muted) */
-  --status-success: #34d399;
-  --status-warning: #fbbf24;
-  --status-error: #f87171;
+  /* Status Tones */
+  --status-success: #00BA7C;
+  --status-warning: #FFD400;
+  --status-error: #F4212E;
+
+  /* Motion Tokens */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-speed: 0.2s;
+  --transition-std: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Typography Stacks */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
@@ -69,7 +74,7 @@ html, body, .md-container, .md-main {
   margin-bottom: 1.5rem;
 }
 
-/* Headings Scale & Spacing */
+/* Headings Scale & Spacing (4px grid aligned) */
 .md-typeset h1 {
   font-family: var(--font-sans);
   font-size: clamp(2rem, 3.5vw, 2.5rem);
@@ -90,7 +95,7 @@ html, body, .md-container, .md-main {
   color: var(--text-primary) !important;
   margin-top: 3.5rem;
   margin-bottom: 1.25rem;
-  padding-bottom: 0.6rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-color) !important;
 }
 
@@ -101,7 +106,7 @@ html, body, .md-container, .md-main {
   letter-spacing: -0.01em;
   color: var(--text-primary) !important;
   margin-top: 2.25rem;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
 }
 
 /* Header Bar */
@@ -130,7 +135,7 @@ html, body, .md-container, .md-main {
   font-weight: 500;
   color: var(--text-secondary) !important;
   opacity: 1 !important;
-  transition: color 0.15s ease;
+  transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .md-tabs__link:hover {
@@ -167,7 +172,7 @@ html, body, .md-container, .md-main {
   font-size: 0.85rem;
   font-weight: 400;
   color: var(--text-secondary) !important;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   border-left: 2px solid transparent;
   padding-left: 0.75rem !important;
 }
@@ -192,7 +197,7 @@ html, body, .md-container, .md-main {
   border-radius: 4px !important;
   font-family: var(--font-mono) !important;
   font-size: 0.78rem !important;
-  transition: border-color 0.15s ease, color 0.15s ease !important;
+  transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .md-source:hover {
@@ -235,7 +240,7 @@ html, body, .md-container, .md-main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.25rem;
-  margin: 2.25rem 0;
+  margin: 2rem 0;
   max-width: 50rem;
 }
 
@@ -252,7 +257,7 @@ html, body, .md-container, .md-main {
 .stat-label,
 .mat-card-title {
   font-family: var(--font-mono);
-  font-size: 0.725rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -265,7 +270,7 @@ html, body, .md-container, .md-main {
   font-size: 2.1rem;
   font-weight: 700;
   color: var(--text-primary) !important;
-  margin: 0.4rem 0 0.2rem 0;
+  margin: 0.5rem 0 0.25rem 0;
   letter-spacing: -0.02em;
 }
 
@@ -297,7 +302,7 @@ html, body, .md-container, .md-main {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-primary);
-  padding-top: 0.15rem;
+  padding-top: 0.25rem;
 }
 
 .def-list dd, dl dd {
@@ -323,7 +328,7 @@ html, body, .md-container, .md-main {
     padding-top: 0.75rem;
   }
   .def-list dd, dl dd {
-    padding-bottom: 0.85rem;
+    padding-bottom: 0.75rem;
   }
 }
 
@@ -370,9 +375,9 @@ html, body, .md-container, .md-main {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 500;
-  padding: 0.4rem 0.85rem;
+  padding: 0.5rem 0.75rem;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sim-btn:hover {
@@ -382,13 +387,13 @@ html, body, .md-container, .md-main {
 }
 
 .sim-btn.danger {
-  border-color: #ef4444 !important;
-  color: #f87171 !important;
+  border-color: var(--status-error) !important;
+  color: var(--status-error) !important;
 }
 
 .sim-btn.danger:hover {
-  border-color: #f87171 !important;
-  background: rgba(239, 68, 68, 0.12) !important;
+  border-color: var(--status-error) !important;
+  background: rgba(244, 33, 46, 0.12) !important;
 }
 
 .sim-canvas {
@@ -415,7 +420,7 @@ html, body, .md-container, .md-main {
   border-left: 3px solid var(--accent) !important;
   border-radius: 6px !important;
   color: var(--text-primary) !important;
-  margin: 1.75rem 0;
+  margin: 2rem 0;
   padding: 1rem 1.25rem;
 }
 
@@ -427,8 +432,8 @@ html, body, .md-container, .md-main {
   text-transform: uppercase;
   color: var(--text-primary) !important;
   background-color: transparent !important;
-  margin: -1rem -1rem 0.5rem -1rem;
-  padding: 0.75rem 1rem;
+  margin: -1rem -1.25rem 0.5rem -1.25rem;
+  padding: 0.75rem 1.25rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -455,7 +460,7 @@ html, body, .md-container, .md-main {
 
 .md-typeset table:not([class]) th {
   font-family: var(--font-mono);
-  font-size: 0.725rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -494,7 +499,7 @@ html, body, .md-container, .md-main {
   border-radius: 4px;
   font-family: var(--font-mono);
   font-size: 0.85em;
-  padding: 0.15em 0.4em;
+  padding: 0.25em 0.5em;
   color: var(--accent) !important;
 }
 
@@ -529,7 +534,7 @@ html, body, .md-container, .md-main {
   color: var(--accent);
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .md-typeset a:hover {

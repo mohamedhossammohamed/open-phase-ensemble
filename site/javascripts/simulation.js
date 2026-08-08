@@ -150,14 +150,14 @@ function initSimulation(container) {
     const height = canvas.height;
     ctx.clearRect(0, 0, width, height);
 
-    // Dark Charcoal Scientific Research Palette
-    const bgCanvas = "#0d0f12";       // Base Canvas Background
-    const boxBg = "#14171c";          // Compartment Node Surface
-    const quietRule = "#242831";      // Quiet Rule Border
-    const primaryInk = "#e6e8ec";     // Primary Crisp Text
-    const secondaryInk = "#9ca3af";   // Secondary Muted Text
-    const indexBlue = "#38bdf8";      // Cool Cyan Stream Signal
-    const cautionAmber = "#f59e0b";   // Caution Amber Anomaly Score
+    // Dark Pure Slate Scientific Research Palette
+    const bgCanvas = "#000000";       // Base Canvas Background
+    const boxBg = "#16181C";          // Compartment Node Surface
+    const quietRule = "#2F3336";      // Quiet Rule Border
+    const primaryInk = "#E7E9EA";     // Primary Crisp Text
+    const secondaryInk = "#71767B";   // Secondary Muted Text
+    const indexBlue = "#1D9BF0";      // Restrained Accent Stream Signal
+    const cautionAmber = "#F4212E";   // Status Error Anomaly Score
 
     ctx.fillStyle = bgCanvas;
     ctx.fillRect(0, 0, width, height);
