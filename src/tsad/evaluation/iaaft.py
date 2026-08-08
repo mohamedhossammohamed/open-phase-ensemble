@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def generate_iaaft_surrogate(x: np.ndarray, max_iter: int = 100, tol: float = 1e-6) -> np.ndarray:
     """
     Generates an Iterative Amplitude Adjusted Fourier Transform (IAAFT) surrogate.

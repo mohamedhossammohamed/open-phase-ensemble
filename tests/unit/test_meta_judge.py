@@ -1,8 +1,9 @@
 import numpy as np
-import pytest
-from tsad.meta_judge import MetaJudge, StratifiedReplayBuffer
+
+from tsad.config import FIXED_SHARE_SIGMA, HEDGE_ETA
 from tsad.learning_loop import OnlineLearningLoop
-from tsad.config import HEDGE_ETA, FIXED_SHARE_SIGMA, K_DETECTORS
+from tsad.meta_judge import MetaJudge, StratifiedReplayBuffer
+
 
 def test_hedge_weights_sum_to_one():
     mj = MetaJudge(k_detectors=6, eta=HEDGE_ETA, sigma=FIXED_SHARE_SIGMA)

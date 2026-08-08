@@ -1,5 +1,3 @@
-import os
-import sys
 
 def check_verification_items():
     print("==================================================")

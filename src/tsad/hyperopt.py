@@ -1,5 +1,7 @@
 import numpy as np
-from tsad.config import MAX_TAU, MAX_D, SEED
+
+from tsad.config import MAX_D, MAX_TAU, SEED
+
 
 class BayesianHyperparameterTuner:
     """

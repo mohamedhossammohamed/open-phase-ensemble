@@ -1,6 +1,14 @@
+
 import numpy as np
-from typing import Tuple
-from tsad.config import K_DETECTORS, HEDGE_ETA, FIXED_SHARE_SIGMA, REPLAY_BUFFER_SIZE, EPSILON
+
+from tsad.config import (
+    EPSILON,
+    FIXED_SHARE_SIGMA,
+    HEDGE_ETA,
+    K_DETECTORS,
+    REPLAY_BUFFER_SIZE,
+)
+
 
 class MetaJudge:
     """
@@ -34,7 +42,7 @@ class MetaJudge:
         # Renormalize to ensure exact convex sum = 1.0
         self.weights = self.weights / np.sum(self.weights)
 
-    def fuse(self, scores: np.ndarray, forecasts: np.ndarray) -> Tuple[float, float]:
+    def fuse(self, scores: np.ndarray, forecasts: np.ndarray) -> tuple[float, float]:
         """
         Calculates fused anomaly score A_t and fused forecast v_hat* via convex weighted sum.
         A_t = dot(weights, scores)
@@ -58,7 +66,7 @@ class StratifiedReplayBuffer:
             self.buffer.pop(0)
         self.buffer.append((Z_t.copy(), float(A_t)))
 
-    def sample(self, batch_size: int = 32, n: int = None):
+    def sample(self, batch_size: int = 32, n: int | None = None):
         if n is not None:
             batch_size = n
         if len(self.buffer) == 0:

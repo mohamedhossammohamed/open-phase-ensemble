@@ -1,23 +1,31 @@
+
 import numpy as np
-from typing import Tuple, Dict, Any
+
 from tsad.config import (
-    D_TARGET, MAX_TAU, MAX_D, R_TOL, A_TOL, K_DETECTORS, HEDGE_ETA,
-    FIXED_SHARE_SIGMA, REPLAY_BUFFER_SIZE, CUSUM_KC, CUSUM_HC_SIGMA_MULT, T_DRIFT
+    CUSUM_HC_SIGMA_MULT,
+    CUSUM_KC,
+    D_TARGET,
+    FIXED_SHARE_SIGMA,
+    HEDGE_ETA,
+    K_DETECTORS,
+    REPLAY_BUFFER_SIZE,
+    T_DRIFT,
 )
-from tsad.ingestion import StreamBuffer
-from tsad.representation import (
-    compute_ami, compute_fnn, delay_embed, compress_projection
-)
-from tsad.detectors.simplex import SimplexProjectionDetector
+from tsad.detectors.iforest import IsolationForestDetector
 from tsad.detectors.mahalanobis import RobustMahalanobisDetector
 from tsad.detectors.matrix_profile import MatrixProfileDetector
-from tsad.detectors.iforest import IsolationForestDetector
 from tsad.detectors.sarima import ARFilterDetector
+from tsad.detectors.simplex import SimplexProjectionDetector
 from tsad.detectors.transformer import MSETransformerAutoencoder
-
-from tsad.meta_judge import MetaJudge, StratifiedReplayBuffer
+from tsad.gating import CUSUMGating
+from tsad.ingestion import StreamBuffer
 from tsad.learning_loop import OnlineLearningLoop
-from tsad.gating import CUSUMGating, GatingState
+from tsad.meta_judge import MetaJudge, StratifiedReplayBuffer
+from tsad.representation import (
+    compress_projection,
+    delay_embed,
+)
+
 
 class TSADPipeline:
     """
@@ -58,7 +66,7 @@ class TSADPipeline:
         self.last_forecasts = np.zeros(K_DETECTORS, dtype=np.float64)
         self.last_scores = np.zeros(K_DETECTORS, dtype=np.float64)
 
-    def step(self, x_t: float) -> Tuple[float, float]:
+    def step(self, x_t: float) -> tuple[float, float]:
         """
         Processes singular raw scalar observation at time t.
         Strict online execution guarantee: no future data exposed.

@@ -1,12 +1,12 @@
+
 import numpy as np
-from typing import Tuple
+
+from tsad.config import D_TARGET, SEED
 from tsad.detectors.base import DetectorABC
-from tsad.config import D_TARGET, EPSILON, SEED
 
 try:
     import torch
-    import torch.nn as nn
-    import torch.nn.functional as F
+    from torch import nn
     HAS_TORCH = True
 except ImportError:
     HAS_TORCH = False
@@ -55,7 +55,7 @@ class MSETransformerAutoencoder(DetectorABC):
         else:
             self.model = None
 
-    def score(self, Z_t: np.ndarray, v_t: float) -> Tuple[float, float]:
+    def score(self, Z_t: np.ndarray, v_t: float) -> tuple[float, float]:
         self.sequence_buffer.append(Z_t)
         if len(self.sequence_buffer) > self.seq_len:
             self.sequence_buffer.pop(0)

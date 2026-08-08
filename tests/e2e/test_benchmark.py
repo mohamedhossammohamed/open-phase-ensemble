@@ -1,9 +1,9 @@
-import os
 import numpy as np
-import pytest
-from tsad.pipeline import TSADPipeline
-from tsad.evaluation.vus import compute_vus_roc
+
 from tsad.evaluation.iaaft import generate_iaaft_surrogate
+from tsad.evaluation.vus import compute_vus_roc
+from tsad.pipeline import TSADPipeline
+
 
 def test_benchmark_acceptance_criteria():
     """

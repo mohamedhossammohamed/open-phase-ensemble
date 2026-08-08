@@ -1,7 +1,9 @@
+
 import numpy as np
-from typing import Tuple
-from tsad.detectors.base import DetectorABC
+
 from tsad.config import D_TARGET, EPSILON
+from tsad.detectors.base import DetectorABC
+
 
 class RobustMahalanobisDetector(DetectorABC):
     """
@@ -51,7 +53,7 @@ class RobustMahalanobisDetector(DetectorABC):
         except np.linalg.LinAlgError:
             self.inv_Sigma = np.eye(d)
 
-    def score(self, Z_t: np.ndarray, v_t: float) -> Tuple[float, float]:
+    def score(self, Z_t: np.ndarray, v_t: float) -> tuple[float, float]:
         self.add_vector(Z_t)
         diff = Z_t - self.mean
         dist_sq = float(np.dot(np.dot(diff, self.inv_Sigma), diff.T))

@@ -1,12 +1,13 @@
 import numpy as np
-import pytest
-from tsad.detectors.mahalanobis import RobustMahalanobisDetector
+
+from tests.fixtures.generate_fixtures import get_or_create_sine_fixture
 from tsad.detectors.iforest import IsolationForestDetector
-from tsad.detectors.simplex import SimplexProjectionDetector
+from tsad.detectors.mahalanobis import RobustMahalanobisDetector
 from tsad.detectors.matrix_profile import MatrixProfileDetector
 from tsad.detectors.sarima import SARIMADetector
+from tsad.detectors.simplex import SimplexProjectionDetector
 from tsad.detectors.transformer import AnomalyTransformerDetector
-from tests.fixtures.generate_fixtures import get_or_create_sine_fixture
+
 
 def test_ledoit_wolf_math_and_shrinkage():
     np.random.seed(42)
@@ -16,7 +17,7 @@ def test_ledoit_wolf_math_and_shrinkage():
     
     det = RobustMahalanobisDetector(dim=8, block_size=200)
     for row in X_singular:
-        score, forecast = det.score(row, v_t=row[0])
+        score, _forecast = det.score(row, v_t=row[0])
         det.update(row[0])
         
     assert det.delta > 0.0
@@ -39,20 +40,20 @@ def test_isolation_forest_detector():
     assert outlier_score > normal_score
 
 def test_simplex_projection_detector():
-    signal, labels = get_or_create_sine_fixture()
+    signal, _labels = get_or_create_sine_fixture()
     det = SimplexProjectionDetector(dim=8, tau=2, forecast_horizon=1)
     
     forecasts = []
     for i in range(100):
         Z = np.ones(8) * signal[i]
-        s_t, v_hat = det.score(Z, v_t=signal[i])
+        _s_t, v_hat = det.score(Z, v_t=signal[i])
         det.update(signal[i])
         forecasts.append(v_hat)
         
     assert abs(np.sum(det.last_weights) - 1.0) < 1e-6
 
 def test_matrix_profile_detector():
-    signal, labels = get_or_create_sine_fixture()
+    signal, _labels = get_or_create_sine_fixture()
     det = MatrixProfileDetector(w_mp=10)
     
     scores = []
@@ -74,7 +75,7 @@ def test_sarima_detector():
     x = 0.0
     for _ in range(50):
         x = 0.7 * x + np.random.normal(0, 0.1)
-        score, forecast = det.score(np.zeros(8), v_t=x)
+        score, _forecast = det.score(np.zeros(8), v_t=x)
         det.update(x)
         
     assert 0.0 <= score <= 1.0

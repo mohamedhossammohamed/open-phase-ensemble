@@ -1,10 +1,11 @@
 import numpy as np
-import pytest
-from tsad.pipeline import TSADPipeline
+
 from tests.fixtures.generate_fixtures import get_or_create_sine_fixture
+from tsad.pipeline import TSADPipeline
+
 
 def test_no_lookahead_leakage_invariant():
-    signal, labels = get_or_create_sine_fixture()
+    signal, _labels = get_or_create_sine_fixture()
     n = 200 # Use first 200 points for fast invariant check
     
     # 1. Stream execution

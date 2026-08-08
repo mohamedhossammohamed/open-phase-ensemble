@@ -1,5 +1,7 @@
 import os
+
 import numpy as np
+
 from tsad.config import SEED
 
 FIXTURES_DIR = os.path.dirname(os.path.abspath(__file__))

@@ -1,6 +1,7 @@
+
 import numpy as np
-from typing import Tuple
-from tsad.config import D_TARGET, MAX_TAU, MAX_D, R_TOL, A_TOL, EPSILON, SEED
+
+from tsad.config import A_TOL, D_TARGET, EPSILON, MAX_D, MAX_TAU, R_TOL, SEED
 
 try:
     import hnswlib
@@ -21,10 +22,10 @@ def compute_ami(v: np.ndarray, max_lag: int = MAX_TAU, n_bins: int = 30) -> int:
     if v_max - v_min < EPSILON:
         return 1
         
-    hist_v, bin_edges = np.histogram(v, bins=n_bins, range=(v_min, v_max))
+    hist_v, _bin_edges = np.histogram(v, bins=n_bins, range=(v_min, v_max))
     p_v = hist_v / float(n)
     p_v = p_v[p_v > 0]
-    H_v = -np.sum(p_v * np.log2(p_v))
+    -np.sum(p_v * np.log2(p_v))
     
     ami_list = []
     for lag in range(1, max_lag + 1):
@@ -155,7 +156,7 @@ class HNSWIndex:
             self.data.append(data)
             self.count += n
 
-    def knn_query(self, query: np.ndarray, k: int = 5) -> Tuple[np.ndarray, np.ndarray]:
+    def knn_query(self, query: np.ndarray, k: int = 5) -> tuple[np.ndarray, np.ndarray]:
         if query.ndim == 1:
             query = query.reshape(1, -1)
         if self.count == 0:

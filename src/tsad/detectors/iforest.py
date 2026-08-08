@@ -1,8 +1,10 @@
+
 import numpy as np
-from typing import Tuple
 from sklearn.ensemble import IsolationForest
-from tsad.detectors.base import DetectorABC
+
 from tsad.config import D_TARGET, SEED
+from tsad.detectors.base import DetectorABC
+
 
 class IsolationForestDetector(DetectorABC):
     """
@@ -31,7 +33,7 @@ class IsolationForestDetector(DetectorABC):
             self.model.fit(buffer_data)
             self.is_fitted = True
 
-    def score(self, Z_t: np.ndarray, v_t: float) -> Tuple[float, float]:
+    def score(self, Z_t: np.ndarray, v_t: float) -> tuple[float, float]:
         self.add_vector(Z_t)
         if not self.is_fitted:
             return 0.0, v_t

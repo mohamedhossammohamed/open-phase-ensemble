@@ -1,8 +1,10 @@
+
 import numpy as np
-from typing import Tuple
+
+from tsad.config import D_TARGET, EPSILON
 from tsad.detectors.base import DetectorABC
 from tsad.representation import HNSWIndex
-from tsad.config import D_TARGET, EPSILON
+
 
 class SimplexProjectionDetector(DetectorABC):
     """
@@ -20,7 +22,7 @@ class SimplexProjectionDetector(DetectorABC):
         self.err_history = []
         self.last_weights = np.ones(dim + 1) / (dim + 1)
 
-    def score(self, Z_t: np.ndarray, v_t: float) -> Tuple[float, float]:
+    def score(self, Z_t: np.ndarray, v_t: float) -> tuple[float, float]:
         E = self.dim
         k = E + 1
         

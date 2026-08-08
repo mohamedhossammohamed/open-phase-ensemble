@@ -1,6 +1,7 @@
 import numpy as np
-import pytest
+
 from tsad.pipeline import TSADPipeline
+
 
 def test_nan_propagation_handling():
     pipeline = TSADPipeline()

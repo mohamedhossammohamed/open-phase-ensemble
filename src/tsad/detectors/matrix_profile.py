@@ -1,7 +1,9 @@
+
 import numpy as np
-from typing import Tuple
-from tsad.detectors.base import DetectorABC
+
 from tsad.config import EPSILON
+from tsad.detectors.base import DetectorABC
+
 
 class MatrixProfileDetector(DetectorABC):
     """
@@ -15,7 +17,7 @@ class MatrixProfileDetector(DetectorABC):
         self.last_profile_val = 0.0
         self.profile_history = []
 
-    def score(self, Z_t: np.ndarray, v_t: float) -> Tuple[float, float]:
+    def score(self, Z_t: np.ndarray, v_t: float) -> tuple[float, float]:
         n = len(self.history)
         if n < 2 * self.w_mp:
             return 0.0, v_t

@@ -1,9 +1,11 @@
 import os
 import random
+
 import numpy as np
 import pytest
 
 from tsad.config import SEED
+
 
 @pytest.fixture(autouse=True)
 def set_deterministic_seeds():

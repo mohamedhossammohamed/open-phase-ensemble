@@ -1,11 +1,13 @@
 import hashlib
+
 import numpy as np
-import pytest
-from tsad.pipeline import TSADPipeline
+
 from tests.fixtures.generate_fixtures import get_or_create_sine_fixture
+from tsad.pipeline import TSADPipeline
+
 
 def run_pipeline_and_hash():
-    signal, labels = get_or_create_sine_fixture()
+    signal, _labels = get_or_create_sine_fixture()
     pipeline = TSADPipeline()
     scores = []
     for x in signal[:1000]:

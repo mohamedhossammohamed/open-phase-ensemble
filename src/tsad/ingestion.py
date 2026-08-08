@@ -1,5 +1,7 @@
 import numpy as np
+
 from tsad.config import EPSILON
+
 
 class StreamBuffer:
     """

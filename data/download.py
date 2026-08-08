@@ -1,7 +1,6 @@
 import os
-import sys
+
 import numpy as np
-import requests
 
 DATA_DIR = os.path.dirname(os.path.abspath(__file__))
 RAW_DIR = os.path.join(DATA_DIR, "raw")
@@ -22,7 +21,7 @@ def download_physionet_data():
             if not os.path.exists(out_file):
                 wfdb.dl_database("mitdb", physio_dir, records=[rec])
         print("PhysioNet records downloaded successfully.")
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         print(f"wfdb download warning: {e}. Generating baseline PhysioNet structures.")
         for rec in PHYSIONET_RECORDS:
             npz_path = os.path.join(physio_dir, f"{rec}.npz")

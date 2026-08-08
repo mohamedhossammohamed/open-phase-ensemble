@@ -1,12 +1,14 @@
 import os
 import sys
+
 import numpy as np
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
 
-from tsad.pipeline import TSADPipeline
-from tsad.evaluation.vus import compute_vus_roc, compute_vus_pr
 from tsad.evaluation.iaaft import generate_iaaft_surrogate
+from tsad.evaluation.vus import compute_vus_pr, compute_vus_roc
+from tsad.pipeline import TSADPipeline
+
 
 def run_dataset_benchmark(name: str, signal: np.ndarray, labels: np.ndarray, max_points: int = 5000):
     if len(signal) > max_points:
@@ -60,11 +62,13 @@ def main():
     
     physio_file = os.path.join(raw_dir, "physionet/100.npz")
     if os.path.exists(physio_file):
-        run_dataset_benchmark("PhysioNet MIT-BIH (Record 100)", data := np.load(physio_file)["signal"], np.load(physio_file)["labels"])
+        physio_data = np.load(physio_file)
+        run_dataset_benchmark("PhysioNet MIT-BIH (Record 100)", physio_data["signal"], physio_data["labels"])
         
     cwru_file = os.path.join(raw_dir, "cwru/cwru_bearing.npz")
     if os.path.exists(cwru_file):
-        run_dataset_benchmark("CWRU Bearing Dataset", data := np.load(cwru_file)["signal"], np.load(cwru_file)["labels"])
+        cwru_data = np.load(cwru_file)
+        run_dataset_benchmark("CWRU Bearing Dataset", cwru_data["signal"], cwru_data["labels"])
 
 if __name__ == "__main__":
     main()

@@ -1,7 +1,9 @@
 import numpy as np
 from scipy import stats
-from tsad.evaluation.vus import compute_vus_roc, compute_vus_pr
+
 from tsad.evaluation.iaaft import generate_iaaft_surrogate
+from tsad.evaluation.vus import compute_vus_roc
+
 
 def test_vus_roc_perfect_and_random():
     labels = np.zeros(1000, dtype=int)
@@ -38,5 +40,5 @@ def test_iaaft_properties():
     assert abs(autocorr_x - autocorr_surr) < 0.05
     
     # 3. Kolmogorov-Smirnov test: distributions should be indistinguishable (p-value > 0.05)
-    ks_stat, p_val = stats.ks_2samp(x, surrogate)
+    _ks_stat, p_val = stats.ks_2samp(x, surrogate)
     assert p_val > 0.05

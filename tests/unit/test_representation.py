@@ -1,15 +1,16 @@
 import numpy as np
-import pytest
+
+from tests.fixtures.generate_fixtures import generate_lorenz_fixture
+from tsad.config import A_TOL, D_TARGET, R_TOL
 from tsad.representation import (
+    HNSWIndex,
+    compress_projection,
     compute_ami,
     compute_fnn,
     delay_embed,
-    compress_projection,
-    HNSWIndex,
     online_mad_normalize,
 )
-from tsad.config import R_TOL, A_TOL, D_TARGET
-from tests.fixtures.generate_fixtures import generate_lorenz_fixture
+
 
 def test_ami_sine_wave():
     # Sinusoid with period 50 -> AMI first local minimum should be around period / 4 = 12.5 (5 to 15)
@@ -20,7 +21,7 @@ def test_ami_sine_wave():
 
 def test_fnn_lorenz_attractor():
     # Lorenz attractor has fractal dimension ~2.06, requiring d >= 3 embedding
-    xs, ys, zs = generate_lorenz_fixture(n_points=3000)
+    xs, _ys, _zs = generate_lorenz_fixture(n_points=3000)
     tau = compute_ami(xs, max_lag=30)
     d = compute_fnn(xs, tau=tau, max_d=10, r_tol=R_TOL, a_tol=A_TOL)
     assert 3 <= d <= 6

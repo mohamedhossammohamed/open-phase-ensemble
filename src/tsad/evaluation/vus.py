@@ -1,5 +1,6 @@
 import numpy as np
-from sklearn.metrics import roc_auc_score, precision_recall_curve, auc
+from sklearn.metrics import auc, precision_recall_curve, roc_auc_score
+
 
 def apply_range_buffer(labels: np.ndarray, buffer_length: int) -> np.ndarray:
     """

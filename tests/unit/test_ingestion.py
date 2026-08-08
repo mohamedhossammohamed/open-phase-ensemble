@@ -1,6 +1,7 @@
 import numpy as np
-import pytest
+
 from tsad.ingestion import StreamBuffer
+
 
 def test_stream_buffer_init_and_capacity():
     buf = StreamBuffer(window_size=100)

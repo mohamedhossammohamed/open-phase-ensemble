@@ -1,6 +1,9 @@
-import numpy as np
 from enum import Enum
-from tsad.config import CUSUM_KC, CUSUM_HC_SIGMA_MULT, T_DRIFT, EPSILON
+
+import numpy as np
+
+from tsad.config import CUSUM_HC_SIGMA_MULT, CUSUM_KC, EPSILON, T_DRIFT
+
 
 class GatingState(Enum):
     NORMAL = "normal"

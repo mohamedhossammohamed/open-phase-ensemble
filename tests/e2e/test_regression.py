@@ -1,8 +1,9 @@
 import numpy as np
-import pytest
-from tsad.pipeline import TSADPipeline
-from tsad.evaluation.vus import compute_vus_roc
+
 from tests.fixtures.generate_fixtures import get_or_create_sine_fixture
+from tsad.evaluation.vus import compute_vus_roc
+from tsad.pipeline import TSADPipeline
+
 
 def test_pipeline_fixture_performance_and_entropy():
     signal, labels = get_or_create_sine_fixture()

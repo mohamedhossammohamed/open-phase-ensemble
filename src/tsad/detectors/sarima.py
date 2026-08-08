@@ -1,7 +1,9 @@
+
 import numpy as np
-from typing import Tuple
-from tsad.detectors.base import DetectorABC
+
 from tsad.config import EPSILON
+from tsad.detectors.base import DetectorABC
+
 
 class ARFilterDetector(DetectorABC):
     """
@@ -16,7 +18,7 @@ class ARFilterDetector(DetectorABC):
         self.coeffs = np.ones(p) / max(1, p)
         self.residuals = []
 
-    def score(self, Z_t: np.ndarray, v_t: float) -> Tuple[float, float]:
+    def score(self, Z_t: np.ndarray, v_t: float) -> tuple[float, float]:
         if len(self.history) < self.p:
             return 0.0, v_t
             

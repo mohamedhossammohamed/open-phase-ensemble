@@ -1,9 +1,10 @@
 import numpy as np
-import pytest
+
+from tsad.config import CUSUM_KC, T_DRIFT
 from tsad.gating import CUSUMGating, GatingState
 from tsad.hyperopt import BayesianHyperparameterTuner
 from tsad.score_calibration import QuantileScoreCalibrator
-from tsad.config import CUSUM_KC, T_DRIFT
+
 
 def test_cusum_stable_signal_no_alarm():
     gating = CUSUMGating(k_c=CUSUM_KC, t_drift=T_DRIFT)

@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class QuantileScoreCalibrator:
     """
     eCDF Quantile Mapping for preserving anomaly score comparability across configuration changes.
