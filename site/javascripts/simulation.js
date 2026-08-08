@@ -1,4 +1,4 @@
-/* open-phase-ensemble — xAI Inspired Data Flow & System Compartment Simulation */
+/* open-phase-ensemble — Deep Research Agent Matte Simulation Canvas */
 
 document.addEventListener("DOMContentLoaded", function () {
   const canvasContainers = document.querySelectorAll(".sim-canvas-container");
@@ -8,6 +8,15 @@ document.addEventListener("DOMContentLoaded", function () {
     initSimulation(container);
   });
 });
+
+if (typeof document$ !== "undefined") {
+  document$.subscribe(function () {
+    const canvasContainers = document.querySelectorAll(".sim-canvas-container");
+    canvasContainers.forEach((container) => {
+      initSimulation(container);
+    });
+  });
+}
 
 function drawRoundedRect(ctx, x, y, width, height, radius) {
   ctx.beginPath();
@@ -49,11 +58,11 @@ function initSimulation(container) {
   let weights = [0.166, 0.166, 0.166, 0.166, 0.166, 0.166];
 
   const compartments = [
-    { name: "01 // INGESTION", label: "STREAMBUFFER", color: "#ffffff" },
-    { name: "02 // REPRES", label: "TAKENS / JL", color: "#ffffff" },
-    { name: "03 // BATTERY", label: "6 EXPERTS", color: "#ffffff" },
-    { name: "04 // META-JUDGE", label: "HEDGE FUSION", color: "#ffffff" },
-    { name: "05 // GATING", label: "CUSUM", color: "#ff7a17" },
+    { name: "01 // INGESTION", label: "STREAMBUFFER" },
+    { name: "02 // REPRES", label: "TAKENS / JL" },
+    { name: "03 // BATTERY", label: "6 EXPERTS" },
+    { name: "04 // META-JUDGE", label: "HEDGE FUSION" },
+    { name: "05 // GATING", label: "CUSUM" },
   ];
 
   let particles = [];
@@ -70,27 +79,27 @@ function initSimulation(container) {
   const resetBtn = container.querySelector(".sim-btn-reset");
 
   if (playBtn) {
-    playBtn.addEventListener("click", () => {
+    playBtn.onclick = () => {
       isRunning = !isRunning;
-      playBtn.textContent = isRunning ? "PAUSE" : "PLAY";
-    });
+      playBtn.textContent = isRunning ? "Pause" : "Play";
+    };
   }
 
   if (anomalyBtn) {
-    anomalyBtn.addEventListener("click", () => {
+    anomalyBtn.onclick = () => {
       anomalyActive = true;
       anomalyDuration = 25;
-    });
+    };
   }
 
   if (resetBtn) {
-    resetBtn.addEventListener("click", () => {
+    resetBtn.onclick = () => {
       signalData.fill(0);
       fusedScoreData.fill(0.05);
       weights = [0.166, 0.166, 0.166, 0.166, 0.166, 0.166];
       timeStep = 0;
       anomalyActive = false;
-    });
+    };
   }
 
   function step() {
@@ -141,18 +150,20 @@ function initSimulation(container) {
     const height = canvas.height;
     ctx.clearRect(0, 0, width, height);
 
-    // Strict xAI Monochrome Palette
-    const bgCanvas = "#0a0a0a";
-    const hairline = "#212327";
-    const inkWhite = "#ffffff";
-    const bodyMid = "#7d8187";
-    const sunsetOrange = "#ff7a17";
+    // Deep Research Agent Palette (Matte Finish - Absolutely ZERO White Color)
+    const bgCanvas = "#fbf9f5";       // Reading Paper Surface
+    const boxBg = "#f4f1ea";          // Raised Paper Subtle
+    const quietRule = "#dedad2";      // Quiet Rule Border
+    const primaryInk = "#2b303c";     // Deep Primary Ink
+    const secondaryInk = "#6e7485";   // Secondary Ink Metadata
+    const indexBlue = "#2f66d4";      // Index Blue Signal & Highlights
+    const cautionAmber = "#b36b00";    // Caution Amber Anomaly Score
 
     ctx.fillStyle = bgCanvas;
     ctx.fillRect(0, 0, width, height);
 
     // Dividers
-    ctx.strokeStyle = hairline;
+    ctx.strokeStyle = quietRule;
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(0, 115); ctx.lineTo(width, 115);
@@ -160,16 +171,16 @@ function initSimulation(container) {
     ctx.stroke();
 
     // ── Panel 1: Live Stream ──────────────────────────────────
-    ctx.fillStyle = bodyMid;
-    ctx.font = "10px Geist Mono, JetBrains Mono, monospace";
+    ctx.fillStyle = secondaryInk;
+    ctx.font = "720 10px ui-sans-serif, -apple-system, sans-serif";
     ctx.fillText("LIVE STREAM // SIGNAL x_t & FUSED ANOMALY SCORE A_t", 12, 18);
 
     const streamW = width - 24;
     const streamY0 = 65;
 
-    // Draw Signal x_t (Pure White)
-    ctx.strokeStyle = "#ffffff";
-    ctx.lineWidth = 1.2;
+    // Draw Signal x_t (Index Blue, NO White)
+    ctx.strokeStyle = indexBlue;
+    ctx.lineWidth = 1.4;
     ctx.beginPath();
     for (let i = 0; i < bufferLen; i++) {
       const x = 12 + (i / (bufferLen - 1)) * streamW;
@@ -179,8 +190,8 @@ function initSimulation(container) {
     }
     ctx.stroke();
 
-    // Draw Fused Score A_t (Sunset Orange #ff7a17)
-    ctx.strokeStyle = sunsetOrange;
+    // Draw Fused Score A_t (Caution Amber)
+    ctx.strokeStyle = cautionAmber;
     ctx.lineWidth = 1.8;
     ctx.beginPath();
     for (let i = 0; i < bufferLen; i++) {
@@ -192,13 +203,13 @@ function initSimulation(container) {
     ctx.stroke();
 
     // Legend
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = indexBlue;
     ctx.fillText("— x_t STREAM", width - 170, 18);
-    ctx.fillStyle = sunsetOrange;
+    ctx.fillStyle = cautionAmber;
     ctx.fillText("— A_t SCORE", width - 80, 18);
 
     // ── Panel 2: Pipeline Compartments ───────────────────────
-    ctx.fillStyle = bodyMid;
+    ctx.fillStyle = secondaryInk;
     ctx.fillText("PIPELINE COMPARTMENTS // REAL-TIME PARTICLE FLOW", 12, 132);
 
     const compCount = compartments.length;
@@ -213,21 +224,21 @@ function initSimulation(container) {
       const x = 12 + idx * (boxW + gap);
       compCoords.push({ x: x + boxW / 2, y: compY + compH / 2 });
 
-      // Node Box (Hairline border on charcoal #191919)
-      ctx.fillStyle = "#191919";
-      ctx.strokeStyle = hairline;
+      // Node Box (Flat Raised Paper on Quiet Rule border)
+      ctx.fillStyle = boxBg;
+      ctx.strokeStyle = quietRule;
       ctx.lineWidth = 1;
       drawRoundedRect(ctx, x, compY, boxW, compH, 6);
       ctx.fill();
       ctx.stroke();
 
       // Node Text
-      ctx.fillStyle = inkWhite;
-      ctx.font = "10px Geist Mono, JetBrains Mono, monospace";
+      ctx.fillStyle = primaryInk;
+      ctx.font = "720 9px ui-sans-serif, -apple-system, sans-serif";
       ctx.textAlign = "center";
       ctx.fillText(comp.name, x + boxW / 2, compY + 22);
-      ctx.font = "9px Geist Mono, JetBrains Mono, monospace";
-      ctx.fillStyle = bodyMid;
+      ctx.font = "400 9px ui-sans-serif, -apple-system, sans-serif";
+      ctx.fillStyle = secondaryInk;
       ctx.fillText(comp.label, x + boxW / 2, compY + 38);
       ctx.textAlign = "left";
     });
@@ -237,7 +248,7 @@ function initSimulation(container) {
       const p1 = compCoords[i];
       const p2 = compCoords[i + 1];
 
-      ctx.strokeStyle = hairline;
+      ctx.strokeStyle = quietRule;
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(p1.x + boxW / 2 - 4, p1.y);
@@ -254,7 +265,7 @@ function initSimulation(container) {
         const px = p1.x + frac * (p2.x - p1.x);
         const py = p1.y + frac * (p2.y - p1.y);
 
-        ctx.fillStyle = p.isAnomaly ? sunsetOrange : inkWhite;
+        ctx.fillStyle = p.isAnomaly ? cautionAmber : indexBlue;
         ctx.beginPath();
         ctx.arc(px, py, 3.5, 0, Math.PI * 2);
         ctx.fill();
@@ -262,7 +273,7 @@ function initSimulation(container) {
     });
 
     // ── Panel 3: Meta-Judge Weights ──────────────────────────
-    ctx.fillStyle = bodyMid;
+    ctx.fillStyle = secondaryInk;
     ctx.fillText("META-JUDGE // EXPERT WEIGHT ALLOCATION w_k", 12, 232);
 
     const barW = Math.min(65, (width - 40) / 6 - 12);
@@ -274,14 +285,14 @@ function initSimulation(container) {
       const bw = weights[k];
       const bh = bw * maxBarH * 3;
 
-      ctx.fillStyle = "#191919";
+      ctx.fillStyle = boxBg;
       ctx.fillRect(bx, barY0 - maxBarH, barW, maxBarH);
 
-      ctx.fillStyle = k === 0 && weights[0] > 0.25 ? sunsetOrange : inkWhite;
+      ctx.fillStyle = k === 0 && weights[0] > 0.25 ? cautionAmber : indexBlue;
       ctx.fillRect(bx, barY0 - bh, barW, bh);
 
-      ctx.fillStyle = bodyMid;
-      ctx.font = "9px Geist Mono, JetBrains Mono, monospace";
+      ctx.fillStyle = secondaryInk;
+      ctx.font = "400 9px ui-sans-serif, -apple-system, sans-serif";
       ctx.fillText(detectorNames[k], bx, barY0 + 9);
       ctx.fillText((bw * 100).toFixed(0) + "%", bx, barY0 - bh - 3);
     }

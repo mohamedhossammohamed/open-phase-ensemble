@@ -893,7 +893,7 @@
       <div class="mat-card-title">PhysioNet MIT-BIH (rec 100)</div>
     </div>
     <div class="mat-card-value">0.8592</div>
-    <div class="mat-card-sub">VUS-ROC (Label-Only Buffer) | Edge Δ = +0.37</div>
+    <div class="mat-card-sub">VUS-ROC (Label-Only Buffer) | Edge $\Delta = +0.37$</div>
   </div>
 
   <div class="mat-card">
@@ -902,7 +902,7 @@
       <div class="mat-card-title">CWRU Bearing Prognostics</div>
     </div>
     <div class="mat-card-value">0.9711</div>
-    <div class="mat-card-sub">VUS-ROC (Label-Only Buffer) | Edge Δ = +0.37</div>
+    <div class="mat-card-sub">VUS-ROC (Label-Only Buffer) | Edge $\Delta = +0.37$</div>
   </div>
 
   <div class="mat-card">
@@ -979,7 +979,9 @@
 <hr />
 <h2 id="metric-definitions">Metric Definitions<a class="headerlink" href="#metric-definitions" title="Permanent link">&para;</a></h2>
 <p><strong>Volume Under Surface ROC (VUS-ROC)</strong> integrates AUC-ROC across a spectrum of temporal buffer thresholds <span class="arithmatex">\(l \in [0, L_{\max}]\)</span> with <span class="arithmatex">\(L_{\max} = 15\)</span>. Range buffering expands ground-truth label regions only:</p>
-<div class="arithmatex">\[\text{VUS-ROC} = \frac{1}{L_{\max} + 1} \sum_{l=0}^{L_{\max}} \text{AUC-ROC}(\text{labels}_l, \text{scores})\]</div>
+<div class="arithmatex">\[
+\text{VUS-ROC} = \frac{1}{L_{\max} + 1} \sum_{l=0}^{L_{\max}} \text{AUC-ROC}(\text{labels}_l, \text{scores})
+\]</div>
 <p><strong>Predictive Edge</strong> <span class="arithmatex">\(\Delta = \text{VUS-ROC}_{\text{system}} - \text{VUS-ROC}_{\text{IAAFT}}\)</span>. A positive edge <span class="arithmatex">\(\Delta \ge +0.30\)</span> indicates genuine non-linear predictive power beyond what linear autocorrelation can explain.</p>
 <hr />
 <h2 id="future-work">Future Work<a class="headerlink" href="#future-work" title="Permanent link">&para;</a></h2>

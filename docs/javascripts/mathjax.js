@@ -11,16 +11,8 @@ window.MathJax = {
   }
 };
 
-document.addEventListener("DOMContentLoaded", function() {
+document$.subscribe(function() {
   if (typeof MathJax !== "undefined" && MathJax.typesetPromise) {
     MathJax.typesetPromise();
   }
 });
-
-if (typeof location$ !== "undefined") {
-  location$.subscribe(function() {
-    if (typeof MathJax !== "undefined" && MathJax.typesetPromise) {
-      MathJax.typesetPromise();
-    }
-  });
-}

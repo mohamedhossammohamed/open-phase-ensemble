@@ -1,404 +1,349 @@
-/* open-phase-ensemble — xAI Inspired Single-Color Dark Canvas Design System */
-
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@400;500&display=swap');
+/* Deep Research Agent Design System (from design.md) */
 
 :root {
-  /* xAI Single-Color Dark Canvas Tokens */
-  --xai-canvas: #0a0a0a;
-  --xai-canvas-card: #191919;
-  --xai-canvas-soft: #141414;
-  --xai-hairline: #212327;
-  --xai-hairline-translucent: rgba(255, 255, 255, 0.2);
+  /* Color Palette Tokens */
+  --reading-paper: oklch(97.4% 0.009 83);     /* #fbf9f5 - Main paper surface */
+  --raised-paper: oklch(99.1% 0.006 83);      /* #fefdfa - Cards, callouts, code */
+  --raised-paper-subtle: oklch(95.5% 0.008 83); /* #f4f1ea - Canvas backing */
+  --primary-ink: oklch(24% 0.025 252);        /* #2b303c - Primary text & titles */
+  --secondary-ink: oklch(51% 0.025 252);      /* #6e7485 - Metadata & labels */
+  --quiet-rule: oklch(87% 0.018 83);          /* #dedad2 - 1px flat borders */
   
-  --xai-ink: #ffffff;
-  --xai-body: #dadbdf;
-  --xai-body-mid: #7d8187;
-  --xai-sunset: #ff7a17;
+  --index-blue: oklch(52% 0.13 252);          /* #2f66d4 - Nav, citations, links */
+  --index-blue-soft: oklch(93% 0.025 252);     /* #e9f0fc - Soft blue backing */
+  
+  --verified-green: oklch(49% 0.105 154);     /* #238250 - Complete outcome */
+  --verified-green-soft: oklch(93% 0.035 154);/* #e4f5ec */
+  
+  --caution-amber: oklch(53% 0.125 71);       /* #b36b00 - Anomaly/warning */
+  --caution-amber-soft: oklch(94% 0.045 82);  /* #faf1db */
+  
+  --failure-red: oklch(50% 0.15 27);          /* #c83232 - Failure outcome */
+  --failure-red-soft: oklch(94% 0.035 27);    /* #fce8e8 */
 
-  /* Font Tokens */
-  --md-text-font: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --md-code-font: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+  /* Typography Stacks */
+  --font-display: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-headline: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: ui-serif, "Iowan Old Style", "Palatino Linotype", "Noto Serif CJK SC", "Songti SC", serif;
+  --font-label: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-code: ui-monospace, "JetBrains Mono", "Geist Mono", monospace;
 
-  /* Override Material Theme CSS Variables to single dark color */
-  --md-default-bg-color: #0a0a0a !important;
-  --md-default-fg-color: #dadbdf !important;
-  --md-primary-bg-color: #0a0a0a !important;
-  --md-primary-fg-color: #ffffff !important;
-  --md-accent-fg-color: #ffffff !important;
-  --md-code-bg-color: #141414 !important;
+  /* Material Theme Overrides to Paper Palette */
+  --md-default-bg-color: var(--reading-paper) !important;
+  --md-default-fg-color: var(--primary-ink) !important;
+  --md-primary-bg-color: var(--reading-paper) !important;
+  --md-primary-fg-color: var(--primary-ink) !important;
+  --md-accent-fg-color: var(--index-blue) !important;
+  --md-code-bg-color: var(--raised-paper) !important;
+  --md-code-fg-color: var(--primary-ink) !important;
+  --md-typeset-color: var(--primary-ink) !important;
+  --md-typeset-a-color: var(--index-blue) !important;
 }
 
-/* ── Base Surface & Global Canvas (Strict Single Color #0a0a0a) ── */
+/* Strict Matte Finish — NO Gradients, NO Box Shadows, NO Glassmorphism */
+* {
+  box-shadow: none !important;
+  text-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
 
+/* Base Reading Surface */
 html, body, .md-container, .md-main, .md-sidebar {
-  background-color: #0a0a0a !important;
+  background-color: var(--reading-paper) !important;
   background-image: none !important;
-  color: var(--xai-body);
+  color: var(--primary-ink);
 }
 
+/* Prose Typography — The Two Voices Rule: Serif explains; sans-serif organizes */
 .md-typeset {
-  font-family: var(--md-text-font);
-  font-size: 0.88rem;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 0.96rem + 0.18vw, 1.12rem);
   font-weight: 400;
-  line-height: 1.7;
-  color: var(--xai-body);
+  line-height: 1.78;
+  color: var(--primary-ink);
+  max-width: 48rem;
 }
 
-/* Display Headlines — Weight 400 with Aggressive Negative Tracking */
+/* Headlines — Exact & Structural Sans-Serif */
 .md-typeset h1 {
-  font-size: 2.75rem;
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 760;
   line-height: 1.05;
-  letter-spacing: -0.04em;
-  color: var(--xai-ink) !important;
+  letter-spacing: -0.035em;
+  color: var(--primary-ink) !important;
   margin-bottom: 1.5rem;
 }
 
 .md-typeset h2 {
-  font-size: 1.85rem;
-  font-weight: 400;
-  line-height: 1.25;
+  font-family: var(--font-headline);
+  font-size: clamp(1.4rem, 2vw, 1.85rem);
+  font-weight: 760;
+  line-height: 1.15;
   letter-spacing: -0.03em;
-  color: var(--xai-ink) !important;
-  margin-top: 2.8rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid var(--xai-hairline) !important;
+  color: var(--primary-ink) !important;
+  margin-top: 2.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--quiet-rule) !important;
 }
 
 .md-typeset h3 {
-  font-size: 1.3rem;
-  font-weight: 400;
+  font-family: var(--font-headline);
+  font-size: 1.25rem;
+  font-weight: 760;
   letter-spacing: -0.02em;
-  color: var(--xai-ink) !important;
-  margin-top: 2rem;
+  color: var(--primary-ink) !important;
+  margin-top: 1.8rem;
 }
 
-/* ── Eyebrows & Monospace Labels ──────────────────────────── */
-
-.eyebrow-mono,
-.md-typeset .caption-mono,
-.mat-card-title,
-.sim-title {
-  font-family: var(--md-code-font);
-  font-size: 0.75rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--xai-body-mid) !important;
-}
-
-/* ── Pure Black Header & Navigation Bar (No Gradients) ────── */
-
-header,
-nav,
-.md-header,
-.md-header__inner,
-.md-tabs,
-.md-tabs__inner,
-[data-md-color-scheme="slate"] .md-header,
-[data-md-color-scheme="slate"] .md-tabs {
-  background: #0a0a0a !important;
-  background-color: #0a0a0a !important;
+/* Header & Nav — Paper Surface with Flat Quiet Rule Border */
+header, nav, .md-header, .md-header__inner, .md-tabs, .md-tabs__inner {
+  background: var(--reading-paper) !important;
+  background-color: var(--reading-paper) !important;
   background-image: none !important;
-  border-bottom: 1px solid var(--xai-hairline) !important;
+  border-bottom: 1px solid var(--quiet-rule) !important;
   box-shadow: none !important;
 }
 
-.md-header__title,
-.md-header__button {
-  color: #ffffff !important;
-  font-family: var(--md-text-font);
-  font-weight: 400;
+.md-header__title, .md-header__button {
+  color: var(--primary-ink) !important;
+  font-family: var(--font-label);
+  font-weight: 720;
 }
 
-.md-tabs__link {
-  font-family: var(--md-text-font);
+.md-tabs__link, .md-nav__link {
+  font-family: var(--font-label);
   font-size: 0.82rem;
-  font-weight: 400;
-  color: var(--xai-body-mid) !important;
+  font-weight: 720;
+  letter-spacing: 0.04em;
+  color: var(--secondary-ink) !important;
   opacity: 1 !important;
   transition: color 0.15s ease;
 }
 
-.md-tabs__link:hover,
-.md-tabs__link--active {
-  color: #ffffff !important;
+.md-tabs__link:hover, .md-tabs__link--active,
+.md-nav__link:hover, .md-nav__link--active {
+  color: var(--index-blue) !important;
 }
 
-/* Sidebar Navigation Links */
-.md-nav__link {
-  font-family: var(--md-text-font);
-  font-size: 0.82rem;
-  font-weight: 400;
-  color: var(--xai-body-mid) !important;
+/* Search Input */
+.md-search__input {
+  background-color: var(--raised-paper) !important;
+  color: var(--primary-ink) !important;
+  border: 1px solid var(--quiet-rule) !important;
+  border-radius: 999px !important;
 }
 
-.md-nav__link:hover,
-.md-nav__link--active {
-  color: #ffffff !important;
-}
-
-/* ── GitHub Repo Button High Visibility Fix ───────────────── */
-
-.md-header__source,
-.md-source,
-.md-source__icon,
-.md-source__repository,
-.md-source__fact,
-.md-source__facts {
-  color: #ffffff !important;
-  opacity: 1 !important;
-  fill: #ffffff !important;
-}
-
-.md-source__icon svg,
-.md-source svg {
-  fill: #ffffff !important;
-  color: #ffffff !important;
+/* GitHub Source Icon */
+.md-header__source, .md-source, .md-source__icon, .md-source__repository, .md-source svg {
+  color: var(--primary-ink) !important;
+  fill: var(--primary-ink) !important;
   opacity: 1 !important;
 }
 
 .md-source__repository {
-  font-family: var(--md-text-font);
-  font-weight: 500;
-  color: #ffffff !important;
+  font-family: var(--font-label);
+  font-weight: 720;
+  color: var(--primary-ink) !important;
 }
 
-.md-source__fact {
-  color: var(--xai-body-mid) !important;
-}
-
-/* Search bar styling */
-.md-search__input {
-  background-color: #141414 !important;
-  color: #ffffff !important;
-  border: 1px solid var(--xai-hairline) !important;
-  border-radius: 9999px !important;
-}
-
-.md-search__input::placeholder {
-  color: var(--xai-body-mid) !important;
-}
-
-/* ── Buttons (White Outline Pill System) ─────────────────── */
-
-.sim-btn,
-.xai-btn-outline,
-.md-button {
-  background-color: #0a0a0a !important;
-  background-image: none !important;
-  color: #ffffff !important;
-  border: 1px solid var(--xai-hairline-translucent) !important;
-  border-radius: 9999px !important; /* Pill 9999px */
-  font-family: var(--md-text-font);
-  font-size: 0.8rem;
-  font-weight: 400;
-  padding: 0.4rem 1rem;
-  transition: all 0.2s ease;
-  box-shadow: none !important;
-}
-
-.sim-btn:hover,
-.xai-btn-outline:hover,
-.md-button:hover {
-  border-color: rgba(255, 255, 255, 0.6) !important;
-  background-color: rgba(255, 255, 255, 0.08) !important;
-  color: #ffffff !important;
-}
-
-.sim-btn.danger {
-  border-color: rgba(255, 122, 23, 0.5) !important;
-  color: var(--xai-sunset) !important;
-}
-
-.sim-btn.danger:hover {
-  background-color: rgba(255, 122, 23, 0.15) !important;
-  border-color: var(--xai-sunset) !important;
-}
-
-/* ── Material Cards & Metric Grids ────────────────────────── */
-
+/* Metric Cards & Grids — Flat Raised Paper */
 .mat-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
   margin: 2rem 0;
+  max-width: 48rem;
 }
 
 .mat-card {
-  background-color: #191919 !important;
+  background-color: var(--raised-paper) !important;
   background-image: none !important;
-  border: 1px solid var(--xai-hairline) !important;
-  border-radius: 8px !important; /* rounded.sm */
-  padding: 1.5rem;
+  border: 1px solid var(--quiet-rule) !important;
+  border-radius: 0.6rem !important;
+  padding: 1.25rem;
   box-shadow: none !important;
-  transition: border-color 0.2s ease;
-}
-
-.mat-card:hover {
-  border-color: rgba(255, 255, 255, 0.3) !important;
-  transform: none;
-}
-
-.mat-card-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.4rem;
 }
 
 .mat-card-title {
-  font-family: var(--md-code-font);
-  font-size: 0.72rem;
-  font-weight: 400;
+  font-family: var(--font-label);
+  font-size: 0.8rem;
+  font-weight: 720;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--xai-body-mid) !important;
+  color: var(--secondary-ink) !important;
 }
 
 .mat-card-value {
-  font-family: var(--md-text-font);
-  font-size: 1.85rem;
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  color: #ffffff !important;
-  margin-top: 0.3rem;
-}
-
-.mat-card-sub {
-  font-family: var(--md-text-font);
-  font-size: 0.78rem;
-  font-weight: 400;
-  color: var(--xai-body-mid) !important;
+  font-family: var(--font-headline);
+  font-size: 1.8rem;
+  font-weight: 760;
+  color: var(--primary-ink) !important;
   margin-top: 0.4rem;
 }
 
-/* ── Interactive Simulation Container ─────────────────────── */
+.mat-card-sub {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--secondary-ink) !important;
+  margin-top: 0.3rem;
+}
 
+/* ── SIMULATION CARD (ABSOLUTELY ZERO WHITE COLOR) ── */
 div.sim-container,
 div.sim-canvas-container,
 .md-typeset div.sim-container,
-.md-typeset .sim-container,
 .sim-container {
-  background: #191919 !important;
-  background-color: #191919 !important;
+  background: var(--raised-paper-subtle) !important;
+  background-color: var(--raised-paper-subtle) !important;
   background-image: none !important;
-  border: 1px solid #212327 !important;
-  border-radius: 8px !important;
-  padding: 1.5rem !important;
+  border: 1px solid var(--quiet-rule) !important;
+  border-radius: 0.8rem !important;
+  padding: 1.4rem !important;
   margin: 2rem 0 !important;
   box-shadow: none !important;
-  color: #ffffff !important;
+  color: var(--primary-ink) !important;
+  max-width: 48rem;
 }
 
 div.sim-header,
-.md-typeset .sim-header,
 .sim-header {
   background: transparent !important;
   background-color: transparent !important;
-  border-bottom: 1px solid #212327 !important;
+  border-bottom: 1px solid var(--quiet-rule) !important;
   padding-bottom: 0.8rem !important;
-  margin-bottom: 1.2rem !important;
+  margin-bottom: 1rem !important;
 }
 
 .sim-title {
-  font-family: var(--md-code-font);
-  font-size: 0.75rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #ffffff !important;
+  font-family: var(--font-label);
+  font-size: 0.8rem;
+  font-weight: 720;
+  letter-spacing: 0.08em;
+  color: var(--primary-ink) !important;
 }
 
 .sim-canvas {
   width: 100%;
   height: 300px;
-  background-color: #0a0a0a !important;
-  border: 1px solid var(--xai-hairline) !important;
-  border-radius: 6px;
+  background-color: var(--reading-paper) !important;
+  background-image: none !important;
+  border: 1px solid var(--quiet-rule) !important;
+  border-radius: 0.3rem;
   display: block;
 }
 
-/* ── Admonitions & Callouts ──────────────────────────────── */
-
-.md-typeset .admonition,
-.md-typeset details {
-  background-color: #191919 !important;
-  border: 1px solid var(--xai-hairline) !important;
-  border-left: 3px solid #ffffff !important;
-  border-radius: 8px !important;
+/* Buttons — Pill buttons with Index Blue / Quiet Rule flat borders, NO white */
+.sim-btn, .md-button {
+  background-color: var(--raised-paper) !important;
+  background-image: none !important;
+  color: var(--primary-ink) !important;
+  border: 1px solid var(--quiet-rule) !important;
+  border-radius: 999px !important;
+  font-family: var(--font-label);
+  font-size: 0.78rem;
+  font-weight: 720;
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
   box-shadow: none !important;
-  color: var(--xai-body) !important;
+  transition: all 0.15s ease;
 }
 
-.md-typeset .admonition-title,
-.md-typeset summary {
-  font-family: var(--md-code-font);
-  font-size: 0.75rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #ffffff !important;
+.sim-btn:hover, .md-button:hover {
+  background-color: var(--index-blue-soft) !important;
+  color: var(--index-blue) !important;
+  border-color: var(--index-blue) !important;
+}
+
+.sim-btn.danger {
+  background-color: var(--caution-amber-soft) !important;
+  color: var(--caution-amber) !important;
+  border-color: var(--caution-amber) !important;
+}
+
+.sim-btn.danger:hover {
+  background-color: var(--failure-red-soft) !important;
+  color: var(--failure-red) !important;
+  border-color: var(--failure-red) !important;
+}
+
+/* Admonitions — Flat Callout Panels */
+.md-typeset .admonition, .md-typeset details {
+  background-color: var(--raised-paper) !important;
+  border: 1px solid var(--quiet-rule) !important;
+  border-left: 4px solid var(--index-blue) !important;
+  border-radius: 0.8rem !important;
+  box-shadow: none !important;
+  color: var(--primary-ink) !important;
+}
+
+.md-typeset .admonition-title, .md-typeset summary {
+  font-family: var(--font-label);
+  font-size: 0.82rem;
+  font-weight: 720;
+  letter-spacing: 0.04em;
+  color: var(--primary-ink) !important;
   background-color: transparent !important;
 }
 
 .md-typeset .admonition.warning {
-  border-left-color: var(--xai-sunset) !important;
+  background-color: var(--caution-amber-soft) !important;
+  border-left-color: var(--caution-amber) !important;
 }
 
-/* ── Tables ───────────────────────────────────────────────── */
-
+/* Tables — Flat Quiet Rules */
 .md-typeset table:not([class]) {
-  background-color: #191919 !important;
-  border: 1px solid var(--xai-hairline) !important;
-  border-radius: 8px !important;
+  background-color: var(--raised-paper) !important;
+  border: 1px solid var(--quiet-rule) !important;
+  border-radius: 0.6rem !important;
   overflow: hidden;
-  font-size: 0.82rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
   width: 100%;
 }
 
 .md-typeset table:not([class]) th {
-  font-family: var(--md-code-font);
-  font-size: 0.72rem;
-  font-weight: 400;
+  font-family: var(--font-label);
+  font-size: 0.78rem;
+  font-weight: 720;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--xai-body-mid) !important;
-  background-color: #141414 !important;
-  padding: 0.8rem 1rem;
-  border-bottom: 1px solid var(--xai-hairline) !important;
+  color: var(--secondary-ink) !important;
+  background-color: var(--raised-paper-subtle) !important;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--quiet-rule) !important;
 }
 
 .md-typeset table:not([class]) td {
-  padding: 0.8rem 1rem;
-  border-bottom: 1px solid var(--xai-hairline) !important;
-  color: var(--xai-body) !important;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--quiet-rule) !important;
+  color: var(--primary-ink) !important;
 }
 
-/* ── Code Blocks ──────────────────────────────────────────── */
-
+/* Code Blocks & Inline Code */
 .md-typeset pre > code {
-  background-color: #141414 !important;
-  border: 1px solid var(--xai-hairline) !important;
-  border-radius: 8px !important;
-  font-family: var(--md-code-font);
-  font-size: 0.8rem;
-  color: #ffffff !important;
+  background-color: var(--raised-paper) !important;
+  border: 1px solid var(--quiet-rule) !important;
+  border-radius: 0.3rem !important;
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  color: var(--primary-ink) !important;
 }
 
 .md-typeset code {
-  background-color: #141414 !important;
-  border: 1px solid var(--xai-hairline) !important;
-  border-radius: 4px;
-  font-family: var(--md-code-font);
-  font-size: 0.82em;
-  padding: 0.1em 0.4em;
-  color: #ffffff !important;
+  background-color: var(--raised-paper-subtle) !important;
+  border: 1px solid var(--quiet-rule) !important;
+  border-radius: 0.3rem;
+  font-family: var(--font-code);
+  font-size: 0.85em;
+  padding: 0.15em 0.4em;
+  color: var(--primary-ink) !important;
 }
 
 /* Footer */
 .md-footer {
-  background-color: #0a0a0a !important;
-  border-top: 1px solid var(--xai-hairline) !important;
-  color: var(--xai-body-mid);
+  background-color: var(--reading-paper) !important;
+  border-top: 1px solid var(--quiet-rule) !important;
+  color: var(--secondary-ink);
 }

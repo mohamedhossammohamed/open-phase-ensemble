@@ -1109,66 +1109,90 @@
 <hr />
 <h2 id="1-takens-embedding-theorem-phase-space-reconstruction">1. Takens' Embedding Theorem &amp; Phase Space Reconstruction<a class="headerlink" href="#1-takens-embedding-theorem-phase-space-reconstruction" title="Permanent link">&para;</a></h2>
 <p>Floris Takens (1981) proved that the unobserved multi-dimensional attractor manifold <span class="arithmatex">\(\mathcal{M}\)</span> of a non-linear dynamical system can be reconstructed from a single observed scalar time series <span class="arithmatex">\(v_t\)</span> via delay coordinate vectors:</p>
-<div class="arithmatex">\[X_t = [v_t, v_{t-\tau}, v_{t-2\tau}, \dots, v_{t-(d-1)\tau}]^T \in \mathbb{R}^d\]</div>
+<div class="arithmatex">\[
+X_t = [v_t, v_{t-\tau}, v_{t-2\tau}, \dots, v_{t-(d-1)\tau}]^T \in \mathbb{R}^d
+\]</div>
 <p>where <span class="arithmatex">\(\tau\)</span> is the time delay lag and <span class="arithmatex">\(d\)</span> is the embedding dimension. If <span class="arithmatex">\(d &gt; 2 m + 1\)</span> (where <span class="arithmatex">\(m\)</span> is the manifold dimension), the delay embedding <span class="arithmatex">\(\Phi: \mathcal{M} \to \mathbb{R}^d\)</span> forms a smooth topological immersion preserving manifold geometry.</p>
 <hr />
 <h2 id="2-parameter-selection-ami-and-fnn">2. Parameter Selection: AMI and FNN<a class="headerlink" href="#2-parameter-selection-ami-and-fnn" title="Permanent link">&para;</a></h2>
 <h3 id="average-mutual-information-ami">Average Mutual Information (AMI)<a class="headerlink" href="#average-mutual-information-ami" title="Permanent link">&para;</a></h3>
 <p>Fraser &amp; Swinney (1986) established that the optimal time delay <span class="arithmatex">\(\tau\)</span> corresponds to the <strong>first local minimum</strong> of the Average Mutual Information <span class="arithmatex">\(I(\tau)\)</span>:</p>
-<div class="arithmatex">\[I(\tau) = \sum_{x, y} P(v_t, v_{t+\tau}) \log_2 \left( \frac{P(v_t, v_{t+\tau})}{P(v_t) P(v_{t+\tau})} \right)\]</div>
+<div class="arithmatex">\[
+I(\tau) = \sum_{x, y} P(v_t, v_{t+\tau}) \log_2 \left( \frac{P(v_t, v_{t+\tau})}{P(v_t) P(v_{t+\tau})} \right)
+\]</div>
 <p>This selects a lag <span class="arithmatex">\(\tau\)</span> where coordinates <span class="arithmatex">\(v_t\)</span> and <span class="arithmatex">\(v_{t+\tau}\)</span> are maximally independent in an information-theoretic sense.</p>
 <h3 id="false-nearest-neighbors-fnn">False Nearest Neighbors (FNN)<a class="headerlink" href="#false-nearest-neighbors-fnn" title="Permanent link">&para;</a></h3>
 <p>Kennel et al. (1992) introduced False Nearest Neighbors to determine the minimal embedding dimension <span class="arithmatex">\(d\)</span>. Points near each other in dimension <span class="arithmatex">\(d\)</span> may be false projections due to geometric overlap. The fraction of FNNs is tracked as <span class="arithmatex">\(d\)</span> increases:</p>
-<div class="arithmatex">\[\frac{|v_{t+(d)\tau} - v_{nn+(d)\tau}|}{\|X_t^{(d)} - X_{nn}^{(d)}\|} &gt; R_{tol}\]</div>
+<div class="arithmatex">\[
+\frac{|v_{t+(d)\tau} - v_{nn+(d)\tau}|}{\|X_t^{(d)} - X_{nn}^{(d)}\|} &gt; R_{\text{tol}}
+\]</div>
 <p>The optimal <span class="arithmatex">\(d\)</span> is chosen where the FNN fraction drops below <span class="arithmatex">\(1\%\)</span>.</p>
 <hr />
 <h2 id="3-covariance-geometry-ledoit-wolf-shrinkage">3. Covariance Geometry: Ledoit-Wolf Shrinkage<a class="headerlink" href="#3-covariance-geometry-ledoit-wolf-shrinkage" title="Permanent link">&para;</a></h2>
-<p>When sample size <span class="arithmatex">\(N\)</span> is small relative to dimension <span class="arithmatex">\(d\)</span>, sample covariance <span class="arithmatex">\(\Sigma_{sample}\)</span> is unstable. Ledoit &amp; Wolf (2004) analytical shrinkage computes a well-conditioned estimator <span class="arithmatex">\(\Sigma_{LW}\)</span>:</p>
-<div class="arithmatex">\[\Sigma_{LW} = (1 - \delta) \Sigma_{sample} + \delta \mu I, \quad \mu = \frac{\text{trace}(\Sigma_{sample})}{d}\]</div>
-<p>where optimal shrinkage intensity <span class="arithmatex">\(\delta \in [0, 1]\)</span> minimizes expected Frobenius loss, ensuring <span class="arithmatex">\(\Sigma_{LW}\)</span> is positive-definite and invertible. Mahalanobis distance is computed as:</p>
-<div class="arithmatex">\[D_{mahal}(Z_t) = \sqrt{(Z_t - \mu_Z)^T \Sigma_{LW}^{-1} (Z_t - \mu_Z)}\]</div>
+<p>When sample size <span class="arithmatex">\(N\)</span> is small relative to dimension <span class="arithmatex">\(d\)</span>, sample covariance <span class="arithmatex">\(\Sigma_{\text{sample}}\)</span> is unstable. Ledoit &amp; Wolf (2004) analytical shrinkage computes a well-conditioned estimator <span class="arithmatex">\(\Sigma_{\text{LW}}\)</span>:</p>
+<div class="arithmatex">\[
+\Sigma_{\text{LW}} = (1 - \delta) \Sigma_{\text{sample}} + \delta \mu I, \quad \mu = \frac{\text{trace}(\Sigma_{\text{sample}})}{d}
+\]</div>
+<p>where optimal shrinkage intensity <span class="arithmatex">\(\delta \in [0, 1]\)</span> minimizes expected Frobenius loss, ensuring <span class="arithmatex">\(\Sigma_{\text{LW}}\)</span> is positive-definite and invertible. Mahalanobis distance is computed as:</p>
+<div class="arithmatex">\[
+D_{\text{mahal}}(Z_t) = \sqrt{(Z_t - \mu_Z)^T \Sigma_{\text{LW}}^{-1} (Z_t - \mu_Z)}
+\]</div>
 <hr />
 <h2 id="4-surrogate-null-models-ar-and-iaaft">4. Surrogate Null Models: AR and IAAFT<a class="headerlink" href="#4-surrogate-null-models-ar-and-iaaft" title="Permanent link">&para;</a></h2>
-<p>To test whether dynamic predictability exceeds linear autocorrelation noise, surrogate null series are generated:
-- <strong>Autoregressive (AR) Surrogates</strong>: Linear stochastic process preserving spectral covariance.
-- <strong>Iterative Amplitude Adjusted Fourier Transform (IAAFT)</strong>: Schreiber &amp; Schmitz (1996) phase-randomization algorithm that exactly preserves both the empirical amplitude distribution and Fourier power spectrum of the original series.</p>
+<p>To test whether dynamic predictability exceeds linear autocorrelation noise, surrogate null series are generated:</p>
+<ul>
+<li><strong>Autoregressive (AR) Surrogates</strong>: Linear stochastic process preserving spectral covariance.</li>
+<li><strong>Iterative Amplitude Adjusted Fourier Transform (IAAFT)</strong>: Schreiber &amp; Schmitz (1996) phase-randomization algorithm that exactly preserves both the empirical amplitude distribution and Fourier power spectrum of the original series.</li>
+</ul>
 <hr />
 <h2 id="5-empirical-dynamic-modeling-simplex-projection">5. Empirical Dynamic Modeling &amp; Simplex Projection<a class="headerlink" href="#5-empirical-dynamic-modeling-simplex-projection" title="Permanent link">&para;</a></h2>
 <p>Sugihara &amp; May (1990) Simplex Projection performs non-parametric forecasting by tracking forward trajectories of <span class="arithmatex">\(E+1\)</span> nearest phase-space neighbors. Weights <span class="arithmatex">\(w_i\)</span> are exponentially decaying functions of distance:</p>
-<div class="arithmatex">\[w_i = \exp \left( -\frac{\|Z_t - Z_{nn_i}\|}{\|Z_t - Z_{nn_1}\| + \epsilon} \right), \quad \hat{v}_{t+h} = \sum_{i=1}^{E+1} \bar{w}_i v_{nn_i + h}\]</div>
+<div class="arithmatex">\[
+w_i = \exp \left( -\frac{\|Z_t - Z_{nn_i}\|}{\|Z_t - Z_{nn_1}\| + \epsilon} \right), \quad \hat{v}_{t+h} = \sum_{i=1}^{E+1} \bar{w}_i v_{nn_i + h}
+\]</div>
 <p>Anomaly score <span class="arithmatex">\(s_t\)</span> measures normalized prediction error <span class="arithmatex">\(|v_t - \hat{v}_t|\)</span>.</p>
 <hr />
 <h2 id="6-subsequence-motifs-stomp-matrix-profile">6. Subsequence Motifs &amp; STOMP Matrix Profile<a class="headerlink" href="#6-subsequence-motifs-stomp-matrix-profile" title="Permanent link">&para;</a></h2>
-<p>Yeh et al. (2016) Matrix Profile computes the z-normalized Euclidean distance <span class="arithmatex">\(z_i\)</span> from every subsequence window <span class="arithmatex">\(W\)</span> of length <span class="arithmatex">\(w_{mp}\)</span> to its nearest non-overlapping historical neighbor. Peaks in the matrix profile represent structural discords (subsequence anomalies).</p>
+<p>Yeh et al. (2016) Matrix Profile computes the z-normalized Euclidean distance <span class="arithmatex">\(z_i\)</span> from every subsequence window <span class="arithmatex">\(W\)</span> of length <span class="arithmatex">\(w_{\text{mp}}\)</span> to its nearest non-overlapping historical neighbor. Peaks in the matrix profile represent structural discords (subsequence anomalies).</p>
 <hr />
 <h2 id="7-subspace-isolation-isolation-forest">7. Subspace Isolation: Isolation Forest<a class="headerlink" href="#7-subspace-isolation-isolation-forest" title="Permanent link">&para;</a></h2>
 <p>Liu et al. (2008) Isolation Forest isolates anomalies by randomly partitioning features. Because anomalous points require fewer axis-aligned splits to isolate, path length <span class="arithmatex">\(h(x)\)</span> in ensemble trees <span class="arithmatex">\(T\)</span> measures anomaly severity:</p>
-<div class="arithmatex">\[s(x, n) = 2^{-\frac{\mathbb{E}(h(x))}{c(n)}}\]</div>
+<div class="arithmatex">\[
+s(x, n) = 2^{-\frac{\mathbb{E}(h(x))}{c(n)}}
+\]</div>
 <hr />
 <h2 id="8-transformer-autoencoder-mse-reconstruction">8. Transformer Autoencoder: MSE Reconstruction<a class="headerlink" href="#8-transformer-autoencoder-mse-reconstruction" title="Permanent link">&para;</a></h2>
-<p>The sixth detector uses a lightweight PyTorch Transformer Encoder (L=2 layers, H=4 heads, <span class="arithmatex">\(D_{\text{model}}=32\)</span>) as a sequence autoencoder. It reconstructs the input embedding sequence and measures anomaly severity via Mean Squared Error:</p>
-<div class="arithmatex">\[s_t = 1 - \exp\left(-\frac{1}{L \cdot D} \sum_{l,d} (x_{l,d} - \hat{x}_{l,d})^2\right)\]</div>
+<p>The sixth detector uses a lightweight PyTorch Transformer Encoder (<span class="arithmatex">\(L=2\)</span> layers, <span class="arithmatex">\(H=4\)</span> heads, <span class="arithmatex">\(D_{\text{model}}=32\)</span>) as a sequence autoencoder. It reconstructs the input embedding sequence and measures anomaly severity via Mean Squared Error:</p>
+<div class="arithmatex">\[
+s_t = 1 - \exp\left(-\frac{1}{L \cdot D} \sum_{l,d} (x_{l,d} - \hat{x}_{l,d})^2\right)
+\]</div>
 <p>Higher reconstruction error indicates greater deviation from learned normal temporal patterns. This is a standard autoencoder approach, distinct from the association discrepancy method of Xu et al. (2022).</p>
 <hr />
 <h2 id="9-meta-judge-online-fusion-hedge-algorithm">9. Meta-Judge Online Fusion: Hedge Algorithm<a class="headerlink" href="#9-meta-judge-online-fusion-hedge-algorithm" title="Permanent link">&para;</a></h2>
 <p>Freund &amp; Schapire (1997) Hedge multiplicative weight update algorithm updates expert weights <span class="arithmatex">\(w_{t, k}\)</span> based on trailing correlation loss <span class="arithmatex">\(\ell_{t, k} = 1 - \text{PearsonCorr}(S_k, E_k)\)</span>:</p>
-<div class="arithmatex">\[w_{t+1, k} = \frac{w_{t, k} e^{-\eta \ell_{t, k}}}{\sum_{j=1}^K w_{t, j} e^{-\eta \ell_{t, j}}}\]</div>
+<div class="arithmatex">\[
+w_{t+1, k} = \frac{w_{t, k} e^{-\eta \ell_{t, k}}}{\sum_{j=1}^K w_{t, j} e^{-\eta \ell_{t, j}}}
+\]</div>
 <p>Fixed-share mixing (Herbster &amp; Warmuth, 1998) guarantees weight floor <span class="arithmatex">\(w'_{k} \ge \frac{\sigma}{K}\)</span> to adapt to sudden expert shifts (<span class="arithmatex">\(\sigma = 0.01\)</span>).</p>
 <hr />
 <h2 id="10-dimension-reduction-search-jl-hnsw">10. Dimension Reduction &amp; Search: JL &amp; HNSW<a class="headerlink" href="#10-dimension-reduction-search-jl-hnsw" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Johnson-Lindenstrauss Lemma</strong>: Random Gaussian projection <span class="arithmatex">\(R \in \mathbb{R}^{d \times d_{target}}\)</span> preserves pairwise Euclidean distances within <span class="arithmatex">\((1 \pm \epsilon)\)</span> factor.</li>
+<li><strong>Johnson-Lindenstrauss Lemma</strong>: Random Gaussian projection <span class="arithmatex">\(R \in \mathbb{R}^{d \times d_{\text{target}}}\)</span> preserves pairwise Euclidean distances within <span class="arithmatex">\((1 \pm \epsilon)\)</span> factor.</li>
 <li><strong>HNSW (Malkov &amp; Yashunin, 2018)</strong>: Hierarchical Navigable Small World graphs provide <span class="arithmatex">\(O(\log N)\)</span> approximate nearest neighbor queries in phase space.</li>
 </ul>
 <hr />
 <h2 id="11-gating-metrics-cusum-and-vus">11. Gating &amp; Metrics: CUSUM and VUS<a class="headerlink" href="#11-gating-metrics-cusum-and-vus" title="Permanent link">&para;</a></h2>
 <h3 id="cusum-change-detection">CUSUM Change Detection<a class="headerlink" href="#cusum-change-detection" title="Permanent link">&para;</a></h3>
 <p>Page (1954) CUSUM chart tracks cumulative positive error shifts:</p>
-<div class="arithmatex">\[C_t^+ = \max(0, C_{t-1}^+ + E_t - (\mu_E + k_c \sigma_E))\]</div>
-<p>When <span class="arithmatex">\(C_t^+ &gt; H_c\)</span>, model adaptation is frozen. Persistent alarms (<span class="arithmatex">\(\ge T_{drift}\)</span>) trigger a baseline flush.</p>
+<div class="arithmatex">\[
+C_t^+ = \max(0, C_{t-1}^+ + E_t - (\mu_E + k_c \sigma_E))
+\]</div>
+<p>When <span class="arithmatex">\(C_t^+ &gt; H_c\)</span>, model adaptation is frozen. Persistent alarms (<span class="arithmatex">\(\ge T_{\text{drift}}\)</span>) trigger a baseline flush.</p>
 <h3 id="volume-under-surface-vus-roc-vus-pr">Volume Under Surface (VUS-ROC &amp; VUS-PR)<a class="headerlink" href="#volume-under-surface-vus-roc-vus-pr" title="Permanent link">&para;</a></h3>
-<p>Paparrizos et al. (2022) VUS integrates ROC and Precision-Recall AUC curves across continuous temporal buffer thresholds <span class="arithmatex">\(l \in [0, L_{max}]\)</span>, eliminating point-adjustment bias:</p>
-<div class="arithmatex">\[\text{VUS-ROC} = \frac{1}{L_{max} + 1} \sum_{l=0}^{L_{max}} \text{AUC-ROC}(\text{labels}_l, \text{scores})\]</div>
+<p>Paparrizos et al. (2022) VUS integrates ROC and Precision-Recall AUC curves across continuous temporal buffer thresholds <span class="arithmatex">\(l \in [0, L_{\max}]\)</span>, eliminating point-adjustment bias:</p>
+<div class="arithmatex">\[
+\text{VUS-ROC} = \frac{1}{L_{\max} + 1} \sum_{l=0}^{L_{\max}} \text{AUC-ROC}(\text{labels}_l, \text{scores})
+\]</div>
 
 
 

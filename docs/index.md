@@ -18,7 +18,7 @@ An open-source, non-parametric, multi-tool ensemble for streaming time-series an
       <div class="mat-card-title">PhysioNet MIT-BIH</div>
     </div>
     <div class="mat-card-value">0.8592</div>
-    <div class="mat-card-sub">Predictive Edge Δ = +0.37 over IAAFT Null</div>
+    <div class="mat-card-sub">Predictive Edge $\Delta = +0.37$ over IAAFT Null</div>
   </div>
 
   <div class="mat-card">
@@ -27,7 +27,7 @@ An open-source, non-parametric, multi-tool ensemble for streaming time-series an
       <div class="mat-card-title">CWRU Bearing</div>
     </div>
     <div class="mat-card-value">0.9711</div>
-    <div class="mat-card-sub">Predictive Edge Δ = +0.37 over IAAFT Null</div>
+    <div class="mat-card-sub">Predictive Edge $\Delta = +0.37$ over IAAFT Null</div>
   </div>
 
   <div class="mat-card">
@@ -60,18 +60,18 @@ Time-series anomaly detection suffers from methodological fragmentation and eval
 
 See how scalar time-series data streams through the five core compartments in real time:
 
-<div class="sim-container sim-canvas-container" style="background-color: #191919 !important; background-image: none !important; border: 1px solid #212327 !important; border-radius: 8px !important; padding: 1.5rem !important; margin: 2rem 0 !important; color: #ffffff !important;">
-  <div class="sim-header" style="background: transparent !important; border-bottom: 1px solid #212327 !important; padding-bottom: 0.8rem !important; margin-bottom: 1.2rem !important; display: flex; justify-content: space-between; align-items: center;">
-    <div class="sim-title" style="color: #ffffff !important; font-family: 'Geist Mono', 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em;">
+<div class="sim-container sim-canvas-container">
+  <div class="sim-header" style="display: flex; justify-content: space-between; align-items: center;">
+    <div class="sim-title">
       <span>⚙️</span> INTERACTIVE DATA FLOW // SYSTEM COMPARTMENTS SIMULATION
     </div>
     <div class="sim-controls" style="display: flex; gap: 0.4rem;">
-      <button class="sim-btn sim-btn-play" style="background-color: #0a0a0a !important; color: #ffffff !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 9999px !important; font-family: Inter, sans-serif; font-size: 0.8rem; padding: 0.4rem 1rem; cursor: pointer;">Pause</button>
-      <button class="sim-btn sim-btn-anomaly danger" style="background-color: #0a0a0a !important; color: #ff7a17 !important; border: 1px solid rgba(255,122,23,0.5) !important; border-radius: 9999px !important; font-family: Inter, sans-serif; font-size: 0.8rem; padding: 0.4rem 1rem; cursor: pointer;">Inject Anomaly Spike</button>
-      <button class="sim-btn sim-btn-reset" style="background-color: #0a0a0a !important; color: #ffffff !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 9999px !important; font-family: Inter, sans-serif; font-size: 0.8rem; padding: 0.4rem 1rem; cursor: pointer;">Reset</button>
+      <button class="sim-btn sim-btn-play">Pause</button>
+      <button class="sim-btn sim-btn-anomaly danger">Inject Anomaly Spike</button>
+      <button class="sim-btn sim-btn-reset">Reset</button>
     </div>
   </div>
-  <canvas class="sim-canvas" style="width: 100%; height: 300px; background-color: #0a0a0a !important; border: 1px solid #212327 !important; border-radius: 6px; display: block;"></canvas>
+  <canvas class="sim-canvas"></canvas>
 </div>
 
 ---
