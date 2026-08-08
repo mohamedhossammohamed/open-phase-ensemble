@@ -23,7 +23,7 @@
 
 3. **Install Documentation Tools**:
    ```bash
-   pip install mkdocs mkdocs-material pymdown-extensions
+   pip install mkdocs pymdown-extensions
    ```
 
 ---

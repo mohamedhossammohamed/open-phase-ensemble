@@ -454,7 +454,7 @@ div.sim-header,
   color: var(--primary-ink) !important;
 }
 
-/* Hide generator links ("Made with Material for MkDocs") */
+/* Footer Customization */
 .md-copyright a,
 .md-footer-meta__inner .md-copyright a {
   display: none !important;

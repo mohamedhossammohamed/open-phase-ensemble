@@ -73,6 +73,7 @@ nav:
   - Developer Guide: developer.md
 
 extra:
+  generator: false
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/mohamedhossammohamed/open-phase-ensemble
