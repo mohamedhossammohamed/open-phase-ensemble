@@ -614,10 +614,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#system-blueprint-module-contracts" class="md-nav__link">
+  <a href="#interactive-data-flow-system-simulation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏛️ System Blueprint &amp; Module Contracts
+        ⚡ Interactive Data Flow &amp; System Simulation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-compartments-module-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏛️ System Compartments &amp; Module Contracts
       
     </span>
   </a>
@@ -789,10 +800,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#system-blueprint-module-contracts" class="md-nav__link">
+  <a href="#interactive-data-flow-system-simulation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏛️ System Blueprint &amp; Module Contracts
+        ⚡ Interactive Data Flow &amp; System Simulation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-compartments-module-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏛️ System Compartments &amp; Module Contracts
       
     </span>
   </a>
@@ -847,8 +869,71 @@
 <p>This project is experimental. All claims are preliminary and self-reported. See the <a href="../disclaimer/">full disclaimer</a>.</p>
 </div>
 <hr />
-<h2 id="system-blueprint-module-contracts">🏛️ System Blueprint &amp; Module Contracts<a class="headerlink" href="#system-blueprint-module-contracts" title="Permanent link">&para;</a></h2>
-<p><code>open-phase-ensemble</code> operates as a strict Directed Acyclic Graph (DAG) streaming loop:</p>
+<h2 id="interactive-data-flow-system-simulation">⚡ Interactive Data Flow &amp; System Simulation<a class="headerlink" href="#interactive-data-flow-system-simulation" title="Permanent link">&para;</a></h2>
+<p>The interactive canvas below simulates the live streaming data flow through the five core pipeline compartments. Click <strong>"Inject Anomaly Spike"</strong> to observe how the 6-detector battery and online Hedge Meta-Judge dynamically adapt weight allocations in real time.</p>
+<div class="sim-container sim-canvas-container">
+  <div class="sim-header">
+    <div class="sim-title">
+      <span>⚙️</span> Interactive System Compartment & Data Flow Simulation
+    </div>
+    <div class="sim-controls">
+      <button class="sim-btn sim-btn-play">Pause</button>
+      <button class="sim-btn sim-btn-anomaly danger">Inject Anomaly Spike</button>
+      <button class="sim-btn sim-btn-reset">Reset</button>
+    </div>
+  </div>
+  <canvas class="sim-canvas"></canvas>
+</div>
+
+<hr />
+<h2 id="system-compartments-module-contracts">🏛️ System Compartments &amp; Module Contracts<a class="headerlink" href="#system-compartments-module-contracts" title="Permanent link">&para;</a></h2>
+<div class="mat-card-grid">
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">1️⃣</span>
+      <div class="mat-card-title">Module 1: Ingestion</div>
+    </div>
+    <div class="mat-card-value">StreamBuffer</div>
+    <div class="mat-card-sub">Rolling Median & MAD Z-Score Standardization</div>
+  </div>
+
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">2️⃣</span>
+      <div class="mat-card-title">Module 2: Representation</div>
+    </div>
+    <div class="mat-card-value">Takens & JL</div>
+    <div class="mat-card-sub">Phase-Space Reconstruction & HNSW ANN Index</div>
+  </div>
+
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">3️⃣</span>
+      <div class="mat-card-title">Module 3: Battery</div>
+    </div>
+    <div class="mat-card-value">6 Detectors</div>
+    <div class="mat-card-sub">Orthogonal Dynamic, Covariance & Neural Experts</div>
+  </div>
+
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">4️⃣</span>
+      <div class="mat-card-title">Module 4: Meta-Judge</div>
+    </div>
+    <div class="mat-card-value">Hedge Fusion</div>
+    <div class="mat-card-sub">Multiplicative Weights + Fixed-Share Floor</div>
+  </div>
+
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">5️⃣</span>
+      <div class="mat-card-title">Module 5: Gating</div>
+    </div>
+    <div class="mat-card-value">CUSUM Chart</div>
+    <div class="mat-card-sub">Freeze on Alarm / Flush on Concept Drift</div>
+  </div>
+</div>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[Raw Scalar x_t] 
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>      │
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>      ▼
@@ -1053,6 +1138,8 @@
         <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../javascripts/simulation.js"></script>
       
     
   </body>

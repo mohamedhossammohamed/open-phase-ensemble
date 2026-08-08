@@ -5,9 +5,74 @@
 
 ---
 
-## 🏛️ System Blueprint & Module Contracts
+## ⚡ Interactive Data Flow & System Simulation
 
-`open-phase-ensemble` operates as a strict Directed Acyclic Graph (DAG) streaming loop:
+The interactive canvas below simulates the live streaming data flow through the five core pipeline compartments. Click **"Inject Anomaly Spike"** to observe how the 6-detector battery and online Hedge Meta-Judge dynamically adapt weight allocations in real time.
+
+<div class="sim-container sim-canvas-container">
+  <div class="sim-header">
+    <div class="sim-title">
+      <span>⚙️</span> Interactive System Compartment & Data Flow Simulation
+    </div>
+    <div class="sim-controls">
+      <button class="sim-btn sim-btn-play">Pause</button>
+      <button class="sim-btn sim-btn-anomaly danger">Inject Anomaly Spike</button>
+      <button class="sim-btn sim-btn-reset">Reset</button>
+    </div>
+  </div>
+  <canvas class="sim-canvas"></canvas>
+</div>
+
+---
+
+## 🏛️ System Compartments & Module Contracts
+
+<div class="mat-card-grid">
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">1️⃣</span>
+      <div class="mat-card-title">Module 1: Ingestion</div>
+    </div>
+    <div class="mat-card-value">StreamBuffer</div>
+    <div class="mat-card-sub">Rolling Median & MAD Z-Score Standardization</div>
+  </div>
+
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">2️⃣</span>
+      <div class="mat-card-title">Module 2: Representation</div>
+    </div>
+    <div class="mat-card-value">Takens & JL</div>
+    <div class="mat-card-sub">Phase-Space Reconstruction & HNSW ANN Index</div>
+  </div>
+
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">3️⃣</span>
+      <div class="mat-card-title">Module 3: Battery</div>
+    </div>
+    <div class="mat-card-value">6 Detectors</div>
+    <div class="mat-card-sub">Orthogonal Dynamic, Covariance & Neural Experts</div>
+  </div>
+
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">4️⃣</span>
+      <div class="mat-card-title">Module 4: Meta-Judge</div>
+    </div>
+    <div class="mat-card-value">Hedge Fusion</div>
+    <div class="mat-card-sub">Multiplicative Weights + Fixed-Share Floor</div>
+  </div>
+
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">5️⃣</span>
+      <div class="mat-card-title">Module 5: Gating</div>
+    </div>
+    <div class="mat-card-value">CUSUM Chart</div>
+    <div class="mat-card-sub">Freeze on Alarm / Flush on Concept Drift</div>
+  </div>
+</div>
 
 ```
 [Raw Scalar x_t] 

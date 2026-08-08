@@ -641,6 +641,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#summary-benchmark-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Summary Benchmark Metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#benchmark-evaluation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -811,6 +822,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#summary-benchmark-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Summary Benchmark Metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#benchmark-evaluation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -890,6 +912,37 @@
 <p class="admonition-title">Preliminary — Pending Independent Review</p>
 <p>All performance numbers on this page are preliminary, self-reported, and have not been independently validated or peer-reviewed. They are provided to facilitate open scientific scrutiny and independent reproduction.</p>
 </div>
+<hr />
+<h2 id="summary-benchmark-metrics">📊 Summary Benchmark Metrics<a class="headerlink" href="#summary-benchmark-metrics" title="Permanent link">&para;</a></h2>
+<div class="mat-card-grid">
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">🫀</span>
+      <div class="mat-card-title">PhysioNet MIT-BIH (rec 100)</div>
+    </div>
+    <div class="mat-card-value">0.8592</div>
+    <div class="mat-card-sub">VUS-ROC (Label-Only Buffer) | Edge Δ = +0.37</div>
+  </div>
+
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">⚙️</span>
+      <div class="mat-card-title">CWRU Bearing Prognostics</div>
+    </div>
+    <div class="mat-card-value">0.9711</div>
+    <div class="mat-card-sub">VUS-ROC (Label-Only Buffer) | Edge Δ = +0.37</div>
+  </div>
+
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">🎯</span>
+      <div class="mat-card-title">Zero-Lookahead Invariant</div>
+    </div>
+    <div class="mat-card-value">0.0000</div>
+    <div class="mat-card-sub">Exact Stream vs Batch Euclidean Distance</div>
+  </div>
+</div>
+
 <hr />
 <h2 id="benchmark-evaluation">Benchmark Evaluation<a class="headerlink" href="#benchmark-evaluation" title="Permanent link">&para;</a></h2>
 <p>The system was evaluated on standard time-series anomaly benchmarks using Volume Under Surface metrics (VUS-ROC and VUS-PR) as defined by Paparrizos et al. (2022). Temporal range buffering is applied <strong>strictly to ground-truth labels only</strong> — predicted anomaly scores are never buffered. This avoids the artificial inflation caused by point-adjustment protocols (PA-F1).</p>
@@ -1051,6 +1104,8 @@
         <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../javascripts/simulation.js"></script>
       
     
   </body>

@@ -5,6 +5,39 @@
 
 ---
 
+## 📊 Summary Benchmark Metrics
+
+<div class="mat-card-grid">
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">🫀</span>
+      <div class="mat-card-title">PhysioNet MIT-BIH (rec 100)</div>
+    </div>
+    <div class="mat-card-value">0.8592</div>
+    <div class="mat-card-sub">VUS-ROC (Label-Only Buffer) | Edge Δ = +0.37</div>
+  </div>
+
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">⚙️</span>
+      <div class="mat-card-title">CWRU Bearing Prognostics</div>
+    </div>
+    <div class="mat-card-value">0.9711</div>
+    <div class="mat-card-sub">VUS-ROC (Label-Only Buffer) | Edge Δ = +0.37</div>
+  </div>
+
+  <div class="mat-card">
+    <div class="mat-card-header">
+      <span class="mat-card-icon">🎯</span>
+      <div class="mat-card-title">Zero-Lookahead Invariant</div>
+    </div>
+    <div class="mat-card-value">0.0000</div>
+    <div class="mat-card-sub">Exact Stream vs Batch Euclidean Distance</div>
+  </div>
+</div>
+
+---
+
 ## Benchmark Evaluation
 
 The system was evaluated on standard time-series anomaly benchmarks using Volume Under Surface metrics (VUS-ROC and VUS-PR) as defined by Paparrizos et al. (2022). Temporal range buffering is applied **strictly to ground-truth labels only** — predicted anomaly scores are never buffered. This avoids the artificial inflation caused by point-adjustment protocols (PA-F1).
