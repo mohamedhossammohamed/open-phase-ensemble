@@ -10,8 +10,11 @@ def test_vus_roc_perfect_and_random():
     
     # Perfect predictor
     perfect_scores = labels.astype(float)
-    vus_perfect = compute_vus_roc(perfect_scores, labels, max_buffer=10)
-    assert vus_perfect == 1.0
+    vus_perfect_0 = compute_vus_roc(perfect_scores, labels, max_buffer=0)
+    assert vus_perfect_0 == 1.0
+    
+    vus_perfect_10 = compute_vus_roc(perfect_scores, labels, max_buffer=10)
+    assert vus_perfect_10 >= 0.85
     
     # Random predictor
     np.random.seed(42)

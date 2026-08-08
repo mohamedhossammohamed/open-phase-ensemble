@@ -30,8 +30,8 @@
                               ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ Module 3: 6-Detector Battery                                │
-│ [Simplex, Mahalanobis-LW, MatrixProfile, IForest, SARIMA,   │
-│  Anomaly Transformer]                                       │
+│ [Simplex, Mahalanobis-LW, MatrixProfile, IForest,           │
+│  ARFilterDetector, MSETransformerAutoencoder]               │
 │ Output: Scores S_t in [0,1]^K, Forecasts v_hat in R^K       │
 └─────────────────────────────┬───────────────────────────────┘
                               │
@@ -48,7 +48,7 @@
 │ Module 6: CUSUM Change Detection Gating                     │
 │ - C_t+ > H_c: Freeze adaptation during acute alarms         │
 │ - Alarm >= T_drift (200): Flush baseline & reset CUSUM      │
-└─────────────────────────────────────────────────────────────┘
+└─────────────────────────────┴───────────────────────────────┘
 ```
 
 ---
@@ -68,20 +68,6 @@
 | `CUSUM_HC_SIGMA_MULT`| `float` | `5.0` | CUSUM alarm threshold multiplier $H_c = 5.0 \sigma_E$ |
 | `T_DRIFT` | `int` | `200` | Consecutive alarm steps before concept drift reset |
 | `EPSILON` | `float` | `1e-6` | Numerical stability parameter preventing zero division |
-
----
-
-## 🔄 Two-Speed Adaptation Architecture
-
-1. **Fast-Speed Online Adaptation**:
-   - Executes at every step $t$.
-   - Computes Pearson correlation loss $\ell_{t, k} = 1 - \text{PearsonCorr}(S_k, E_k)$ across a trailing window $W_{corr} = 100$.
-   - Multiplicatively updates Hedge weights $w_{t+1, k} \propto w_{t, k} e^{-\eta \ell_{t, k}}$ with fixed-share floor $w'_k \ge \frac{\sigma}{K}$.
-
-2. **Slow-Speed Bayesian Hyperparameter Tuning**:
-   - Executes periodically during stable periods.
-   - Optimizes delay embedding parameters $(\tau, d)$ using Expected Improvement (EI).
-   - Enforces **Hysteresis Margin** ($\Delta > 0.02$): proposed parameters $(\tau_{new}, d_{new})$ are only adopted if predicted skill gain exceeds the hysteresis margin.
 
 ---
 

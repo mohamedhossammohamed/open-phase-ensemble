@@ -31,3 +31,7 @@ class StreamBuffer:
 
     def get_buffer(self) -> np.ndarray:
         return np.array(self.raw_buffer, dtype=np.float64)
+
+    def __len__(self) -> int:
+        """Returns current number of elements stored in buffer."""
+        return len(self.raw_buffer)

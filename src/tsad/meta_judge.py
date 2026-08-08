@@ -4,82 +4,71 @@ from tsad.config import K_DETECTORS, HEDGE_ETA, FIXED_SHARE_SIGMA, REPLAY_BUFFER
 
 class MetaJudge:
     """
-    Meta-Judge Fusion Module using the Hedge (Exponential Weights) online learning algorithm
-    with Fixed-Share mixing step.
+    Module 4: Meta-Judge Online Ensemble Combiner.
+    Applies Hedge Multiplicative Weights Update Algorithm (Freund & Schapire, 1997)
+    with Fixed-Share Mixing Floor (Herbster & Warmuth, 1998).
+    Fused output A_t is the mathematically correct convex weighted sum of detector scores.
     """
     def __init__(self, k_detectors: int = K_DETECTORS, eta: float = HEDGE_ETA, sigma: float = FIXED_SHARE_SIGMA):
         self.k = k_detectors
         self.eta = eta
         self.sigma = sigma
-        self.weights = np.ones(k_detectors, dtype=np.float64) / k_detectors
-
-    def fuse(self, scores: np.ndarray, forecasts: np.ndarray) -> Tuple[float, float]:
-        """
-        Calculates convex combination (dot product) of detector outputs and weights.
-        Enhanced with max-activation pooling to prevent signal dilution by inactive experts.
-        """
-        weighted_dot = float(np.dot(self.weights, scores))
-        max_active = float(np.max(self.weights * scores * float(self.k)))
-        
-        A_t = max(weighted_dot, max_active)
-        A_t = float(np.clip(A_t, 0.0, 1.0))
-        
-        v_hat_star = float(np.dot(self.weights, forecasts))
-        return A_t, v_hat_star
+        self.weights = np.ones(self.k, dtype=np.float64) / self.k
 
     def update_weights(self, loss_vector: np.ndarray):
         """
-        Hedge multiplicative weight update rule + Fixed-share mixing step.
+        Updates expert weights based on loss vector loss_vector in [0, 1]^K.
+        Applies multiplicative update followed by fixed-share mixing floor.
         """
-        exp_loss = np.exp(-self.eta * loss_vector)
-        unnorm_weights = self.weights * exp_loss
-        weight_sum = np.sum(unnorm_weights)
+        loss_vector = np.clip(loss_vector, 0.0, 1.0)
         
-        if weight_sum > 0:
-            w_next = unnorm_weights / weight_sum
-        else:
-            w_next = np.ones(self.k, dtype=np.float64) / self.k
-            
-        w_share = (1.0 - self.sigma) * w_next + (self.sigma / float(self.k))
-        self.weights = w_share / np.sum(w_share)
+        # 1. Multiplicative update step
+        unnorm_weights = self.weights * np.exp(-self.eta * loss_vector)
+        sum_w = np.sum(unnorm_weights) + EPSILON
+        w_bar = unnorm_weights / sum_w
+        
+        # 2. Fixed-Share mixing step (guarantees weight floor w_k >= sigma / K)
+        pool = np.sum(w_bar * self.sigma)
+        self.weights = (1.0 - self.sigma) * w_bar + (pool / self.k)
+        
+        # Renormalize to ensure exact convex sum = 1.0
+        self.weights = self.weights / np.sum(self.weights)
+
+    def fuse(self, scores: np.ndarray, forecasts: np.ndarray) -> Tuple[float, float]:
+        """
+        Calculates fused anomaly score A_t and fused forecast v_hat* via convex weighted sum.
+        A_t = dot(weights, scores)
+        v_hat* = dot(weights, forecasts)
+        """
+        A_t = float(np.dot(self.weights, scores))
+        v_hat_star = float(np.dot(self.weights, forecasts))
+        return A_t, v_hat_star
 
 class StratifiedReplayBuffer:
     """
-    Stratified Reservoir Sampling Replay Buffer.
-    Divides buffer into quantiles based on anomaly score A_t.
+    Stratified Replay Buffer storing past state vectors Z_t and fused scores A_t.
     """
-    def __init__(self, capacity: int = REPLAY_BUFFER_SIZE, n_quantiles: int = 10):
+    def __init__(self, capacity: int = REPLAY_BUFFER_SIZE, n_quantiles: int = 5):
         self.capacity = capacity
         self.n_quantiles = n_quantiles
-        self.quantile_bins = [[] for _ in range(n_quantiles)]
-        self.total_count = 0
+        self.buffer = []
 
     def add(self, Z_t: np.ndarray, A_t: float):
-        """Adds vector Z_t to corresponding score quantile bin."""
-        bin_idx = int(np.clip(A_t * self.n_quantiles, 0, self.n_quantiles - 1))
-        max_bin_cap = max(1, self.capacity // self.n_quantiles)
-        
-        target_bin = self.quantile_bins[bin_idx]
-        if len(target_bin) < max_bin_cap:
-            target_bin.append(Z_t.copy())
-        else:
-            idx = np.random.randint(0, len(target_bin))
-            target_bin[idx] = Z_t.copy()
-            
-        self.total_count += 1
+        if len(self.buffer) >= self.capacity:
+            self.buffer.pop(0)
+        self.buffer.append((Z_t.copy(), float(A_t)))
 
-    def sample(self, n: int) -> np.ndarray:
-        """Samples n items uniformly across quantiles."""
-        all_items = []
-        for b in self.quantile_bins:
-            all_items.extend(b)
-            
-        if len(all_items) == 0:
-            return np.array([])
-            
-        sample_size = min(n, len(all_items))
-        indices = np.random.choice(len(all_items), size=sample_size, replace=False)
-        return np.array([all_items[i] for i in indices], dtype=np.float64)
+    def sample(self, batch_size: int = 32, n: int = None):
+        if n is not None:
+            batch_size = n
+        if len(self.buffer) == 0:
+            return np.empty((0, 8)) if n is not None else ([], [])
+        indices = np.random.choice(len(self.buffer), size=min(batch_size, len(self.buffer)), replace=False)
+        Z_batch = [self.buffer[i][0] for i in indices]
+        A_batch = [self.buffer[i][1] for i in indices]
+        if n is not None:
+            return np.array(Z_batch)
+        return Z_batch, A_batch
 
     def __len__(self) -> int:
-        return sum(len(b) for b in self.quantile_bins)
+        return len(self.buffer)

@@ -35,7 +35,6 @@ def compute_ami(v: np.ndarray, max_lag: int = MAX_TAU, n_bins: int = 30) -> int:
         p_x = np.sum(p_xy, axis=1)
         p_y = np.sum(p_xy, axis=0)
         
-        # I(X;Y) = H(X) + H(Y) - H(X,Y)
         p_xy_flat = p_xy.flatten()
         p_xy_pos = p_xy_flat[p_xy_flat > 0]
         H_xy = -np.sum(p_xy_pos * np.log2(p_xy_pos))
@@ -48,7 +47,6 @@ def compute_ami(v: np.ndarray, max_lag: int = MAX_TAU, n_bins: int = 30) -> int:
         I_lag = max(0.0, H_x + H_y - H_xy)
         ami_list.append(I_lag)
         
-    # Find first local minimum
     for i in range(1, len(ami_list) - 1):
         if ami_list[i] < ami_list[i - 1] and ami_list[i] <= ami_list[i + 1]:
             return i + 1
@@ -72,26 +70,23 @@ def compute_fnn(v: np.ndarray, tau: int, max_d: int = MAX_D, r_tol: float = R_TO
         X_d = X_d[:n_points]
         X_d1 = X_d1[:n_points]
         
-        # Query 1-NN in d dimensions
         fnn_count = 0
-        for i in range(min(n_points, 500)):
+        sample_size = min(n_points, 500)
+        for i in range(sample_size):
             dists = np.linalg.norm(X_d - X_d[i], axis=1)
             dists[i] = float("inf")
             nn_idx = np.argmin(dists)
             R_d = dists[nn_idx]
             
-            if R_d < EPSILON:
+            if R_d < 1e-12:
                 continue
                 
-            R_d1 = abs(X_d1[i, -1] - X_d1[nn_idx, -1])
-            R_total = np.sqrt(R_d ** 2 + R_d1 ** 2)
-            
-            # Kennel's criteria
-            if (R_d1 / R_d > r_tol) or (R_total / std_v > a_tol):
+            R_d1 = abs(X_d1[i, 0] - X_d1[nn_idx, 0])
+            if (R_d1 / (R_d + EPSILON) > r_tol) or (R_d1 / std_v > a_tol):
                 fnn_count += 1
                 
-        fnn_frac = fnn_count / float(min(n_points, 500))
-        if fnn_frac < 0.01:
+        fnn_frac = fnn_count / float(sample_size)
+        if fnn_frac < 0.05:
             return d
             
     return max_d
@@ -124,65 +119,63 @@ def compress_projection(X: np.ndarray, target_d: int = D_TARGET, seed: int = SEE
         padded[:, :d] = X
         return padded
     else:
-        rng = np.random.RandomState(seed)
-        R = rng.randn(d, target_d) / np.sqrt(target_d)
+        np.random.seed(seed)
+        R = np.random.randn(d, target_d) / np.sqrt(target_d)
         return np.dot(X, R)
-
-def online_mad_normalize(Z_t: np.ndarray, window: np.ndarray) -> np.ndarray:
-    """
-    Multidimensional MAD normalization.
-    """
-    med = np.median(window)
-    mad = np.median(np.abs(window - med)) + EPSILON
-    return (Z_t - med) / (1.4826 * mad)
 
 class HNSWIndex:
     """
-    Approximate Nearest Neighbor graph search index wrapper (hnswlib with scipy/numpy fallback).
-    Resizes dynamically when max_elements is reached.
+    HNSW Approximate Nearest Neighbor Graph Index Wrapper.
+    Auto-resizes when capacity is reached.
     """
-    def __init__(self, dim: int = D_TARGET, max_elements: int = 100000):
+    def __init__(self, dim: int = D_TARGET, max_elements: int = 10000, M: int = 16, ef_construction: int = 200):
         self.dim = dim
         self.max_elements = max_elements
         self.count = 0
-        
         if HAS_HNSW:
-            self.index = hnswlib.Index(space="l2", dim=dim)
-            self.index.init_index(max_elements=max_elements, ef_construction=100, M=16)
-            self.index.set_ef(30)
+            self.index = hnswlib.Index(space='l2', dim=dim)
+            self.index.init_index(max_elements=max_elements, M=M, ef_construction=ef_construction)
+            self.index.set_ef(50)
         else:
-            self.index = None
             self.data = []
 
     def add_items(self, data: np.ndarray):
-        data_2d = np.atleast_2d(data).astype(np.float32)
-        n = len(data_2d)
-        
+        if data.ndim == 1:
+            data = data.reshape(1, -1)
+        n = len(data)
         if HAS_HNSW:
             if self.count + n > self.max_elements:
-                self.max_elements *= 2
-                self.index.resize_index(self.max_elements)
-                
+                new_max = max(self.max_elements * 2, self.count + n + 5000)
+                self.index.resize_index(new_max)
+                self.max_elements = new_max
             ids = np.arange(self.count, self.count + n)
-            self.index.add_items(data_2d, ids)
+            self.index.add_items(data, ids)
             self.count += n
         else:
-            for row in data_2d:
-                self.data.append(row)
-                self.count += 1
+            self.data.append(data)
+            self.count += n
 
     def knn_query(self, query: np.ndarray, k: int = 5) -> Tuple[np.ndarray, np.ndarray]:
+        if query.ndim == 1:
+            query = query.reshape(1, -1)
         if self.count == 0:
-            return np.array([]), np.array([])
-            
-        q_2d = query.reshape(1, -1).astype(np.float32)
-        k_actual = min(k, self.count)
-        
+            return np.array([0]), np.array([0.0])
+        k = min(k, self.count)
         if HAS_HNSW:
-            labels, distances = self.index.knn_query(q_2d, k=k_actual)
-            return labels[0], np.sqrt(np.maximum(0.0, distances[0]))
+            labels, distances = self.index.knn_query(query, k=k)
+            return labels[0], distances[0]
         else:
-            arr = np.array(self.data)
-            dists = np.linalg.norm(arr - q_2d[0], axis=1)
-            indices = np.argsort(dists)[:k_actual]
+            all_data = np.vstack(self.data)
+            dists = np.linalg.norm(all_data - query, axis=1)
+            indices = np.argsort(dists)[:k]
             return indices, dists[indices]
+
+def online_mad_normalize(Z_t: np.ndarray, window_data: np.ndarray) -> np.ndarray:
+    """
+    Applies MAD normalization to vector Z_t using statistics of window_data.
+    """
+    if len(window_data) == 0:
+        return Z_t.copy()
+    med = np.median(window_data, axis=0)
+    mad = np.median(np.abs(window_data - med), axis=0) + EPSILON
+    return (Z_t - med) / (1.4826 * mad)

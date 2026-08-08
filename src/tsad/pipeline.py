@@ -12,8 +12,8 @@ from tsad.detectors.simplex import SimplexProjectionDetector
 from tsad.detectors.mahalanobis import RobustMahalanobisDetector
 from tsad.detectors.matrix_profile import MatrixProfileDetector
 from tsad.detectors.iforest import IsolationForestDetector
-from tsad.detectors.sarima import SARIMADetector
-from tsad.detectors.transformer import AnomalyTransformerDetector
+from tsad.detectors.sarima import ARFilterDetector
+from tsad.detectors.transformer import MSETransformerAutoencoder
 
 from tsad.meta_judge import MetaJudge, StratifiedReplayBuffer
 from tsad.learning_loop import OnlineLearningLoop
@@ -40,8 +40,8 @@ class TSADPipeline:
             RobustMahalanobisDetector(dim=d_target),
             MatrixProfileDetector(w_mp=max(5, tau * d)),
             IsolationForestDetector(dim=d_target),
-            SARIMADetector(),
-            AnomalyTransformerDetector(dim=d_target)
+            ARFilterDetector(),
+            MSETransformerAutoencoder(dim=d_target)
         ]
         
         # Module 4: Meta-Judge & Replay Buffer
@@ -65,7 +65,7 @@ class TSADPipeline:
         """
         self.step_count += 1
         
-        # 1. Ingestion & Preprocessing (v_t is robust standardized stream)
+        # 1. Ingestion & Preprocessing
         v_t = self.ingestion.step(x_t)
         
         # 2. Representation Layer
@@ -78,14 +78,12 @@ class TSADPipeline:
         else:
             X_t = np.ones(self.d, dtype=np.float64) * v_t
             
-        # Z_t is the compressed projection of normalized delay vector X_t
         Z_t = compress_projection(X_t.reshape(1, -1), target_d=self.d_target)[0]
         
         # 3. Online Learning Loop: update weights from previous step's forecast error
         if self.step_count > 1:
             loss_vector = self.learning_loop.step(v_t, self.last_forecasts, self.last_scores)
             
-            # Gating check: freeze updates during acute anomaly alarm
             if self.gating.is_adaptation_allowed():
                 self.meta_judge.update_weights(loss_vector)
                 self.replay_buffer.add(Z_t, float(np.dot(self.meta_judge.weights, self.last_scores)))
@@ -98,7 +96,6 @@ class TSADPipeline:
             s_k, v_hat_k = det.score(Z_t, v_t)
             det.update(v_t)
             
-            # Add vectors to spatial detectors
             if hasattr(det, "add_vector"):
                 det.add_vector(Z_t)
                 

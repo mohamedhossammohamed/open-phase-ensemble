@@ -6,7 +6,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.placeholder-blue)](https://zenodo.org/)
 
-**open-phase-ensemble** is an open-source, non-parametric, multi-tool ensemble system for streaming time-series anomaly detection and forecasting. Designed to openly reproduce and extend phase-space trajectory matching principles, it combines six orthogonal detection paradigms (Empirical Dynamic Modeling, Ledoit-Wolf Mahalanobis distance, STOMP Matrix Profile, Isolation Forest, SARIMA residuals, and Anomaly Transformer attention) under an online Hedge multiplicative-weights Meta-Judge and CUSUM change gating, strictly enforcing zero-lookahead stream processing and 100% execution determinism.
+**open-phase-ensemble** is an open-source, non-parametric, multi-tool ensemble system for streaming time-series anomaly detection and forecasting. Designed to openly reproduce and evaluate phase-space trajectory matching principles, it combines six orthogonal detection paradigms (Empirical Dynamic Modeling, Ledoit-Wolf Mahalanobis distance, STOMP Matrix Profile, Isolation Forest, AR Linear Ridge Filter, and MSE Transformer Autoencoder) under an online Hedge multiplicative-weights Meta-Judge and CUSUM change gating, strictly enforcing zero-lookahead stream processing and 100% execution determinism.
 
 ---
 
@@ -38,14 +38,14 @@ flowchart TD
         VectorZ & StreamV --> D2[Detector 2: Ledoit-Wolf Mahalanobis]
         VectorZ & StreamV --> D3[Detector 3: STOMP Matrix Profile]
         VectorZ & StreamV --> D4[Detector 4: Isolation Forest]
-        VectorZ & StreamV --> D5[Detector 5: SARIMA Residuals]
-        VectorZ & StreamV --> D6[Detector 6: Anomaly Transformer]
+        VectorZ & StreamV --> D5[Detector 5: AR Linear Ridge Filter]
+        VectorZ & StreamV --> D6[Detector 6: MSE Transformer Autoencoder]
     end
 
     subgraph MetaJudge ["Module 4 & 5: Meta-Judge & Online Learning Loop"]
         D1 & D2 & D3 & D4 & D5 & D6 --> Scores[Scores s_t & Forecasts v_hat]
         Scores --> Hedge[Hedge Multiplicative Weights w_t]
-        Hedge --> Fusion[Fused Anomaly Score A_t & Forecast v_hat*]
+        Hedge --> Fusion[Fused Convex Sum Score A_t & Forecast v_hat*]
         Fusion --> PearsonLoss[Label-free Pearson Correlation Loss]
         PearsonLoss --> Hedge
     end
@@ -99,20 +99,31 @@ for x in data_stream:
 # Run full test suite (34/34 tests)
 PYTHONPATH=src pytest tests/ -v
 
-# Run live dataset benchmarks
+# Run un-inflated benchmark script
 PYTHONPATH=src python scripts/run_benchmark.py
 ```
 
 ---
 
-## 📊 Summary Benchmark Table
+## 📊 Summary Benchmark Table (Honest Un-Buffered Metrics)
 
-> **Note**: All performance numbers are preliminary, self-reported, and pending independent external review.
+> **Note**: All performance numbers are un-buffered, self-reported, and pending independent external review.
 
 | Domain / Dataset | Evaluated Points ($N$) | System VUS-ROC | IAAFT Null VUS-ROC | Predictive Edge ($\Delta$) | Status |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **PhysioNet MIT-BIH (`record_100`)** | 5,143 | **0.9563** | 0.4798 | **+0.4765** | Preliminary |
-| **CWRU Bearing Prognostics** | 5,000 | **0.9808** | 0.4801 | **+0.5007** | Preliminary |
+| **PhysioNet MIT-BIH (`record_100`)** | 5,143 | **0.8592** | 0.1822 | **+0.6770** | Un-buffered / Honest |
+| **CWRU Bearing Prognostics** | 5,000 | **0.9711** | 0.4347 | **+0.5364** | Un-buffered / Honest |
+
+---
+
+## 🔍 Known Limitations and Audit Findings
+
+Following a rigorous internal code and scientific audit, the following remediations were implemented:
+1. **Evaluation Metric Correction**: Previously, temporal range buffering was accidentally applied to both ground truth labels and predicted anomaly scores. Range buffering has been strictly restricted to ground truth labels, leaving predicted scores un-buffered. The reported VUS-ROC numbers reflect this un-inflated evaluation.
+2. **Algorithm Simplification for Stability**:
+   - `ARFilterDetector`: Linear autoregressive ridge filter, replacing full non-stationary SARIMA.
+   - `MSETransformerAutoencoder`: Standard Mean Squared Error sequence reconstruction, replacing complex association discrepancy attention.
+3. **Reference Comparison Status**: Direct comparisons to external closed-source references are currently paused pending standardized metric alignment.
 
 ---
 

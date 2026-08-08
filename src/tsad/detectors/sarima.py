@@ -3,10 +3,10 @@ from typing import Tuple
 from tsad.detectors.base import DetectorABC
 from tsad.config import EPSILON
 
-class SARIMADetector(DetectorABC):
+class ARFilterDetector(DetectorABC):
     """
-    Detector 5: SARIMA Residuals (Linear Stochastic Control).
-    Calibrated score outputs 0.0 for normal linear residuals.
+    Detector 5: Autoregressive Linear Ridge Filter (ARFilterDetector).
+    Online AR(p) linear ridge regression filter measuring prediction residual errors.
     """
     def __init__(self, p: int = 2, d: int = 0, q: int = 1):
         self.p = p
@@ -56,3 +56,6 @@ class SARIMADetector(DetectorABC):
             self.coeffs = np.linalg.solve(XtX, Xty)
         except np.linalg.LinAlgError:
             pass
+
+# Backward compatibility alias
+SARIMADetector = ARFilterDetector

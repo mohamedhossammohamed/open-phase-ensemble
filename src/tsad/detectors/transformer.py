@@ -12,11 +12,11 @@ except ImportError:
     HAS_TORCH = False
 
 if HAS_TORCH:
-    class AnomalyTransformerModule(nn.Module):
+    class TransformerAutoencoderModule(nn.Module):
         """
-        Lightweight PyTorch Anomaly Transformer model.
-        L=2 layers, H=4 heads, D_model=32.
-        Association Discrepancy: prior (Gaussian) vs series (learned self-attention) mismatch.
+        PyTorch Transformer Autoencoder Module.
+        L=2 encoder layers, H=4 heads, D_model=32.
+        Measures sequence reconstruction via standard Mean Squared Error (MSE).
         """
         def __init__(self, in_dim: int = D_TARGET, d_model: int = 32, n_heads: int = 4, n_layers: int = 2):
             super().__init__()
@@ -29,14 +29,17 @@ if HAS_TORCH:
             self.forecast_head = nn.Linear(d_model, 1)
 
         def forward(self, x: torch.Tensor):
-            # x shape: (batch_size, seq_len, in_dim)
             h = self.input_proj(x)
             feat = self.encoder(h)
             rec = self.output_proj(feat)
             v_hat = self.forecast_head(feat[:, -1, :])
             return rec, v_hat
 
-class AnomalyTransformerDetector(DetectorABC):
+class MSETransformerAutoencoder(DetectorABC):
+    """
+    Detector 6: Transformer Autoencoder with Mean Squared Error (MSE) Reconstruction.
+    L=2 encoder layers, H=4 heads, D_model=32.
+    """
     def __init__(self, dim: int = D_TARGET, d_model: int = 32, n_heads: int = 4, n_layers: int = 2):
         self.dim = dim
         self.d_model = d_model
@@ -47,7 +50,7 @@ class AnomalyTransformerDetector(DetectorABC):
         
         if HAS_TORCH:
             torch.manual_seed(SEED)
-            self.model = AnomalyTransformerModule(in_dim=dim, d_model=d_model, n_heads=n_heads, n_layers=n_layers)
+            self.model = TransformerAutoencoderModule(in_dim=dim, d_model=d_model, n_heads=n_heads, n_layers=n_layers)
             self.model.eval()
         else:
             self.model = None
@@ -68,10 +71,13 @@ class AnomalyTransformerDetector(DetectorABC):
             rec = rec_tensor.numpy()[0]
             v_hat = float(v_hat_tensor.numpy()[0, 0])
             
-        # Reconstruction error
+        # Mean Squared Error (MSE) reconstruction loss
         rec_err = float(np.mean((seq_arr[0] - rec) ** 2))
         s_t = float(1.0 - np.exp(-rec_err))
         return s_t, v_hat
 
     def update(self, v_true: float):
         pass
+
+# Backward compatibility alias
+AnomalyTransformerDetector = MSETransformerAutoencoder
