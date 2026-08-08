@@ -5,7 +5,7 @@
 
 ---
 
-## 💻 Environment Setup
+## Environment Setup
 
 1. **Clone the Repository**:
    ```bash
@@ -28,7 +28,7 @@
 
 ---
 
-## 🧩 Adding a New Detector Module
+## Adding a New Detector Module
 
 All detectors implement the `DetectorABC` contract defined in `src/tsad/detectors/base.py`:
 
@@ -62,7 +62,7 @@ class DetectorABC(ABC):
 
 ---
 
-## 🧪 Running Test Suites
+## Running Test Suites
 
 ```bash
 # Run unit tests only (29 tests)
@@ -80,7 +80,7 @@ PYTHONPATH=src pytest tests/ -v
 
 ---
 
-## 🌐 Local Documentation Server
+## Local Documentation Server
 
 ```bash
 mkdocs serve

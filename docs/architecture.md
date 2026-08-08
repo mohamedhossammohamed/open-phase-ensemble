@@ -5,72 +5,60 @@
 
 ---
 
-## ⚡ Interactive Data Flow & System Simulation
+## Interactive Data Flow & System Simulation
 
 The interactive canvas below simulates the live streaming data flow through the five core pipeline compartments. Click **"Inject Anomaly Spike"** to observe how the 6-detector battery and online Hedge Meta-Judge dynamically adapt weight allocations in real time.
 
 <div class="sim-container sim-canvas-container">
-  <div class="sim-header" style="display: flex; justify-content: space-between; align-items: center;">
+  <div class="sim-header">
     <div class="sim-title">
-      <span>⚙️</span> INTERACTIVE DATA FLOW // SYSTEM COMPARTMENTS SIMULATION
+      INTERACTIVE DATA FLOW // SYSTEM COMPARTMENTS SIMULATION
     </div>
-    <div class="sim-controls" style="display: flex; gap: 0.4rem;">
+    <div class="sim-controls">
       <button class="sim-btn sim-btn-play">Pause</button>
       <button class="sim-btn sim-btn-anomaly danger">Inject Anomaly Spike</button>
       <button class="sim-btn sim-btn-reset">Reset</button>
     </div>
   </div>
   <canvas class="sim-canvas"></canvas>
+  <div class="sim-caption">
+    Figure 1: Streaming data pipeline compartments showing real-time scalar signal processing, embedding reconstruction, multi-expert scoring, online Hedge weight adjustment, and CUSUM alarm gating.
+  </div>
 </div>
 
 ---
 
-## 🏛️ System Compartments & Module Contracts
+## System Compartments & Module Contracts
 
-<div class="mat-card-grid">
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">1️⃣</span>
-      <div class="mat-card-title">Module 1: Ingestion</div>
-    </div>
-    <div class="mat-card-value">StreamBuffer</div>
-    <div class="mat-card-sub">Rolling Median & MAD Z-Score Standardization</div>
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-label">Module 01 // Ingestion</div>
+    <div class="stat-value" style="font-size: 1.35rem;">StreamBuffer</div>
+    <div class="stat-sub">Rolling Median & MAD Z-Score Standardization</div>
   </div>
 
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">2️⃣</span>
-      <div class="mat-card-title">Module 2: Representation</div>
-    </div>
-    <div class="mat-card-value">Takens & JL</div>
-    <div class="mat-card-sub">Phase-Space Reconstruction & HNSW ANN Index</div>
+  <div class="stat-card">
+    <div class="stat-label">Module 02 // Representation</div>
+    <div class="stat-value" style="font-size: 1.35rem;">Takens & JL</div>
+    <div class="stat-sub">Phase-Space Reconstruction & HNSW ANN Index</div>
   </div>
 
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">3️⃣</span>
-      <div class="mat-card-title">Module 3: Battery</div>
-    </div>
-    <div class="mat-card-value">6 Detectors</div>
-    <div class="mat-card-sub">Orthogonal Dynamic, Covariance & Neural Experts</div>
+  <div class="stat-card">
+    <div class="stat-label">Module 03 // Battery</div>
+    <div class="stat-value" style="font-size: 1.35rem;">6 Detectors</div>
+    <div class="stat-sub">Orthogonal Dynamic, Covariance & Neural Experts</div>
   </div>
 
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">4️⃣</span>
-      <div class="mat-card-title">Module 4: Meta-Judge</div>
-    </div>
-    <div class="mat-card-value">Hedge Fusion</div>
-    <div class="mat-card-sub">Multiplicative Weights + Fixed-Share Floor</div>
+  <div class="stat-card">
+    <div class="stat-label">Module 04 // Meta-Judge</div>
+    <div class="stat-value" style="font-size: 1.35rem;">Hedge Fusion</div>
+    <div class="stat-sub">Multiplicative Weights + Fixed-Share Floor</div>
   </div>
 
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">5️⃣</span>
-      <div class="mat-card-title">Module 5: Gating</div>
-    </div>
-    <div class="mat-card-value">CUSUM Chart</div>
-    <div class="mat-card-sub">Freeze on Alarm / Flush on Concept Drift</div>
+  <div class="stat-card">
+    <div class="stat-label">Module 05 // Gating</div>
+    <div class="stat-value" style="font-size: 1.35rem;">CUSUM Chart</div>
+    <div class="stat-sub">Freeze on Alarm / Flush on Concept Drift</div>
   </div>
 </div>
 
@@ -118,7 +106,7 @@ The interactive canvas below simulates the live streaming data flow through the 
 
 ---
 
-## ⚙️ Configuration Schema (`src/tsad/config.py`)
+## Configuration Schema (`src/tsad/config.py`)
 
 | Parameter | Type | Default Value | Description |
 | :--- | :--- | :---: | :--- |
@@ -136,8 +124,14 @@ The interactive canvas below simulates the live streaming data flow through the 
 
 ---
 
-## 🛡️ Zero-Lookahead Leakage Invariant
+## Zero-Lookahead Leakage Invariant
 
 The system strictly enforces zero-lookahead temporal isolation:
-- All transformations operate on causal buffers $W_t = \{x_1, x_2, \dots, x_t\}$.
-- `tests/integration/test_no_lookahead.py` verifies that streaming scalar processing element-by-element yields an exact Euclidean distance of **`0.0`** compared to sequential processing.
+
+<dl class="def-list">
+  <dt>Causal Buffer Scope</dt>
+  <dd>All transformations operate exclusively on historical causal buffers $W_t = \{x_1, x_2, \dots, x_t\}$. No future sample is ever accessed.</dd>
+
+  <dt>Exact Invariant Verification</dt>
+  <dd><code>tests/integration/test_no_lookahead.py</code> verifies that streaming scalar processing element-by-element yields an exact Euclidean distance of <strong>0.0</strong> compared to sequential batch processing.</dd>
+</dl>

@@ -150,14 +150,14 @@ function initSimulation(container) {
     const height = canvas.height;
     ctx.clearRect(0, 0, width, height);
 
-    // Deep Research Agent Palette (Matte Finish - Absolutely ZERO White Color)
-    const bgCanvas = "#fbf9f5";       // Reading Paper Surface
-    const boxBg = "#f4f1ea";          // Raised Paper Subtle
-    const quietRule = "#dedad2";      // Quiet Rule Border
-    const primaryInk = "#2b303c";     // Deep Primary Ink
-    const secondaryInk = "#6e7485";   // Secondary Ink Metadata
-    const indexBlue = "#2f66d4";      // Index Blue Signal & Highlights
-    const cautionAmber = "#b36b00";    // Caution Amber Anomaly Score
+    // Dark Charcoal Scientific Research Palette
+    const bgCanvas = "#0d0f12";       // Base Canvas Background
+    const boxBg = "#14171c";          // Compartment Node Surface
+    const quietRule = "#242831";      // Quiet Rule Border
+    const primaryInk = "#e6e8ec";     // Primary Crisp Text
+    const secondaryInk = "#9ca3af";   // Secondary Muted Text
+    const indexBlue = "#38bdf8";      // Cool Cyan Stream Signal
+    const cautionAmber = "#f59e0b";   // Caution Amber Anomaly Score
 
     ctx.fillStyle = bgCanvas;
     ctx.fillRect(0, 0, width, height);

@@ -69,7 +69,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -616,7 +616,7 @@
   <a href="#summary-benchmark-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 Summary Benchmark Metrics
+        Summary Benchmark Metrics
       
     </span>
   </a>
@@ -642,6 +642,45 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Known Limitations and Audit Findings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-evaluation-metric-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Evaluation Metric Correction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-detector-naming-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Detector Naming Alignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reference-comparison-validity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Reference Comparison Validity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -797,7 +836,7 @@
   <a href="#summary-benchmark-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 Summary Benchmark Metrics
+        Summary Benchmark Metrics
       
     </span>
   </a>
@@ -823,6 +862,45 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Known Limitations and Audit Findings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-evaluation-metric-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Evaluation Metric Correction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-detector-naming-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Detector Naming Alignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reference-comparison-validity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Reference Comparison Validity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -885,33 +963,24 @@
 <p>All performance numbers on this page are preliminary, self-reported, and have not been independently validated or peer-reviewed. They are provided to facilitate open scientific scrutiny and independent reproduction.</p>
 </div>
 <hr />
-<h2 id="summary-benchmark-metrics">📊 Summary Benchmark Metrics<a class="headerlink" href="#summary-benchmark-metrics" title="Permanent link">&para;</a></h2>
-<div class="mat-card-grid">
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">🫀</span>
-      <div class="mat-card-title">PhysioNet MIT-BIH (rec 100)</div>
-    </div>
-    <div class="mat-card-value">0.8592</div>
-    <div class="mat-card-sub">VUS-ROC (Label-Only Buffer) | Edge $\Delta = +0.37$</div>
+<h2 id="summary-benchmark-metrics">Summary Benchmark Metrics<a class="headerlink" href="#summary-benchmark-metrics" title="Permanent link">&para;</a></h2>
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-label">PhysioNet MIT-BIH (rec 100)</div>
+    <div class="stat-value">0.8592</div>
+    <div class="stat-sub">VUS-ROC (Label-Only Buffer) | Edge $\Delta = +0.37$</div>
   </div>
 
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">⚙️</span>
-      <div class="mat-card-title">CWRU Bearing Prognostics</div>
-    </div>
-    <div class="mat-card-value">0.9711</div>
-    <div class="mat-card-sub">VUS-ROC (Label-Only Buffer) | Edge $\Delta = +0.37$</div>
+  <div class="stat-card">
+    <div class="stat-label">CWRU Bearing Prognostics</div>
+    <div class="stat-value">0.9711</div>
+    <div class="stat-sub">VUS-ROC (Label-Only Buffer) | Edge $\Delta = +0.37$</div>
   </div>
 
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">🎯</span>
-      <div class="mat-card-title">Zero-Lookahead Invariant</div>
-    </div>
-    <div class="mat-card-value">0.0000</div>
-    <div class="mat-card-sub">Exact Stream vs Batch Euclidean Distance</div>
+  <div class="stat-card">
+    <div class="stat-label">Zero-Lookahead Invariant</div>
+    <div class="stat-value">0.0000</div>
+    <div class="stat-sub">Exact Stream vs Batch Euclidean Distance</div>
   </div>
 </div>
 
@@ -960,21 +1029,31 @@
 <hr />
 <h2 id="known-limitations-and-audit-findings">Known Limitations and Audit Findings<a class="headerlink" href="#known-limitations-and-audit-findings" title="Permanent link">&para;</a></h2>
 <p>An internal code and scientific integrity audit identified and remediated the following issues:</p>
-<p><strong>1. Evaluation Metric Correction</strong></p>
+<h3 id="1-evaluation-metric-correction">1. Evaluation Metric Correction<a class="headerlink" href="#1-evaluation-metric-correction" title="Permanent link">&para;</a></h3>
 <p>An earlier version of <code>src/tsad/evaluation/vus.py</code> applied <code>apply_range_buffer</code> to both ground-truth labels and predicted anomaly scores. This artificially inflated VUS-ROC by approximately +0.06 to +0.12. The function now buffers labels only, consistent with the formal VUS definition. All numbers above reflect the corrected evaluation.</p>
-<p><strong>2. Detector Naming Alignment</strong></p>
+<h3 id="2-detector-naming-alignment">2. Detector Naming Alignment<a class="headerlink" href="#2-detector-naming-alignment" title="Permanent link">&para;</a></h3>
 <p>Two detectors were renamed to accurately describe their mathematical implementations:</p>
-<ul>
-<li><strong>ARFilterDetector</strong> — Online AR(<span class="arithmatex">\(p\)</span>) linear ridge regression filter. The previous name "SARIMADetector" implied seasonal ARIMA with MA terms and differencing, which were not implemented.</li>
-<li><strong>MSETransformerAutoencoder</strong> — Standard Mean Squared Error sequence reconstruction. The previous name "AnomalyTransformerDetector" implied association discrepancy (KL-divergence between prior and series attention), which was not implemented.</li>
-</ul>
-<p><strong>3. Reference Comparison Not Valid</strong></p>
-<p>Direct numerical comparison to the closed-source <code>phase_space_matcher</code> reference (83.96–86.02%) is scientifically invalid for the following reasons:</p>
-<ul>
-<li><strong>Metric mismatch</strong>: The reference numbers are standard PA-F1 or ROC-AUC on full-length series; our system uses VUS-ROC with label-only buffering.</li>
-<li><strong>Evaluation length mismatch</strong>: Our benchmark subsamples to <span class="arithmatex">\(N=5{,}000\)</span> points; external benchmarks evaluate on full raw series (<span class="arithmatex">\(N &gt; 100{,}000\)</span>).</li>
-<li><strong>Unverifiable baseline</strong>: The reference source code and evaluation harness are not available for independent verification.</li>
-</ul>
+<dl class="def-list">
+  <dt>ARFilterDetector</dt>
+  <dd>Online AR(p) linear ridge regression filter. The previous name "SARIMADetector" implied seasonal ARIMA with MA terms and differencing, which were not implemented.</dd>
+
+  <dt>MSETransformerAutoencoder</dt>
+  <dd>Standard Mean Squared Error sequence reconstruction. The previous name "AnomalyTransformerDetector" implied association discrepancy (KL-divergence between prior and series attention), which was not implemented.</dd>
+</dl>
+
+<h3 id="3-reference-comparison-validity">3. Reference Comparison Validity<a class="headerlink" href="#3-reference-comparison-validity" title="Permanent link">&para;</a></h3>
+<p>Direct numerical comparison to the closed-source <code>phase_space_matcher</code> reference (83.96–86.02%) is scientifically invalid for the following structural reasons:</p>
+<dl class="def-list">
+  <dt>Metric Mismatch</dt>
+  <dd>The reference numbers are standard PA-F1 or ROC-AUC on full-length series; our system uses VUS-ROC with label-only buffering.</dd>
+
+  <dt>Evaluation Subsampling</dt>
+  <dd>Our benchmark subsamples to N = 5,000 points; external benchmarks evaluate on full raw series (N &gt; 100,000).</dd>
+
+  <dt>Unverifiable Baseline</dt>
+  <dd>The reference source code and evaluation harness are not available for independent verification.</dd>
+</dl>
+
 <p>We report our VUS-ROC numbers independently without claiming superiority over external systems. A fair comparison would require both systems to be evaluated on the same data splits using the same metric implementation.</p>
 <hr />
 <h2 id="metric-definitions">Metric Definitions<a class="headerlink" href="#metric-definitions" title="Permanent link">&para;</a></h2>
@@ -985,11 +1064,17 @@
 <p><strong>Predictive Edge</strong> <span class="arithmatex">\(\Delta = \text{VUS-ROC}_{\text{system}} - \text{VUS-ROC}_{\text{IAAFT}}\)</span>. A positive edge <span class="arithmatex">\(\Delta \ge +0.30\)</span> indicates genuine non-linear predictive power beyond what linear autocorrelation can explain.</p>
 <hr />
 <h2 id="future-work">Future Work<a class="headerlink" href="#future-work" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Multi-seed evaluations to generate 95% confidence intervals are planned for a future release to further validate the preliminary point estimates.</li>
-<li>Standardized cross-system benchmark protocol for fair comparison with external references.</li>
-<li>Evaluation on additional benchmark datasets (e.g., NASA IMS, SMD, SWaT).</li>
-</ul>
+<dl class="def-list">
+  <dt>Multi-Seed Evaluation</dt>
+  <dd>Multi-seed evaluations to generate 95% confidence intervals are planned for a future release to further validate the preliminary point estimates.</dd>
+
+  <dt>Standardized Protocol</dt>
+  <dd>Standardized cross-system benchmark protocol for fair comparison with external references.</dd>
+
+  <dt>Dataset Expansion</dt>
+  <dd>Evaluation on additional benchmark datasets (e.g., NASA IMS, SMD, SWaT).</dd>
+</dl>
+
 <hr />
 <h2 id="independent-replication">Independent Replication<a class="headerlink" href="#independent-replication" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mohamedhossammohamed/open-phase-ensemble.git

@@ -69,7 +69,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -833,42 +833,42 @@
 <tbody>
 <tr>
 <td style="text-align: left;">Internal Code Integrity Audit</td>
-<td style="text-align: center;">✅ Passed</td>
+<td style="text-align: center;">Passed</td>
 <td style="text-align: left;">All modules verified as real, non-stub implementations</td>
 </tr>
 <tr>
 <td style="text-align: left;">Internal Results Integrity Audit</td>
-<td style="text-align: center;">✅ Passed</td>
+<td style="text-align: center;">Passed</td>
 <td style="text-align: left;">Metric inflation corrected; numbers re-verified</td>
 </tr>
 <tr>
 <td style="text-align: left;">Unit, Integration &amp; E2E Tests</td>
-<td style="text-align: center;">✅ 34/34 Passed</td>
+<td style="text-align: center;">34/34 Passed</td>
 <td style="text-align: left;">Full test suite passing on Python 3.12</td>
 </tr>
 <tr>
 <td style="text-align: left;">Zero-Lookahead Invariant</td>
-<td style="text-align: center;">✅ Verified</td>
+<td style="text-align: center;">Verified</td>
 <td style="text-align: left;">Stream vs. batch Euclidean distance = 0.0</td>
 </tr>
 <tr>
 <td style="text-align: left;">Execution Determinism</td>
-<td style="text-align: center;">✅ Verified</td>
+<td style="text-align: center;">Verified</td>
 <td style="text-align: left;">SHA-256 hash reproducibility across runs</td>
 </tr>
 <tr>
 <td style="text-align: left;">VUS Metric Correction</td>
-<td style="text-align: center;">✅ Applied</td>
+<td style="text-align: center;">Applied</td>
 <td style="text-align: left;">Label-only buffering; scores never buffered</td>
 </tr>
 <tr>
 <td style="text-align: left;">Independent External Peer Review</td>
-<td style="text-align: center;">⏳ Pending</td>
+<td style="text-align: center;">Pending</td>
 <td style="text-align: left;">Not yet independently reviewed or reproduced</td>
 </tr>
 <tr>
 <td style="text-align: left;">Safety-Critical / Production Audit</td>
-<td style="text-align: center;">❌ Not Audited</td>
+<td style="text-align: center;">Not Audited</td>
 <td style="text-align: left;">Not suitable for production without external review</td>
 </tr>
 </tbody>
@@ -876,12 +876,20 @@
 <hr />
 <h2 id="what-was-found-and-corrected">What Was Found and Corrected<a class="headerlink" href="#what-was-found-and-corrected" title="Permanent link">&para;</a></h2>
 <p>During the internal audit, the following issues were identified and remediated:</p>
-<ol>
-<li><strong>VUS score inflation</strong> — <code>apply_range_buffer</code> was applied to both labels and predicted scores. Corrected to buffer labels only.</li>
-<li><strong>Detector naming mismatch</strong> — Two detectors were renamed to match their actual mathematical implementations (ARFilterDetector, MSETransformerAutoencoder).</li>
-<li><strong>Reference comparison invalidity</strong> — Comparison to a closed-source reference was flagged as apples-to-oranges (metric type mismatch). Removed from claims.</li>
-<li><strong>Unit test failures</strong> — Three failing tests were fixed by correcting the underlying implementations (StreamBuffer <code>__len__</code>, MetaJudge convex fusion, FNN threshold calibration).</li>
-</ol>
+<dl class="def-list">
+  <dt>VUS Score Inflation</dt>
+  <dd><code>apply_range_buffer</code> was applied to both labels and predicted scores. Corrected to buffer labels only.</dd>
+
+  <dt>Detector Naming Mismatch</dt>
+  <dd>Two detectors were renamed to match their actual mathematical implementations (ARFilterDetector, MSETransformerAutoencoder).</dd>
+
+  <dt>Reference Comparison Invalidity</dt>
+  <dd>Comparison to a closed-source reference was flagged as apples-to-oranges (metric type mismatch). Removed from claims.</dd>
+
+  <dt>Unit Test Failures</dt>
+  <dd>Three failing tests were fixed by correcting the underlying implementations (StreamBuffer <code>__len__</code>, MetaJudge convex fusion, FNN threshold calibration).</dd>
+</dl>
+
 <hr />
 <h2 id="requesting-an-independent-review">Requesting an Independent Review<a class="headerlink" href="#requesting-an-independent-review" title="Permanent link">&para;</a></h2>
 <p>If you are a researcher or domain expert interested in auditing or replicating these results:</p>

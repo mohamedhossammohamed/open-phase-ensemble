@@ -67,7 +67,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -479,7 +479,7 @@
   <a href="#benchmark-highlights-un-buffered-standard-vus-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 Benchmark Highlights (Un-Buffered Standard VUS Metrics)
+        Benchmark Highlights (Un-Buffered Standard VUS Metrics)
       
     </span>
   </a>
@@ -501,7 +501,7 @@
   <a href="#interactive-system-simulation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚡ Interactive System Simulation
+        Interactive System Simulation
       
     </span>
   </a>
@@ -773,7 +773,7 @@
   <a href="#benchmark-highlights-un-buffered-standard-vus-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 Benchmark Highlights (Un-Buffered Standard VUS Metrics)
+        Benchmark Highlights (Un-Buffered Standard VUS Metrics)
       
     </span>
   </a>
@@ -795,7 +795,7 @@
   <a href="#interactive-system-simulation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚡ Interactive System Simulation
+        Interactive System Simulation
       
     </span>
   </a>
@@ -841,33 +841,24 @@
 <p>This project is experimental and provided for research and educational purposes only. All performance claims are preliminary and self-reported. Do not use for safety-critical, medical, financial, or production decisions without independent expert review. See the <a href="disclaimer/">full disclaimer</a>.</p>
 </div>
 <hr />
-<h2 id="benchmark-highlights-un-buffered-standard-vus-metrics">📊 Benchmark Highlights (Un-Buffered Standard VUS Metrics)<a class="headerlink" href="#benchmark-highlights-un-buffered-standard-vus-metrics" title="Permanent link">&para;</a></h2>
-<div class="mat-card-grid">
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">🫀</span>
-      <div class="mat-card-title">PhysioNet MIT-BIH</div>
-    </div>
-    <div class="mat-card-value">0.8592</div>
-    <div class="mat-card-sub">Predictive Edge $\Delta = +0.37$ over IAAFT Null</div>
+<h2 id="benchmark-highlights-un-buffered-standard-vus-metrics">Benchmark Highlights (Un-Buffered Standard VUS Metrics)<a class="headerlink" href="#benchmark-highlights-un-buffered-standard-vus-metrics" title="Permanent link">&para;</a></h2>
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-label">PhysioNet MIT-BIH</div>
+    <div class="stat-value">0.8592</div>
+    <div class="stat-sub">Predictive Edge $\Delta = +0.37$ over IAAFT Null</div>
   </div>
 
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">⚙️</span>
-      <div class="mat-card-title">CWRU Bearing</div>
-    </div>
-    <div class="mat-card-value">0.9711</div>
-    <div class="mat-card-sub">Predictive Edge $\Delta = +0.37$ over IAAFT Null</div>
+  <div class="stat-card">
+    <div class="stat-label">CWRU Bearing</div>
+    <div class="stat-value">0.9711</div>
+    <div class="stat-sub">Predictive Edge $\Delta = +0.37$ over IAAFT Null</div>
   </div>
 
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">🧪</span>
-      <div class="mat-card-title">Unit & E2E Tests</div>
-    </div>
-    <div class="mat-card-value">34 / 34</div>
-    <div class="mat-card-sub">100% Pass Rate & Zero Lookahead Invariant</div>
+  <div class="stat-card">
+    <div class="stat-label">Unit & E2E Tests</div>
+    <div class="stat-value">34 / 34</div>
+    <div class="stat-sub">100% Pass Rate & Zero Lookahead Invariant</div>
   </div>
 </div>
 
@@ -875,37 +866,55 @@
 <h2 id="what-this-system-does">What This System Does<a class="headerlink" href="#what-this-system-does" title="Permanent link">&para;</a></h2>
 <p>Time-series anomaly detection suffers from methodological fragmentation and evaluation pitfalls. Many benchmarks rely on flawed metrics that inflate random guessers to &gt;90% accuracy. Heavily parameterized deep models remain opaque and computationally expensive.</p>
 <p><strong>open-phase-ensemble</strong> takes a different approach:</p>
-<ul>
-<li><strong>Non-parametric foundation</strong> — Reconstructs phase-space manifolds via Takens' delay embedding instead of training millions of parameters.</li>
-<li><strong>Orthogonal 6-detector battery</strong> — Combines phase-space trajectory prediction, covariance geometry, subsequence motifs, subspace isolation, linear autoregression, and MSE transformer reconstruction.</li>
-<li><strong>Online Meta-Judge</strong> — Uses the Hedge multiplicative-weights algorithm to dynamically reweight detectors in real time without ground-truth labels.</li>
-<li><strong>Zero-lookahead invariant</strong> — Strict element-by-element streaming. No future data is ever exposed during scoring.</li>
-<li><strong>Methodological rigor</strong> — Evaluated using standard VUS-ROC/PR with label-only buffering and IAAFT phase-randomized surrogate nulls.</li>
-</ul>
+<dl class="def-list">
+  <dt>Non-parametric foundation</dt>
+  <dd>Reconstructs phase-space manifolds via Takens' delay embedding instead of training millions of parameters.</dd>
+
+  <dt>Orthogonal 6-detector battery</dt>
+  <dd>Combines phase-space trajectory prediction, covariance geometry, subsequence motifs, subspace isolation, linear autoregression, and MSE transformer reconstruction.</dd>
+
+  <dt>Online Meta-Judge</dt>
+  <dd>Uses the Hedge multiplicative-weights algorithm to dynamically reweight detectors in real time without ground-truth labels.</dd>
+
+  <dt>Zero-lookahead invariant</dt>
+  <dd>Enforces strict element-by-element streaming. No future data is ever exposed during scoring.</dd>
+
+  <dt>Methodological rigor</dt>
+  <dd>Evaluated using standard VUS-ROC/PR with label-only buffering and IAAFT phase-randomized surrogate nulls.</dd>
+</dl>
+
 <hr />
-<h2 id="interactive-system-simulation">⚡ Interactive System Simulation<a class="headerlink" href="#interactive-system-simulation" title="Permanent link">&para;</a></h2>
+<h2 id="interactive-system-simulation">Interactive System Simulation<a class="headerlink" href="#interactive-system-simulation" title="Permanent link">&para;</a></h2>
 <p>See how scalar time-series data streams through the five core compartments in real time:</p>
 <div class="sim-container sim-canvas-container">
-  <div class="sim-header" style="display: flex; justify-content: space-between; align-items: center;">
+  <div class="sim-header">
     <div class="sim-title">
-      <span>⚙️</span> INTERACTIVE DATA FLOW // SYSTEM COMPARTMENTS SIMULATION
+      SYSTEM SIMULATION // CAUSAL DATA FLOW & EXPERT WEIGHT ALLOCATION
     </div>
-    <div class="sim-controls" style="display: flex; gap: 0.4rem;">
+    <div class="sim-controls">
       <button class="sim-btn sim-btn-play">Pause</button>
       <button class="sim-btn sim-btn-anomaly danger">Inject Anomaly Spike</button>
       <button class="sim-btn sim-btn-reset">Reset</button>
     </div>
   </div>
   <canvas class="sim-canvas"></canvas>
+  <div class="sim-caption">
+    Figure 1: Real-time interactive simulation of scalar time-series streaming through the five system compartments, illustrating Hedge Meta-Judge dynamic weight reallocation during an anomaly spike.
+  </div>
 </div>
 
 <hr />
 <h2 id="core-principles">Core Principles<a class="headerlink" href="#core-principles" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Transparency</strong> — Every matrix operation, weight update, and gating transition is fully inspectable and auditable.</li>
-<li><strong>Reproducibility</strong> — 100% deterministic execution with fixed seeds, verified by SHA-256 hash comparison.</li>
-<li><strong>Honesty</strong> — Corrected evaluation metrics, disclosed limitations, no inflated claims.</li>
-</ol>
+<dl class="def-list">
+  <dt>Transparency</dt>
+  <dd>Every matrix operation, weight update, and gating transition is fully inspectable and auditable.</dd>
+
+  <dt>Reproducibility</dt>
+  <dd>100% deterministic execution with fixed seeds, verified by SHA-256 hash comparison.</dd>
+
+  <dt>Honesty</dt>
+  <dd>Corrected evaluation metrics, disclosed limitations, and no inflated claims.</dd>
+</dl>
 
 
 

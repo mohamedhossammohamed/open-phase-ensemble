@@ -5,34 +5,25 @@
 
 ---
 
-## 📊 Summary Benchmark Metrics
+## Summary Benchmark Metrics
 
-<div class="mat-card-grid">
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">🫀</span>
-      <div class="mat-card-title">PhysioNet MIT-BIH (rec 100)</div>
-    </div>
-    <div class="mat-card-value">0.8592</div>
-    <div class="mat-card-sub">VUS-ROC (Label-Only Buffer) | Edge $\Delta = +0.37$</div>
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-label">PhysioNet MIT-BIH (rec 100)</div>
+    <div class="stat-value">0.8592</div>
+    <div class="stat-sub">VUS-ROC (Label-Only Buffer) | Edge $\Delta = +0.37$</div>
   </div>
 
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">⚙️</span>
-      <div class="mat-card-title">CWRU Bearing Prognostics</div>
-    </div>
-    <div class="mat-card-value">0.9711</div>
-    <div class="mat-card-sub">VUS-ROC (Label-Only Buffer) | Edge $\Delta = +0.37$</div>
+  <div class="stat-card">
+    <div class="stat-label">CWRU Bearing Prognostics</div>
+    <div class="stat-value">0.9711</div>
+    <div class="stat-sub">VUS-ROC (Label-Only Buffer) | Edge $\Delta = +0.37$</div>
   </div>
 
-  <div class="mat-card">
-    <div class="mat-card-header">
-      <span class="mat-card-icon">🎯</span>
-      <div class="mat-card-title">Zero-Lookahead Invariant</div>
-    </div>
-    <div class="mat-card-value">0.0000</div>
-    <div class="mat-card-sub">Exact Stream vs Batch Euclidean Distance</div>
+  <div class="stat-card">
+    <div class="stat-label">Zero-Lookahead Invariant</div>
+    <div class="stat-value">0.0000</div>
+    <div class="stat-sub">Exact Stream vs Batch Euclidean Distance</div>
   </div>
 </div>
 
@@ -60,24 +51,36 @@ A positive predictive edge ($\Delta \ge +0.30$) over the IAAFT null confirms tha
 
 An internal code and scientific integrity audit identified and remediated the following issues:
 
-**1. Evaluation Metric Correction**
+### 1. Evaluation Metric Correction
 
 An earlier version of `src/tsad/evaluation/vus.py` applied `apply_range_buffer` to both ground-truth labels and predicted anomaly scores. This artificially inflated VUS-ROC by approximately +0.06 to +0.12. The function now buffers labels only, consistent with the formal VUS definition. All numbers above reflect the corrected evaluation.
 
-**2. Detector Naming Alignment**
+### 2. Detector Naming Alignment
 
 Two detectors were renamed to accurately describe their mathematical implementations:
 
-- **ARFilterDetector** — Online AR($p$) linear ridge regression filter. The previous name "SARIMADetector" implied seasonal ARIMA with MA terms and differencing, which were not implemented.
-- **MSETransformerAutoencoder** — Standard Mean Squared Error sequence reconstruction. The previous name "AnomalyTransformerDetector" implied association discrepancy (KL-divergence between prior and series attention), which was not implemented.
+<dl class="def-list">
+  <dt>ARFilterDetector</dt>
+  <dd>Online AR(p) linear ridge regression filter. The previous name "SARIMADetector" implied seasonal ARIMA with MA terms and differencing, which were not implemented.</dd>
 
-**3. Reference Comparison Not Valid**
+  <dt>MSETransformerAutoencoder</dt>
+  <dd>Standard Mean Squared Error sequence reconstruction. The previous name "AnomalyTransformerDetector" implied association discrepancy (KL-divergence between prior and series attention), which was not implemented.</dd>
+</dl>
 
-Direct numerical comparison to the closed-source `phase_space_matcher` reference (83.96–86.02%) is scientifically invalid for the following reasons:
+### 3. Reference Comparison Validity
 
-- **Metric mismatch**: The reference numbers are standard PA-F1 or ROC-AUC on full-length series; our system uses VUS-ROC with label-only buffering.
-- **Evaluation length mismatch**: Our benchmark subsamples to $N=5{,}000$ points; external benchmarks evaluate on full raw series ($N > 100{,}000$).
-- **Unverifiable baseline**: The reference source code and evaluation harness are not available for independent verification.
+Direct numerical comparison to the closed-source `phase_space_matcher` reference (83.96–86.02%) is scientifically invalid for the following structural reasons:
+
+<dl class="def-list">
+  <dt>Metric Mismatch</dt>
+  <dd>The reference numbers are standard PA-F1 or ROC-AUC on full-length series; our system uses VUS-ROC with label-only buffering.</dd>
+
+  <dt>Evaluation Subsampling</dt>
+  <dd>Our benchmark subsamples to N = 5,000 points; external benchmarks evaluate on full raw series (N &gt; 100,000).</dd>
+
+  <dt>Unverifiable Baseline</dt>
+  <dd>The reference source code and evaluation harness are not available for independent verification.</dd>
+</dl>
 
 We report our VUS-ROC numbers independently without claiming superiority over external systems. A fair comparison would require both systems to be evaluated on the same data splits using the same metric implementation.
 
@@ -97,9 +100,16 @@ $$
 
 ## Future Work
 
-- Multi-seed evaluations to generate 95% confidence intervals are planned for a future release to further validate the preliminary point estimates.
-- Standardized cross-system benchmark protocol for fair comparison with external references.
-- Evaluation on additional benchmark datasets (e.g., NASA IMS, SMD, SWaT).
+<dl class="def-list">
+  <dt>Multi-Seed Evaluation</dt>
+  <dd>Multi-seed evaluations to generate 95% confidence intervals are planned for a future release to further validate the preliminary point estimates.</dd>
+
+  <dt>Standardized Protocol</dt>
+  <dd>Standardized cross-system benchmark protocol for fair comparison with external references.</dd>
+
+  <dt>Dataset Expansion</dt>
+  <dd>Evaluation on additional benchmark datasets (e.g., NASA IMS, SMD, SWaT).</dd>
+</dl>
 
 ---
 

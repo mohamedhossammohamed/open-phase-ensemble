@@ -9,8 +9,6 @@ theme:
   name: material
   palette:
     scheme: slate
-    primary: black
-    accent: teal
   font:
     text: Inter
     code: JetBrains Mono

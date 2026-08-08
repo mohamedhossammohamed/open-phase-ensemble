@@ -69,7 +69,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -824,24 +824,41 @@
 <p>As we audited the mathematical bounds of pure phase-space trajectory matching, a structural limitation emerged: it excels at non-linear dynamic shifts but struggles with spatial covariance shifts, variance drops, or global point outliers.</p>
 <hr />
 <h2 id="intuition-combining-orthogonal-tools">Intuition: Combining Orthogonal Tools<a class="headerlink" href="#intuition-combining-orthogonal-tools" title="Permanent link">&para;</a></h2>
-<p>No single detection algorithm can be universally optimal across all anomaly types. Instead of searching for a single "silver bullet," we designed a <strong>battery of six orthogonal expert detectors</strong>:</p>
-<ol>
-<li><strong>Simplex Projection (EDM)</strong> — Phase-space trajectory geometry</li>
-<li><strong>Robust Mahalanobis (Ledoit-Wolf)</strong> — Covariance geometry &amp; variance shift</li>
-<li><strong>Matrix Profile (STOMP)</strong> — Subsequence motif &amp; discord discovery</li>
-<li><strong>Isolation Forest</strong> — Subspace partitioning &amp; global point anomalies</li>
-<li><strong>AR Linear Ridge Filter</strong> — Linear stochastic prediction residuals</li>
-<li><strong>MSE Transformer Autoencoder</strong> — Neural sequence reconstruction error</li>
-</ol>
+<p>No single detection algorithm can be universally optimal across all anomaly types. Instead of searching for a single "silver bullet," we designed a battery of six orthogonal expert detectors:</p>
+<dl class="def-list">
+  <dt>Simplex Projection (EDM)</dt>
+  <dd>Phase-space trajectory geometry</dd>
+
+  <dt>Robust Mahalanobis (Ledoit-Wolf)</dt>
+  <dd>Covariance geometry &amp; variance shift</dd>
+
+  <dt>Matrix Profile (STOMP)</dt>
+  <dd>Subsequence motif &amp; discord discovery</dd>
+
+  <dt>Isolation Forest</dt>
+  <dd>Subspace partitioning &amp; global point anomalies</dd>
+
+  <dt>AR Linear Ridge Filter</dt>
+  <dd>Linear stochastic prediction residuals</dd>
+
+  <dt>MSE Transformer Autoencoder</dt>
+  <dd>Neural sequence reconstruction error</dd>
+</dl>
+
 <p>By fusing these paradigms under an online multiplicative-weights algorithm (the <strong>Meta-Judge</strong>), the ensemble automatically promotes whichever expert successfully identifies the current anomaly type.</p>
 <hr />
 <h2 id="choosing-to-build-openly">Choosing to Build Openly<a class="headerlink" href="#choosing-to-build-openly" title="Permanent link">&para;</a></h2>
-<p>We chose to build entirely in the open for three reasons:</p>
-<ol>
-<li><strong>Reproducibility</strong> — Closed-source benchmarks cannot be audited. Open code ensures every claim can be independently verified.</li>
-<li><strong>Metric Integrity</strong> — Using standard VUS-ROC with label-only buffering instead of inflated point-adjustment protocols.</li>
-<li><strong>Community Collaboration</strong> — A modular architecture where researchers can plug in new detectors, surrogate generators, or gating strategies.</li>
-</ol>
+<p>We chose to build entirely in the open for three primary reasons:</p>
+<dl class="def-list">
+  <dt>Reproducibility</dt>
+  <dd>Closed-source benchmarks cannot be audited. Open code ensures every claim can be independently verified.</dd>
+
+  <dt>Metric Integrity</dt>
+  <dd>Using standard VUS-ROC with label-only buffering instead of inflated point-adjustment protocols.</dd>
+
+  <dt>Community Collaboration</dt>
+  <dd>A modular architecture where researchers can plug in new detectors, surrogate generators, or gating strategies.</dd>
+</dl>
 
 
 

@@ -5,7 +5,7 @@
 
 ---
 
-## 📚 Primary Academic References
+## Primary Academic References
 
 ### Phase Space & Dynamic Systems Theory
 1. **Takens, F. (1981).** *Detecting strange attractors in turbulence.* Dynamical Systems and Turbulence, Lecture Notes in Mathematics, vol 898. Springer, Berlin, Heidelberg.
@@ -34,8 +34,18 @@
 
 ---
 
-## 🛠️ Canonical Open-Source Implementations Referenced
-- **STUMPY**: Law, M. D. (2019). *STUMPY: A Powerful and Scalable Python Library for Time Series Data Mining.* Journal of Open Source Software, 4(39), 1487. [github.com/TDAmeritrade/stumpy](https://github.com/TDAmeritrade/stumpy)
-- **HNSWLIB**: Malkov, Y. A. *Header-only C++ HNSW implementation with Python bindings.* [github.com/nmslib/hnswlib](https://github.com/nmslib/hnswlib)
-- **PyTorch**: Paszke, A. et al. (2019). *PyTorch: An Imperative Style, High-Performance Deep Learning Library.* [pytorch.org](https://pytorch.org/)
-- **Scikit-Learn**: Pedregosa, F. et al. (2011). *Scikit-learn: Machine Learning in Python.* JMLR, 12, 2825-2830. [scikit-learn.org](https://scikit-learn.org/)
+## Canonical Open-Source Implementations Referenced
+
+<dl class="def-list">
+  <dt>STUMPY</dt>
+  <dd>Law, M. D. (2019). <em>STUMPY: A Powerful and Scalable Python Library for Time Series Data Mining.</em> Journal of Open Source Software, 4(39), 1487. <a href="https://github.com/TDAmeritrade/stumpy">github.com/TDAmeritrade/stumpy</a></dd>
+
+  <dt>HNSWLIB</dt>
+  <dd>Malkov, Y. A. <em>Header-only C++ HNSW implementation with Python bindings.</em> <a href="https://github.com/nmslib/hnswlib">github.com/nmslib/hnswlib</a></dd>
+
+  <dt>PyTorch</dt>
+  <dd>Paszke, A. et al. (2019). <em>PyTorch: An Imperative Style, High-Performance Deep Learning Library.</em> <a href="https://pytorch.org/">pytorch.org</a></dd>
+
+  <dt>Scikit-Learn</dt>
+  <dd>Pedregosa, F. et al. (2011). <em>Scikit-learn: Machine Learning in Python.</em> JMLR, 12, 2825-2830. <a href="https://scikit-learn.org/">scikit-learn.org</a></dd>
+</dl>
