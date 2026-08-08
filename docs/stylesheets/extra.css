@@ -106,120 +106,76 @@ header, nav, .md-header, .md-header__inner, .md-tabs, .md-tabs__inner {
   box-shadow: none !important;
 }
 
-/* ── Matte Black Card Styling for Site Title & Navigation Header Blocks ── */
+/* ── Remove ALL Intrusive Background Colors, Overlays & Shadows on Navigation ── */
 
-/* Matte Black Header Title Badge */
-.md-header__title {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.5rem !important;
-  background-color: #16181d !important;
-  color: #f4f1ea !important;
-  border: 1px solid #2d3139 !important;
-  border-radius: 6px !important;
-  padding: 0.35rem 0.75rem !important;
-  font-family: var(--font-label) !important;
-  font-size: 0.82rem !important;
-  font-weight: 720 !important;
-  letter-spacing: 0.05em !important;
+.md-nav__item,
+.md-nav__item--active,
+.md-nav__link,
+.md-nav__link--active,
+.md-nav__title,
+.md-nav--secondary,
+.md-nav--secondary .md-nav__title,
+.md-nav--lifted .md-nav__item,
+.md-nav--lifted .md-nav__item--active,
+.md-nav--lifted .md-nav__item--active > .md-nav__link,
+.md-tabs__item,
+.md-tabs__link,
+.md-tabs__link--active {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Remove any pseudo-element background overlays / masks */
+.md-nav__title::before,
+.md-nav__title::after,
+.md-nav__link::before,
+.md-nav__link::after,
+.md-nav__item::before,
+.md-nav__item::after {
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
   box-shadow: none !important;
 }
 
-.md-header__title .md-header__topic {
-  color: #f4f1ea !important;
-}
-
-/* Sidebar Nav Title — Matte Black Card */
-.md-nav__title {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.6rem !important;
-  background-color: #16181d !important;
-  color: #f4f1ea !important;
-  border: 1px solid #2d3139 !important;
-  border-radius: 8px !important;
-  padding: 0.6rem 0.85rem !important;
-  margin: 0.6rem 0.8rem 1rem 0.8rem !important;
-  font-family: var(--font-label) !important;
-  font-size: 0.82rem !important;
-  font-weight: 720 !important;
-  letter-spacing: 0.06em !important;
-  text-transform: uppercase !important;
-  box-shadow: none !important;
-}
-
-.md-nav__title a.md-nav__button.md-logo {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 24px !important;
-  height: 24px !important;
-  background-color: var(--index-blue) !important;
-  border-radius: 4px !important;
-  padding: 3px !important;
-  margin-right: 0.4rem !important;
-}
-
-.md-nav__title a.md-nav__button.md-logo svg {
-  fill: #ffffff !important;
-  width: 16px !important;
-  height: 16px !important;
-}
-
-/* Table of Contents Header Badge */
+/* Table of Contents Header — Clean Flat Text Header (No Background Box) */
+.md-nav--secondary .md-nav__title,
 label.md-nav__title[for="__toc"] {
-  background-color: #16181d !important;
-  color: #f4f1ea !important;
-  border: 1px solid #2d3139 !important;
-  border-radius: 6px !important;
-  padding: 0.45rem 0.75rem !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
   margin-bottom: 0.8rem !important;
-  font-size: 0.76rem !important;
+  font-family: var(--font-label) !important;
+  font-size: 0.78rem !important;
   font-weight: 720 !important;
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
+  color: var(--secondary-ink) !important;
 }
 
-/* GitHub Repository Matte Black Button Card */
-.md-nav__source, .md-header__source {
-  margin: 0.4rem 0.8rem !important;
-}
-
-.md-source {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.5rem !important;
-  background-color: #16181d !important;
-  color: #f4f1ea !important;
-  border: 1px solid #2d3139 !important;
-  border-radius: 6px !important;
-  padding: 0.4rem 0.75rem !important;
-  transition: all 0.15s ease !important;
-  box-shadow: none !important;
-}
-
-.md-source:hover {
-  background-color: #21252d !important;
-  border-color: var(--index-blue) !important;
-  color: #ffffff !important;
-}
-
-.md-source__icon svg, .md-source svg {
-  fill: #f4f1ea !important;
-  color: #f4f1ea !important;
-  width: 18px !important;
-  height: 18px !important;
-}
-
-.md-source__repository {
+/* Navigation Drawer Title — Clean Header */
+.md-nav--primary > .md-nav__title,
+label.md-nav__title[for="__drawer"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-bottom: 1px solid var(--quiet-rule) !important;
+  padding: 0.8rem 1rem !important;
   font-family: var(--font-label) !important;
-  font-size: 0.8rem !important;
+  font-size: 0.85rem !important;
   font-weight: 720 !important;
-  color: #f4f1ea !important;
-  letter-spacing: 0.04em !important;
+  color: var(--primary-ink) !important;
+  text-transform: none !important;
 }
 
-/* Navigation Links */
+/* Navigation Links — Clean Text-Only (No Intrusive Box/Gradient) */
 .md-tabs__link, .md-nav__link {
   font-family: var(--font-label);
   font-size: 0.82rem;
@@ -227,12 +183,59 @@ label.md-nav__title[for="__toc"] {
   letter-spacing: 0.04em;
   color: var(--secondary-ink) !important;
   opacity: 1 !important;
+  background: transparent !important;
+  background-color: transparent !important;
   transition: color 0.15s ease;
 }
 
 .md-tabs__link:hover, .md-tabs__link--active,
-.md-nav__link:hover, .md-nav__link--active {
+.md-nav__link:hover, .md-nav__link--active,
+.md-nav__item--active > .md-nav__link {
   color: var(--index-blue) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Header Site Title Badge */
+.md-header__title {
+  background-color: var(--raised-paper) !important;
+  color: var(--primary-ink) !important;
+  border: 1px solid var(--quiet-rule) !important;
+  border-radius: 999px !important;
+  padding: 0.3rem 0.85rem !important;
+  font-family: var(--font-label) !important;
+  font-size: 0.82rem !important;
+  font-weight: 720 !important;
+  box-shadow: none !important;
+}
+
+/* GitHub Repository Button */
+.md-source {
+  background-color: var(--raised-paper) !important;
+  color: var(--primary-ink) !important;
+  border: 1px solid var(--quiet-rule) !important;
+  border-radius: 999px !important;
+  padding: 0.35rem 0.8rem !important;
+  font-family: var(--font-label) !important;
+  font-size: 0.8rem !important;
+  font-weight: 720 !important;
+  transition: all 0.15s ease !important;
+  box-shadow: none !important;
+}
+
+.md-source:hover {
+  background-color: var(--index-blue-soft) !important;
+  border-color: var(--index-blue) !important;
+  color: var(--index-blue) !important;
+}
+
+.md-source__icon svg, .md-source svg {
+  fill: var(--primary-ink) !important;
+  color: var(--primary-ink) !important;
+}
+
+.md-source__repository {
+  color: var(--primary-ink) !important;
 }
 
 /* Search Input */
