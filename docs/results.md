@@ -1,65 +1,80 @@
 # Preliminary Results and Benchmarks
 
-!!! warning "Experimental Research Disclaimer — Pending Independent Review"
-    **All performance numbers presented on this page are preliminary, self-reported, and have not yet been independently validated or peer-reviewed.** These results are provided solely to facilitate open scientific scrutiny and independent reproduction. Use at your own risk.
+!!! note "Preliminary — Pending Independent Review"
+    All performance numbers on this page are preliminary, self-reported, and have not been independently validated or peer-reviewed. They are provided to facilitate open scientific scrutiny and independent reproduction.
 
 ---
 
-## 📊 Summary Benchmark Evaluation (Honest Un-Buffered Metrics)
+## Benchmark Evaluation
 
-The system was evaluated against standard time-series anomaly benchmarks using Volume Under Surface (VUS-ROC and VUS-PR) metrics without point-adjustment protocols (PA-F1), and compared against Iterative Amplitude Adjusted Fourier Transform (IAAFT) phase-randomized surrogate null models. Temporal range buffering is applied strictly to ground truth labels, leaving predicted scores un-buffered.
+The system was evaluated on standard time-series anomaly benchmarks using Volume Under Surface metrics (VUS-ROC and VUS-PR) as defined by Paparrizos et al. (2022). Temporal range buffering is applied **strictly to ground-truth labels only** — predicted anomaly scores are never buffered. This avoids the artificial inflation caused by point-adjustment protocols (PA-F1).
 
-| Benchmark Dataset | Evaluated Points ($N$) | System VUS-ROC | System VUS-PR | IAAFT Null VUS-ROC | **Predictive Edge ($\Delta$)** | Evaluation Status |
+Performance is compared against Iterative Amplitude Adjusted Fourier Transform (IAAFT) phase-randomized surrogate null models scored under the identical protocol.
+
+!!! note "Stochastic Baseline"
+    IAAFT surrogate scores vary across runs because surrogate generation is inherently stochastic. System VUS-ROC scores are fully deterministic.
+
+| Dataset | $N$ | System VUS-ROC | System VUS-PR | IAAFT Null VUS-ROC | Edge ($\Delta$) | Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| **PhysioNet MIT-BIH (`record_100`)** | 5,143 | **0.8592** | 0.6926 | 0.1822 | **+0.6770** | Un-buffered / Honest |
-| **CWRU Bearing Prognostics** | 5,000 | **0.9711** | 0.7111 | 0.4347 | **+0.5364** | Un-buffered / Honest |
+| **PhysioNet MIT-BIH (record 100)** | 5,143 | **0.8592** | 0.6926 | ~0.49 | ~+0.37 | Preliminary |
+| **CWRU Bearing** | 5,000 | **0.9711** | 0.7111 | ~0.61 | ~+0.37 | Preliminary |
+
+A positive predictive edge ($\Delta \ge +0.30$) over the IAAFT null confirms that detection accuracy stems from genuine non-linear dynamic pattern recognition, not linear autocorrelation.
 
 ---
 
-## 🔍 Known Limitations and Audit Findings
+## Known Limitations and Audit Findings
 
-Following a rigorous internal code and scientific audit, the following remediations were implemented:
+An internal code and scientific integrity audit identified and remediated the following issues:
 
-1. **Evaluation Metric Correction**:
-   An internal audit identified a bug in `src/tsad/evaluation/vus.py` where `apply_range_buffer` was max-pooling predicted continuous scores as well as binary ground truth labels. This artificially inflated earlier reported numbers. The evaluation logic has been corrected so range buffering is applied strictly to ground truth labels. The numbers reported above reflect this un-inflated evaluation.
+**1. Evaluation Metric Correction**
 
-2. **Algorithmic Simplification**:
-   - `ARFilterDetector`: Linear autoregressive ridge filter, replacing full non-stationary SARIMA.
-   - `MSETransformerAutoencoder`: Standard Mean Squared Error sequence reconstruction, replacing complex association discrepancy attention.
+An earlier version of `src/tsad/evaluation/vus.py` applied `apply_range_buffer` to both ground-truth labels and predicted anomaly scores. This artificially inflated VUS-ROC by approximately +0.06 to +0.12. The function now buffers labels only, consistent with the formal VUS definition. All numbers above reflect the corrected evaluation.
 
-3. **Reference Comparison Status**:
-   Direct numerical comparison to external closed-source references is currently paused pending standardized metric alignment.
+**2. Detector Naming Alignment**
+
+Two detectors were renamed to accurately describe their mathematical implementations:
+
+- **ARFilterDetector** — Online AR($p$) linear ridge regression filter. The previous name "SARIMADetector" implied seasonal ARIMA with MA terms and differencing, which were not implemented.
+- **MSETransformerAutoencoder** — Standard Mean Squared Error sequence reconstruction. The previous name "AnomalyTransformerDetector" implied association discrepancy (KL-divergence between prior and series attention), which was not implemented.
+
+**3. Reference Comparison Not Valid**
+
+Direct numerical comparison to the closed-source `phase_space_matcher` reference (83.96–86.02%) is scientifically invalid for the following reasons:
+
+- **Metric mismatch**: The reference numbers are standard PA-F1 or ROC-AUC on full-length series; our system uses VUS-ROC with label-only buffering.
+- **Evaluation length mismatch**: Our benchmark subsamples to $N=5{,}000$ points; external benchmarks evaluate on full raw series ($N > 100{,}000$).
+- **Unverifiable baseline**: The reference source code and evaluation harness are not available for independent verification.
+
+We report our VUS-ROC numbers independently without claiming superiority over external systems. A fair comparison would require both systems to be evaluated on the same data splits using the same metric implementation.
 
 ---
 
-## 📈 Metric Definitions
+## Metric Definitions
 
-1. **Volume Under Surface ROC (VUS-ROC)**:
-   Integrates Area Under the ROC Curve across a continuous spectrum of temporal buffer thresholds $l \in [0, L_{max}]$ ($L_{max} = 15$). Range buffering is applied strictly to ground truth labels.
+**Volume Under Surface ROC (VUS-ROC)** integrates AUC-ROC across a spectrum of temporal buffer thresholds $l \in [0, L_{\max}]$ with $L_{\max} = 15$. Range buffering expands ground-truth label regions only:
 
-2. **Predictive Edge ($\Delta$)**:
-   $$\Delta = \text{VUS-ROC}_{\text{system}} - \text{VUS-ROC}_{\text{IAAFT surrogate}}$$
-   A positive edge ($\Delta \ge +0.30$) confirms that the system's predictive accuracy stems from true non-linear dynamic pattern recognition rather than linear autocorrelation or baseline noise.
+$$\text{VUS-ROC} = \frac{1}{L_{\max} + 1} \sum_{l=0}^{L_{\max}} \text{AUC-ROC}(\text{labels}_l, \text{scores})$$
+
+**Predictive Edge** $\Delta = \text{VUS-ROC}_{\text{system}} - \text{VUS-ROC}_{\text{IAAFT}}$. A positive edge $\Delta \ge +0.30$ indicates genuine non-linear predictive power beyond what linear autocorrelation can explain.
 
 ---
 
-## 🧪 Independent Replication Instructions
+## Future Work
 
-Researchers can independently reproduce these benchmark numbers using the provided script:
+- Multi-seed evaluations to generate 95% confidence intervals are planned for a future release to further validate the preliminary point estimates.
+- Standardized cross-system benchmark protocol for fair comparison with external references.
+- Evaluation on additional benchmark datasets (e.g., NASA IMS, SMD, SWaT).
+
+---
+
+## Independent Replication
 
 ```bash
-# Clone repository
 git clone https://github.com/mohamedhossammohamed/open-phase-ensemble.git
 cd open-phase-ensemble
-
-# Install environment
-python3 -m venv .venv
-source .venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -e .
-
-# Acquire raw datasets
 python data/download.py
-
-# Run live benchmark evaluation script
 PYTHONPATH=src python scripts/run_benchmark.py
 ```

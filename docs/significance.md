@@ -1,22 +1,25 @@
 # Significance & Scientific Outlook
 
-!!! warning "Experimental Research Disclaimer"
-    This project is experimental and provided for research and educational purposes only. All performance claims are preliminary, self-reported, and have not yet been independently validated or peer-reviewed. Use at your own risk.
+!!! note "Preliminary Research — Pending Independent Review"
+    This project is experimental. All claims below are preliminary and self-reported. See the [full disclaimer](disclaimer.md).
 
 ---
 
-## 🔮 Humble Speculation on Scientific Value
+## Humble Speculation
 
-We believe this work may be meaningful because it demonstrates that an open, composable, online-learning ensemble can approach or potentially exceed the predictive edge of a specialized closed-source engine, while remaining fully inspectable and reproducible. 
+The following observations are **hypotheses, not conclusions**. They are offered as directions for investigation, not as established results.
 
-If this holds up under independent review, it would suggest that transparency and ensemble diversity can substitute for proprietary complexity in time-series analysis. 
+We believe this work *may* be meaningful because it demonstrates that an open, composable, online-learning ensemble can achieve meaningful predictive edges over phase-randomized null baselines while remaining fully inspectable and deterministic.
 
-However, we emphasize that this is a **hypothesis, not a conclusion**. We invite the scientific community to scrutinize, reproduce, and challenge these results.
+If this holds up under independent review, it would suggest that transparency and ensemble diversity can be viable alternatives to proprietary complexity in time-series analysis. However, we have not yet established this with the rigor required for a scientific claim.
+
+We invite the community to scrutinize, reproduce, and challenge these results.
 
 ---
 
-## 🔬 Core Open Research Questions
+## Open Research Questions
 
-1. **Ensemble Scalability**: How does the Hedge Meta-Judge perform as the detector battery grows from 6 to 20+ specialized detectors?
-2. **High-Noise Limits**: What is the theoretical breakdown threshold of non-parametric delay embeddings when signal-to-noise ratio (SNR) drops below 0 dB?
-3. **Cross-Domain Generalization**: Does the two-speed adaptation architecture maintain its predictive edge on non-stationary geophysical or financial time series?
+1. **Ensemble Scalability** — How does the Hedge Meta-Judge perform as the detector battery grows from 6 to 20+ experts? Does the fixed-share mixing floor prevent weight collapse?
+2. **High-Noise Limits** — What is the breakdown threshold of non-parametric delay embeddings when signal-to-noise ratio drops below 0 dB?
+3. **Cross-Domain Generalization** — Does the architecture maintain its predictive edge on non-stationary geophysical, financial, or industrial time series?
+4. **Confidence Quantification** — Multi-seed evaluations to generate 95% confidence intervals are planned for a future release.

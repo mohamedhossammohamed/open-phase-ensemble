@@ -1,7 +1,7 @@
 # Theoretical Foundations
 
-!!! warning "Experimental Research Disclaimer"
-    This project is experimental and provided for research and educational purposes only. All performance claims are preliminary, self-reported, and have not yet been independently validated or peer-reviewed. Use at your own risk.
+!!! note "Preliminary Research — Pending Independent Review"
+    This project is experimental. All claims are preliminary and self-reported. See the [full disclaimer](disclaimer.md).
 
 ---
 
@@ -71,12 +71,12 @@ $$s(x, n) = 2^{-\frac{\mathbb{E}(h(x))}{c(n)}}$$
 
 ---
 
-## 8. Association Discrepancy: Anomaly Transformer
-Xu et al. (2022) Anomaly Transformer evaluates **Association Discrepancy** between prior Gaussian association $P$ and learned self-attention series association $S$:
+## 8. Transformer Autoencoder: MSE Reconstruction
+The sixth detector uses a lightweight PyTorch Transformer Encoder (L=2 layers, H=4 heads, $D_{\text{model}}=32$) as a sequence autoencoder. It reconstructs the input embedding sequence and measures anomaly severity via Mean Squared Error:
 
-$$\text{AssocDiscrepancy}(X) = \frac{1}{L} \sum_{l=1}^L \text{KL}(P^{(l)} \| S^{(l)})$$
+$$s_t = 1 - \exp\left(-\frac{1}{L \cdot D} \sum_{l,d} (x_{l,d} - \hat{x}_{l,d})^2\right)$$
 
-Anomalies exhibit low series association (hard to associate with distant points) compared to normal smooth regional transitions.
+Higher reconstruction error indicates greater deviation from learned normal temporal patterns. This is a standard autoencoder approach, distinct from the association discrepancy method of Xu et al. (2022).
 
 ---
 

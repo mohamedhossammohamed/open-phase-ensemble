@@ -1,35 +1,42 @@
-site_name: open-phase-ensemble Documentation
+site_name: open-phase-ensemble
 site_description: Non-Parametric Multi-Tool Ensemble for Time-Series Anomaly Detection and Forecasting
 site_url: https://mohamedhossammohamed.github.io/open-phase-ensemble/
 repo_url: https://github.com/mohamedhossammohamed/open-phase-ensemble
-repo_name: mohamedhossammohamed/open-phase-ensemble
+repo_name: open-phase-ensemble
 
 theme:
   name: material
   palette:
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
-      accent: cyan
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: cyan
+      primary: white
+      accent: teal
       toggle:
-        icon: material/brightness-7
+        icon: material/weather-night
         name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
   features:
     - navigation.instant
     - navigation.tracking
     - navigation.tabs
     - navigation.sections
     - navigation.top
+    - navigation.indexes
     - search.suggest
     - search.highlight
     - content.code.copy
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
 
 plugins:
   - search
@@ -50,19 +57,31 @@ markdown_extensions:
       generic: true
   - tables
   - attr_list
+  - md_in_html
+  - footnotes
+  - pymdownx.mark
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css
 
 extra_javascript:
   - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
-  - Home / Overview: index.md
-  - The Journey: journey.md
+  - Home: index.md
+  - Journey: journey.md
   - Theory: theory.md
-  - Research and Citations: citations.md
-  - Architecture and Specifications: architecture.md
-  - Results and Benchmarks: results.md
+  - Research & Citations: citations.md
+  - Architecture: architecture.md
+  - Results: results.md
   - Significance: significance.md
-  - Disclaimer and Review Status: disclaimer.md
-  - Developer Documentation: developer.md
+  - Disclaimer: disclaimer.md
+  - Developer Guide: developer.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/mohamedhossammohamed/open-phase-ensemble

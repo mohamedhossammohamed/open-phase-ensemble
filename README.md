@@ -4,149 +4,141 @@
 [![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue.svg)](https://mohamedhossammohamed.github.io/open-phase-ensemble/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.placeholder-blue)](https://zenodo.org/)
 
-**open-phase-ensemble** is an open-source, non-parametric, multi-tool ensemble system for streaming time-series anomaly detection and forecasting. Designed to openly reproduce and evaluate phase-space trajectory matching principles, it combines six orthogonal detection paradigms (Empirical Dynamic Modeling, Ledoit-Wolf Mahalanobis distance, STOMP Matrix Profile, Isolation Forest, AR Linear Ridge Filter, and MSE Transformer Autoencoder) under an online Hedge multiplicative-weights Meta-Judge and CUSUM change gating, strictly enforcing zero-lookahead stream processing and 100% execution determinism.
+**open-phase-ensemble** is an open-source, non-parametric, multi-tool ensemble system for streaming time-series anomaly detection and forecasting. It combines six orthogonal detection paradigms — Empirical Dynamic Modeling, Ledoit-Wolf Mahalanobis distance, STOMP Matrix Profile, Isolation Forest, AR Linear Ridge Filter, and MSE Transformer Autoencoder — under an online Hedge multiplicative-weights Meta-Judge with CUSUM change gating, strictly enforcing zero-lookahead stream processing and deterministic execution.
 
 ---
 
 > [!CAUTION]
-> ### ⚠️ EXPERIMENTAL DISCLAIMER & REVIEW STATUS
-> **This project is experimental and provided for research and educational purposes only.** All performance claims are preliminary, self-reported, and have not yet been independently validated or peer-reviewed. This system must not be used for safety-critical, medical, financial, or production decisions without professional assessment and external review by qualified domain experts. Use at your own risk.
+> **Experimental Research — Pending Independent Review**
+>
+> This project is experimental and provided for research and educational purposes only. All performance claims are preliminary, self-reported, and have not been independently validated or peer-reviewed. Do not use this system for safety-critical, medical, financial, or production decisions without independent expert review.
 
 ---
 
-## 🏛️ System Architecture
+## System Architecture
 
 ```mermaid
 flowchart TD
-    subgraph Ingestion ["Module 1: Stream Ingestion & Preprocessing"]
-        Stream[Scalar Stream x_t] --> Buffer[StreamBuffer: Median / MAD Standardization]
-        Buffer --> StreamV[Standardized Scalar v_t]
+    subgraph Ingestion ["Module 1: Stream Ingestion"]
+        Stream[Scalar Stream x_t] --> Buffer[StreamBuffer: Median / MAD]
+        Buffer --> StreamV[Standardized v_t]
     end
 
-    subgraph Representation ["Module 2: Multidimensional Representation"]
-        StreamV --> Takens[Takens Delay Embedding: AMI & FNN]
-        Takens --> MatrixX[Phase-Space Matrix X_t]
-        MatrixX --> JL[Johnson-Lindenstrauss Projection: D_target = 8]
-        JL --> HNSW[HNSW ANN Graph Indexing]
-        HNSW --> VectorZ[Compressed Feature Vector Z_t]
+    subgraph Representation ["Module 2: Representation"]
+        StreamV --> Takens[Takens Delay Embedding]
+        Takens --> JL[JL Random Projection]
+        JL --> HNSW[HNSW ANN Index]
+        HNSW --> VectorZ[Feature Vector Z_t]
     end
 
     subgraph Battery ["Module 3: 6-Detector Battery"]
-        VectorZ & StreamV --> D1[Detector 1: Simplex Projection EDM]
-        VectorZ & StreamV --> D2[Detector 2: Ledoit-Wolf Mahalanobis]
-        VectorZ & StreamV --> D3[Detector 3: STOMP Matrix Profile]
-        VectorZ & StreamV --> D4[Detector 4: Isolation Forest]
-        VectorZ & StreamV --> D5[Detector 5: AR Linear Ridge Filter]
-        VectorZ & StreamV --> D6[Detector 6: MSE Transformer Autoencoder]
+        VectorZ & StreamV --> D1[Simplex Projection]
+        VectorZ & StreamV --> D2[Ledoit-Wolf Mahalanobis]
+        VectorZ & StreamV --> D3[Matrix Profile]
+        VectorZ & StreamV --> D4[Isolation Forest]
+        VectorZ & StreamV --> D5[AR Linear Ridge Filter]
+        VectorZ & StreamV --> D6[MSE Transformer Autoencoder]
     end
 
-    subgraph MetaJudge ["Module 4 & 5: Meta-Judge & Online Learning Loop"]
-        D1 & D2 & D3 & D4 & D5 & D6 --> Scores[Scores s_t & Forecasts v_hat]
-        Scores --> Hedge[Hedge Multiplicative Weights w_t]
-        Hedge --> Fusion[Fused Convex Sum Score A_t & Forecast v_hat*]
-        Fusion --> PearsonLoss[Label-free Pearson Correlation Loss]
+    subgraph MetaJudge ["Module 4–5: Meta-Judge & Learning"]
+        D1 & D2 & D3 & D4 & D5 & D6 --> Scores[Scores & Forecasts]
+        Scores --> Hedge[Hedge Weights]
+        Hedge --> Fusion[Fused Score A_t]
+        Fusion --> PearsonLoss[Pearson Loss]
         PearsonLoss --> Hedge
     end
 
-    subgraph Gating ["Module 6: Adaptation Gating & Tuning"]
-        Fusion --> CUSUM{CUSUM Change Detector}
-        CUSUM -- Normal --> Adapt[Allow Weight Adaptation & Replay]
-        CUSUM -- Anomaly Alarm --> Freeze[Freeze Weight Updates]
-        CUSUM -- Concept Drift --> Flush[Reset Baseline & Flush Buffer]
+    subgraph Gating ["Module 6: CUSUM Gating"]
+        Fusion --> CUSUM{CUSUM}
+        CUSUM -- Normal --> Adapt[Adapt]
+        CUSUM -- Alarm --> Freeze[Freeze]
+        CUSUM -- Drift --> Flush[Reset]
     end
 ```
 
 ---
 
-## ⚡ Quickstart
-
-### Installation
+## Quickstart
 
 ```bash
-# Clone repository
 git clone https://github.com/mohamedhossammohamed/open-phase-ensemble.git
 cd open-phase-ensemble
-
-# Create and activate virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
-
-# Install package with dependencies
+python3 -m venv .venv && source .venv/bin/activate
 pip install -e .
 ```
-
-### Basic Python Usage
 
 ```python
 from tsad.pipeline import TSADPipeline
 
-# Initialize streaming pipeline (tau=2, d=8)
 pipeline = TSADPipeline(tau=2, d=8)
 
-# Process scalar observations online
-data_stream = [0.1, 0.2, 0.15, 0.18, 8.5, 0.12]
-
-for x in data_stream:
-    A_t, v_hat_star = pipeline.step(x)
-    print(f"Observation: {x:5.2f} -> Anomaly Score: {A_t:.4f}, Forecast: {v_hat_star:.4f}")
+for x in [0.1, 0.2, 0.15, 0.18, 8.5, 0.12]:
+    A_t, v_hat = pipeline.step(x)
+    print(f"x={x:5.2f}  A_t={A_t:.4f}  forecast={v_hat:.4f}")
 ```
 
-### Running Test Suite & Benchmarks
-
 ```bash
-# Run full test suite (34/34 tests)
+# Full test suite (34/34 passing)
 PYTHONPATH=src pytest tests/ -v
 
-# Run un-inflated benchmark script
+# Benchmark evaluation
 PYTHONPATH=src python scripts/run_benchmark.py
 ```
 
 ---
 
-## 📊 Summary Benchmark Table (Honest Un-Buffered Metrics)
+## Preliminary Benchmark Results
 
-> **Note**: All performance numbers are un-buffered, self-reported, and pending independent external review.
+> **All numbers are preliminary, self-reported, and pending independent external review.**
+> IAAFT surrogate scores are stochastic and vary across runs; system VUS-ROC scores are deterministic.
 
-| Domain / Dataset | Evaluated Points ($N$) | System VUS-ROC | IAAFT Null VUS-ROC | Predictive Edge ($\Delta$) | Status |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **PhysioNet MIT-BIH (`record_100`)** | 5,143 | **0.8592** | 0.1822 | **+0.6770** | Un-buffered / Honest |
-| **CWRU Bearing Prognostics** | 5,000 | **0.9711** | 0.4347 | **+0.5364** | Un-buffered / Honest |
+| Dataset | $N$ | System VUS-ROC | System VUS-PR | IAAFT Null VUS-ROC | Edge ($\Delta$) | Status |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| PhysioNet MIT-BIH (record 100) | 5,143 | **0.8592** | 0.6926 | ~0.49 | ~+0.37 | Preliminary |
+| CWRU Bearing | 5,000 | **0.9711** | 0.7111 | ~0.61 | ~+0.37 | Preliminary |
 
----
-
-## 🔍 Known Limitations and Audit Findings
-
-Following a rigorous internal code and scientific audit, the following remediations were implemented:
-1. **Evaluation Metric Correction**: Previously, temporal range buffering was accidentally applied to both ground truth labels and predicted anomaly scores. Range buffering has been strictly restricted to ground truth labels, leaving predicted scores un-buffered. The reported VUS-ROC numbers reflect this un-inflated evaluation.
-2. **Algorithm Simplification for Stability**:
-   - `ARFilterDetector`: Linear autoregressive ridge filter, replacing full non-stationary SARIMA.
-   - `MSETransformerAutoencoder`: Standard Mean Squared Error sequence reconstruction, replacing complex association discrepancy attention.
-3. **Reference Comparison Status**: Direct comparisons to external closed-source references are currently paused pending standardized metric alignment.
+VUS-ROC is computed using standard label-only range buffering (Paparrizos et al., 2022). Predicted scores are never buffered.
 
 ---
 
-## 📚 Full Documentation
+## Known Limitations
 
-Visit our full documentation site at **[mohamedhossammohamed.github.io/open-phase-ensemble](https://mohamedhossammohamed.github.io/open-phase-ensemble/)** to explore:
+1. **Metric Correction Applied**: An internal audit identified that an earlier version of `vus.py` applied temporal range buffering to both labels and predicted scores, inflating reported numbers. This has been corrected — buffering is now applied strictly to ground-truth labels. All numbers above reflect the corrected evaluation.
 
-- [The Journey](https://mohamedhossammohamed.github.io/open-phase-ensemble/journey/) — Motivation and background story
-- [Theoretical Foundations](https://mohamedhossammohamed.github.io/open-phase-ensemble/theory/) — Deep dive into Takens' theorem, EDM, Ledoit-Wolf, STOMP, Hedge, and VUS metrics
-- [Architecture & Specifications](https://mohamedhossammohamed.github.io/open-phase-ensemble/architecture/) — Data contracts, DAG modules, and zero-lookahead invariants
-- [Developer Guide](https://mohamedhossammohamed.github.io/open-phase-ensemble/developer/) — How to extend, add new detectors, and contribute
+2. **Detector Naming Alignment**: Two detectors were renamed to reflect their actual implementations:
+   - **ARFilterDetector**: Online AR($p$) linear ridge regression filter (not full SARIMA).
+   - **MSETransformerAutoencoder**: Standard MSE reconstruction (not association discrepancy).
+
+3. **Reference Comparison Not Valid**: Direct numerical comparison to external closed-source references (e.g., `phase_space_matcher` at 83.96–86.02%) is scientifically invalid due to metric type mismatch (VUS-ROC vs. PA-F1), evaluation length differences, and inability to verify the reference evaluation protocol. We report our own VUS-ROC numbers independently without claiming superiority.
+
+4. **Single-Run Point Estimates**: Results are from single deterministic runs. No confidence intervals are provided.
 
 ---
 
-## 📄 License & Citation
+## Future Work
 
-This project is licensed under the [Apache License 2.0](LICENSE). If you cite this repository in academic work:
+- Multi-seed evaluations to generate 95% confidence intervals are planned for a future release to further validate the preliminary point estimates.
+- Standardized cross-system benchmark protocol for fair comparison with external references.
+- Expansion of the detector battery beyond 6 experts.
+
+---
+
+## Documentation
+
+Full documentation: **[mohamedhossammohamed.github.io/open-phase-ensemble](https://mohamedhossammohamed.github.io/open-phase-ensemble/)**
+
+---
+
+## License & Citation
+
+Licensed under [Apache License 2.0](LICENSE).
 
 ```bibtex
 @software{open_phase_ensemble2026,
-  title = {open-phase-ensemble: Non-Parametric Multi-Tool Ensemble for Time-Series Anomaly Detection and Forecasting},
+  title  = {open-phase-ensemble: Non-Parametric Multi-Tool Ensemble for Time-Series Anomaly Detection},
   author = {open-phase-ensemble Contributors},
-  year = {2026},
-  url = {https://github.com/mohamedhossammohamed/open-phase-ensemble}
+  year   = {2026},
+  url    = {https://github.com/mohamedhossammohamed/open-phase-ensemble}
 }
 ```

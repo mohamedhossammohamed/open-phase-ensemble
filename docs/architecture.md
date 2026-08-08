@@ -1,7 +1,7 @@
 # Architecture & Specifications
 
-!!! warning "Experimental Research Disclaimer"
-    This project is experimental and provided for research and educational purposes only. All performance claims are preliminary, self-reported, and have not yet been independently validated or peer-reviewed. Use at your own risk.
+!!! note "Preliminary Research — Pending Independent Review"
+    This project is experimental. All claims are preliminary and self-reported. See the [full disclaimer](disclaimer.md).
 
 ---
 
