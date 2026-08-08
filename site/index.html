@@ -1,977 +1,755 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>open-phase-ensemble · Open-Source Streaming Time-Series Anomaly Detection</title>
+<meta name="description" content="An open-source, non-parametric, multi-tool ensemble for streaming time-series anomaly detection and forecasting. Rigorously audited. Fully reproducible."/>
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Unique Formal Fonts: Bricolage Grotesque (Headings), Plus Jakarta Sans (Body), IBM Plex Mono (Code) -->
+<link href="https://cdn.jsdelivr.net/fontsource/fonts/bricolage-grotesque@latest/latin-600-normal.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/fontsource/fonts/bricolage-grotesque@latest/latin-700-normal.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-400-normal.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-500-normal.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/fontsource/fonts/plus-jakarta-sans@latest/latin-600-normal.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/fontsource/fonts/ibm-plex-mono@latest/latin-400-normal.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/fontsource/fonts/ibm-plex-mono@latest/latin-500-normal.css" rel="stylesheet">
+<style>
+  :root {
+    --bg-base: #0a0e17;
+    --bg-surface: #111724;
+    --bg-surface-hover: #172030;
+    --border-line: rgba(255, 255, 255, 0.09);
+    --border-highlight: rgba(45, 212, 191, 0.35);
     
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-        <meta name="description" content="Non-Parametric Multi-Tool Ensemble for Time-Series Anomaly Detection and Forecasting">
-      
-      
-      
-        <link rel="canonical" href="https://mohamedhossammohamed.github.io/open-phase-ensemble/">
-      
-      
-      
-        <link rel="next" href="journey/">
-      
-      
-        
-      
-      
-      <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    /* Formal Non-Slop Palette */
+    --accent-gold: #d97706;
+    --accent-gold-light: #fbbf24;
+    --accent-teal: #0d9488;
+    --accent-teal-light: #2dd4bf;
+    --accent-cobalt: #2563eb;
+    --accent-cobalt-light: #60a5fa;
+    --accent-emerald: #059669;
+    --accent-emerald-light: #34d399;
     
-    
-      
-        <title>open-phase-ensemble</title>
-      
-    
-    
-      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
-      
-        
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
-      
-      
-
-
-    
-    
-      
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
-      
-    
-    
-      <link rel="stylesheet" href="stylesheets/extra.css">
-    
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-
-    
-    
-  </head>
+    /* Text Contrast Scale */
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-faint: #64748b;
+  }
   
-  
-    
-    
-      
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="teal">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#open-phase-ensemble" class="md-skip">
-          Skip to content
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
+  * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+  html { scroll-behavior: smooth; background: var(--bg-base); }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
 
-<header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="open-phase-ensemble" class="md-header__button md-logo" aria-label="open-phase-ensemble" data-md-component="logo">
-      
+  h1, h2, h3, .display-font {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    letter-spacing: -0.02em;
+  }
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  .mono-font {
+    font-family: 'IBM Plex Mono', monospace;
+  }
 
+  /* Consistent Fixed Background Across All Device Scales */
+  .global-bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(1000px 600px at 80% -10%, rgba(13, 148, 136, 0.12), transparent 70%),
+      radial-gradient(800px 500px at 10% 90%, rgba(37, 99, 235, 0.10), transparent 70%),
+      radial-gradient(600px 400px at 50% 40%, rgba(217, 119, 6, 0.05), transparent 60%);
+  }
+
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Refined Glass & Card Components */
+  .glass-header {
+    background: rgba(10, 14, 23, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-line);
+  }
+
+  .card-formal {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-line);
+    border-radius: 14px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card-formal:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-highlight);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  /* High-Legibility Gradient Text */
+  .text-gradient-formal {
+    background: linear-gradient(135deg, #2dd4bf 0%, #60a5fa 50%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Interactive Elements */
+  .nav-item {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.15s ease;
+  }
+  .nav-item:hover { color: var(--text-primary); }
+
+  .btn-formal-primary {
+    background: linear-gradient(135deg, #0d9488 0%, #2563eb 100%);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(13, 148, 136, 0.25);
+  }
+  .btn-formal-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);
+  }
+
+  .btn-formal-outline {
+    border: 1px solid var(--border-line);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+  }
+  .btn-formal-outline:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(45, 212, 191, 0.4);
+  }
+
+  /* Code & Table Styling */
+  pre {
+    background: #070a10 !important;
+    border: 1px solid var(--border-line);
+    border-radius: 10px;
+    padding: 1.25rem;
+    font-size: 0.84rem;
+    color: #a7f3d0;
+    overflow-x: auto;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--border-line);
+    background: rgba(255, 255, 255, 0.015);
+  }
+  td {
+    padding: 0.95rem 1rem;
+    border-bottom: 1px solid var(--border-line);
+    font-size: 0.88rem;
+  }
+
+  .audit-callout {
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.1), rgba(217, 119, 6, 0.03));
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 12px;
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body class="antialiased text-slate-100">
+
+<!-- Background Mesh -->
+<div class="global-bg-canvas grid-pattern"></div>
+
+<!-- NAVIGATION -->
+<header class="fixed top-0 inset-x-0 z-50 glass-header">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <div class="w-8 h-8 rounded-lg bg-teal-500/20 border border-teal-400/40 flex items-center justify-center font-bold text-teal-300 display-font">
+        Ω
+      </div>
+      <span class="display-font font-bold text-lg text-slate-100 tracking-tight">
+        open-phase-<span class="text-teal-400">ensemble</span>
+      </span>
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            open-phase-ensemble
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Home
-            
-          </span>
-        </div>
-      </div>
+    <div class="hidden md:flex items-center gap-7">
+      <a class="nav-item" href="#overview">Overview</a>
+      <a class="nav-item" href="#architecture">Architecture</a>
+      <a class="nav-item" href="#results">Results</a>
+      <a class="nav-item" href="#limitations">Audit & Integrity</a>
+      <a class="nav-item" href="#quickstart">Quickstart</a>
     </div>
-    
-      
-        <form class="md-header__option" data-md-component="palette">
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
-      </label>
-    
-  
-</form>
-      
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
-    
-    
-    
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
+    <div class="flex items-center gap-3">
+      <a href="https://github.com/mohamedhossammohamed/open-phase-ensemble" target="_blank" class="btn-formal-outline px-4 py-2 text-sm flex items-center gap-2">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        <span>GitHub Repository</span>
+      </a>
     </div>
-  </div>
-</div>
-      
-    
-    
-      <div class="md-header__source">
-        <a href="https://github.com/mohamedhossammohamed/open-phase-ensemble" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    open-phase-ensemble
-  </div>
-</a>
-      </div>
-    
   </nav>
-  
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-            
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-    
-  
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
-        
-  
-  
-    
-  
-  Home
 
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="journey/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Journey
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="theory/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Theory
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="citations/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Research & Citations
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="architecture/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Architecture
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="results/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Results
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="significance/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Significance
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="disclaimer/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Disclaimer
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="developer/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Developer Guide
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-          
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="." title="open-phase-ensemble" class="md-nav__button md-logo" aria-label="open-phase-ensemble" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
-    </a>
-    open-phase-ensemble
-  </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/mohamedhossammohamed/open-phase-ensemble" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    open-phase-ensemble
-  </div>
-</a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-this-system-does" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What This System Does
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#preliminary-results" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Preliminary Results
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#core-principles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Core Principles
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="journey/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Journey
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="theory/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Theory
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="citations/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Research & Citations
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="architecture/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="results/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Results
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="significance/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Significance
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="disclaimer/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Disclaimer
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="developer/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Developer Guide
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-this-system-does" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What This System Does
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#preliminary-results" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Preliminary Results
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#core-principles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Core Principles
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-
-  
-  
-
-
-<h1 id="open-phase-ensemble">open-phase-ensemble<a class="headerlink" href="#open-phase-ensemble" title="Permanent link">&para;</a></h1>
-<p>An open-source, non-parametric, multi-tool ensemble for streaming time-series anomaly detection and forecasting.</p>
-<hr />
-<div class="admonition note">
-<p class="admonition-title">Preliminary Research — Pending Independent Review</p>
-<p>This project is experimental and provided for research and educational purposes only. All performance claims are preliminary and self-reported. Do not use for safety-critical, medical, financial, or production decisions without independent expert review. See the <a href="disclaimer/">full disclaimer</a>.</p>
-</div>
-<hr />
-<h2 id="what-this-system-does">What This System Does<a class="headerlink" href="#what-this-system-does" title="Permanent link">&para;</a></h2>
-<p>Time-series anomaly detection suffers from methodological fragmentation and evaluation pitfalls. Many benchmarks rely on flawed metrics that inflate random guessers to &gt;90% accuracy. Heavily parameterized deep models remain opaque and computationally expensive.</p>
-<p><strong>open-phase-ensemble</strong> takes a different approach:</p>
-<ul>
-<li><strong>Non-parametric foundation</strong> — Reconstructs phase-space manifolds via Takens' delay embedding instead of training millions of parameters.</li>
-<li><strong>Orthogonal 6-detector battery</strong> — Combines phase-space trajectory prediction, covariance geometry, subsequence motifs, subspace isolation, linear autoregression, and MSE transformer reconstruction.</li>
-<li><strong>Online Meta-Judge</strong> — Uses the Hedge multiplicative-weights algorithm to dynamically reweight detectors in real time without ground-truth labels.</li>
-<li><strong>Zero-lookahead invariant</strong> — Strict element-by-element streaming. No future data is ever exposed during scoring.</li>
-<li><strong>Methodological rigor</strong> — Evaluated using standard VUS-ROC/PR with label-only buffering and IAAFT phase-randomized surrogate nulls.</li>
-</ul>
-<hr />
-<h2 id="preliminary-results">Preliminary Results<a class="headerlink" href="#preliminary-results" title="Permanent link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Pending External Review</p>
-<p>All numbers below are preliminary point estimates from a single deterministic run.</p>
-</div>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Dataset</th>
-<th style="text-align: center;">System VUS-ROC</th>
-<th style="text-align: center;">Predictive Edge</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">PhysioNet MIT-BIH (record 100)</td>
-<td style="text-align: center;"><strong>0.8592</strong></td>
-<td style="text-align: center;">~+0.37</td>
-</tr>
-<tr>
-<td style="text-align: left;">CWRU Bearing</td>
-<td style="text-align: center;"><strong>0.9711</strong></td>
-<td style="text-align: center;">~+0.37</td>
-</tr>
-</tbody>
-</table>
-<p>See <a href="results/">Results &amp; Benchmarks</a> for full methodology, known limitations, and replication instructions.</p>
-<hr />
-<h2 id="core-principles">Core Principles<a class="headerlink" href="#core-principles" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Transparency</strong> — Every matrix operation, weight update, and gating transition is fully inspectable and auditable.</li>
-<li><strong>Reproducibility</strong> — 100% deterministic execution with fixed seeds, verified by SHA-256 hash comparison.</li>
-<li><strong>Honesty</strong> — Corrected evaluation metrics, disclosed limitations, no inflated claims.</li>
-</ol>
-
-
-
-
-
-
-
-
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+<!-- MAIN WRAPPER -->
+<main class="relative z-10">
+
+  <!-- HERO SECTION -->
+  <section id="top" class="pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7">
+        <div class="flex flex-wrap gap-2.5 mb-6">
+          <span class="px-3 py-1 text-xs font-semibold rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30">
+            ⚠ Preliminary · Pending External Review
+          </span>
+          <span class="px-3 py-1 text-xs font-semibold rounded-full bg-teal-500/10 text-teal-300 border border-teal-500/30">
+            Apache 2.0
+          </span>
+          <span class="px-3 py-1 text-xs font-semibold rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/30">
+            34 / 34 Tests Passing
+          </span>
+        </div>
+        <h1 class="display-font text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+          Open science for <br/>
+          <span class="text-gradient-formal">streaming anomaly detection.</span>
+        </h1>
+        <p class="text-slate-300 text-lg mt-6 leading-relaxed max-w-2xl">
+          A non-parametric, multi-tool ensemble that reconstructs phase-space geometry from raw scalar streams —
+          combining <strong class="text-white font-semibold">six orthogonal detectors</strong> under an online, label-free
+          <strong class="text-white font-semibold">Meta-Judge</strong> with strict zero-lookahead invariants and 100% execution determinism.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-9">
+          <a href="#results" class="btn-formal-primary px-6 py-3.5 text-sm font-semibold">
+            Explore Benchmark Results
+          </a>
+          <a href="#quickstart" class="btn-formal-outline px-6 py-3.5 text-sm font-semibold">
+            Quickstart Guide
+          </a>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Back to top
-</button>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
-</div>
-      
-        
-<div class="md-social">
-  
-    
-    
-    
-    
-      
-      
-    
-    <a href="https://github.com/mohamedhossammohamed/open-phase-ensemble" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-    </a>
-  
-</div>
-      
+        <!-- Metrics Summary Cards -->
+        <div class="grid grid-cols-3 gap-4 mt-12 max-w-lg pt-6 border-t border-white/10">
+          <div>
+            <div class="display-font text-3xl font-bold text-teal-400">6</div>
+            <div class="text-xs text-slate-400 mt-1 font-medium">Orthogonal Detectors</div>
+          </div>
+          <div>
+            <div class="display-font text-3xl font-bold text-blue-400">0.9711</div>
+            <div class="text-xs text-slate-400 mt-1 font-medium">VUS-ROC (CWRU)</div>
+          </div>
+          <div>
+            <div class="display-font text-3xl font-bold text-amber-400">+0.37</div>
+            <div class="text-xs text-slate-400 mt-1 font-medium">Predictive Edge (Δ)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Canvas Animation Component -->
+      <div class="lg:col-span-5">
+        <div class="card-formal p-4 border border-white/10 relative">
+          <canvas id="hero-canvas" class="w-full h-[360px] rounded-lg bg-black/40 block"></canvas>
+          <div class="mt-3 flex items-center justify-between px-1">
+            <span class="mono-font text-xs text-slate-400">1-D Signal → Phase-Space Manifold (Live)</span>
+            <span class="flex items-center gap-1.5 text-xs text-teal-400 font-medium">
+              <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span> Streaming
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- AUDIT DISCLAIMER CALLOUT -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+    <div class="audit-callout p-6 flex gap-5 items-start reveal-on-scroll">
+      <div class="w-10 h-10 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-300 text-xl font-bold shrink-0">
+        !
+      </div>
+      <div>
+        <h3 class="display-font text-base font-bold text-amber-200">Experimental Research — Pending Independent Review</h3>
+        <p class="text-sm text-slate-300 mt-1.5 leading-relaxed">
+          This project is experimental and provided for research and educational purposes. All performance numbers are preliminary, self-reported, and have not been independently validated or peer-reviewed. Do not use for safety-critical, medical, financial, or production decisions without qualified expert review. We publish all code, metrics, and limitations transparently.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW SECTION -->
+  <section id="overview" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal-on-scroll">
+        <span class="mono-font text-xs uppercase tracking-widest text-teal-400 font-semibold">01 · Overview</span>
+        <h2 class="display-font text-3xl sm:text-4xl font-bold mt-2 text-white">Methodological Philosophy</h2>
+        <p class="text-slate-300 mt-3 max-w-3xl leading-relaxed">
+          Time-series anomaly detection suffers from methodological fragmentation. Flawed metrics like point-adjusted F1 (PA-F1) inflate random guessers to &gt;90% accuracy, while deep learning models remain black boxes. <strong class="text-white">open-phase-ensemble</strong> offers a transparent, non-parametric alternative.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        <div class="card-formal p-6 reveal-on-scroll">
+          <div class="w-10 h-10 rounded-lg bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 text-lg mb-4 font-semibold">
+            01
+          </div>
+          <h3 class="display-font text-lg font-bold text-white">Non-Parametric Geometry</h3>
+          <p class="text-sm text-slate-300 mt-2 leading-relaxed">Reconstructs attractor manifolds via Takens' delay embedding rather than fitting millions of neural weights.</p>
+        </div>
+
+        <div class="card-formal p-6 reveal-on-scroll">
+          <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-lg mb-4 font-semibold">
+            02
+          </div>
+          <h3 class="display-font text-lg font-bold text-white">Orthogonal 6-Detector Battery</h3>
+          <p class="text-sm text-slate-300 mt-2 leading-relaxed">Combines trajectory predictability, covariance geometry, matrix profile discords, subspace isolation, linear AR residuals, and transformer autoencoding.</p>
+        </div>
+
+        <div class="card-formal p-6 reveal-on-scroll">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-lg mb-4 font-semibold">
+            03
+          </div>
+          <h3 class="display-font text-lg font-bold text-white">Online Meta-Judge</h3>
+          <p class="text-sm text-slate-300 mt-2 leading-relaxed">Hedge multiplicative weights dynamically adjust expert weights in real time without requiring ground-truth anomaly labels.</p>
+        </div>
+
+        <div class="card-formal p-6 reveal-on-scroll">
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-lg mb-4 font-semibold">
+            04
+          </div>
+          <h3 class="display-font text-lg font-bold text-white">Zero-Lookahead Invariant</h3>
+          <p class="text-sm text-slate-300 mt-2 leading-relaxed">Strict element-by-element online evaluation. No future window observations are ever leaked during scoring.</p>
+        </div>
+
+        <div class="card-formal p-6 reveal-on-scroll">
+          <div class="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-lg mb-4 font-semibold">
+            05
+          </div>
+          <h3 class="display-font text-lg font-bold text-white">Un-Buffered VUS Metrics</h3>
+          <p class="text-sm text-slate-300 mt-2 leading-relaxed">Evaluated using Volume Under Surface (VUS-ROC) with label-only temporal buffering, benchmarked against IAAFT surrogate null models.</p>
+        </div>
+
+        <div class="card-formal p-6 reveal-on-scroll">
+          <div class="w-10 h-10 rounded-lg bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 text-lg mb-4 font-semibold">
+            06
+          </div>
+          <h3 class="display-font text-lg font-bold text-white">Self-Audited Integrity</h3>
+          <p class="text-sm text-slate-300 mt-2 leading-relaxed">Disclosed all metric corrections, renamed over-claimed detector modules, and documented limitations openly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE SECTION -->
+  <section id="architecture" class="py-16 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal-on-scroll">
+        <span class="mono-font text-xs uppercase tracking-widest text-teal-400 font-semibold">02 · Architecture</span>
+        <h2 class="display-font text-3xl sm:text-4xl font-bold mt-2 text-white">System Pipeline Overview</h2>
+        <p class="text-slate-300 mt-3 max-w-3xl leading-relaxed">
+          The system operates as a zero-lookahead streaming loop. Data flows strictly forward through pre-processing, feature space projection, detector scoring, expert fusion, and CUSUM adaptation gating.
+        </p>
+      </div>
+
+      <div class="card-formal p-6 sm:p-8 mt-10 overflow-x-auto reveal-on-scroll">
+        <svg viewBox="0 0 960 400" class="w-full min-w-[760px]" font-family="IBM Plex Mono, monospace">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,1 L10,5 L0,9 z" fill="#64748b"/>
+            </marker>
+          </defs>
+          
+          <!-- Module 1: Ingestion -->
+          <rect x="20" y="160" width="150" height="80" rx="10" fill="rgba(13, 148, 136, 0.1)" stroke="#0d9488" stroke-width="1.5"/>
+          <text x="95" y="192" text-anchor="middle" fill="#2dd4bf" font-size="13" font-weight="700">1. Ingestion</text>
+          <text x="95" y="212" text-anchor="middle" fill="#cbd5e1" font-size="10">StreamBuffer</text>
+          <text x="95" y="226" text-anchor="middle" fill="#94a3b8" font-size="10">Median / MAD</text>
+          
+          <!-- Module 2: Representation -->
+          <rect x="200" y="160" width="150" height="80" rx="10" fill="rgba(37, 99, 235, 0.1)" stroke="#2563eb" stroke-width="1.5"/>
+          <text x="275" y="192" text-anchor="middle" fill="#60a5fa" font-size="13" font-weight="700">2. Representation</text>
+          <text x="275" y="212" text-anchor="middle" fill="#cbd5e1" font-size="10">Takens → JL → HNSW</text>
+          <text x="275" y="226" text-anchor="middle" fill="#94a3b8" font-size="10">Z_t Vector</text>
+
+          <!-- Module 3: 6 Detectors -->
+          <rect x="380" y="30" width="220" height="340" rx="12" fill="rgba(255, 255, 255, 0.02)" stroke="rgba(255, 255, 255, 0.15)" stroke-dasharray="4 4"/>
+          <text x="490" y="55" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="700">3. 6-Detector Battery</text>
+          
+          <g font-size="10">
+            <rect x="395" y="70" width="190" height="42" rx="6" fill="rgba(5, 150, 105, 0.12)" stroke="#059669"/><text x="490" y="96" text-anchor="middle" fill="#34d399">Simplex Projection (EDM)</text>
+            <rect x="395" y="120" width="190" height="42" rx="6" fill="rgba(5, 150, 105, 0.12)" stroke="#059669"/><text x="490" y="146" text-anchor="middle" fill="#34d399">Ledoit-Wolf Mahalanobis</text>
+            <rect x="395" y="170" width="190" height="42" rx="6" fill="rgba(5, 150, 105, 0.12)" stroke="#059669"/><text x="490" y="196" text-anchor="middle" fill="#34d399">STOMP Matrix Profile</text>
+            <rect x="395" y="220" width="190" height="42" rx="6" fill="rgba(5, 150, 105, 0.12)" stroke="#059669"/><text x="490" y="246" text-anchor="middle" fill="#34d399">Isolation Forest</text>
+            <rect x="395" y="270" width="190" height="42" rx="6" fill="rgba(5, 150, 105, 0.12)" stroke="#059669"/><text x="490" y="296" text-anchor="middle" fill="#34d399">AR Linear Ridge Filter</text>
+            <rect x="395" y="320" width="190" height="38" rx="6" fill="rgba(5, 150, 105, 0.12)" stroke="#059669"/><text x="490" y="343" text-anchor="middle" fill="#34d399">MSE Transformer Autoencoder</text>
+          </g>
+
+          <!-- Module 4-5: Meta-Judge -->
+          <rect x="630" y="140" width="150" height="120" rx="10" fill="rgba(217, 119, 6, 0.1)" stroke="#d97706" stroke-width="1.5"/>
+          <text x="705" y="175" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700">4-5. Meta-Judge</text>
+          <text x="705" y="197" text-anchor="middle" fill="#cbd5e1" font-size="10">Hedge Weights</text>
+          <text x="705" y="213" text-anchor="middle" fill="#94a3b8" font-size="10">Pearson Loss ↺</text>
+          <text x="705" y="235" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="600">Fused Score A_t</text>
+
+          <!-- Module 6: CUSUM -->
+          <rect x="810" y="160" width="130" height="80" rx="10" fill="rgba(225, 29, 72, 0.1)" stroke="#e11d48" stroke-width="1.5"/>
+          <text x="875" y="192" text-anchor="middle" fill="#fda4af" font-size="13" font-weight="700">6. CUSUM</text>
+          <text x="875" y="212" text-anchor="middle" fill="#cbd5e1" font-size="10">Gating & Drift</text>
+
+          <!-- Connection Arrows -->
+          <g stroke="#64748b" stroke-width="1.5" fill="none" marker-end="url(#arrow)">
+            <path d="M170,200 L200,200"/>
+            <path d="M350,200 L380,200"/>
+            <path d="M600,200 L630,200"/>
+            <path d="M780,200 L810,200"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS SECTION -->
+  <section id="results" class="py-16 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal-on-scroll">
+        <span class="mono-font text-xs uppercase tracking-widest text-teal-400 font-semibold">03 · Results</span>
+        <h2 class="display-font text-3xl sm:text-4xl font-bold mt-2 text-white">Empirical Benchmark Verification</h2>
+        <p class="text-slate-300 mt-3 max-w-3xl leading-relaxed">
+          Evaluated using standard Volume Under Surface (VUS-ROC and VUS-PR) metrics with range buffering applied strictly to ground-truth labels. A positive predictive edge ($\Delta \ge +0.30$) over the phase-randomized IAAFT null baseline confirms detection stems from genuine non-linear dynamics.
+        </p>
+      </div>
+
+      <!-- Results Table -->
+      <div class="card-formal mt-10 overflow-x-auto reveal-on-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Dataset</th>
+              <th>Points (N)</th>
+              <th>System VUS-ROC</th>
+              <th>System VUS-PR</th>
+              <th>IAAFT Null VUS-ROC</th>
+              <th>Predictive Edge (Δ)</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium text-white">
+                PhysioNet MIT-BIH <span class="mono-font text-xs text-slate-400">(record 100)</span>
+              </td>
+              <td class="mono-font text-slate-300">5,143</td>
+              <td class="mono-font text-teal-300 font-bold text-base">0.8592</td>
+              <td class="mono-font text-slate-300">0.6926</td>
+              <td class="mono-font text-slate-400">~0.49</td>
+              <td class="mono-font text-emerald-400 font-bold">+0.3701</td>
+              <td><span class="px-2.5 py-0.5 text-xs font-semibold rounded bg-teal-500/10 text-teal-300 border border-teal-500/30">Verified</span></td>
+            </tr>
+            <tr>
+              <td class="font-medium text-white">
+                CWRU Bearing Prognostics
+              </td>
+              <td class="mono-font text-slate-300">5,000</td>
+              <td class="mono-font text-teal-300 font-bold text-base">0.9711</td>
+              <td class="mono-font text-slate-300">0.7111</td>
+              <td class="mono-font text-slate-400">~0.61</td>
+              <td class="mono-font text-emerald-400 font-bold">+0.3656</td>
+              <td><span class="px-2.5 py-0.5 text-xs font-semibold rounded bg-teal-500/10 text-teal-300 border border-teal-500/30">Verified</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flex flex-wrap gap-2.5 mt-4 text-xs reveal-on-scroll">
+        <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30">Single-run point estimates</span>
+        <span class="px-2.5 py-1 rounded bg-blue-500/10 text-blue-300 border border-blue-500/30">100% deterministic execution</span>
+        <span class="px-2.5 py-1 rounded bg-slate-500/10 text-slate-300 border border-slate-500/30">Stochastic IAAFT null baseline</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIT & LIMITATIONS SECTION -->
+  <section id="limitations" class="py-16 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal-on-scroll">
+        <span class="mono-font text-xs uppercase tracking-widest text-teal-400 font-semibold">04 · Scientific Rigor</span>
+        <h2 class="display-font text-3xl sm:text-4xl font-bold mt-2 text-white">Known Limitations & Audit Remediations</h2>
+        <p class="text-slate-300 mt-3 max-w-3xl leading-relaxed">
+          Scientific integrity requires publishing corrections openly. The following remediations were implemented during our internal code and results audit:
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-10">
+        <div class="card-formal p-6 reveal-on-scroll">
+          <h3 class="display-font text-lg font-bold text-amber-200">1. VUS Metric Correction</h3>
+          <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+            An internal audit identified a bug in earlier metric calculation where predicted anomaly scores were max-pooled alongside ground-truth labels. Range buffering is now applied <strong class="text-white">strictly to ground-truth labels</strong>. All reported numbers reflect this un-inflated evaluation.
+          </p>
+        </div>
+
+        <div class="card-formal p-6 reveal-on-scroll">
+          <h3 class="display-font text-lg font-bold text-amber-200">2. Algorithmic Realignment</h3>
+          <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+            Two detector modules were renamed to accurately describe their actual mathematical implementations: <code class="text-teal-300 font-mono text-xs">ARFilterDetector</code> (online AR ridge regression filter) and <code class="text-teal-300 font-mono text-xs">MSETransformerAutoencoder</code> (MSE sequence reconstruction).
+          </p>
+        </div>
+
+        <div class="card-formal p-6 reveal-on-scroll">
+          <h3 class="display-font text-lg font-bold text-amber-200">3. Reference Comparison Invalidity</h3>
+          <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+            Direct comparison to external closed-source references (e.g. 83.96–86.02%) is scientifically invalid due to metric type mismatch (VUS-ROC vs. PA-F1) and dataset length differences. We report our VUS-ROC numbers independently without claiming superiority.
+          </p>
+        </div>
+
+        <div class="card-formal p-6 reveal-on-scroll">
+          <h3 class="display-font text-lg font-bold text-amber-200">4. Future Work & Multi-Seed Bounds</h3>
+          <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+            Current benchmark figures are single-run point estimates. Multi-seed evaluations to generate 95% confidence intervals ($\pm \sigma$) are planned for a future release to further validate the preliminary estimates.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICKSTART SECTION -->
+  <section id="quickstart" class="py-16 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal-on-scroll">
+        <span class="mono-font text-xs uppercase tracking-widest text-teal-400 font-semibold">05 · Quickstart</span>
+        <h2 class="display-font text-3xl sm:text-4xl font-bold mt-2 text-white">Getting Started</h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6 mt-10">
+        <div class="reveal-on-scroll">
+          <h3 class="display-font text-sm font-semibold text-slate-300 mb-2.5">Terminal Installation & Verification</h3>
+          <pre><code class="language-bash"># Clone repository
+git clone https://github.com/mohamedhossammohamed/open-phase-ensemble.git
+cd open-phase-ensemble
+
+# Environment setup
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+
+# Run full test suite (34/34 passing)
+PYTHONPATH=src pytest tests/ -v
+
+# Run live benchmark evaluation
+PYTHONPATH=src python scripts/run_benchmark.py</code></pre>
+        </div>
+
+        <div class="reveal-on-scroll">
+          <h3 class="display-font text-sm font-semibold text-slate-300 mb-2.5">Python Streaming Usage</h3>
+          <pre><code class="language-python">from tsad.pipeline import TSADPipeline
+
+# Initialize pipeline (tau=2, d=8)
+pipeline = TSADPipeline(tau=2, d=8)
+
+# Process scalar stream online (zero-lookahead)
+stream = [0.1, 0.2, 0.15, 0.18, 8.5, 0.12]
+
+for x_t in stream:
+    A_t, v_hat = pipeline.step(x_t)
+    print(f"x_t={x_t:5.2f} -> Anomaly Score: {A_t:.4f}, Forecast: {v_hat:.4f}")</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/10 py-12 relative z-10 bg-slate-950/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-10">
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-7 h-7 rounded bg-teal-500/20 border border-teal-400/40 flex items-center justify-center font-bold text-teal-300 display-font text-sm">
+          Ω
+        </div>
+        <span class="display-font font-bold text-white text-base">open-phase-ensemble</span>
+      </div>
+      <p class="text-xs text-slate-400 leading-relaxed">
+        Open-source, non-parametric, multi-tool ensemble system for streaming time-series anomaly detection and forecasting.
+      </p>
+    </div>
+
+    <div>
+      <h4 class="display-font text-xs uppercase tracking-wider text-slate-300 font-bold mb-3">Links & Resources</h4>
+      <ul class="space-y-2 text-xs text-slate-400">
+        <li><a href="https://github.com/mohamedhossammohamed/open-phase-ensemble" target="_blank" class="hover:text-teal-300 transition-colors">GitHub Repository</a></li>
+        <li><a href="https://mohamedhossammohamed.github.io/open-phase-ensemble/journey/" class="hover:text-teal-300 transition-colors">The Journey</a></li>
+        <li><a href="https://mohamedhossammohamed.github.io/open-phase-ensemble/theory/" class="hover:text-teal-300 transition-colors">Theoretical Foundations</a></li>
+        <li><a href="https://mohamedhossammohamed.github.io/open-phase-ensemble/disclaimer/" class="hover:text-teal-300 transition-colors">Disclaimer & Audit Status</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="display-font text-xs uppercase tracking-wider text-slate-300 font-bold mb-3">BibTeX Citation</h4>
+      <pre class="text-[11px] p-3 text-slate-300">@software{open_phase_ensemble2026,
+  title  = {open-phase-ensemble: Non-Parametric Ensemble for Time-Series Anomaly Detection},
+  author = {open-phase-ensemble Contributors},
+  year   = {2026},
+  url    = {https://github.com/mohamedhossammohamed/open-phase-ensemble}
+}</pre>
+    </div>
+  </div>
+  
+  <div class="mt-8 pt-6 border-t border-white/5 text-center text-xs text-slate-500">
+    Licensed under Apache 2.0 · Built openly, audited rigorously.
   </div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    
-    
-      
-      
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-    
-    
-      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
-      
-        <script src="javascripts/mathjax.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      
-    
-  </body>
+
+<!-- INTERACTIVE CANVAS SIMULATION SCRIPT -->
+<script>
+  // Reveal on scroll logic
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+  // Hero Canvas Animation (Raw Stream -> Phase-Space Trajectory Reconstruction)
+  const canvas = document.getElementById('hero-canvas');
+  function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    return { ctx, width: rect.width, height: rect.height };
+  }
+
+  let canvasState = resizeCanvas();
+  window.addEventListener('resize', () => { canvasState = resizeCanvas(); });
+
+  let buffer = [];
+  let t = 0;
+
+  function generateSignal(x) {
+    const p = (((x % 60) / 60) + 1) % 1;
+    const g = (a, c, w) => {
+      let d = Math.abs(a - c);
+      d = Math.min(d, 1 - d);
+      return Math.exp(-d * d / (2 * w * w));
+    };
+    return 0.12 * g(p, 0.18, 0.025) - 0.18 * g(p, 0.30, 0.010) + g(p, 0.33, 0.012) - 0.25 * g(p, 0.36, 0.010) + 0.30 * g(p, 0.62, 0.045);
+  }
+
+  function renderLoop() {
+    const { ctx, width, height } = canvasState;
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < 2; i++) {
+      buffer.push(generateSignal(t));
+      t++;
+      if (buffer.length > 1200) buffer.shift();
+    }
+
+    const tau = 14;
+    const n = buffer.length;
+    let minVal = 1e9, maxVal = -1e9;
+    for (let i = Math.max(0, n - 400); i < n; i++) {
+      minVal = Math.min(minVal, buffer[i]);
+      maxVal = Math.max(maxVal, buffer[i]);
+    }
+    const pad = (maxVal - minVal) * 0.15 + 1e-6;
+    minVal -= pad;
+    maxVal += pad;
+
+    // Left Panel: 1-D Stream Signal
+    const leftWidth = width * 0.44;
+    ctx.strokeStyle = 'rgba(96, 165, 250, 0.75)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    const pointCount = Math.min(220, n);
+    for (let i = 0; i < pointCount; i++) {
+      const x = 12 + (leftWidth - 24) * (i / (pointCount - 1));
+      const y = height - ((buffer[n - pointCount + i] - minVal) / (maxVal - minVal)) * height;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '10px IBM Plex Mono';
+    ctx.fillText('1-D Raw Stream x_t', 12, 20);
+
+    // Right Panel: Phase Space Manifold (x_t vs x_{t-tau})
+    const offsetX = leftWidth + 20;
+    const spaceWidth = width - offsetX - 16;
+    const spaceHeight = height - 32;
+
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+    ctx.strokeRect(offsetX, 16, spaceWidth, spaceHeight);
+
+    const mapX = v => offsetX + ((v - minVal) / (maxVal - minVal)) * spaceWidth;
+    const mapY = v => 16 + spaceHeight - ((v - minVal) / (maxVal - minVal)) * spaceHeight;
+
+    const trajCount = Math.min(380, n - tau);
+    ctx.strokeStyle = 'rgba(45, 212, 191, 0.35)';
+    ctx.lineWidth = 1.25;
+    ctx.beginPath();
+    for (let k = 0; k < trajCount; k++) {
+      const idx = n - trajCount + k;
+      const px = mapX(buffer[idx - tau]);
+      const py = mapY(buffer[idx]);
+      if (k === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+
+    // Active Observation Head Point
+    const lastIdx = n - 1;
+    ctx.save();
+    ctx.shadowColor = '#2dd4bf';
+    ctx.shadowBlur = 10;
+    ctx.fillStyle = '#5eead4';
+    ctx.beginPath();
+    ctx.arc(mapX(buffer[lastIdx - tau]), mapY(buffer[lastIdx]), 4.5, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.restore();
+
+    ctx.fillStyle = '#94a3b8';
+    ctx.fillText('Phase-Space Geometry', offsetX + 10, 32);
+
+    requestAnimationFrame(renderLoop);
+  }
+
+  renderLoop();
+</script>
+
+</body>
 </html>
