@@ -9,13 +9,27 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+function drawRoundedRect(ctx, x, y, width, height, radius) {
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.arcTo(x + width, y, x + width, y + radius, radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.arcTo(x + width, y + height, x + width - radius, y + height, radius);
+  ctx.lineTo(x + radius, y + height);
+  ctx.arcTo(x, y + height, x, y + height - radius, radius);
+  ctx.lineTo(x, y + radius);
+  ctx.arcTo(x, y, x + radius, y, radius);
+  ctx.closePath();
+}
+
 function initSimulation(container) {
   const canvas = container.querySelector("canvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
 
   function resizeCanvas() {
-    canvas.width = container.clientWidth - 48;
+    canvas.width = Math.max(300, container.clientWidth - 48);
     canvas.height = 300;
   }
   resizeCanvas();
@@ -35,9 +49,9 @@ function initSimulation(container) {
   let weights = [0.166, 0.166, 0.166, 0.166, 0.166, 0.166];
 
   const compartments = [
-    { name: "01 // INGESTION", label: "STREAMBUFFER", color: "#dadbdf" },
-    { name: "02 // REPRES", label: "TAKENS / JL", color: "#dadbdf" },
-    { name: "03 // BATTERY", label: "6 EXPERTS", color: "#dadbdf" },
+    { name: "01 // INGESTION", label: "STREAMBUFFER", color: "#ffffff" },
+    { name: "02 // REPRES", label: "TAKENS / JL", color: "#ffffff" },
+    { name: "03 // BATTERY", label: "6 EXPERTS", color: "#ffffff" },
     { name: "04 // META-JUDGE", label: "HEDGE FUSION", color: "#ffffff" },
     { name: "05 // GATING", label: "CUSUM", color: "#ff7a17" },
   ];
@@ -127,7 +141,7 @@ function initSimulation(container) {
     const height = canvas.height;
     ctx.clearRect(0, 0, width, height);
 
-    // xAI Palette
+    // Strict xAI Monochrome Palette
     const bgCanvas = "#0a0a0a";
     const hairline = "#212327";
     const inkWhite = "#ffffff";
@@ -147,14 +161,14 @@ function initSimulation(container) {
 
     // ── Panel 1: Live Stream ──────────────────────────────────
     ctx.fillStyle = bodyMid;
-    ctx.font = "10px Geist Mono, ui-monospace, monospace";
+    ctx.font = "10px Geist Mono, JetBrains Mono, monospace";
     ctx.fillText("LIVE STREAM // SIGNAL x_t & FUSED ANOMALY SCORE A_t", 12, 18);
 
     const streamW = width - 24;
     const streamY0 = 65;
 
-    // Draw Signal x_t (White)
-    ctx.strokeStyle = "#dadbdf";
+    // Draw Signal x_t (Pure White)
+    ctx.strokeStyle = "#ffffff";
     ctx.lineWidth = 1.2;
     ctx.beginPath();
     for (let i = 0; i < bufferLen; i++) {
@@ -178,7 +192,7 @@ function initSimulation(container) {
     ctx.stroke();
 
     // Legend
-    ctx.fillStyle = "#dadbdf";
+    ctx.fillStyle = "#ffffff";
     ctx.fillText("— x_t STREAM", width - 170, 18);
     ctx.fillStyle = sunsetOrange;
     ctx.fillText("— A_t SCORE", width - 80, 18);
@@ -199,21 +213,20 @@ function initSimulation(container) {
       const x = 12 + idx * (boxW + gap);
       compCoords.push({ x: x + boxW / 2, y: compY + compH / 2 });
 
-      // Node Box (Hairline border on near-black)
+      // Node Box (Hairline border on charcoal #191919)
       ctx.fillStyle = "#191919";
       ctx.strokeStyle = hairline;
       ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.roundRect(x, compY, boxW, compH, 8); // rounded.sm (8px)
+      drawRoundedRect(ctx, x, compY, boxW, compH, 6);
       ctx.fill();
       ctx.stroke();
 
       // Node Text
       ctx.fillStyle = inkWhite;
-      ctx.font = "10px Geist Mono, ui-monospace, monospace";
+      ctx.font = "10px Geist Mono, JetBrains Mono, monospace";
       ctx.textAlign = "center";
       ctx.fillText(comp.name, x + boxW / 2, compY + 22);
-      ctx.font = "9px Geist Mono, ui-monospace, monospace";
+      ctx.font = "9px Geist Mono, JetBrains Mono, monospace";
       ctx.fillStyle = bodyMid;
       ctx.fillText(comp.label, x + boxW / 2, compY + 38);
       ctx.textAlign = "left";
@@ -268,7 +281,7 @@ function initSimulation(container) {
       ctx.fillRect(bx, barY0 - bh, barW, bh);
 
       ctx.fillStyle = bodyMid;
-      ctx.font = "9px Geist Mono, ui-monospace, monospace";
+      ctx.font = "9px Geist Mono, JetBrains Mono, monospace";
       ctx.fillText(detectorNames[k], bx, barY0 + 9);
       ctx.fillText((bw * 100).toFixed(0) + "%", bx, barY0 - bh - 3);
     }

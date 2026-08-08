@@ -10,3 +10,17 @@ window.MathJax = {
     processHtmlClass: "arithmatex"
   }
 };
+
+document.addEventListener("DOMContentLoaded", function() {
+  if (typeof MathJax !== "undefined" && MathJax.typesetPromise) {
+    MathJax.typesetPromise();
+  }
+});
+
+if (typeof location$ !== "undefined") {
+  location$.subscribe(function() {
+    if (typeof MathJax !== "undefined" && MathJax.typesetPromise) {
+      MathJax.typesetPromise();
+    }
+  });
+}

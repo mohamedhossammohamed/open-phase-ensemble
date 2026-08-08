@@ -1,278 +1,349 @@
-/* open-phase-ensemble — Custom Documentation Styles & Material UI Components */
+/* open-phase-ensemble — xAI Inspired Single-Color Dark Canvas Design System */
 
-/* ── Typography & Spacing ─────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@400;500&display=swap');
 
 :root {
-  --md-text-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --md-code-font: "JetBrains Mono", "Fira Code", monospace;
+  /* xAI Single-Color Dark Canvas Tokens */
+  --xai-canvas: #0a0a0a;
+  --xai-canvas-card: #191919;
+  --xai-canvas-soft: #141414;
+  --xai-hairline: #212327;
+  --xai-hairline-translucent: rgba(255, 255, 255, 0.2);
+  
+  --xai-ink: #ffffff;
+  --xai-body: #dadbdf;
+  --xai-body-mid: #7d8187;
+  --xai-sunset: #ff7a17;
+
+  /* Font Tokens */
+  --md-text-font: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --md-code-font: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+
+  /* Override Material Theme CSS Variables to single dark color */
+  --md-default-bg-color: #0a0a0a !important;
+  --md-default-fg-color: #dadbdf !important;
+  --md-primary-bg-color: #0a0a0a !important;
+  --md-primary-fg-color: #ffffff !important;
+  --md-accent-fg-color: #ffffff !important;
+  --md-code-bg-color: #141414 !important;
+}
+
+/* ── Base Surface & Global Canvas ─────────────────────────── */
+
+html, body, .md-container, .md-header, .md-main, .md-sidebar {
+  background-color: #0a0a0a !important;
+  background-image: none !important;
+  color: var(--xai-body);
 }
 
 .md-typeset {
-  font-size: 0.84rem;
-  line-height: 1.75;
+  font-family: var(--md-text-font);
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--xai-body);
 }
 
+/* Display Headlines — Weight 400 with Aggressive Negative Tracking */
 .md-typeset h1 {
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.2em;
+  font-size: 2.75rem;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--xai-ink) !important;
+  margin-bottom: 1.5rem;
 }
 
 .md-typeset h2 {
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin-top: 2.4em;
-  padding-bottom: 0.4em;
-  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  font-size: 1.85rem;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: var(--xai-ink) !important;
+  margin-top: 2.8rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--xai-hairline) !important;
 }
 
 .md-typeset h3 {
-  font-weight: 600;
-  margin-top: 1.8em;
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--xai-ink) !important;
+  margin-top: 2rem;
 }
 
-/* ── Content Width ────────────────────────────────────────── */
+/* ── Eyebrows & Monospace Labels ──────────────────────────── */
 
-.md-content__inner {
-  max-width: 54em;
-  margin: 0 auto;
-  padding: 2em 1.6em 4em;
+.eyebrow-mono,
+.md-typeset .caption-mono,
+.mat-card-title,
+.sim-title {
+  font-family: var(--md-code-font);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--xai-body-mid) !important;
 }
 
-/* ── Deep Blue Linear Gradient Header & Navigation ────────── */
+/* ── Single-Color Dark Header & Navigation (No Gradients) ─── */
 
 .md-header,
 .md-tabs {
-  background: #0d1f34 !important; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #000000, #0d1f34) !important; /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #000000, #0d1f34) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background-color: #0a0a0a !important;
+  background-image: none !important;
+  border-bottom: 1px solid var(--xai-hairline) !important;
+  box-shadow: none !important;
 }
 
 .md-header__title,
-.md-header__button,
-.md-nav__link,
-.md-tabs__link {
-  color: #f3f4f6 !important;
+.md-header__button {
+  color: #ffffff !important;
+  font-family: var(--md-text-font);
+  font-weight: 400;
 }
 
+.md-tabs__link {
+  font-family: var(--md-text-font);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--xai-body-mid) !important;
+  opacity: 1 !important;
+  transition: color 0.15s ease;
+}
+
+.md-tabs__link:hover,
 .md-tabs__link--active {
-  color: #2dd4bf !important;
-  font-weight: 600;
+  color: #ffffff !important;
+}
+
+/* Sidebar Navigation Links */
+.md-nav__link {
+  font-family: var(--md-text-font);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--xai-body-mid) !important;
+}
+
+.md-nav__link:hover,
+.md-nav__link--active {
+  color: #ffffff !important;
+}
+
+/* ── Buttons (White Outline Pill System) ─────────────────── */
+
+.sim-btn,
+.xai-btn-outline,
+.md-button {
+  background-color: #0a0a0a !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  border: 1px solid var(--xai-hairline-translucent) !important;
+  border-radius: 9999px !important; /* Pill 9999px */
+  font-family: var(--md-text-font);
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 0.4rem 1rem;
+  transition: all 0.2s ease;
+  box-shadow: none !important;
+}
+
+.sim-btn:hover,
+.xai-btn-outline:hover,
+.md-button:hover {
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+.sim-btn.danger {
+  border-color: rgba(255, 122, 23, 0.5) !important;
+  color: var(--xai-sunset) !important;
+}
+
+.sim-btn.danger:hover {
+  background-color: rgba(255, 122, 23, 0.15) !important;
+  border-color: var(--xai-sunset) !important;
 }
 
 /* ── Material Cards & Metric Grids ────────────────────────── */
 
 .mat-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
-  margin: 1.75rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
 }
 
 .mat-card {
-  background: var(--md-card-bg, #ffffff);
-  border: 1px solid var(--md-card-border, #e5e7eb);
-  border-radius: 8px;
-  padding: 1.25rem 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  background-color: #191919 !important;
+  background-image: none !important;
+  border: 1px solid var(--xai-hairline) !important;
+  border-radius: 8px !important; /* rounded.sm */
+  padding: 1.5rem;
+  box-shadow: none !important;
+  transition: border-color 0.2s ease;
 }
 
 .mat-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.03);
-  border-color: var(--md-accent-fg-color);
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  transform: none;
 }
 
 .mat-card-header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.mat-card-icon {
-  font-size: 1.1rem;
-  color: var(--md-accent-fg-color);
+  margin-bottom: 0.4rem;
 }
 
 .mat-card-title {
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-family: var(--md-code-font);
+  font-size: 0.72rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--md-default-fg-color--light);
+  letter-spacing: 0.12em;
+  color: var(--xai-body-mid) !important;
 }
 
 .mat-card-value {
-  font-size: 1.65rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--md-default-fg-color);
-  margin-top: 0.2rem;
+  font-family: var(--md-text-font);
+  font-size: 1.85rem;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: #ffffff !important;
+  margin-top: 0.3rem;
 }
 
 .mat-card-sub {
-  font-size: 0.76rem;
-  color: #0d9488;
-  margin-top: 0.35rem;
-  font-weight: 500;
-}
-
-[data-md-color-scheme="slate"] .mat-card {
-  --md-card-bg: #0f1c2e;
-  --md-card-border: #1e2f47;
+  font-family: var(--md-text-font);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--xai-body-mid) !important;
+  margin-top: 0.4rem;
 }
 
 /* ── Interactive Simulation Container ─────────────────────── */
 
 .sim-container {
-  background: var(--md-card-bg, #ffffff);
-  border: 1px solid var(--md-card-border, #e5e7eb);
-  border-radius: 10px;
-  padding: 1.25rem 1.5rem;
+  background-color: #191919 !important;
+  background-image: none !important;
+  border: 1px solid var(--xai-hairline) !important;
+  border-radius: 8px !important;
+  padding: 1.5rem;
   margin: 2rem 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: none !important;
+  color: #ffffff !important;
 }
 
 .sim-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--xai-hairline) !important;
 }
 
 .sim-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--md-default-fg-color);
-}
-
-.sim-controls {
-  display: flex;
-  gap: 0.4rem;
-}
-
-.sim-btn {
-  background: var(--md-code-bg-color);
-  border: 1px solid var(--md-default-fg-color--lightest);
-  color: var(--md-default-fg-color);
-  padding: 0.3rem 0.65rem;
-  border-radius: 5px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.sim-btn:hover {
-  background: var(--md-accent-fg-color);
-  color: #ffffff;
-  border-color: var(--md-accent-fg-color);
-}
-
-.sim-btn.danger {
-  background: rgba(244, 63, 94, 0.08);
-  color: #f43f5e;
-  border-color: rgba(244, 63, 94, 0.3);
-}
-
-.sim-btn.danger:hover {
-  background: #f43f5e;
-  color: #ffffff;
+  font-family: var(--md-code-font);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #ffffff !important;
 }
 
 .sim-canvas {
   width: 100%;
   height: 300px;
-  background: var(--md-code-bg-color);
+  background-color: #0a0a0a !important;
+  border: 1px solid var(--xai-hairline) !important;
   border-radius: 6px;
   display: block;
 }
 
-/* ── Admonition Refinements ───────────────────────────────── */
+/* ── Admonitions & Callouts ──────────────────────────────── */
 
 .md-typeset .admonition,
 .md-typeset details {
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  border-left-width: 4px;
-  font-size: 0.8rem;
+  background-color: #191919 !important;
+  border: 1px solid var(--xai-hairline) !important;
+  border-left: 3px solid #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  color: var(--xai-body) !important;
 }
 
 .md-typeset .admonition-title,
 .md-typeset summary {
-  font-weight: 600;
-  font-size: 0.82rem;
+  font-family: var(--md-code-font);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ffffff !important;
+  background-color: transparent !important;
+}
+
+.md-typeset .admonition.warning {
+  border-left-color: var(--xai-sunset) !important;
 }
 
 /* ── Tables ───────────────────────────────────────────────── */
 
 .md-typeset table:not([class]) {
-  font-size: 0.78rem;
-  border-collapse: collapse;
+  background-color: #191919 !important;
+  border: 1px solid var(--xai-hairline) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  font-size: 0.82rem;
   width: 100%;
 }
 
 .md-typeset table:not([class]) th {
-  font-weight: 600;
+  font-family: var(--md-code-font);
+  font-size: 0.72rem;
+  font-weight: 400;
   text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  padding: 0.8em 1em;
-  border-bottom: 2px solid var(--md-default-fg-color--lighter);
+  letter-spacing: 0.12em;
+  color: var(--xai-body-mid) !important;
+  background-color: #141414 !important;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--xai-hairline) !important;
 }
 
 .md-typeset table:not([class]) td {
-  padding: 0.7em 1em;
-  border-bottom: 1px solid var(--md-default-fg-color--lightest);
-}
-
-.md-typeset table:not([class]) tbody tr:hover {
-  background: var(--md-code-bg-color);
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--xai-hairline) !important;
+  color: var(--xai-body) !important;
 }
 
 /* ── Code Blocks ──────────────────────────────────────────── */
 
 .md-typeset pre > code {
-  font-size: 0.76rem;
-  border-radius: 6px;
+  background-color: #141414 !important;
+  border: 1px solid var(--xai-hairline) !important;
+  border-radius: 8px !important;
+  font-family: var(--md-code-font);
+  font-size: 0.8rem;
+  color: #ffffff !important;
 }
 
 .md-typeset code {
-  font-size: 0.82em;
-  padding: 0.1em 0.35em;
+  background-color: #141414 !important;
+  border: 1px solid var(--xai-hairline) !important;
   border-radius: 4px;
+  font-family: var(--md-code-font);
+  font-size: 0.82em;
+  padding: 0.1em 0.4em;
+  color: #ffffff !important;
 }
 
-/* ── Light Theme Refinements ──────────────────────────────── */
-
-[data-md-color-scheme="default"] {
-  --md-default-fg-color: #1a1a2e;
-  --md-default-bg-color: #fafafa;
-  --md-primary-fg-color: #ffffff;
-  --md-primary-bg-color: #0d1f34;
-  --md-accent-fg-color: #0d9488;
-}
-
-/* ── Dark Theme Refinements ───────────────────────────────── */
-
-[data-md-color-scheme="slate"] {
-  --md-default-bg-color: #070d18;
-  --md-default-fg-color: #d1d5db;
-  --md-primary-fg-color: #070d18;
-  --md-primary-bg-color: #0d1f34;
-  --md-accent-fg-color: #2dd4bf;
-  --md-code-bg-color: #0f1c2e;
-}
-
+/* Footer */
 .md-footer {
-  margin-top: 4em;
+  background-color: #0a0a0a !important;
+  border-top: 1px solid var(--xai-hairline) !important;
+  color: var(--xai-body-mid);
 }
