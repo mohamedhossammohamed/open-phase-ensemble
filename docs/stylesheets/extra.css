@@ -106,12 +106,120 @@ header, nav, .md-header, .md-header__inner, .md-tabs, .md-tabs__inner {
   box-shadow: none !important;
 }
 
-.md-header__title, .md-header__button {
-  color: var(--primary-ink) !important;
-  font-family: var(--font-label);
-  font-weight: 720;
+/* ── Matte Black Card Styling for Site Title & Navigation Header Blocks ── */
+
+/* Matte Black Header Title Badge */
+.md-header__title {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  background-color: #16181d !important;
+  color: #f4f1ea !important;
+  border: 1px solid #2d3139 !important;
+  border-radius: 6px !important;
+  padding: 0.35rem 0.75rem !important;
+  font-family: var(--font-label) !important;
+  font-size: 0.82rem !important;
+  font-weight: 720 !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: none !important;
 }
 
+.md-header__title .md-header__topic {
+  color: #f4f1ea !important;
+}
+
+/* Sidebar Nav Title — Matte Black Card */
+.md-nav__title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.6rem !important;
+  background-color: #16181d !important;
+  color: #f4f1ea !important;
+  border: 1px solid #2d3139 !important;
+  border-radius: 8px !important;
+  padding: 0.6rem 0.85rem !important;
+  margin: 0.6rem 0.8rem 1rem 0.8rem !important;
+  font-family: var(--font-label) !important;
+  font-size: 0.82rem !important;
+  font-weight: 720 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  box-shadow: none !important;
+}
+
+.md-nav__title a.md-nav__button.md-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  background-color: var(--index-blue) !important;
+  border-radius: 4px !important;
+  padding: 3px !important;
+  margin-right: 0.4rem !important;
+}
+
+.md-nav__title a.md-nav__button.md-logo svg {
+  fill: #ffffff !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Table of Contents Header Badge */
+label.md-nav__title[for="__toc"] {
+  background-color: #16181d !important;
+  color: #f4f1ea !important;
+  border: 1px solid #2d3139 !important;
+  border-radius: 6px !important;
+  padding: 0.45rem 0.75rem !important;
+  margin-bottom: 0.8rem !important;
+  font-size: 0.76rem !important;
+  font-weight: 720 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+/* GitHub Repository Matte Black Button Card */
+.md-nav__source, .md-header__source {
+  margin: 0.4rem 0.8rem !important;
+}
+
+.md-source {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  background-color: #16181d !important;
+  color: #f4f1ea !important;
+  border: 1px solid #2d3139 !important;
+  border-radius: 6px !important;
+  padding: 0.4rem 0.75rem !important;
+  transition: all 0.15s ease !important;
+  box-shadow: none !important;
+}
+
+.md-source:hover {
+  background-color: #21252d !important;
+  border-color: var(--index-blue) !important;
+  color: #ffffff !important;
+}
+
+.md-source__icon svg, .md-source svg {
+  fill: #f4f1ea !important;
+  color: #f4f1ea !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.md-source__repository {
+  font-family: var(--font-label) !important;
+  font-size: 0.8rem !important;
+  font-weight: 720 !important;
+  color: #f4f1ea !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* Navigation Links */
 .md-tabs__link, .md-nav__link {
   font-family: var(--font-label);
   font-size: 0.82rem;
@@ -133,19 +241,6 @@ header, nav, .md-header, .md-header__inner, .md-tabs, .md-tabs__inner {
   color: var(--primary-ink) !important;
   border: 1px solid var(--quiet-rule) !important;
   border-radius: 999px !important;
-}
-
-/* GitHub Source Icon */
-.md-header__source, .md-source, .md-source__icon, .md-source__repository, .md-source svg {
-  color: var(--primary-ink) !important;
-  fill: var(--primary-ink) !important;
-  opacity: 1 !important;
-}
-
-.md-source__repository {
-  font-family: var(--font-label);
-  font-weight: 720;
-  color: var(--primary-ink) !important;
 }
 
 /* Metric Cards & Grids — Flat Raised Paper */
