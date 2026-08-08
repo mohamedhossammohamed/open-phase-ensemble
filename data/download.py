@@ -1,9 +1,10 @@
 """Download and normalize real benchmark data with explicit provenance."""
 
+# isort: skip_file
+
 from __future__ import annotations
 
 import argparse
-import os
 import sys
 from pathlib import Path
 
@@ -12,7 +13,7 @@ import numpy as np
 SRC_DIR = Path(__file__).resolve().parents[1] / "src"
 sys.path.insert(0, str(SRC_DIR))
 
-from tsad.datasets import write_manifest  # noqa: E402
+from tsad.datasets import write_manifest
 
 
 DATA_DIR = Path(__file__).resolve().parent
