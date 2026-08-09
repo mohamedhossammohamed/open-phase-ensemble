@@ -62,3 +62,27 @@ def test_loader_rejects_checksum_mismatch(tmp_path):
 
     with pytest.raises(ValueError, match="checksum"):
         load_npz_dataset(path)
+
+
+def test_loader_accepts_continuous_float32_labels(tmp_path):
+    path = tmp_path / "gradual.npz"
+    signal = np.linspace(0.0, 1.0, 10, dtype=np.float64)
+    labels = np.linspace(0.0, 1.0, 10, dtype=np.float32)
+    np.savez_compressed(path, signal=signal, labels=labels)
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    manifest = {
+        "name": "gradual",
+        "source": "test-source",
+        "source_url": "https://example.invalid/dataset",
+        "license": "test",
+        "label_semantics": "gradual anomaly labels in [0, 1]",
+        "synthetic": False,
+        "sha256": digest,
+    }
+    path.with_suffix(".json").write_text(json.dumps(manifest), encoding="utf-8")
+
+    sig, lbl, _ = load_npz_dataset(path)
+    assert sig.dtype == np.float64
+    assert lbl.dtype == np.float32
+    assert np.all((lbl >= 0.0) & (lbl <= 1.0))
+

@@ -77,13 +77,18 @@ def load_npz_dataset(
         if "signal" not in data or "labels" not in data:
             raise ValueError("dataset must contain 'signal' and 'labels' arrays")
         signal = np.asarray(data["signal"], dtype=np.float64)
-        labels = np.asarray(data["labels"], dtype=np.int8)
+        raw_labels = data["labels"]
+        if np.issubdtype(raw_labels.dtype, np.floating):
+            labels = np.asarray(raw_labels, dtype=np.float32)
+        else:
+            labels = np.asarray(raw_labels, dtype=np.int8)
 
     if signal.ndim != 1 or labels.ndim != 1 or len(signal) != len(labels):
         raise ValueError("signal and labels must be one-dimensional arrays of equal length")
     if len(signal) == 0 or not np.isfinite(signal).all():
         raise ValueError("signal must be non-empty and finite")
-    if not np.isin(labels, [0, 1]).all():
-        raise ValueError("labels must be binary values in {0, 1}")
+    if not np.isfinite(labels).all() or (labels < 0).any() or (labels > 1).any():
+        raise ValueError("labels must be values in range [0, 1]")
 
     return signal, labels, manifest
+
