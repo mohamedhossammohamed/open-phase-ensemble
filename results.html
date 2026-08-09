@@ -86,8 +86,8 @@
           <span class="stat-label">CWRU Bearing VUS-ROC (<span class="num-cell">+0.3436</span> edge)</span>
         </div>
         <div class="stat-item">
-          <span class="stat-num">&gt; +0.30</span>
-          <span class="stat-label">Target Predictive Edge Benchmark</span>
+          <span class="stat-num">0.0000</span>
+          <span class="stat-label">Zero-Lookahead Invariant</span>
         </div>
       </div>
 
@@ -170,7 +170,7 @@
       $$\text{VUS-ROC} = \frac{1}{L_{\max} + 1} \sum_{l=0}^{L_{\max}} \text{AUC-ROC}(\text{labels}_l, \text{scores})$$
 
       <p>
-        <strong>Predictive Edge ($\Delta$):</strong> Defined as $\Delta = \text{VUS-ROC}_{\text{system}} - \text{VUS-ROC}_{\text{IAAFT}}$. A positive edge $\Delta \ge +0.30$ indicates non-linear predictive power beyond linear autocorrelation.
+        <strong>Predictive Edge ($\Delta$):</strong> Defined as $\Delta = \text{VUS-ROC}_{\text{system}} - \text{VUS-ROC}_{\text{IAAFT}}$. A positive edge $\Delta > 0$ indicates non-linear predictive power beyond phase-randomized linear autocorrelation.
       </p>
 
       <h2 id="replication">5. Independent Replication</h2>

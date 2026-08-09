@@ -69,13 +69,14 @@ class CUSUMGating:
             self.c_minus = 0.0
             self.current_state = GatingState.NORMAL
 
-        self.error_buffer.append(error)
-        if len(self.error_buffer) > 1000:
-            self.error_buffer.pop(0)
-        if len(self.error_buffer) >= 5:
-            arr = np.array(self.error_buffer, dtype=np.float64)
-            self.mu_E = float(np.mean(arr))
-            self.sigma_E = float(np.std(arr)) + EPSILON
+        if self.current_state == GatingState.NORMAL:
+            self.error_buffer.append(error)
+            if len(self.error_buffer) > 1000:
+                self.error_buffer.pop(0)
+            if len(self.error_buffer) >= 5:
+                arr = np.array(self.error_buffer, dtype=np.float64)
+                self.mu_E = float(np.mean(arr))
+                self.sigma_E = float(np.std(arr)) + EPSILON
             
         return self.current_state
 
