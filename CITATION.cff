@@ -6,7 +6,7 @@ authors:
   - family-names: "open-phase-ensemble Contributors"
 repository-code: "https://github.com/mohamedhossammohamed/open-phase-ensemble"
 url: "https://mohamedhossammohamed.github.io/open-phase-ensemble/"
-abstract: "A non-parametric, multi-tool ensemble for time-series anomaly detection and forecasting featuring Simplex EDM, Ledoit-Wolf Mahalanobis distance, STOMP Matrix Profile, Isolation Forest, SARIMA residuals, Anomaly Transformer, and Hedge online multiplicative weights."
+abstract: "A non-parametric, multi-tool ensemble for time-series anomaly detection and forecasting featuring Simplex Projection EDM, Ledoit-Wolf Mahalanobis distance, single-window Matrix Profile, Isolation Forest, AR Linear Ridge Filter, MSE Transformer Autoencoder, and Hedge online multiplicative weights."
 keywords:
   - time-series
   - anomaly-detection

@@ -1,7 +1,7 @@
 
 import numpy as np
 
-from tsad.config import A_TOL, D_TARGET, EPSILON, MAX_D, MAX_TAU, R_TOL, SEED
+from tsad.config import A_TOL, D_TARGET, EPSILON, FNN_THRESHOLD, MAX_D, MAX_TAU, R_TOL, SEED
 
 try:
     import hnswlib  # type: ignore[import-untyped]
@@ -53,10 +53,11 @@ def compute_ami(v: np.ndarray, max_lag: int = MAX_TAU, n_bins: int = 30) -> int:
             
     return int(np.argmin(ami_list) + 1)
 
-def compute_fnn(v: np.ndarray, tau: int, max_d: int = MAX_D, r_tol: float = R_TOL, a_tol: float = A_TOL) -> int:
+def compute_fnn(v: np.ndarray, tau: int, max_d: int = MAX_D, r_tol: float = R_TOL, a_tol: float = A_TOL, fnn_threshold: float = FNN_THRESHOLD) -> int:
     """
     Computes False Nearest Neighbors (FNN) fraction (Kennel et al.).
-    Returns optimal embedding dimension d.
+    Returns optimal embedding dimension d where the FNN fraction falls below
+    `fnn_threshold` (default: FNN_THRESHOLD from config, = 1%).
     """
     std_v = np.std(v) + EPSILON
     for d in range(1, max_d):
@@ -86,7 +87,7 @@ def compute_fnn(v: np.ndarray, tau: int, max_d: int = MAX_D, r_tol: float = R_TO
                 fnn_count += 1
                 
         fnn_frac = fnn_count / float(sample_size)
-        if fnn_frac < 0.05:
+        if fnn_frac < fnn_threshold:
             return d
             
     return max_d

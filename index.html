@@ -82,7 +82,7 @@
 
       <h2>System Foundation & Architecture</h2>
       <p>
-        Rather than attempting to train a single deep network to recognize all possible anomaly signatures, the system decomposes time-series evaluation into five modular, causal compartments:
+        Rather than attempting to train a single deep network to recognize all possible anomaly signatures, the system decomposes time-series evaluation into six modular, causal compartments:
       </p>
 
       <div class="def-list">
@@ -132,7 +132,7 @@
       <ul>
         <li><strong>Simplex Projection (EDM)</strong> — Phase-space trajectory geometry & non-linear prediction</li>
         <li><strong>Robust Mahalanobis (Ledoit-Wolf)</strong> — Covariance geometry & variance shift detection</li>
-        <li><strong>Matrix Profile (STOMP)</strong> — Subsequence motif & discord discovery</li>
+        <li><strong>Matrix Profile (Single-Window)</strong> — Subsequence motif & discord discovery</li>
         <li><strong>Isolation Forest</strong> — Subspace partitioning & global point anomalies</li>
         <li><strong>AR Linear Ridge Filter</strong> — Linear stochastic prediction residuals</li>
         <li><strong>MSE Transformer Autoencoder</strong> — Neural sequence reconstruction error</li>

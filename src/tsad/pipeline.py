@@ -106,18 +106,24 @@ class TSADPipeline:
         for k, det in enumerate(self.detectors):
             s_k, v_hat_k = det.score(Z_t, v_t)
             det.update(v_t)
-            
+
             if hasattr(det, "add_vector"):
                 det.add_vector(Z_t)
-                
-            scores[k] = s_k
-            forecasts[k] = v_hat_k
-            
+
+            # Defense-in-depth NaN/inf guards. StreamBuffer.step forward-fills
+            # NaN/inf at ingestion, so under normal operation these never fire.
+            # They are retained so a detector returning NaN/inf cannot poison the
+            # fused score, the learning loop, or the gating module.
+            scores[k] = float(np.nan_to_num(s_k, nan=0.0, posinf=1.0, neginf=0.0))
+            forecasts[k] = float(np.nan_to_num(v_hat_k, nan=v_t, posinf=v_t, neginf=v_t))
+
         self.last_scores = scores
         self.last_forecasts = forecasts
-        
+
         # 5. Meta-Judge Fusion
         A_t, v_hat_star = self.meta_judge.fuse(scores, forecasts)
+        A_t = float(np.clip(np.nan_to_num(A_t, nan=0.0, posinf=1.0, neginf=0.0), 0.0, 1.0))
+        v_hat_star = float(np.nan_to_num(v_hat_star, nan=v_t, posinf=v_t, neginf=v_t))
         
         # 6. Gating update based on global forecast error
         e_t = abs(v_t - v_hat_star)

@@ -5,7 +5,7 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
 
-**open-phase-ensemble** is an open-source, non-parametric, multi-tool ensemble system for streaming time-series anomaly detection and forecasting. It combines six orthogonal detection paradigms — Empirical Dynamic Modeling, Ledoit-Wolf Mahalanobis distance, STOMP Matrix Profile, Isolation Forest, AR Linear Ridge Filter, and MSE Transformer Autoencoder — under an online Hedge multiplicative-weights Meta-Judge with CUSUM change gating, strictly enforcing zero-lookahead stream processing and deterministic execution.
+**open-phase-ensemble** is an open-source, non-parametric, multi-tool ensemble system for streaming time-series anomaly detection and forecasting. It combines six orthogonal detection paradigms — Empirical Dynamic Modeling (Simplex Projection), Ledoit-Wolf Mahalanobis distance, single-window Matrix Profile, Isolation Forest, AR Linear Ridge Filter, and MSE Transformer Autoencoder — under an online Hedge multiplicative-weights Meta-Judge (fixed learning rate $\eta = 0.10$, Pearson correlation loss) with CUSUM change gating, strictly enforcing zero-lookahead stream processing and deterministic execution.
 
 ---
 
@@ -45,8 +45,8 @@ flowchart TD
         D1 & D2 & D3 & D4 & D5 & D6 --> Scores[Scores & Forecasts]
         Scores --> Hedge[Hedge Weights]
         Hedge --> Fusion[Fused Score A_t]
-        Fusion --> SpearmanLoss[Spearman Rank Loss]
-        SpearmanLoss --> Hedge
+        Fusion --> PearsonLoss[Pearson Correlation Loss]
+        PearsonLoss --> Hedge
     end
 
     subgraph Gating ["Module 6: CUSUM Gating"]
@@ -94,6 +94,9 @@ PYTHONPATH=src python data/download.py \
 PYTHONPATH=src python scripts/run_benchmark.py --surrogates 20
 ```
 
+> [!NOTE]
+> **Embedding parameter selection.** The `TSADPipeline` constructor takes fixed defaults `tau=2, d=8` (as shown in the Quickstart). The `compute_ami` and `compute_fnn` functions in `representation.py` implement Average Mutual Information (Fraser & Swinney, 1986) and False Nearest Neighbors (Kennel et al., 1992) parameter selection, but they are **available utilities, not currently wired into the live pipeline**. Wiring them in would require a warmup buffer and would change `tau`/`d` per stream, invalidating the reported benchmark numbers. All published results use the fixed `tau=2, d=8` defaults.
+
 ---
 
 ## Scientific Benchmark Status
@@ -115,13 +118,13 @@ VUS-ROC is computed using standard label-only range buffering (Paparrizos et al.
 
 1. **CUSUM Baseline Isolation**: In `gating.py`, reference baseline error updates (`error_buffer`) are strictly isolated to `GatingState.NORMAL` execution steps. Acute anomaly errors occurring during `ANOMALY_ALARM` states are excluded from polluting reference mean $\mu_E$ and standard deviation $\sigma_E$.
 
-2. **Rank Loss & AdaHedge Fusion**: Expert detector weights in `meta_judge.py` and `learning_loop.py` are governed by Spearman rank correlation loss and AdaHedge adaptive dynamic learning rates ($\eta_t$), maintaining entropy $> 0.1$ and fixed-share mixing floor $\sigma = 0.01$.
+2. **Correlation Loss & Fixed Hedge Fusion**: Expert detector weights in `meta_judge.py` and `learning_loop.py` are governed by Pearson correlation loss ($\ell_{t,k} = 1 - \text{PearsonCorr}(S_k, E_k)$) and a fixed-learning-rate Hedge multiplicative-weights update ($\eta = 0.10$), maintaining entropy $> 0.1$ and fixed-share mixing floor $\sigma = 0.01$. Pearson is used instead of Spearman because the loss must be sensitive to the magnitude of linear association between anomaly scores and prediction errors, not merely their rank ordering; rank invariance would discard information about detector calibration drift.
 
-3. **Detector Enhancements**:
-   - **Simplex Projection**: Sugihara S-Map non-linear state localization ($\theta = 1.0$).
-   - **AR Linear Ridge Filter**: Online Recursive Least Squares (RLS) ($\lambda = 0.99$).
-   - **Robust Mahalanobis**: Exponentially Weighted Moving Average (EWMA) sample covariance ($\alpha = 0.005$).
-   - **Matrix Profile**: Dual-scale window subsequence discord search ($w_{\text{short}}, w_{\text{long}}$).
+3. **Detector Implementations**:
+   - **Simplex Projection**: Sugihara & May (1990) Simplex Projection — distance-weighted averaging over $E+1$ nearest phase-space neighbors (not S-Map; no $\theta$ locally-weighted linear fit).
+   - **AR Linear Ridge Filter**: Batch ordinary least squares with ridge regularization ($\lambda_{\text{ridge}} = 10^{-3}$), refit every 20 observations (not online RLS; no exponential forgetting factor).
+   - **Robust Mahalanobis**: Fixed 1000-sample block buffer with full covariance recomputation and Ledoit-Wolf shrinkage (not EWMA; no exponential weighting parameter $\alpha$).
+   - **Matrix Profile**: Single-window ($w_{\text{mp}} = \max(5, \tau \cdot d)$) subsequence discord search using raw (non-z-normalized) Euclidean distance via `numpy.lib.stride_tricks.sliding_window_view` (not STUMPY/STOMP; not dual-scale).
 
 ---
 
@@ -130,7 +133,7 @@ VUS-ROC is computed using standard label-only range buffering (Paparrizos et al.
 1. **Metric Correction Applied**: An internal audit identified that an earlier version of `vus.py` applied temporal range buffering to both labels and predicted scores, inflating reported numbers. Buffering is now applied strictly to ground-truth labels.
 
 2. **Detector Naming Alignment**: Two detectors were renamed to reflect their actual implementations:
-   - **ARFilterDetector**: Online AR($p$) linear ridge regression filter (not full SARIMA).
+   - **ARFilterDetector**: Batch AR($p$) linear ridge regression filter, refit periodically (not full SARIMA, not online RLS).
    - **MSETransformerAutoencoder**: Standard MSE reconstruction (not association discrepancy).
 
 3. **Reference Comparison Not Valid**: Direct numerical comparison to external closed-source references (e.g., `phase_space_matcher` at 83.96–86.02%) is scientifically invalid due to metric type mismatch (VUS-ROC vs. PA-F1), evaluation length differences, and inability to verify the reference evaluation protocol. We report our own VUS-ROC numbers independently without claiming superiority.

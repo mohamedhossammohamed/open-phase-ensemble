@@ -109,7 +109,11 @@
       $$\frac{|v_{t+d\tau} - v_{nn+d\tau}|}{\|\mathcal{X}_t^{(d)} - \mathcal{X}_{nn}^{(d)}\|} > R_{\text{tol}}$$
 
       <p>
-        The optimal dimension $d$ is identified where the FNN fraction falls below $1\%$.
+        The optimal dimension $d$ is identified where the FNN fraction falls below $1\%$ (configured via <code>FNN_THRESHOLD</code> in <code>config.py</code>).
+      </p>
+
+      <p>
+        <strong>Note:</strong> <code>compute_ami</code> and <code>compute_fnn</code> are available utilities in <code>representation.py</code> but are <strong>not currently wired into the live <code>TSADPipeline</code></strong>. The pipeline uses fixed constructor defaults <code>tau=2, d=8</code> for all published benchmark results. Wiring AMI/FNN into the pipeline would require a warmup buffer and would change <code>tau</code>/<code>d</code> per stream, invalidating the reported numbers.
       </p>
 
       <h2 id="covariance">3. Covariance Geometry: Ledoit-Wolf Shrinkage</h2>
@@ -125,13 +129,12 @@
 
       $$D_{\text{mahal}}(Z_t) = \sqrt{(Z_t - \mu_Z)^T \Sigma_{\text{LW}}^{-1} (Z_t - \mu_Z)}$$
 
-      <h2 id="surrogates">4. Surrogate Null Models: AR and IAAFT</h2>
+      <h2 id="surrogates">4. Surrogate Null Models: IAAFT</h2>
       <p>
-        To test whether dynamic predictability exceeds linear autocorrelation noise, surrogate null series are generated:
+        To test whether dynamic predictability exceeds linear autocorrelation noise, a surrogate null series is generated using the Iterative Amplitude Adjusted Fourier Transform (IAAFT):
       </p>
       <ul>
-        <li><strong>Autoregressive (AR) Surrogates:</strong> Linear stochastic processes preserving spectral covariance.</li>
-        <li><strong>Iterative Amplitude Adjusted Fourier Transform (IAAFT):</strong> Schreiber & Schmitz (1996) phase-randomization algorithm that exactly preserves both the empirical amplitude distribution and Fourier power spectrum of the original series.</li>
+        <li><strong>Iterative Amplitude Adjusted Fourier Transform (IAAFT):</strong> Schreiber & Schmitz (1996) phase-randomization algorithm that exactly preserves both the empirical amplitude distribution and Fourier power spectrum of the original series. This is the sole surrogate null model currently implemented in <code>evaluation/iaaft.py</code>.</li>
       </ul>
 
       <h2 id="battery">5. The 6-Detector Battery</h2>
@@ -143,7 +146,7 @@
         <div class="def-item">
           <div class="def-term">1. Simplex Projection (EDM)</div>
           <div class="def-desc">
-            Sugihara & May (1990) Simplex Projection performs non-parametric forecasting by tracking trajectories of $E+1$ nearest phase-space neighbors:
+            Sugihara & May (1990) Simplex Projection performs non-parametric forecasting by distance-weighted averaging over $E+1$ nearest phase-space neighbors (not S-Map; no locally-weighted linear fit or $\theta$ parameter):
             $$w_i = \exp \left( -\frac{\|Z_t - Z_{nn_i}\|}{\|Z_t - Z_{nn_1}\| + \epsilon} \right), \quad \hat{v}_{t+h} = \sum_{i=1}^{E+1} \bar{w}_i v_{nn_i + h}$$
             Anomaly score $s_t$ measures normalized prediction error $|v_t - \hat{v}_t|$.
           </div>
@@ -151,12 +154,12 @@
 
         <div class="def-item">
           <div class="def-term">2. Robust Mahalanobis (Ledoit-Wolf)</div>
-          <div class="def-desc">Measures geometric spatial deviation from the robust covariance centroid in projected space.</div>
+          <div class="def-desc">Measures geometric spatial deviation from the robust covariance centroid in projected space. Covariance is estimated from a fixed 1000-sample block buffer with full recomputation and Ledoit-Wolf shrinkage on each update (not EWMA).</div>
         </div>
 
         <div class="def-item">
-          <div class="def-term">3. Subsequence Motifs (STOMP Matrix Profile)</div>
-          <div class="def-desc">Yeh et al. (2016) Matrix Profile computes z-normalized Euclidean distance from every subsequence window $W$ to its nearest non-overlapping historical neighbor. Peaks identify structural discords.</div>
+          <div class="def-term">3. Subsequence Motifs (Single-Window Matrix Profile)</div>
+          <div class="def-desc">Inspired by Yeh et al. (2016) Matrix Profile. The implementation uses a single window $w_{\text{mp}} = \max(5, \tau \cdot d)$ and computes raw (non-z-normalized) Euclidean distance from the current subsequence to its nearest non-overlapping historical neighbor via <code>numpy.lib.stride_tricks.sliding_window_view</code>. Not STUMPY/STOMP; not dual-scale. Peaks identify structural discords.</div>
         </div>
 
         <div class="def-item">
@@ -169,7 +172,7 @@
 
         <div class="def-item">
           <div class="def-term">5. AR Linear Ridge Filter</div>
-          <div class="def-desc">Online AR(p) linear ridge regression filter measuring stochastic prediction residuals.</div>
+          <div class="def-desc">AR(p) linear ridge regression filter measuring stochastic prediction residuals. Coefficients are refit by batch ordinary least squares with ridge regularization ($\lambda_{\text{ridge}} = 10^{-3}$) every 20 observations (not online RLS; no exponential forgetting factor).</div>
         </div>
 
         <div class="def-item">
@@ -183,10 +186,10 @@
 
       <h2 id="meta-judge">6. Meta-Judge Online Fusion: Hedge Algorithm</h2>
       <p>
-        Freund & Schapire (1997) Hedge multiplicative weight update algorithm updates expert weights $w_{t, k}$ based on trailing correlation loss $\ell_{t, k} = 1 - \text{PearsonCorr}(S_k, E_k)$:
+        Freund & Schapire (1997) Hedge multiplicative weight update algorithm updates expert weights $w_{t, k}$ based on trailing Pearson correlation loss $\ell_{t, k} = 1 - \text{PearsonCorr}(S_k, E_k)$. Pearson is used instead of Spearman because the loss must be sensitive to the magnitude of linear association between anomaly scores and prediction errors, not merely their rank ordering; rank invariance would discard information about detector calibration drift. The learning rate $\eta = 0.10$ is fixed (plain Hedge, not AdaHedge):
       </p>
 
-      $$w_{t+1, k} = \frac{w_{t, k} e^{-\eta \ell_{t, k}}}{\sum_{j=1}^K w_{t, j} e^{-\eta \ell_{t, j}}}$$
+      $$w_{t+1, k} = \frac{w_{t, k} e^{-\eta \ell_{t, k}}}{\sum_{j=1}^K w_{t, j} e^{-\eta \ell_{t, j}}}, \quad \eta = 0.10$$
 
       <p>
         Fixed-share mixing (Herbster & Warmuth, 1998) guarantees a weight floor $w'_{k} \ge \frac{\sigma}{K}$ ($\sigma = 0.01$) to prevent expert weight collapse during sudden regime shifts.
@@ -225,8 +228,8 @@
                               ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ Module 4 & 5: Meta-Judge & Online Learning Loop             │
-│ - Spearman Rank Loss: ell_{t,k} = 1 - SpearmanCorr(S,E)     │
-│ - AdaHedge Adaptive Weight Update + Fixed-Share Floor       │
+│ - Pearson Correlation Loss: ell_{t,k} = 1 - PearsonCorr(S,E)│
+│ - Fixed-rate Hedge Update (eta=0.10) + Fixed-Share Floor    │
 │ - Output: Fused Anomaly Score A_t, Fused Forecast v_hat*    │
 └─────────────────────────────┬───────────────────────────────┘
                               │
@@ -323,6 +326,7 @@
       </p>
       <ul>
         <li><strong>Causal Buffer Scope:</strong> All transformations operate exclusively on historical causal buffers $W_t = \{x_1, x_2, \dots, x_t\}$. No future sample is ever accessed.</li>
+        <li><strong>NaN/Inf Safety:</strong> <code>StreamBuffer.step</code> forward-fills NaN/Inf values at ingestion using the last valid observation. As defense-in-depth, <code>TSADPipeline.step</code> applies <code>np.nan_to_num</code> guards on per-detector scores, per-detector forecasts, and the fused output, so a detector returning NaN/Inf cannot poison the learning loop or the gating module.</li>
         <li><strong>Invariant Verification:</strong> <code>tests/integration/test_no_lookahead.py</code> confirms that element-by-element streaming execution yields an exact Euclidean distance of <strong class="num-cell">0.0000</strong> compared to sequential batch processing.</li>
       </ul>
     </article>

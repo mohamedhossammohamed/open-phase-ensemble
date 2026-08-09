@@ -153,7 +153,7 @@
 
         <div class="def-item">
           <div class="def-term">2. Detector Naming Alignment</div>
-          <div class="def-desc">Two detectors were renamed to accurately describe their actual mathematical implementations: <code>ARFilterDetector</code> (online AR ridge filter, replacing "SARIMADetector") and <code>MSETransformerAutoencoder</code> (MSE sequence reconstruction, replacing "AnomalyTransformerDetector").</div>
+          <div class="def-desc">Two detectors were renamed to accurately describe their actual mathematical implementations: <code>ARFilterDetector</code> (batch AR ridge filter, refit periodically, replacing "SARIMADetector") and <code>MSETransformerAutoencoder</code> (MSE sequence reconstruction, replacing "AnomalyTransformerDetector").</div>
         </div>
 
         <div class="def-item">
@@ -204,9 +204,9 @@ pip install -e .
 
       <h3>Anomaly Detection & Online Learning</h3>
       <ol start="8">
-        <li><strong>Yeh, C. C. M. et al. (2016).</strong> <em>Matrix profile I: All pairs similarity joins for time series.</em> IEEE ICDM, 1317-1322.</li>
+        <li><strong>Yeh, C. C. M. et al. (2016).</strong> <em>Matrix profile I: All pairs similarity joins for time series.</em> IEEE ICDM, 1317-1322. <small>(Referenced as inspiration; the implementation uses a single-window raw-Euclidean variant, not STUMPY/STOMP.)</small></li>
         <li><strong>Liu, F. T., Ting, K. M., &amp; Zhou, Z. H. (2008).</strong> <em>Isolation forest.</em> IEEE ICDM, 413-422.</li>
-        <li><strong>Xu, K. et al. (2022).</strong> <em>Anomaly Transformer: Time Series Anomaly Detection with Association Discrepancy.</em> ICLR.</li>
+        <li><strong>Xu, K. et al. (2022).</strong> <em>Anomaly Transformer: Time Series Anomaly Detection with Association Discrepancy.</em> ICLR. <small>(Historical reference; the implementation uses standard MSE reconstruction, not association discrepancy.)</small></li>
         <li><strong>Freund, Y., &amp; Schapire, R. E. (1997).</strong> <em>A decision-theoretic generalization of on-line learning and an application to boosting.</em> JCSS, 55(1), 119-139.</li>
         <li><strong>Herbster, M., &amp; Warmuth, M. K. (1998).</strong> <em>Tracking the best expert.</em> Machine Learning, 32(2), 151-178.</li>
         <li><strong>Page, E. S. (1954).</strong> <em>Continuous inspection schemes.</em> Biometrika, 41(1/2), 100-115.</li>
@@ -216,7 +216,6 @@ pip install -e .
 
       <h3>Canonical Open-Source Implementations Referenced</h3>
       <ul>
-        <li><strong>STUMPY:</strong> Law, M. D. (2019). <em>STUMPY: A Powerful and Scalable Python Library for Time Series Data Mining.</em> JOSS, 4(39), 1487.</li>
         <li><strong>HNSWLIB:</strong> Malkov, Y. A. <em>Header-only C++ HNSW implementation with Python bindings.</em></li>
         <li><strong>PyTorch:</strong> Paszke, A. et al. (2019). <em>PyTorch: An Imperative Style, High-Performance Deep Learning Library.</em></li>
         <li><strong>Scikit-Learn:</strong> Pedregosa, F. et al. (2011). <em>Scikit-learn: Machine Learning in Python.</em> JMLR, 12, 2825-2830.</li>
