@@ -176,7 +176,7 @@ The pipeline processes points in a strict online streaming mode (~5 ms/point, ~2
 
 #### Completion notes
 
-The TSB-AD-U eval split (350 series) and NAB (29 series) were fully completed. The TSB-AD-U tuning split (48 series) was initiated but could not be completed — several series in the tuning split exceed 100K rows, and the O(n²) TSB-AD metric computation made full completion intractable within a practical timeframe. The eval split results, which are the primary benchmark for leaderboard ranking, are complete. Full assessment with per-series analysis and SOTA comparison is in [`results/benchmarks/BENCHMARK_ASSESSMENT.md`](results/benchmarks/BENCHMARK_ASSESSMENT.md).
+The TSB-AD-U eval split (350 series) and NAB (29 series) were fully completed. The TSB-AD-U tuning split (48 series) has been completed with default hyperparameters using a resumable checkpointed runner (22 min, 48/48 series successful); TSB-AD's O(n²) metrics were skipped on the tuning split (only fast VUS-PR/VUS-ROC computed). The eval split results, which are the primary benchmark for leaderboard ranking, are complete. Full assessment with per-series analysis and SOTA comparison is in [`results/benchmarks/BENCHMARK_ASSESSMENT.md`](results/benchmarks/BENCHMARK_ASSESSMENT.md).
 
 ### Quick Start
 

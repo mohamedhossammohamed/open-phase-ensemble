@@ -1,0 +1,899 @@
+{
+  "dataset_name": "TSB-AD-U",
+  "model_name": "open-phase-ensemble",
+  "split": "train",
+  "series_results": [
+    {
+      "name": "003_NAB_id_3_WebService_tr_1362_1st_1462.csv",
+      "metrics": {
+        "vus_pr": 0.11218287038634044,
+        "vus_roc": 0.5456642236745193
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.09874586593762164,
+          "vus_roc": 0.5316351808609079
+        }
+      },
+      "n_eval": 6883,
+      "n_positive": 452,
+      "elapsed_seconds": 24.02936666700407,
+      "error": null,
+      "ts": "2026-08-10T19:05:12Z"
+    },
+    {
+      "name": "004_NAB_id_4_Facility_tr_1007_1st_1437.csv",
+      "metrics": {
+        "vus_pr": 0.3704779657864743,
+        "vus_roc": 0.8604686650833775
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.29682366435712504,
+          "vus_roc": 0.6363172936752369
+        }
+      },
+      "n_eval": 2873,
+      "n_positive": 402,
+      "elapsed_seconds": 12.772928042002604,
+      "error": null,
+      "ts": "2026-08-10T19:05:25Z"
+    },
+    {
+      "name": "007_NAB_id_7_Traffic_tr_624_1st_2087.csv",
+      "metrics": {
+        "vus_pr": 0.1805400681784235,
+        "vus_roc": 0.4521545931818577
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.21930383803156347,
+          "vus_roc": 0.5516078944872433
+        }
+      },
+      "n_eval": 1782,
+      "n_positive": 248,
+      "elapsed_seconds": 8.561992792005185,
+      "error": null,
+      "ts": "2026-08-10T19:05:34Z"
+    },
+    {
+      "name": "012_NAB_id_12_Synthetic_tr_1007_1st_2787.csv",
+      "metrics": {
+        "vus_pr": 0.18888119647337026,
+        "vus_roc": 0.45650514551412597
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.14004519372449026,
+          "vus_roc": 0.3892755106544722
+        }
+      },
+      "n_eval": 2873,
+      "n_positive": 513,
+      "elapsed_seconds": 13.777983583990135,
+      "error": null,
+      "ts": "2026-08-10T19:05:48Z"
+    },
+    {
+      "name": "021_NAB_id_21_WebService_tr_500_1st_565.csv",
+      "metrics": {
+        "vus_pr": 0.3259122944133401,
+        "vus_roc": 0.7706058682894588
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.19496388266115694,
+          "vus_roc": 0.49953205903139697
+        }
+      },
+      "n_eval": 1067,
+      "n_positive": 160,
+      "elapsed_seconds": 5.734815916992375,
+      "error": null,
+      "ts": "2026-08-10T19:05:53Z"
+    },
+    {
+      "name": "033_WSD_id_5_WebService_tr_4559_1st_12588.csv",
+      "metrics": {
+        "vus_pr": 0.012714845749382277,
+        "vus_roc": 0.8793904090093094
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.12356942505535834,
+          "vus_roc": 0.6641742784596685
+        }
+      },
+      "n_eval": 6498,
+      "n_positive": 7,
+      "elapsed_seconds": 29.00676870800089,
+      "error": null,
+      "ts": "2026-08-10T19:06:22Z"
+    },
+    {
+      "name": "038_WSD_id_10_WebService_tr_4042_1st_4142.csv",
+      "metrics": {
+        "vus_pr": 0.22020797978281065,
+        "vus_roc": 0.6589103600196804
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.21300285533812868,
+          "vus_roc": 0.6360640528679693
+        }
+      },
+      "n_eval": 6670,
+      "n_positive": 21,
+      "elapsed_seconds": 29.93495358400105,
+      "error": null,
+      "ts": "2026-08-10T19:06:52Z"
+    },
+    {
+      "name": "045_WSD_id_17_WebService_tr_2566_1st_2666.csv",
+      "metrics": {
+        "vus_pr": 0.0,
+        "vus_roc": 0.5
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.0,
+          "vus_roc": 0.5
+        }
+      },
+      "n_eval": 7444,
+      "n_positive": 0,
+      "elapsed_seconds": 29.91197149999789,
+      "error": null,
+      "ts": "2026-08-10T19:07:22Z"
+    },
+    {
+      "name": "053_WSD_id_25_WebService_tr_4559_1st_9198.csv",
+      "metrics": {
+        "vus_pr": 0.01794716633031413,
+        "vus_roc": 0.8983976310306312
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.011513192173920205,
+          "vus_roc": 0.6608204874923854
+        }
+      },
+      "n_eval": 6498,
+      "n_positive": 7,
+      "elapsed_seconds": 29.76856716700422,
+      "error": null,
+      "ts": "2026-08-10T19:07:52Z"
+    },
+    {
+      "name": "070_WSD_id_42_WebService_tr_2102_1st_2202.csv",
+      "metrics": {
+        "vus_pr": 0.19643239983263053,
+        "vus_roc": 0.6804349990203145
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.1590040547958459,
+          "vus_roc": 0.5839115298654418
+        }
+      },
+      "n_eval": 4553,
+      "n_positive": 35,
+      "elapsed_seconds": 18.7894926660083,
+      "error": null,
+      "ts": "2026-08-10T19:08:11Z"
+    },
+    {
+      "name": "142_MSL_id_3_Sensor_tr_1525_1st_4575.csv",
+      "metrics": {
+        "vus_pr": 0.23373546068566553,
+        "vus_roc": 0.7250448694962747
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.16103521923650602,
+          "vus_roc": 0.6551441638922546
+        }
+      },
+      "n_eval": 4347,
+      "n_positive": 181,
+      "elapsed_seconds": 20.29794462499558,
+      "error": null,
+      "ts": "2026-08-10T19:08:31Z"
+    },
+    {
+      "name": "146_MSL_id_7_Sensor_tr_554_1st_1172.csv",
+      "metrics": {
+        "vus_pr": 0.14960896024190212,
+        "vus_roc": 0.6101145021564742
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.10462555541803412,
+          "vus_roc": 0.5078763608548015
+        }
+      },
+      "n_eval": 1580,
+      "n_positive": 69,
+      "elapsed_seconds": 6.7190708330017515,
+      "error": null,
+      "ts": "2026-08-10T19:08:38Z"
+    },
+    {
+      "name": "152_Stock_id_4_Finance_tr_500_1st_2.csv",
+      "metrics": {
+        "vus_pr": 0.8481970180040848,
+        "vus_roc": 0.5638474072337455
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.8828930629407556,
+          "vus_roc": 0.6055358738018277
+        }
+      },
+      "n_eval": 9263,
+      "n_positive": 2416,
+      "elapsed_seconds": 41.45014699999592,
+      "error": null,
+      "ts": "2026-08-10T19:09:19Z"
+    },
+    {
+      "name": "161_Stock_id_13_Finance_tr_500_1st_3.csv",
+      "metrics": {
+        "vus_pr": 0.5319016999707551,
+        "vus_roc": 0.5911380481394659
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.690304810531102,
+          "vus_roc": 0.636965400101388
+        }
+      },
+      "n_eval": 9025,
+      "n_positive": 442,
+      "elapsed_seconds": 41.65171004200238,
+      "error": null,
+      "ts": "2026-08-10T19:10:01Z"
+    },
+    {
+      "name": "174_MITDB_id_5_Medical_tr_50000_1st_539948.csv",
+      "metrics": {
+        "vus_pr": 0.0064909012097819525,
+        "vus_roc": 0.5102233514806885
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.003853472243199361,
+          "vus_roc": 0.4183581340337168
+        }
+      },
+      "n_eval": 8770,
+      "n_positive": 11,
+      "elapsed_seconds": 42.232642332994146,
+      "error": null,
+      "ts": "2026-08-10T19:10:43Z"
+    },
+    {
+      "name": "182_SMD_id_5_Facility_tr_7174_1st_21230.csv",
+      "metrics": {
+        "vus_pr": 0.0655772823900708,
+        "vus_roc": 0.7433581236064837
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.13352606661904076,
+          "vus_roc": 0.5753046721885453
+        }
+      },
+      "n_eval": 6817,
+      "n_positive": 68,
+      "elapsed_seconds": 38.1861548750021,
+      "error": null,
+      "ts": "2026-08-10T19:11:21Z"
+    },
+    {
+      "name": "186_SMD_id_9_Facility_tr_5925_1st_17580.csv",
+      "metrics": {
+        "vus_pr": 0.4058467085280852,
+        "vus_roc": 0.9248615898433126
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.333257048265302,
+          "vus_roc": 0.7295314057975687
+        }
+      },
+      "n_eval": 5630,
+      "n_positive": 54,
+      "elapsed_seconds": 30.755267208995065,
+      "error": null,
+      "ts": "2026-08-10T19:11:52Z"
+    },
+    {
+      "name": "193_SMD_id_16_Facility_tr_5925_1st_17580.csv",
+      "metrics": {
+        "vus_pr": 0.14667751535633175,
+        "vus_roc": 0.8050311363754461
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.63578341162265,
+          "vus_roc": 0.884560076657529
+        }
+      },
+      "n_eval": 5630,
+      "n_positive": 54,
+      "elapsed_seconds": 30.661513707993436,
+      "error": null,
+      "ts": "2026-08-10T19:12:23Z"
+    },
+    {
+      "name": "200_SMD_id_23_Facility_tr_7174_1st_21230.csv",
+      "metrics": {
+        "vus_pr": 0.40875241746230273,
+        "vus_roc": 0.7830223398193688
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.10498787690315184,
+          "vus_roc": 0.5810780289441503
+        }
+      },
+      "n_eval": 6817,
+      "n_positive": 68,
+      "elapsed_seconds": 38.43106637499295,
+      "error": null,
+      "ts": "2026-08-10T19:13:01Z"
+    },
+    {
+      "name": "210_SMD_id_33_Facility_tr_5925_1st_17580.csv",
+      "metrics": {
+        "vus_pr": 0.13546193349850916,
+        "vus_roc": 0.8731152053580987
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.687209330981704,
+          "vus_roc": 0.9076709843399507
+        }
+      },
+      "n_eval": 5630,
+      "n_positive": 54,
+      "elapsed_seconds": 31.55995924999297,
+      "error": null,
+      "ts": "2026-08-10T19:13:33Z"
+    },
+    {
+      "name": "217_LTDB_id_2_Medical_tr_500_1st_266.csv",
+      "metrics": {
+        "vus_pr": 0.4156882448749209,
+        "vus_roc": 0.5704470317416798
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.3566571589410267,
+          "vus_roc": 0.45759083886726193
+        }
+      },
+      "n_eval": 9453,
+      "n_positive": 1478,
+      "elapsed_seconds": 39.89700787499896,
+      "error": null,
+      "ts": "2026-08-10T19:14:13Z"
+    },
+    {
+      "name": "230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv",
+      "metrics": {
+        "vus_pr": 0.07215292147300582,
+        "vus_roc": 0.5299470632698441
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.026188940058984082,
+          "vus_roc": 0.5048204044458257
+        }
+      },
+      "n_eval": 7125,
+      "n_positive": 29,
+      "elapsed_seconds": 40.47598891699454,
+      "error": null,
+      "ts": "2026-08-10T19:14:53Z"
+    },
+    {
+      "name": "235_SED_id_2_Medical_tr_2499_1st_3840.csv",
+      "metrics": {
+        "vus_pr": 0.05619555276133713,
+        "vus_roc": 0.43793217563100084
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.056778001936331465,
+          "vus_roc": 0.4119419845028599
+        }
+      },
+      "n_eval": 7125,
+      "n_positive": 384,
+      "elapsed_seconds": 39.442510708002374,
+      "error": null,
+      "ts": "2026-08-10T19:15:33Z"
+    },
+    {
+      "name": "242_SVDB_id_6_Medical_tr_10726_1st_10826.csv",
+      "metrics": {
+        "vus_pr": 0.14016007818845844,
+        "vus_roc": 0.6691139968912154
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.11444898269682441,
+          "vus_roc": 0.5912429282746865
+        }
+      },
+      "n_eval": 8485,
+      "n_positive": 138,
+      "elapsed_seconds": 38.37344574999588,
+      "error": null,
+      "ts": "2026-08-10T19:16:11Z"
+    },
+    {
+      "name": "252_SVDB_id_16_Medical_tr_12167_1st_12267.csv",
+      "metrics": {
+        "vus_pr": 0.12481227514324551,
+        "vus_roc": 0.5063225203837844
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.13042160462472135,
+          "vus_roc": 0.5153447993676945
+        }
+      },
+      "n_eval": 8640,
+      "n_positive": 295,
+      "elapsed_seconds": 44.37926833301026,
+      "error": null,
+      "ts": "2026-08-10T19:16:55Z"
+    },
+    {
+      "name": "259_TAO_id_3_Environment_tr_500_1st_7.csv",
+      "metrics": {
+        "vus_pr": 0.6667585896086943,
+        "vus_roc": 0.6985192732047132
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.6925951835628704,
+          "vus_roc": 0.6187125773876339
+        }
+      },
+      "n_eval": 9025,
+      "n_positive": 439,
+      "elapsed_seconds": 43.5650722499995,
+      "error": null,
+      "ts": "2026-08-10T19:17:39Z"
+    },
+    {
+      "name": "265_IOPS_id_6_WebService_tr_6453_1st_6553.csv",
+      "metrics": {
+        "vus_pr": 0.10494430103755403,
+        "vus_roc": 0.8721843647036196
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.24374458740799745,
+          "vus_roc": 0.6243175538420536
+        }
+      },
+      "n_eval": 8941,
+      "n_positive": 15,
+      "elapsed_seconds": 38.65728341700742,
+      "error": null,
+      "ts": "2026-08-10T19:18:18Z"
+    },
+    {
+      "name": "270_IOPS_id_11_WebService_tr_5638_1st_5738.csv",
+      "metrics": {
+        "vus_pr": 0.01912427440473898,
+        "vus_roc": 0.4990484717907222
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.042058068778085024,
+          "vus_roc": 0.5030395163181649
+        }
+      },
+      "n_eval": 8608,
+      "n_positive": 29,
+      "elapsed_seconds": 39.66900654100755,
+      "error": null,
+      "ts": "2026-08-10T19:18:57Z"
+    },
+    {
+      "name": "280_NEK_id_4_WebService_tr_500_1st_231.csv",
+      "metrics": {
+        "vus_pr": 0.6634451844525187,
+        "vus_roc": 0.8417367737259547
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.27951856952338455,
+          "vus_roc": 0.552113810637097
+        }
+      },
+      "n_eval": 545,
+      "n_positive": 53,
+      "elapsed_seconds": 3.6538712909969036,
+      "error": null,
+      "ts": "2026-08-10T19:19:01Z"
+    },
+    {
+      "name": "291_TODS_id_5_Synthetic_tr_500_1st_11.csv",
+      "metrics": {
+        "vus_pr": 0.6407476758358768,
+        "vus_roc": 0.6021244834545318
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.7064140378908816,
+          "vus_roc": 0.6228758660177274
+        }
+      },
+      "n_eval": 4275,
+      "n_positive": 225,
+      "elapsed_seconds": 19.897993374994257,
+      "error": null,
+      "ts": "2026-08-10T19:19:21Z"
+    },
+    {
+      "name": "300_TODS_id_14_Synthetic_tr_1250_1st_2555.csv",
+      "metrics": {
+        "vus_pr": 0.5986414112492775,
+        "vus_roc": 0.8716087600922409
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.24764799368028176,
+          "vus_roc": 0.511196491266704
+        }
+      },
+      "n_eval": 3563,
+      "n_positive": 400,
+      "elapsed_seconds": 19.689723208997748,
+      "error": null,
+      "ts": "2026-08-10T19:19:41Z"
+    },
+    {
+      "name": "305_UCR_id_3_Medical_tr_3000_1st_5948.csv",
+      "metrics": {
+        "vus_pr": 0.026436757900778436,
+        "vus_roc": 0.7865373513555147
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.14569534961687045,
+          "vus_roc": 0.6503729257601905
+        }
+      },
+      "n_eval": 4275,
+      "n_positive": 23,
+      "elapsed_seconds": 24.03923149999173,
+      "error": null,
+      "ts": "2026-08-10T19:20:05Z"
+    },
+    {
+      "name": "312_UCR_id_10_Facility_tr_19948_1st_52000.csv",
+      "metrics": {
+        "vus_pr": 0.04891197733742926,
+        "vus_roc": 0.8030631584675672
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.015099181786235316,
+          "vus_roc": 0.5724736672685327
+        }
+      },
+      "n_eval": 7108,
+      "n_positive": 78,
+      "elapsed_seconds": 39.2599492080044,
+      "error": null,
+      "ts": "2026-08-10T19:20:44Z"
+    },
+    {
+      "name": "323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv",
+      "metrics": {
+        "vus_pr": 0.004861735361793904,
+        "vus_roc": 0.7847300595205966
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.0013915873878399265,
+          "vus_roc": 0.19340803548858992
+        }
+      },
+      "n_eval": 6957,
+      "n_positive": 1,
+      "elapsed_seconds": 39.3834514170012,
+      "error": null,
+      "ts": "2026-08-10T19:21:23Z"
+    },
+    {
+      "name": "347_UCR_id_45_Sensor_tr_2851_1st_5365.csv",
+      "metrics": {
+        "vus_pr": 0.004677642465882835,
+        "vus_roc": 0.2814077490967683
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.007320525679777149,
+          "vus_roc": 0.5684121854395048
+        }
+      },
+      "n_eval": 4065,
+      "n_positive": 8,
+      "elapsed_seconds": 22.05932404199848,
+      "error": null,
+      "ts": "2026-08-10T19:21:45Z"
+    },
+    {
+      "name": "386_UCR_id_84_Environment_tr_2046_1st_5703.csv",
+      "metrics": {
+        "vus_pr": 0.012733966735517402,
+        "vus_roc": 0.6237891477906412
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.0043764366985471525,
+          "vus_roc": 0.2969528691948743
+        }
+      },
+      "n_eval": 5832,
+      "n_positive": 24,
+      "elapsed_seconds": 40.56387608300429,
+      "error": null,
+      "ts": "2026-08-10T19:22:26Z"
+    },
+    {
+      "name": "429_UCR_id_127_Medical_tr_14825_1st_29000.csv",
+      "metrics": {
+        "vus_pr": 0.004889677971777032,
+        "vus_roc": 0.4196776922792507
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.0035388226411099434,
+          "vus_roc": 0.39982342119275094
+        }
+      },
+      "n_eval": 7044,
+      "n_positive": 17,
+      "elapsed_seconds": 59.81481212499784,
+      "error": null,
+      "ts": "2026-08-10T19:23:26Z"
+    },
+    {
+      "name": "535_SMAP_id_5_Sensor_tr_1113_1st_1890.csv",
+      "metrics": {
+        "vus_pr": 0.5193191379458082,
+        "vus_roc": 0.7579437309854461
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.5023425924509187,
+          "vus_roc": 0.7233979382435312
+        }
+      },
+      "n_eval": 3173,
+      "n_positive": 41,
+      "elapsed_seconds": 21.995602916998905,
+      "error": null,
+      "ts": "2026-08-10T19:23:48Z"
+    },
+    {
+      "name": "543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv",
+      "metrics": {
+        "vus_pr": 0.1626791575188271,
+        "vus_roc": 0.5926248727718959
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.07684283824689452,
+          "vus_roc": 0.3137389743846301
+        }
+      },
+      "n_eval": 5757,
+      "n_positive": 111,
+      "elapsed_seconds": 31.103771041991422,
+      "error": null,
+      "ts": "2026-08-10T19:24:19Z"
+    },
+    {
+      "name": "560_YAHOO_id_10_Synthetic_tr_500_1st_893.csv",
+      "metrics": {
+        "vus_pr": 0.2203114800217905,
+        "vus_roc": 0.8558221901957942
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.21398644212833764,
+          "vus_roc": 0.648644952572965
+        }
+      },
+      "n_eval": 875,
+      "n_positive": 1,
+      "elapsed_seconds": 4.80533883399039,
+      "error": null,
+      "ts": "2026-08-10T19:24:24Z"
+    },
+    {
+      "name": "568_YAHOO_id_18_WebService_tr_500_1st_333.csv",
+      "metrics": {
+        "vus_pr": 0.2926335401011664,
+        "vus_roc": 0.7227859734520112
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.21244593248832713,
+          "vus_roc": 0.6461402172792743
+        }
+      },
+      "n_eval": 1121,
+      "n_positive": 1,
+      "elapsed_seconds": 5.887707083995338,
+      "error": null,
+      "ts": "2026-08-10T19:24:30Z"
+    },
+    {
+      "name": "573_YAHOO_id_23_Synthetic_tr_500_1st_623.csv",
+      "metrics": {
+        "vus_pr": 0.5056912183415879,
+        "vus_roc": 0.8062917133238289
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.19542798820184742,
+          "vus_roc": 0.42649328959692684
+        }
+      },
+      "n_eval": 875,
+      "n_positive": 9,
+      "elapsed_seconds": 4.759660708004958,
+      "error": null,
+      "ts": "2026-08-10T19:24:34Z"
+    },
+    {
+      "name": "583_YAHOO_id_33_WebService_tr_500_1st_1616.csv",
+      "metrics": {
+        "vus_pr": 0.3704912406859107,
+        "vus_roc": 0.6393161188387231
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.2496373588082227,
+          "vus_roc": 0.6012680372875415
+        }
+      },
+      "n_eval": 1121,
+      "n_positive": 1,
+      "elapsed_seconds": 5.594122458991478,
+      "error": null,
+      "ts": "2026-08-10T19:24:40Z"
+    },
+    {
+      "name": "643_YAHOO_id_93_WebService_tr_500_1st_1038.csv",
+      "metrics": {
+        "vus_pr": 0.368072208722987,
+        "vus_roc": 0.9851154063346017
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.0118236881506336,
+          "vus_roc": 0.48722674828764173
+        }
+      },
+      "n_eval": 1121,
+      "n_positive": 1,
+      "elapsed_seconds": 5.621330834008404,
+      "error": null,
+      "ts": "2026-08-10T19:24:46Z"
+    },
+    {
+      "name": "813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv",
+      "metrics": {
+        "vus_pr": 0.20599199649186636,
+        "vus_roc": 0.6107853317507265
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.6382185503539054,
+          "vus_roc": 0.8590816141799829
+        }
+      },
+      "n_eval": 6138,
+      "n_positive": 1090,
+      "elapsed_seconds": 31.024095375003526,
+      "error": null,
+      "ts": "2026-08-10T19:25:17Z"
+    },
+    {
+      "name": "825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv",
+      "metrics": {
+        "vus_pr": 0.1618972590657482,
+        "vus_roc": 0.48604803273284747
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.6205645285875243,
+          "vus_roc": 0.8289475594300633
+        }
+      },
+      "n_eval": 6138,
+      "n_positive": 1090,
+      "elapsed_seconds": 31.593664500003797,
+      "error": null,
+      "ts": "2026-08-10T19:25:48Z"
+    },
+    {
+      "name": "852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv",
+      "metrics": {
+        "vus_pr": 0.07251446114544763,
+        "vus_roc": 0.5123074467453055
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.02270190087380111,
+          "vus_roc": 0.28268443694184886
+        }
+      },
+      "n_eval": 7199,
+      "n_positive": 245,
+      "elapsed_seconds": 29.64582491699548,
+      "error": null,
+      "ts": "2026-08-10T19:26:18Z"
+    },
+    {
+      "name": "864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv",
+      "metrics": {
+        "vus_pr": 0.0,
+        "vus_roc": 0.5
+      },
+      "baselines": {
+        "persistence": {
+          "vus_pr": 0.0,
+          "vus_roc": 0.5
+        }
+      },
+      "n_eval": 6583,
+      "n_positive": 0,
+      "elapsed_seconds": 27.445848916002433,
+      "error": null,
+      "ts": "2026-08-10T19:26:45Z"
+    }
+  ],
+  "aggregate": {
+    "vus_pr_mean": 0.2300485552317609,
+    "vus_pr_median": 0.16228820829228766,
+    "vus_pr_std": 0.2185261470411107,
+    "vus_pr_n": 48,
+    "vus_roc_mean": 0.6687399866429887,
+    "vus_roc_median": 0.6640121784554479,
+    "vus_roc_std": 0.16303256245267192,
+    "vus_roc_n": 48,
+    "persistence_vus_pr_mean": 0.22942363916747577,
+    "persistence_vus_roc_mean": 0.5639088964892295
+  },
+  "provenance": {
+    "config": {
+      "warmup_fraction": 0.05,
+      "max_buffer": 15,
+      "n_surrogates": 0,
+      "seed": 42,
+      "compute_tsb_ad_metrics": false,
+      "downsample_max_points": 10000
+    },
+    "config_hash": "8d203ce916ee",
+    "total_series": 48,
+    "n_success": 48,
+    "n_errors": 0,
+    "elapsed_seconds": 1317.291084041004,
+    "timestamp_utc": "2026-08-10T19:26:45Z"
+  }
+}

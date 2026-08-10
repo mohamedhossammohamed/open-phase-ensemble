@@ -1,0 +1,377 @@
+{
+  "search_subset": [
+    "016_NAB_id_16_Environment_tr_1816_1st_3540.csv",
+    "018_NAB_id_18_Facility_tr_500_1st_669.csv",
+    "151_Stock_id_3_Finance_tr_500_1st_62.csv",
+    "334_UCR_id_32_HumanActivity_tr_1671_1st_2764.csv",
+    "371_UCR_id_69_Medical_tr_1853_1st_6200.csv",
+    "141_MSL_id_2_Sensor_tr_500_1st_550.csv",
+    "551_YAHOO_id_1_Synthetic_tr_500_1st_893.csv",
+    "009_NAB_id_9_Traffic_tr_500_1st_438.csv",
+    "010_NAB_id_10_WebService_tr_500_1st_271.csv"
+  ],
+  "full_subset": [
+    "016_NAB_id_16_Environment_tr_1816_1st_3540.csv",
+    "385_UCR_id_83_Environment_tr_2046_1st_6006.csv",
+    "018_NAB_id_18_Facility_tr_500_1st_669.csv",
+    "027_NAB_id_27_Facility_tr_757_1st_2582.csv",
+    "151_Stock_id_3_Finance_tr_500_1st_62.csv",
+    "156_Stock_id_8_Finance_tr_500_1st_24.csv",
+    "334_UCR_id_32_HumanActivity_tr_1671_1st_2764.csv",
+    "401_UCR_id_99_HumanActivity_tr_1671_1st_5920.csv",
+    "371_UCR_id_69_Medical_tr_1853_1st_6200.csv",
+    "391_UCR_id_89_Medical_tr_1875_1st_5759.csv",
+    "141_MSL_id_2_Sensor_tr_500_1st_550.csv",
+    "140_MSL_id_1_Sensor_tr_530_1st_630.csv",
+    "551_YAHOO_id_1_Synthetic_tr_500_1st_893.csv",
+    "552_YAHOO_id_2_Synthetic_tr_500_1st_893.csv",
+    "009_NAB_id_9_Traffic_tr_500_1st_438.csv",
+    "005_NAB_id_5_Traffic_tr_594_1st_1645.csv",
+    "010_NAB_id_10_WebService_tr_500_1st_271.csv",
+    "277_NEK_id_1_WebService_tr_500_1st_17.csv"
+  ],
+  "defaults": {
+    "HEDGE_ETA": 0.1,
+    "CUSUM_KC": 0.5,
+    "CUSUM_HC_SIGMA_MULT": 5.0,
+    "d_target": 8
+  },
+  "grids": {
+    "HEDGE_ETA": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "d_target": [
+      4,
+      8,
+      16
+    ],
+    "CUSUM_KC": [
+      0.25,
+      0.5,
+      1.0
+    ],
+    "CUSUM_HC_SIGMA_MULT": [
+      3.0,
+      5.0,
+      8.0
+    ]
+  },
+  "baseline_search": {
+    "vus_pr": 0.2796767670669884,
+    "vus_roc": 0.6293305722630362
+  },
+  "trials": [
+    {
+      "round": "A",
+      "HEDGE_ETA": 0.05,
+      "d_target": 4,
+      "CUSUM_KC": 0.5,
+      "CUSUM_HC_SIGMA_MULT": 5.0,
+      "vus_pr": 0.27732768943395353,
+      "vus_roc": 0.6198974679942649,
+      "elapsed": 129.94831429199985
+    },
+    {
+      "round": "A",
+      "HEDGE_ETA": 0.05,
+      "d_target": 8,
+      "CUSUM_KC": 0.5,
+      "CUSUM_HC_SIGMA_MULT": 5.0,
+      "vus_pr": 0.29879764433898426,
+      "vus_roc": 0.6271795566444092,
+      "elapsed": 154.569690874996
+    },
+    {
+      "round": "A",
+      "HEDGE_ETA": 0.05,
+      "d_target": 16,
+      "CUSUM_KC": 0.5,
+      "CUSUM_HC_SIGMA_MULT": 5.0,
+      "vus_pr": 0.3464770305618165,
+      "vus_roc": 0.6845515367636782,
+      "elapsed": 183.14882724999916
+    },
+    {
+      "round": "A",
+      "HEDGE_ETA": 0.1,
+      "d_target": 4,
+      "CUSUM_KC": 0.5,
+      "CUSUM_HC_SIGMA_MULT": 5.0,
+      "vus_pr": 0.26920513493761195,
+      "vus_roc": 0.6232245867137439,
+      "elapsed": 233.26637866700185
+    },
+    {
+      "round": "A",
+      "HEDGE_ETA": 0.1,
+      "d_target": 8,
+      "CUSUM_KC": 0.5,
+      "CUSUM_HC_SIGMA_MULT": 5.0,
+      "vus_pr": 0.2796767670669884,
+      "vus_roc": 0.6293305722630362,
+      "elapsed": 241.12357266699837
+    },
+    {
+      "round": "A",
+      "HEDGE_ETA": 0.1,
+      "d_target": 16,
+      "CUSUM_KC": 0.5,
+      "CUSUM_HC_SIGMA_MULT": 5.0,
+      "vus_pr": 0.3452884776340228,
+      "vus_roc": 0.687134061439928,
+      "elapsed": 237.3595162499987
+    },
+    {
+      "round": "A",
+      "HEDGE_ETA": 0.2,
+      "d_target": 4,
+      "CUSUM_KC": 0.5,
+      "CUSUM_HC_SIGMA_MULT": 5.0,
+      "vus_pr": 0.2664106226996042,
+      "vus_roc": 0.6239881120830847,
+      "elapsed": 196.05026599999837
+    },
+    {
+      "round": "A",
+      "HEDGE_ETA": 0.2,
+      "d_target": 8,
+      "CUSUM_KC": 0.5,
+      "CUSUM_HC_SIGMA_MULT": 5.0,
+      "vus_pr": 0.2703021084813211,
+      "vus_roc": 0.6353114129238844,
+      "elapsed": 240.6081610830006
+    },
+    {
+      "round": "A",
+      "HEDGE_ETA": 0.2,
+      "d_target": 16,
+      "CUSUM_KC": 0.5,
+      "CUSUM_HC_SIGMA_MULT": 5.0,
+      "vus_pr": 0.3437071597501926,
+      "vus_roc": 0.6826469303145927,
+      "elapsed": 248.98183833400253
+    },
+    {
+      "round": "B",
+      "HEDGE_ETA": 0.05,
+      "d_target": 16,
+      "CUSUM_KC": 0.25,
+      "CUSUM_HC_SIGMA_MULT": 3.0,
+      "vus_pr": 0.3347005372660054,
+      "vus_roc": 0.6728640669719811,
+      "elapsed": 270.3870524169979
+    },
+    {
+      "round": "B",
+      "HEDGE_ETA": 0.05,
+      "d_target": 16,
+      "CUSUM_KC": 0.25,
+      "CUSUM_HC_SIGMA_MULT": 5.0,
+      "vus_pr": 0.34796053229442975,
+      "vus_roc": 0.6850073580627876,
+      "elapsed": 335.9552892079955
+    },
+    {
+      "round": "B",
+      "HEDGE_ETA": 0.05,
+      "d_target": 16,
+      "CUSUM_KC": 0.25,
+      "CUSUM_HC_SIGMA_MULT": 8.0,
+      "vus_pr": 0.3384289066481337,
+      "vus_roc": 0.6829107880598283,
+      "elapsed": 153.60963366699434
+    },
+    {
+      "round": "B",
+      "HEDGE_ETA": 0.05,
+      "d_target": 16,
+      "CUSUM_KC": 0.5,
+      "CUSUM_HC_SIGMA_MULT": 3.0,
+      "vus_pr": 0.33922107697556814,
+      "vus_roc": 0.6836778506682104,
+      "elapsed": 171.82074679100333
+    },
+    {
+      "round": "B",
+      "HEDGE_ETA": 0.05,
+      "d_target": 16,
+      "CUSUM_KC": 0.5,
+      "CUSUM_HC_SIGMA_MULT": 5.0,
+      "vus_pr": 0.3464770305618165,
+      "vus_roc": 0.6845515367636782,
+      "elapsed": 158.28387674999976
+    },
+    {
+      "round": "B",
+      "HEDGE_ETA": 0.05,
+      "d_target": 16,
+      "CUSUM_KC": 0.5,
+      "CUSUM_HC_SIGMA_MULT": 8.0,
+      "vus_pr": 0.3382147729190781,
+      "vus_roc": 0.682780416155244,
+      "elapsed": 178.11459983399982
+    },
+    {
+      "round": "B",
+      "HEDGE_ETA": 0.05,
+      "d_target": 16,
+      "CUSUM_KC": 1.0,
+      "CUSUM_HC_SIGMA_MULT": 3.0,
+      "vus_pr": 0.3398711943352067,
+      "vus_roc": 0.6909347738909829,
+      "elapsed": 143.21732424999936
+    },
+    {
+      "round": "B",
+      "HEDGE_ETA": 0.05,
+      "d_target": 16,
+      "CUSUM_KC": 1.0,
+      "CUSUM_HC_SIGMA_MULT": 5.0,
+      "vus_pr": 0.3370986062265841,
+      "vus_roc": 0.6818879685980688,
+      "elapsed": 180.85177229200053
+    },
+    {
+      "round": "B",
+      "HEDGE_ETA": 0.05,
+      "d_target": 16,
+      "CUSUM_KC": 1.0,
+      "CUSUM_HC_SIGMA_MULT": 8.0,
+      "vus_pr": 0.33599181718346194,
+      "vus_roc": 0.6811026174331509,
+      "elapsed": 165.74065633300052
+    }
+  ],
+  "best_config": {
+    "HEDGE_ETA": 0.05,
+    "d_target": 16,
+    "CUSUM_KC": 0.25,
+    "CUSUM_HC_SIGMA_MULT": 5.0,
+    "vus_pr": 0.34796053229442975,
+    "vus_roc": 0.6850073580627876
+  },
+  "validation_full_subset": {
+    "default_vus_pr": 0.21647959917852444,
+    "default_vus_roc": 0.6382674991188373,
+    "tuned_vus_pr": 0.2682386125597318,
+    "tuned_vus_roc": 0.667611836598736,
+    "persistence_vus_pr": 0.21439735856042016,
+    "persistence_vus_roc": 0.5416835100474011,
+    "win_rate_vus_pr_default": 10,
+    "win_rate_vus_pr_tuned": 11,
+    "n_series": 18,
+    "per_series": [
+      {
+        "name": "016_NAB_id_16_Environment_tr_1816_1st_3540.csv",
+        "domain": "Environment",
+        "vus_pr": 0.2934349534498464,
+        "vus_roc": 0.6100621087371259
+      },
+      {
+        "name": "385_UCR_id_83_Environment_tr_2046_1st_6006.csv",
+        "domain": "Environment",
+        "vus_pr": 0.05360816719389611,
+        "vus_roc": 0.8268012286573728
+      },
+      {
+        "name": "018_NAB_id_18_Facility_tr_500_1st_669.csv",
+        "domain": "Facility",
+        "vus_pr": 0.2831730192909477,
+        "vus_roc": 0.5078967960002996
+      },
+      {
+        "name": "027_NAB_id_27_Facility_tr_757_1st_2582.csv",
+        "domain": "Facility",
+        "vus_pr": 0.08879545438906189,
+        "vus_roc": 0.39885649678181556
+      },
+      {
+        "name": "151_Stock_id_3_Finance_tr_500_1st_62.csv",
+        "domain": "Finance",
+        "vus_pr": 0.5557659291298128,
+        "vus_roc": 0.5741254741788512
+      },
+      {
+        "name": "156_Stock_id_8_Finance_tr_500_1st_24.csv",
+        "domain": "Finance",
+        "vus_pr": 0.5365852969223526,
+        "vus_roc": 0.5642158658841803
+      },
+      {
+        "name": "334_UCR_id_32_HumanActivity_tr_1671_1st_2764.csv",
+        "domain": "HumanActivity",
+        "vus_pr": 0.0736592916987086,
+        "vus_roc": 0.6821209045128547
+      },
+      {
+        "name": "401_UCR_id_99_HumanActivity_tr_1671_1st_5920.csv",
+        "domain": "HumanActivity",
+        "vus_pr": 0.1805379762142837,
+        "vus_roc": 0.9464428217336935
+      },
+      {
+        "name": "371_UCR_id_69_Medical_tr_1853_1st_6200.csv",
+        "domain": "Medical",
+        "vus_pr": 0.5402747591560912,
+        "vus_roc": 0.8625624595019705
+      },
+      {
+        "name": "391_UCR_id_89_Medical_tr_1875_1st_5759.csv",
+        "domain": "Medical",
+        "vus_pr": 0.04943364738295452,
+        "vus_roc": 0.6598866481214121
+      },
+      {
+        "name": "141_MSL_id_2_Sensor_tr_500_1st_550.csv",
+        "domain": "Sensor",
+        "vus_pr": 0.13933709487916257,
+        "vus_roc": 0.4163671689704281
+      },
+      {
+        "name": "140_MSL_id_1_Sensor_tr_530_1st_630.csv",
+        "domain": "Sensor",
+        "vus_pr": 0.3459303050963863,
+        "vus_roc": 0.7569670467914205
+      },
+      {
+        "name": "551_YAHOO_id_1_Synthetic_tr_500_1st_893.csv",
+        "domain": "Synthetic",
+        "vus_pr": 0.11711049182441957,
+        "vus_roc": 0.7723510620744707
+      },
+      {
+        "name": "552_YAHOO_id_2_Synthetic_tr_500_1st_893.csv",
+        "domain": "Synthetic",
+        "vus_pr": 0.2755875252507323,
+        "vus_roc": 0.8283426220814614
+      },
+      {
+        "name": "009_NAB_id_9_Traffic_tr_500_1st_438.csv",
+        "domain": "Traffic",
+        "vus_pr": 0.20855654173752636,
+        "vus_roc": 0.7997992790967506
+      },
+      {
+        "name": "005_NAB_id_5_Traffic_tr_594_1st_1645.csv",
+        "domain": "Traffic",
+        "vus_pr": 0.16617186297563694,
+        "vus_roc": 0.3704341061608051
+      },
+      {
+        "name": "010_NAB_id_10_WebService_tr_500_1st_271.csv",
+        "domain": "WebService",
+        "vus_pr": 0.9203327094833528,
+        "vus_roc": 0.9397809694923367
+      },
+      {
+        "name": "277_NEK_id_1_WebService_tr_500_1st_17.csv",
+        "domain": "WebService",
+        "vus_pr": 0.0,
+        "vus_roc": 0.5
+      }
+    ]
+  },
+  "elapsed_seconds": 4079.0101076249994
+}

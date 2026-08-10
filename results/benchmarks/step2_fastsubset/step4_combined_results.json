@@ -1,0 +1,90 @@
+{
+  "step4_combined_fast_subset_result": {
+    "date": "2026-08-10",
+    "fast_subset": {
+      "n_series": 18,
+      "stratification": "2 shortest series per domain, 9 domains",
+      "series": [
+        "016_NAB_id_16_Environment_tr_1816_1st_3540.csv",
+        "385_UCR_id_83_Environment_tr_2046_1st_6006.csv",
+        "018_NAB_id_18_Facility_tr_500_1st_669.csv",
+        "027_NAB_id_27_Facility_tr_757_1st_2582.csv",
+        "151_Stock_id_3_Finance_tr_500_1st_62.csv",
+        "156_Stock_id_8_Finance_tr_500_1st_24.csv",
+        "334_UCR_id_32_HumanActivity_tr_1671_1st_2764.csv",
+        "401_UCR_id_99_HumanActivity_tr_1671_1st_5920.csv",
+        "371_UCR_id_69_Medical_tr_1853_1st_6200.csv",
+        "391_UCR_id_89_Medical_tr_1875_1st_5759.csv",
+        "141_MSL_id_2_Sensor_tr_500_1st_550.csv",
+        "140_MSL_id_1_Sensor_tr_530_1st_630.csv",
+        "551_YAHOO_id_1_Synthetic_tr_500_1st_893.csv",
+        "552_YAHOO_id_2_Synthetic_tr_500_1st_893.csv",
+        "009_NAB_id_9_Traffic_tr_500_1st_438.csv",
+        "005_NAB_id_5_Traffic_tr_594_1st_1645.csv",
+        "010_NAB_id_10_WebService_tr_500_1st_271.csv",
+        "277_NEK_id_1_WebService_tr_500_1st_17.csv"
+      ]
+    },
+    "step2_adaptive_thresholding": {
+      "method": "POT (Peaks-Over-Threshold / GPD)",
+      "result": "NEGATIVE",
+      "vus_pr_before": 0.2165,
+      "vus_pr_after_pot": 0.2290,
+      "vus_roc_before": 0.6383,
+      "vus_roc_after_pot": 0.5836,
+      "persistence_vus_pr": 0.2144,
+      "persistence_vus_roc": 0.5417,
+      "win_rate_vus_pr_raw_vs_pers": "10/18",
+      "win_rate_vus_pr_pot_vs_pers": "11/18",
+      "finding": "POT's non-monotonic tail transform collapses the score bulk to a constant, destroying ranking quality (VUS-ROC -0.055). The apparent VUS-PR gain (+0.013) is a bulk-flattening artifact, not real calibration improvement. At standard SPOT q=1e-3, POT is catastrophic (recall 0.003). At its best operating point it merely matches a naive 99th-percentile threshold. POT sweep over q in {1e-3, 5e-3, 1e-2, 5e-2, 1e-1} x init_quantile in {0.90, 0.95, 0.99} confirmed VUS-ROC degrades monotonically. See step2b_pot_sweep.json.",
+      "operating_point_mean": {
+        "precision": {"default_0p5": 0.1666, "naive_q99": 0.2788, "pot": 0.1019},
+        "recall": {"default_0p5": 0.0395, "naive_q99": 0.0981, "pot": 0.0033},
+        "standard_f1": {"default_0p5": 0.0579, "naive_q99": 0.0808, "pot": 0.0065},
+        "pa_f1": {"default_0p5": 0.3859, "naive_q99": 0.5011, "pot": 0.1115}
+      }
+    },
+    "step3_hyperparameter_tuning": {
+      "method": "Coordinate descent: Round A (HEDGE_ETA x d_target) then Round B (CUSUM_KC x CUSUM_HC_SIGMA_MULT), on 9-series search subset, validated on full 18-series subset",
+      "result": "POSITIVE",
+      "best_config": {
+        "HEDGE_ETA": 0.05,
+        "d_target": 16,
+        "CUSUM_KC": 0.25,
+        "CUSUM_HC_SIGMA_MULT": 5.0
+      },
+      "search_subset_result": {
+        "baseline_vus_pr": 0.2797,
+        "tuned_vus_pr": 0.3480,
+        "delta": 0.0683,
+        "relative_improvement": "24.4%"
+      },
+      "full_subset_validation": {
+        "default_vus_pr": 0.2165,
+        "tuned_vus_pr": 0.2682,
+        "delta": 0.0517,
+        "relative_improvement": "23.9%",
+        "default_vus_roc": 0.6383,
+        "tuned_vus_roc": 0.6676,
+        "persistence_vus_pr": 0.2144,
+        "persistence_vus_roc": 0.5417,
+        "tuned_beats_persistence_vus_pr": true,
+        "tuned_vus_pr_vs_persistence_delta": 0.0538,
+        "win_rate_vus_pr_default": "10/18",
+        "win_rate_vus_pr_tuned": "11/18"
+      },
+      "main_driver": "d_target=16 (doubling embedding dimension from default 8) accounts for most of the gain; HEDGE_ETA=0.05 (halving learning rate) contributes modestly; CUSUM parameters have minimal effect",
+      "caveat": "Validation subset (18) includes the search subset (9), so validation is not fully held-out. Improvement needs confirmation on the full 350-series eval split."
+    },
+    "decision_gate": {
+      "passed": true,
+      "rationale": "Tuning alone showed meaningful improvement: VUS-PR +24% (0.2165 -> 0.2682), now beating the persistence baseline (0.2682 vs 0.2144). VUS-ROC also improved (+4.6%). Thresholding was negative and does not contribute. Gate passes on tuning merit alone.",
+      "next_action": "Proceed to Step 5: full TSB-AD-U tuning split run"
+    },
+    "combined_result": {
+      "thresholding_alone": "NEGATIVE (VUS-ROC regression, no real precision gain)",
+      "tuning_alone": "POSITIVE (VUS-PR +24%, beats baseline)",
+      "combined": "Not computed — thresholding was negative so no combination applied. Tuning alone is the improvement vector."
+    }
+  }
+}

@@ -1,0 +1,820 @@
+[2026-08-10T19:04:48Z] ============================================================
+[2026-08-10T19:04:48Z]   Benchmark: TSB-AD-U | Split: train
+[2026-08-10T19:04:48Z]   Total series: 48 | Already completed: 0
+[2026-08-10T19:04:48Z]   Remaining: 48
+[2026-08-10T19:04:48Z]   Config: warmup=0.05 buffer=15 downsample=10000 tsb_ad=False
+[2026-08-10T19:04:48Z]   Checkpoint interval: every 500 points
+[2026-08-10T19:04:48Z]   Series timeout: 900.0s
+[2026-08-10T19:04:48Z] ============================================================
+[2026-08-10T19:04:48Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv START n=7926 pos=764
+[2026-08-10T19:04:50Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 500/7926 (6%) speed=444 pts/s elapsed=1s
+[2026-08-10T19:04:51Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 1000/7926 (12%) speed=413 pts/s elapsed=2s
+[2026-08-10T19:04:52Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 1500/7926 (18%) speed=374 pts/s elapsed=4s
+[2026-08-10T19:04:54Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 2000/7926 (25%) speed=350 pts/s elapsed=6s
+[2026-08-10T19:04:56Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 2500/7926 (31%) speed=346 pts/s elapsed=7s
+[2026-08-10T19:04:57Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 3000/7926 (37%) speed=344 pts/s elapsed=9s
+[2026-08-10T19:04:59Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 3500/7926 (44%) speed=344 pts/s elapsed=10s
+[2026-08-10T19:05:00Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 4000/7926 (50%) speed=343 pts/s elapsed=12s
+[2026-08-10T19:05:02Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 4500/7926 (56%) speed=343 pts/s elapsed=13s
+[2026-08-10T19:05:03Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 5000/7926 (63%) speed=341 pts/s elapsed=15s
+[2026-08-10T19:05:05Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 5500/7926 (69%) speed=340 pts/s elapsed=16s
+[2026-08-10T19:05:06Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 6000/7926 (75%) speed=340 pts/s elapsed=18s
+[2026-08-10T19:05:08Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 6500/7926 (82%) speed=340 pts/s elapsed=19s
+[2026-08-10T19:05:09Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 7000/7926 (88%) speed=340 pts/s elapsed=21s
+[2026-08-10T19:05:11Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv point 7500/7926 (94%) speed=336 pts/s elapsed=22s
+[2026-08-10T19:05:12Z]   [1/48] 003_NAB_id_3_WebService_tr_1362_1st_1462.csv DONE VUS-PR=0.1122 VUS-ROC=0.5457 elapsed=24.0s
+[2026-08-10T19:05:12Z]   >> Running aggregate: [1/48] ok=1 err=0 mean VUS-PR=0.1122 VUS-ROC=0.5457 total elapsed=25s
+[2026-08-10T19:05:12Z]   [2/48] 004_NAB_id_4_Facility_tr_1007_1st_1437.csv START n=4031 pos=402
+[2026-08-10T19:05:14Z]   [2/48] 004_NAB_id_4_Facility_tr_1007_1st_1437.csv point 500/4031 (12%) speed=332 pts/s elapsed=2s
+[2026-08-10T19:05:15Z]   [2/48] 004_NAB_id_4_Facility_tr_1007_1st_1437.csv point 1000/4031 (24%) speed=342 pts/s elapsed=3s
+[2026-08-10T19:05:17Z]   [2/48] 004_NAB_id_4_Facility_tr_1007_1st_1437.csv point 1500/4031 (37%) speed=330 pts/s elapsed=5s
+[2026-08-10T19:05:19Z]   [2/48] 004_NAB_id_4_Facility_tr_1007_1st_1437.csv point 2000/4031 (49%) speed=331 pts/s elapsed=6s
+[2026-08-10T19:05:20Z]   [2/48] 004_NAB_id_4_Facility_tr_1007_1st_1437.csv point 2500/4031 (62%) speed=332 pts/s elapsed=8s
+[2026-08-10T19:05:22Z]   [2/48] 004_NAB_id_4_Facility_tr_1007_1st_1437.csv point 3000/4031 (74%) speed=329 pts/s elapsed=9s
+[2026-08-10T19:05:23Z]   [2/48] 004_NAB_id_4_Facility_tr_1007_1st_1437.csv point 3500/4031 (86%) speed=328 pts/s elapsed=11s
+[2026-08-10T19:05:25Z]   [2/48] 004_NAB_id_4_Facility_tr_1007_1st_1437.csv point 4000/4031 (99%) speed=318 pts/s elapsed=13s
+[2026-08-10T19:05:25Z]   [2/48] 004_NAB_id_4_Facility_tr_1007_1st_1437.csv DONE VUS-PR=0.3705 VUS-ROC=0.8605 elapsed=12.8s
+[2026-08-10T19:05:25Z]   >> Running aggregate: [2/48] ok=2 err=0 mean VUS-PR=0.2413 VUS-ROC=0.7031 total elapsed=37s
+[2026-08-10T19:05:25Z]   [3/48] 007_NAB_id_7_Traffic_tr_624_1st_2087.csv START n=2499 pos=248
+[2026-08-10T19:05:27Z]   [3/48] 007_NAB_id_7_Traffic_tr_624_1st_2087.csv point 500/2499 (20%) speed=313 pts/s elapsed=2s
+[2026-08-10T19:05:29Z]   [3/48] 007_NAB_id_7_Traffic_tr_624_1st_2087.csv point 1000/2499 (40%) speed=302 pts/s elapsed=3s
+[2026-08-10T19:05:30Z]   [3/48] 007_NAB_id_7_Traffic_tr_624_1st_2087.csv point 1500/2499 (60%) speed=288 pts/s elapsed=5s
+[2026-08-10T19:05:32Z]   [3/48] 007_NAB_id_7_Traffic_tr_624_1st_2087.csv point 2000/2499 (80%) speed=287 pts/s elapsed=7s
+[2026-08-10T19:05:34Z]   [3/48] 007_NAB_id_7_Traffic_tr_624_1st_2087.csv DONE VUS-PR=0.1805 VUS-ROC=0.4522 elapsed=8.6s
+[2026-08-10T19:05:34Z]   >> Running aggregate: [3/48] ok=3 err=0 mean VUS-PR=0.2211 VUS-ROC=0.6194 total elapsed=46s
+[2026-08-10T19:05:34Z]   [4/48] 012_NAB_id_12_Synthetic_tr_1007_1st_2787.csv START n=4031 pos=513
+[2026-08-10T19:05:35Z]   [4/48] 012_NAB_id_12_Synthetic_tr_1007_1st_2787.csv point 500/4031 (12%) speed=399 pts/s elapsed=1s
+[2026-08-10T19:05:37Z]   [4/48] 012_NAB_id_12_Synthetic_tr_1007_1st_2787.csv point 1000/4031 (24%) speed=372 pts/s elapsed=3s
+[2026-08-10T19:05:38Z]   [4/48] 012_NAB_id_12_Synthetic_tr_1007_1st_2787.csv point 1500/4031 (37%) speed=339 pts/s elapsed=4s
+[2026-08-10T19:05:40Z]   [4/48] 012_NAB_id_12_Synthetic_tr_1007_1st_2787.csv point 2000/4031 (49%) speed=315 pts/s elapsed=6s
+[2026-08-10T19:05:42Z]   [4/48] 012_NAB_id_12_Synthetic_tr_1007_1st_2787.csv point 2500/4031 (62%) speed=311 pts/s elapsed=8s
+[2026-08-10T19:05:43Z]   [4/48] 012_NAB_id_12_Synthetic_tr_1007_1st_2787.csv point 3000/4031 (74%) speed=312 pts/s elapsed=10s
+[2026-08-10T19:05:45Z]   [4/48] 012_NAB_id_12_Synthetic_tr_1007_1st_2787.csv point 3500/4031 (86%) speed=307 pts/s elapsed=11s
+[2026-08-10T19:05:47Z]   [4/48] 012_NAB_id_12_Synthetic_tr_1007_1st_2787.csv point 4000/4031 (99%) speed=295 pts/s elapsed=14s
+[2026-08-10T19:05:48Z]   [4/48] 012_NAB_id_12_Synthetic_tr_1007_1st_2787.csv DONE VUS-PR=0.1889 VUS-ROC=0.4565 elapsed=13.8s
+[2026-08-10T19:05:48Z]   >> Running aggregate: [4/48] ok=4 err=0 mean VUS-PR=0.2130 VUS-ROC=0.5787 total elapsed=60s
+[2026-08-10T19:05:48Z]   [5/48] 021_NAB_id_21_WebService_tr_500_1st_565.csv START n=1623 pos=160
+[2026-08-10T19:05:49Z]   [5/48] 021_NAB_id_21_WebService_tr_500_1st_565.csv point 500/1623 (30%) speed=326 pts/s elapsed=2s
+[2026-08-10T19:05:51Z]   [5/48] 021_NAB_id_21_WebService_tr_500_1st_565.csv point 1000/1623 (61%) speed=304 pts/s elapsed=3s
+[2026-08-10T19:05:53Z]   [5/48] 021_NAB_id_21_WebService_tr_500_1st_565.csv point 1500/1623 (92%) speed=288 pts/s elapsed=5s
+[2026-08-10T19:05:53Z]   [5/48] 021_NAB_id_21_WebService_tr_500_1st_565.csv DONE VUS-PR=0.3259 VUS-ROC=0.7706 elapsed=5.7s
+[2026-08-10T19:05:53Z]   >> Running aggregate: [5/48] ok=5 err=0 mean VUS-PR=0.2356 VUS-ROC=0.6171 total elapsed=65s
+[2026-08-10T19:05:53Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv START n=9118 pos=7
+[2026-08-10T19:05:55Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 500/9118 (5%) speed=390 pts/s elapsed=1s
+[2026-08-10T19:05:56Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 1000/9118 (10%) speed=369 pts/s elapsed=3s
+[2026-08-10T19:05:58Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 1500/9118 (16%) speed=353 pts/s elapsed=4s
+[2026-08-10T19:05:59Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 2000/9118 (21%) speed=345 pts/s elapsed=6s
+[2026-08-10T19:06:01Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 2500/9118 (27%) speed=339 pts/s elapsed=7s
+[2026-08-10T19:06:02Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 3000/9118 (32%) speed=334 pts/s elapsed=9s
+[2026-08-10T19:06:04Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 3500/9118 (38%) speed=332 pts/s elapsed=11s
+[2026-08-10T19:06:06Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 4000/9118 (43%) speed=328 pts/s elapsed=12s
+[2026-08-10T19:06:07Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 4500/9118 (49%) speed=325 pts/s elapsed=14s
+[2026-08-10T19:06:09Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 5000/9118 (54%) speed=325 pts/s elapsed=15s
+[2026-08-10T19:06:10Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 5500/9118 (60%) speed=323 pts/s elapsed=17s
+[2026-08-10T19:06:12Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 6000/9118 (65%) speed=322 pts/s elapsed=19s
+[2026-08-10T19:06:14Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 6500/9118 (71%) speed=321 pts/s elapsed=20s
+[2026-08-10T19:06:15Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 7000/9118 (76%) speed=319 pts/s elapsed=22s
+[2026-08-10T19:06:17Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 7500/9118 (82%) speed=318 pts/s elapsed=24s
+[2026-08-10T19:06:19Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 8000/9118 (87%) speed=318 pts/s elapsed=25s
+[2026-08-10T19:06:20Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 8500/9118 (93%) speed=316 pts/s elapsed=27s
+[2026-08-10T19:06:22Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv point 9000/9118 (98%) speed=315 pts/s elapsed=29s
+[2026-08-10T19:06:22Z]   [6/48] 033_WSD_id_5_WebService_tr_4559_1st_12588.csv DONE VUS-PR=0.0127 VUS-ROC=0.8794 elapsed=29.0s
+[2026-08-10T19:06:22Z]   >> Running aggregate: [6/48] ok=6 err=0 mean VUS-PR=0.1985 VUS-ROC=0.6608 total elapsed=94s
+[2026-08-10T19:06:22Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv START n=9042 pos=37
+[2026-08-10T19:06:24Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 500/9042 (5%) speed=392 pts/s elapsed=1s
+[2026-08-10T19:06:25Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 1000/9042 (11%) speed=371 pts/s elapsed=3s
+[2026-08-10T19:06:27Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 1500/9042 (16%) speed=344 pts/s elapsed=4s
+[2026-08-10T19:06:28Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 2000/9042 (22%) speed=332 pts/s elapsed=6s
+[2026-08-10T19:06:30Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 2500/9042 (27%) speed=327 pts/s elapsed=8s
+[2026-08-10T19:06:32Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 3000/9042 (33%) speed=322 pts/s elapsed=9s
+[2026-08-10T19:06:33Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 3500/9042 (38%) speed=319 pts/s elapsed=11s
+[2026-08-10T19:06:35Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 4000/9042 (44%) speed=317 pts/s elapsed=13s
+[2026-08-10T19:06:37Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 4500/9042 (49%) speed=315 pts/s elapsed=14s
+[2026-08-10T19:06:38Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 5000/9042 (55%) speed=314 pts/s elapsed=16s
+[2026-08-10T19:06:40Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 5500/9042 (60%) speed=311 pts/s elapsed=18s
+[2026-08-10T19:06:42Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 6000/9042 (66%) speed=308 pts/s elapsed=19s
+[2026-08-10T19:06:44Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 6500/9042 (71%) speed=307 pts/s elapsed=21s
+[2026-08-10T19:06:45Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 7000/9042 (77%) speed=306 pts/s elapsed=23s
+[2026-08-10T19:06:47Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 7500/9042 (82%) speed=305 pts/s elapsed=25s
+[2026-08-10T19:06:49Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 8000/9042 (88%) speed=304 pts/s elapsed=26s
+[2026-08-10T19:06:50Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 8500/9042 (94%) speed=304 pts/s elapsed=28s
+[2026-08-10T19:06:52Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv point 9000/9042 (99%) speed=303 pts/s elapsed=30s
+[2026-08-10T19:06:52Z]   [7/48] 038_WSD_id_10_WebService_tr_4042_1st_4142.csv DONE VUS-PR=0.2202 VUS-ROC=0.6589 elapsed=29.9s
+[2026-08-10T19:06:52Z]   >> Running aggregate: [7/48] ok=7 err=0 mean VUS-PR=0.2016 VUS-ROC=0.6605 total elapsed=124s
+[2026-08-10T19:06:52Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv START n=9118 pos=4
+[2026-08-10T19:06:54Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 500/9118 (5%) speed=392 pts/s elapsed=1s
+[2026-08-10T19:06:55Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 1000/9118 (10%) speed=358 pts/s elapsed=3s
+[2026-08-10T19:06:57Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 1500/9118 (16%) speed=333 pts/s elapsed=4s
+[2026-08-10T19:06:58Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 2000/9118 (21%) speed=324 pts/s elapsed=6s
+[2026-08-10T19:07:00Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 2500/9118 (27%) speed=321 pts/s elapsed=8s
+[2026-08-10T19:07:02Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 3000/9118 (32%) speed=316 pts/s elapsed=9s
+[2026-08-10T19:07:03Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 3500/9118 (38%) speed=314 pts/s elapsed=11s
+[2026-08-10T19:07:05Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 4000/9118 (43%) speed=313 pts/s elapsed=13s
+[2026-08-10T19:07:07Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 4500/9118 (49%) speed=311 pts/s elapsed=14s
+[2026-08-10T19:07:08Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 5000/9118 (54%) speed=310 pts/s elapsed=16s
+[2026-08-10T19:07:10Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 5500/9118 (60%) speed=310 pts/s elapsed=18s
+[2026-08-10T19:07:12Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 6000/9118 (65%) speed=308 pts/s elapsed=19s
+[2026-08-10T19:07:13Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 6500/9118 (71%) speed=307 pts/s elapsed=21s
+[2026-08-10T19:07:15Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 7000/9118 (76%) speed=307 pts/s elapsed=23s
+[2026-08-10T19:07:17Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 7500/9118 (82%) speed=306 pts/s elapsed=25s
+[2026-08-10T19:07:18Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 8000/9118 (87%) speed=306 pts/s elapsed=26s
+[2026-08-10T19:07:20Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 8500/9118 (93%) speed=305 pts/s elapsed=28s
+[2026-08-10T19:07:22Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv point 9000/9118 (98%) speed=305 pts/s elapsed=30s
+[2026-08-10T19:07:22Z]   [8/48] 045_WSD_id_17_WebService_tr_2566_1st_2666.csv DONE VUS-PR=0.0000 VUS-ROC=0.5000 elapsed=29.9s
+[2026-08-10T19:07:22Z]   >> Running aggregate: [8/48] ok=8 err=0 mean VUS-PR=0.1764 VUS-ROC=0.6405 total elapsed=154s
+[2026-08-10T19:07:22Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv START n=9118 pos=7
+[2026-08-10T19:07:23Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 500/9118 (5%) speed=394 pts/s elapsed=1s
+[2026-08-10T19:07:25Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 1000/9118 (10%) speed=373 pts/s elapsed=3s
+[2026-08-10T19:07:27Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 1500/9118 (16%) speed=350 pts/s elapsed=4s
+[2026-08-10T19:07:28Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 2000/9118 (21%) speed=336 pts/s elapsed=6s
+[2026-08-10T19:07:30Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 2500/9118 (27%) speed=331 pts/s elapsed=8s
+[2026-08-10T19:07:31Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 3000/9118 (32%) speed=326 pts/s elapsed=9s
+[2026-08-10T19:07:33Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 3500/9118 (38%) speed=321 pts/s elapsed=11s
+[2026-08-10T19:07:35Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 4000/9118 (43%) speed=320 pts/s elapsed=13s
+[2026-08-10T19:07:36Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 4500/9118 (49%) speed=316 pts/s elapsed=14s
+[2026-08-10T19:07:38Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 5000/9118 (54%) speed=311 pts/s elapsed=16s
+[2026-08-10T19:07:40Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 5500/9118 (60%) speed=309 pts/s elapsed=18s
+[2026-08-10T19:07:42Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 6000/9118 (65%) speed=309 pts/s elapsed=19s
+[2026-08-10T19:07:43Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 6500/9118 (71%) speed=307 pts/s elapsed=21s
+[2026-08-10T19:07:45Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 7000/9118 (76%) speed=307 pts/s elapsed=23s
+[2026-08-10T19:07:47Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 7500/9118 (82%) speed=307 pts/s elapsed=24s
+[2026-08-10T19:07:48Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 8000/9118 (87%) speed=307 pts/s elapsed=26s
+[2026-08-10T19:07:50Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 8500/9118 (93%) speed=307 pts/s elapsed=28s
+[2026-08-10T19:07:52Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv point 9000/9118 (98%) speed=307 pts/s elapsed=29s
+[2026-08-10T19:07:52Z]   [9/48] 053_WSD_id_25_WebService_tr_4559_1st_9198.csv DONE VUS-PR=0.0179 VUS-ROC=0.8984 elapsed=29.8s
+[2026-08-10T19:07:52Z]   >> Running aggregate: [9/48] ok=9 err=0 mean VUS-PR=0.1588 VUS-ROC=0.6691 total elapsed=184s
+[2026-08-10T19:07:52Z]   [10/48] 070_WSD_id_42_WebService_tr_2102_1st_2202.csv START n=5843 pos=43
+[2026-08-10T19:07:53Z]   [10/48] 070_WSD_id_42_WebService_tr_2102_1st_2202.csv point 500/5843 (8%) speed=378 pts/s elapsed=1s
+[2026-08-10T19:07:55Z]   [10/48] 070_WSD_id_42_WebService_tr_2102_1st_2202.csv point 1000/5843 (17%) speed=359 pts/s elapsed=3s
+[2026-08-10T19:07:56Z]   [10/48] 070_WSD_id_42_WebService_tr_2102_1st_2202.csv point 1500/5843 (25%) speed=342 pts/s elapsed=4s
+[2026-08-10T19:07:58Z]   [10/48] 070_WSD_id_42_WebService_tr_2102_1st_2202.csv point 2000/5843 (34%) speed=322 pts/s elapsed=6s
+[2026-08-10T19:08:00Z]   [10/48] 070_WSD_id_42_WebService_tr_2102_1st_2202.csv point 2500/5843 (42%) speed=319 pts/s elapsed=8s
+[2026-08-10T19:08:01Z]   [10/48] 070_WSD_id_42_WebService_tr_2102_1st_2202.csv point 3000/5843 (51%) speed=318 pts/s elapsed=9s
+[2026-08-10T19:08:03Z]   [10/48] 070_WSD_id_42_WebService_tr_2102_1st_2202.csv point 3500/5843 (59%) speed=315 pts/s elapsed=11s
+[2026-08-10T19:08:05Z]   [10/48] 070_WSD_id_42_WebService_tr_2102_1st_2202.csv point 4000/5843 (68%) speed=314 pts/s elapsed=13s
+[2026-08-10T19:08:06Z]   [10/48] 070_WSD_id_42_WebService_tr_2102_1st_2202.csv point 4500/5843 (77%) speed=313 pts/s elapsed=14s
+[2026-08-10T19:08:08Z]   [10/48] 070_WSD_id_42_WebService_tr_2102_1st_2202.csv point 5000/5843 (85%) speed=312 pts/s elapsed=16s
+[2026-08-10T19:08:10Z]   [10/48] 070_WSD_id_42_WebService_tr_2102_1st_2202.csv point 5500/5843 (94%) speed=311 pts/s elapsed=18s
+[2026-08-10T19:08:11Z]   [10/48] 070_WSD_id_42_WebService_tr_2102_1st_2202.csv DONE VUS-PR=0.1964 VUS-ROC=0.6804 elapsed=18.8s
+[2026-08-10T19:08:11Z]   >> Running aggregate: [10/48] ok=10 err=0 mean VUS-PR=0.1625 VUS-ROC=0.6703 total elapsed=203s
+[2026-08-10T19:08:11Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv START n=6100 pos=181
+[2026-08-10T19:08:12Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv point 500/6100 (8%) speed=402 pts/s elapsed=1s
+[2026-08-10T19:08:14Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv point 1000/6100 (16%) speed=348 pts/s elapsed=3s
+[2026-08-10T19:08:15Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv point 1500/6100 (24%) speed=328 pts/s elapsed=5s
+[2026-08-10T19:08:17Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv point 2000/6100 (32%) speed=322 pts/s elapsed=6s
+[2026-08-10T19:08:19Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv point 2500/6100 (40%) speed=315 pts/s elapsed=8s
+[2026-08-10T19:08:20Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv point 3000/6100 (49%) speed=313 pts/s elapsed=10s
+[2026-08-10T19:08:22Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv point 3500/6100 (57%) speed=313 pts/s elapsed=11s
+[2026-08-10T19:08:24Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv point 4000/6100 (65%) speed=308 pts/s elapsed=13s
+[2026-08-10T19:08:25Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv point 4500/6100 (73%) speed=307 pts/s elapsed=15s
+[2026-08-10T19:08:27Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv point 5000/6100 (81%) speed=305 pts/s elapsed=16s
+[2026-08-10T19:08:29Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv point 5500/6100 (90%) speed=302 pts/s elapsed=18s
+[2026-08-10T19:08:31Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv point 6000/6100 (98%) speed=301 pts/s elapsed=20s
+[2026-08-10T19:08:31Z]   [11/48] 142_MSL_id_3_Sensor_tr_1525_1st_4575.csv DONE VUS-PR=0.2337 VUS-ROC=0.7250 elapsed=20.3s
+[2026-08-10T19:08:31Z]   >> Running aggregate: [11/48] ok=11 err=0 mean VUS-PR=0.1690 VUS-ROC=0.6752 total elapsed=223s
+[2026-08-10T19:08:31Z]   [12/48] 146_MSL_id_7_Sensor_tr_554_1st_1172.csv START n=2217 pos=69
+[2026-08-10T19:08:32Z]   [12/48] 146_MSL_id_7_Sensor_tr_554_1st_1172.csv point 500/2217 (22%) speed=384 pts/s elapsed=1s
+[2026-08-10T19:08:34Z]   [12/48] 146_MSL_id_7_Sensor_tr_554_1st_1172.csv point 1000/2217 (45%) speed=359 pts/s elapsed=3s
+[2026-08-10T19:08:35Z]   [12/48] 146_MSL_id_7_Sensor_tr_554_1st_1172.csv point 1500/2217 (67%) speed=343 pts/s elapsed=4s
+[2026-08-10T19:08:37Z]   [12/48] 146_MSL_id_7_Sensor_tr_554_1st_1172.csv point 2000/2217 (90%) speed=334 pts/s elapsed=6s
+[2026-08-10T19:08:38Z]   [12/48] 146_MSL_id_7_Sensor_tr_554_1st_1172.csv DONE VUS-PR=0.1496 VUS-ROC=0.6101 elapsed=6.7s
+[2026-08-10T19:08:38Z]   >> Running aggregate: [12/48] ok=12 err=0 mean VUS-PR=0.1674 VUS-ROC=0.6698 total elapsed=230s
+[2026-08-10T19:08:38Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv START n=10000 pos=2615
+[2026-08-10T19:08:39Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 500/10000 (5%) speed=378 pts/s elapsed=1s
+[2026-08-10T19:08:41Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 1000/10000 (10%) speed=348 pts/s elapsed=3s
+[2026-08-10T19:08:43Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 1500/10000 (15%) speed=293 pts/s elapsed=5s
+[2026-08-10T19:08:45Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 2000/10000 (20%) speed=284 pts/s elapsed=7s
+[2026-08-10T19:08:47Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 2500/10000 (25%) speed=284 pts/s elapsed=9s
+[2026-08-10T19:08:48Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 3000/10000 (30%) speed=283 pts/s elapsed=11s
+[2026-08-10T19:08:50Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 3500/10000 (35%) speed=282 pts/s elapsed=12s
+[2026-08-10T19:08:52Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 4000/10000 (40%) speed=283 pts/s elapsed=14s
+[2026-08-10T19:08:54Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 4500/10000 (45%) speed=281 pts/s elapsed=16s
+[2026-08-10T19:08:56Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 5000/10000 (50%) speed=281 pts/s elapsed=18s
+[2026-08-10T19:08:57Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 5500/10000 (55%) speed=281 pts/s elapsed=20s
+[2026-08-10T19:08:59Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 6000/10000 (60%) speed=277 pts/s elapsed=22s
+[2026-08-10T19:09:02Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 6500/10000 (65%) speed=271 pts/s elapsed=24s
+[2026-08-10T19:09:04Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 7000/10000 (70%) speed=264 pts/s elapsed=26s
+[2026-08-10T19:09:07Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 7500/10000 (75%) speed=253 pts/s elapsed=30s
+[2026-08-10T19:09:09Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 8000/10000 (80%) speed=252 pts/s elapsed=32s
+[2026-08-10T19:09:11Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 8500/10000 (85%) speed=255 pts/s elapsed=33s
+[2026-08-10T19:09:13Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 9000/10000 (90%) speed=255 pts/s elapsed=35s
+[2026-08-10T19:09:17Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 9500/10000 (95%) speed=242 pts/s elapsed=39s
+[2026-08-10T19:09:19Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv point 10000/10000 (100%) speed=242 pts/s elapsed=41s
+[2026-08-10T19:09:19Z]   [13/48] 152_Stock_id_4_Finance_tr_500_1st_2.csv DONE VUS-PR=0.8482 VUS-ROC=0.5638 elapsed=41.5s
+[2026-08-10T19:09:19Z]   >> Running aggregate: [13/48] ok=13 err=0 mean VUS-PR=0.2198 VUS-ROC=0.6617 total elapsed=271s
+[2026-08-10T19:09:19Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv START n=10000 pos=492
+[2026-08-10T19:09:21Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 500/10000 (5%) speed=383 pts/s elapsed=1s
+[2026-08-10T19:09:22Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 1000/10000 (10%) speed=353 pts/s elapsed=3s
+[2026-08-10T19:09:24Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 1500/10000 (15%) speed=311 pts/s elapsed=5s
+[2026-08-10T19:09:27Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 2000/10000 (20%) speed=259 pts/s elapsed=8s
+[2026-08-10T19:09:29Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 2500/10000 (25%) speed=251 pts/s elapsed=10s
+[2026-08-10T19:09:31Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 3000/10000 (30%) speed=249 pts/s elapsed=12s
+[2026-08-10T19:09:34Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 3500/10000 (35%) speed=238 pts/s elapsed=15s
+[2026-08-10T19:09:36Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 4000/10000 (40%) speed=234 pts/s elapsed=17s
+[2026-08-10T19:09:38Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 4500/10000 (45%) speed=237 pts/s elapsed=19s
+[2026-08-10T19:09:40Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 5000/10000 (50%) speed=239 pts/s elapsed=21s
+[2026-08-10T19:09:42Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 5500/10000 (55%) speed=239 pts/s elapsed=23s
+[2026-08-10T19:09:44Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 6000/10000 (60%) speed=240 pts/s elapsed=25s
+[2026-08-10T19:09:46Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 6500/10000 (65%) speed=239 pts/s elapsed=27s
+[2026-08-10T19:09:48Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 7000/10000 (70%) speed=240 pts/s elapsed=29s
+[2026-08-10T19:09:50Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 7500/10000 (75%) speed=241 pts/s elapsed=31s
+[2026-08-10T19:09:53Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 8000/10000 (80%) speed=240 pts/s elapsed=33s
+[2026-08-10T19:09:55Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 8500/10000 (85%) speed=239 pts/s elapsed=36s
+[2026-08-10T19:09:57Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 9000/10000 (90%) speed=239 pts/s elapsed=38s
+[2026-08-10T19:09:59Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 9500/10000 (95%) speed=240 pts/s elapsed=40s
+[2026-08-10T19:10:01Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv point 10000/10000 (100%) speed=241 pts/s elapsed=42s
+[2026-08-10T19:10:01Z]   [14/48] 161_Stock_id_13_Finance_tr_500_1st_3.csv DONE VUS-PR=0.5319 VUS-ROC=0.5911 elapsed=41.7s
+[2026-08-10T19:10:01Z]   >> Running aggregate: [14/48] ok=14 err=0 mean VUS-PR=0.2421 VUS-ROC=0.6566 total elapsed=313s
+[2026-08-10T19:10:01Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv START n=10000 pos=11
+[2026-08-10T19:10:02Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 500/10000 (5%) speed=333 pts/s elapsed=1s
+[2026-08-10T19:10:04Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 1000/10000 (10%) speed=295 pts/s elapsed=3s
+[2026-08-10T19:10:06Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 1500/10000 (15%) speed=278 pts/s elapsed=5s
+[2026-08-10T19:10:08Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 2000/10000 (20%) speed=271 pts/s elapsed=7s
+[2026-08-10T19:10:11Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 2500/10000 (25%) speed=248 pts/s elapsed=10s
+[2026-08-10T19:10:14Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 3000/10000 (30%) speed=233 pts/s elapsed=13s
+[2026-08-10T19:10:16Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 3500/10000 (35%) speed=237 pts/s elapsed=15s
+[2026-08-10T19:10:18Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 4000/10000 (40%) speed=238 pts/s elapsed=17s
+[2026-08-10T19:10:20Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 4500/10000 (45%) speed=239 pts/s elapsed=19s
+[2026-08-10T19:10:22Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 5000/10000 (50%) speed=239 pts/s elapsed=21s
+[2026-08-10T19:10:24Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 5500/10000 (55%) speed=239 pts/s elapsed=23s
+[2026-08-10T19:10:26Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 6000/10000 (60%) speed=240 pts/s elapsed=25s
+[2026-08-10T19:10:28Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 6500/10000 (65%) speed=240 pts/s elapsed=27s
+[2026-08-10T19:10:30Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 7000/10000 (70%) speed=237 pts/s elapsed=29s
+[2026-08-10T19:10:33Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 7500/10000 (75%) speed=237 pts/s elapsed=32s
+[2026-08-10T19:10:35Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 8000/10000 (80%) speed=237 pts/s elapsed=34s
+[2026-08-10T19:10:37Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 8500/10000 (85%) speed=237 pts/s elapsed=36s
+[2026-08-10T19:10:39Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 9000/10000 (90%) speed=238 pts/s elapsed=38s
+[2026-08-10T19:10:41Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 9500/10000 (95%) speed=237 pts/s elapsed=40s
+[2026-08-10T19:10:43Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv point 10000/10000 (100%) speed=237 pts/s elapsed=42s
+[2026-08-10T19:10:43Z]   [15/48] 174_MITDB_id_5_Medical_tr_50000_1st_539948.csv DONE VUS-PR=0.0065 VUS-ROC=0.5102 elapsed=42.2s
+[2026-08-10T19:10:43Z]   >> Running aggregate: [15/48] ok=15 err=0 mean VUS-PR=0.2263 VUS-ROC=0.6469 total elapsed=355s
+[2026-08-10T19:10:43Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv START n=9566 pos=68
+[2026-08-10T19:10:45Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 500/9566 (5%) speed=320 pts/s elapsed=2s
+[2026-08-10T19:10:47Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 1000/9566 (10%) speed=300 pts/s elapsed=3s
+[2026-08-10T19:10:48Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 1500/9566 (15%) speed=283 pts/s elapsed=5s
+[2026-08-10T19:10:50Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 2000/9566 (20%) speed=277 pts/s elapsed=7s
+[2026-08-10T19:10:53Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 2500/9566 (26%) speed=264 pts/s elapsed=9s
+[2026-08-10T19:10:55Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 3000/9566 (31%) speed=262 pts/s elapsed=11s
+[2026-08-10T19:10:57Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 3500/9566 (36%) speed=262 pts/s elapsed=13s
+[2026-08-10T19:10:59Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 4000/9566 (41%) speed=255 pts/s elapsed=16s
+[2026-08-10T19:11:01Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 4500/9566 (47%) speed=254 pts/s elapsed=18s
+[2026-08-10T19:11:03Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 5000/9566 (52%) speed=251 pts/s elapsed=20s
+[2026-08-10T19:11:05Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 5500/9566 (57%) speed=251 pts/s elapsed=22s
+[2026-08-10T19:11:07Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 6000/9566 (62%) speed=250 pts/s elapsed=24s
+[2026-08-10T19:11:09Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 6500/9566 (67%) speed=250 pts/s elapsed=26s
+[2026-08-10T19:11:11Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 7000/9566 (73%) speed=251 pts/s elapsed=28s
+[2026-08-10T19:11:13Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 7500/9566 (78%) speed=252 pts/s elapsed=30s
+[2026-08-10T19:11:15Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 8000/9566 (83%) speed=252 pts/s elapsed=32s
+[2026-08-10T19:11:17Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 8500/9566 (88%) speed=251 pts/s elapsed=34s
+[2026-08-10T19:11:19Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 9000/9566 (94%) speed=251 pts/s elapsed=36s
+[2026-08-10T19:11:21Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv point 9500/9566 (99%) speed=251 pts/s elapsed=38s
+[2026-08-10T19:11:21Z]   [16/48] 182_SMD_id_5_Facility_tr_7174_1st_21230.csv DONE VUS-PR=0.0656 VUS-ROC=0.7434 elapsed=38.2s
+[2026-08-10T19:11:21Z]   >> Running aggregate: [16/48] ok=16 err=0 mean VUS-PR=0.2163 VUS-ROC=0.6529 total elapsed=393s
+[2026-08-10T19:11:21Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv START n=7901 pos=54
+[2026-08-10T19:11:23Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 500/7901 (6%) speed=322 pts/s elapsed=2s
+[2026-08-10T19:11:25Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 1000/7901 (12%) speed=306 pts/s elapsed=3s
+[2026-08-10T19:11:27Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 1500/7901 (18%) speed=291 pts/s elapsed=5s
+[2026-08-10T19:11:29Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 2000/7901 (25%) speed=279 pts/s elapsed=7s
+[2026-08-10T19:11:31Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 2500/7901 (31%) speed=272 pts/s elapsed=9s
+[2026-08-10T19:11:33Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 3000/7901 (37%) speed=268 pts/s elapsed=11s
+[2026-08-10T19:11:35Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 3500/7901 (44%) speed=265 pts/s elapsed=13s
+[2026-08-10T19:11:37Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 4000/7901 (50%) speed=263 pts/s elapsed=15s
+[2026-08-10T19:11:39Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 4500/7901 (56%) speed=262 pts/s elapsed=17s
+[2026-08-10T19:11:41Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 5000/7901 (63%) speed=260 pts/s elapsed=19s
+[2026-08-10T19:11:43Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 5500/7901 (69%) speed=260 pts/s elapsed=21s
+[2026-08-10T19:11:45Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 6000/7901 (75%) speed=259 pts/s elapsed=23s
+[2026-08-10T19:11:47Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 6500/7901 (82%) speed=258 pts/s elapsed=25s
+[2026-08-10T19:11:48Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 7000/7901 (88%) speed=258 pts/s elapsed=27s
+[2026-08-10T19:11:51Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv point 7500/7901 (94%) speed=257 pts/s elapsed=29s
+[2026-08-10T19:11:52Z]   [17/48] 186_SMD_id_9_Facility_tr_5925_1st_17580.csv DONE VUS-PR=0.4058 VUS-ROC=0.9249 elapsed=30.8s
+[2026-08-10T19:11:52Z]   >> Running aggregate: [17/48] ok=17 err=0 mean VUS-PR=0.2275 VUS-ROC=0.6689 total elapsed=424s
+[2026-08-10T19:11:52Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv START n=7901 pos=54
+[2026-08-10T19:11:54Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 500/7901 (6%) speed=338 pts/s elapsed=1s
+[2026-08-10T19:11:56Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 1000/7901 (12%) speed=272 pts/s elapsed=4s
+[2026-08-10T19:11:58Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 1500/7901 (18%) speed=267 pts/s elapsed=6s
+[2026-08-10T19:12:00Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 2000/7901 (25%) speed=265 pts/s elapsed=8s
+[2026-08-10T19:12:02Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 2500/7901 (31%) speed=265 pts/s elapsed=9s
+[2026-08-10T19:12:04Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 3000/7901 (37%) speed=264 pts/s elapsed=11s
+[2026-08-10T19:12:05Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 3500/7901 (44%) speed=262 pts/s elapsed=13s
+[2026-08-10T19:12:07Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 4000/7901 (50%) speed=262 pts/s elapsed=15s
+[2026-08-10T19:12:09Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 4500/7901 (56%) speed=261 pts/s elapsed=17s
+[2026-08-10T19:12:11Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 5000/7901 (63%) speed=259 pts/s elapsed=19s
+[2026-08-10T19:12:13Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 5500/7901 (69%) speed=260 pts/s elapsed=21s
+[2026-08-10T19:12:15Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 6000/7901 (75%) speed=259 pts/s elapsed=23s
+[2026-08-10T19:12:17Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 6500/7901 (82%) speed=258 pts/s elapsed=25s
+[2026-08-10T19:12:19Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 7000/7901 (88%) speed=258 pts/s elapsed=27s
+[2026-08-10T19:12:21Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv point 7500/7901 (94%) speed=258 pts/s elapsed=29s
+[2026-08-10T19:12:23Z]   [18/48] 193_SMD_id_16_Facility_tr_5925_1st_17580.csv DONE VUS-PR=0.1467 VUS-ROC=0.8050 elapsed=30.7s
+[2026-08-10T19:12:23Z]   >> Running aggregate: [18/48] ok=18 err=0 mean VUS-PR=0.2230 VUS-ROC=0.6765 total elapsed=455s
+[2026-08-10T19:12:23Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv START n=9566 pos=68
+[2026-08-10T19:12:24Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 500/9566 (5%) speed=333 pts/s elapsed=2s
+[2026-08-10T19:12:26Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 1000/9566 (10%) speed=307 pts/s elapsed=3s
+[2026-08-10T19:12:28Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 1500/9566 (15%) speed=290 pts/s elapsed=5s
+[2026-08-10T19:12:30Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 2000/9566 (20%) speed=279 pts/s elapsed=7s
+[2026-08-10T19:12:32Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 2500/9566 (26%) speed=270 pts/s elapsed=9s
+[2026-08-10T19:12:34Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 3000/9566 (31%) speed=268 pts/s elapsed=11s
+[2026-08-10T19:12:36Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 3500/9566 (36%) speed=264 pts/s elapsed=13s
+[2026-08-10T19:12:38Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 4000/9566 (41%) speed=263 pts/s elapsed=15s
+[2026-08-10T19:12:40Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 4500/9566 (47%) speed=262 pts/s elapsed=17s
+[2026-08-10T19:12:42Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 5000/9566 (52%) speed=259 pts/s elapsed=19s
+[2026-08-10T19:12:44Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 5500/9566 (57%) speed=260 pts/s elapsed=21s
+[2026-08-10T19:12:46Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 6000/9566 (62%) speed=259 pts/s elapsed=23s
+[2026-08-10T19:12:48Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 6500/9566 (67%) speed=257 pts/s elapsed=25s
+[2026-08-10T19:12:50Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 7000/9566 (73%) speed=257 pts/s elapsed=27s
+[2026-08-10T19:12:52Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 7500/9566 (78%) speed=256 pts/s elapsed=29s
+[2026-08-10T19:12:55Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 8000/9566 (83%) speed=252 pts/s elapsed=32s
+[2026-08-10T19:12:57Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 8500/9566 (88%) speed=251 pts/s elapsed=34s
+[2026-08-10T19:12:59Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 9000/9566 (94%) speed=251 pts/s elapsed=36s
+[2026-08-10T19:13:01Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv point 9500/9566 (99%) speed=250 pts/s elapsed=38s
+[2026-08-10T19:13:01Z]   [19/48] 200_SMD_id_23_Facility_tr_7174_1st_21230.csv DONE VUS-PR=0.4088 VUS-ROC=0.7830 elapsed=38.4s
+[2026-08-10T19:13:01Z]   >> Running aggregate: [19/48] ok=19 err=0 mean VUS-PR=0.2327 VUS-ROC=0.6821 total elapsed=493s
+[2026-08-10T19:13:01Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv START n=7901 pos=54
+[2026-08-10T19:13:03Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 500/7901 (6%) speed=328 pts/s elapsed=2s
+[2026-08-10T19:13:05Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 1000/7901 (12%) speed=308 pts/s elapsed=3s
+[2026-08-10T19:13:06Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 1500/7901 (18%) speed=288 pts/s elapsed=5s
+[2026-08-10T19:13:08Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 2000/7901 (25%) speed=280 pts/s elapsed=7s
+[2026-08-10T19:13:10Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 2500/7901 (31%) speed=274 pts/s elapsed=9s
+[2026-08-10T19:13:12Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 3000/7901 (37%) speed=271 pts/s elapsed=11s
+[2026-08-10T19:13:14Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 3500/7901 (44%) speed=269 pts/s elapsed=13s
+[2026-08-10T19:13:16Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 4000/7901 (50%) speed=267 pts/s elapsed=15s
+[2026-08-10T19:13:18Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 4500/7901 (56%) speed=264 pts/s elapsed=17s
+[2026-08-10T19:13:20Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 5000/7901 (63%) speed=264 pts/s elapsed=19s
+[2026-08-10T19:13:22Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 5500/7901 (69%) speed=263 pts/s elapsed=21s
+[2026-08-10T19:13:24Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 6000/7901 (75%) speed=262 pts/s elapsed=23s
+[2026-08-10T19:13:26Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 6500/7901 (82%) speed=260 pts/s elapsed=25s
+[2026-08-10T19:13:29Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 7000/7901 (88%) speed=251 pts/s elapsed=28s
+[2026-08-10T19:13:31Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv point 7500/7901 (94%) speed=250 pts/s elapsed=30s
+[2026-08-10T19:13:33Z]   [20/48] 210_SMD_id_33_Facility_tr_5925_1st_17580.csv DONE VUS-PR=0.1355 VUS-ROC=0.8731 elapsed=31.6s
+[2026-08-10T19:13:33Z]   >> Running aggregate: [20/48] ok=20 err=0 mean VUS-PR=0.2279 VUS-ROC=0.6916 total elapsed=525s
+[2026-08-10T19:13:33Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv START n=10000 pos=1605
+[2026-08-10T19:13:34Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 500/10000 (5%) speed=337 pts/s elapsed=1s
+[2026-08-10T19:13:36Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 1000/10000 (10%) speed=302 pts/s elapsed=3s
+[2026-08-10T19:13:38Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 1500/10000 (15%) speed=285 pts/s elapsed=5s
+[2026-08-10T19:13:40Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 2000/10000 (20%) speed=275 pts/s elapsed=7s
+[2026-08-10T19:13:42Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 2500/10000 (25%) speed=270 pts/s elapsed=9s
+[2026-08-10T19:13:44Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 3000/10000 (30%) speed=267 pts/s elapsed=11s
+[2026-08-10T19:13:46Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 3500/10000 (35%) speed=262 pts/s elapsed=13s
+[2026-08-10T19:13:48Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 4000/10000 (40%) speed=262 pts/s elapsed=15s
+[2026-08-10T19:13:50Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 4500/10000 (45%) speed=260 pts/s elapsed=17s
+[2026-08-10T19:13:52Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 5000/10000 (50%) speed=259 pts/s elapsed=19s
+[2026-08-10T19:13:54Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 5500/10000 (55%) speed=259 pts/s elapsed=21s
+[2026-08-10T19:13:56Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 6000/10000 (60%) speed=257 pts/s elapsed=23s
+[2026-08-10T19:13:58Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 6500/10000 (65%) speed=256 pts/s elapsed=25s
+[2026-08-10T19:14:00Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 7000/10000 (70%) speed=255 pts/s elapsed=28s
+[2026-08-10T19:14:02Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 7500/10000 (75%) speed=254 pts/s elapsed=29s
+[2026-08-10T19:14:04Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 8000/10000 (80%) speed=254 pts/s elapsed=32s
+[2026-08-10T19:14:06Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 8500/10000 (85%) speed=253 pts/s elapsed=34s
+[2026-08-10T19:14:08Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 9000/10000 (90%) speed=253 pts/s elapsed=36s
+[2026-08-10T19:14:10Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 9500/10000 (95%) speed=253 pts/s elapsed=38s
+[2026-08-10T19:14:13Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv point 10000/10000 (100%) speed=252 pts/s elapsed=40s
+[2026-08-10T19:14:13Z]   [21/48] 217_LTDB_id_2_Medical_tr_500_1st_266.csv DONE VUS-PR=0.4157 VUS-ROC=0.5704 elapsed=39.9s
+[2026-08-10T19:14:13Z]   >> Running aggregate: [21/48] ok=21 err=0 mean VUS-PR=0.2368 VUS-ROC=0.6858 total elapsed=565s
+[2026-08-10T19:14:13Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv START n=10000 pos=29
+[2026-08-10T19:14:14Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 500/10000 (5%) speed=315 pts/s elapsed=2s
+[2026-08-10T19:14:16Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 1000/10000 (10%) speed=291 pts/s elapsed=3s
+[2026-08-10T19:14:18Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 1500/10000 (15%) speed=276 pts/s elapsed=5s
+[2026-08-10T19:14:20Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 2000/10000 (20%) speed=269 pts/s elapsed=7s
+[2026-08-10T19:14:22Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 2500/10000 (25%) speed=262 pts/s elapsed=10s
+[2026-08-10T19:14:24Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 3000/10000 (30%) speed=261 pts/s elapsed=12s
+[2026-08-10T19:14:26Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 3500/10000 (35%) speed=257 pts/s elapsed=14s
+[2026-08-10T19:14:28Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 4000/10000 (40%) speed=255 pts/s elapsed=16s
+[2026-08-10T19:14:30Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 4500/10000 (45%) speed=254 pts/s elapsed=18s
+[2026-08-10T19:14:33Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 5000/10000 (50%) speed=251 pts/s elapsed=20s
+[2026-08-10T19:14:35Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 5500/10000 (55%) speed=250 pts/s elapsed=22s
+[2026-08-10T19:14:37Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 6000/10000 (60%) speed=250 pts/s elapsed=24s
+[2026-08-10T19:14:39Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 6500/10000 (65%) speed=250 pts/s elapsed=26s
+[2026-08-10T19:14:41Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 7000/10000 (70%) speed=249 pts/s elapsed=28s
+[2026-08-10T19:14:43Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 7500/10000 (75%) speed=249 pts/s elapsed=30s
+[2026-08-10T19:14:45Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 8000/10000 (80%) speed=248 pts/s elapsed=32s
+[2026-08-10T19:14:47Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 8500/10000 (85%) speed=248 pts/s elapsed=34s
+[2026-08-10T19:14:49Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 9000/10000 (90%) speed=248 pts/s elapsed=36s
+[2026-08-10T19:14:51Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 9500/10000 (95%) speed=248 pts/s elapsed=38s
+[2026-08-10T19:14:53Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv point 10000/10000 (100%) speed=248 pts/s elapsed=40s
+[2026-08-10T19:14:53Z]   [22/48] 230_MGAB_id_6_Synthetic_tr_25000_1st_42441.csv DONE VUS-PR=0.0722 VUS-ROC=0.5299 elapsed=40.5s
+[2026-08-10T19:14:53Z]   >> Running aggregate: [22/48] ok=22 err=0 mean VUS-PR=0.2293 VUS-ROC=0.6788 total elapsed=605s
+[2026-08-10T19:14:53Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv START n=9999 pos=384
+[2026-08-10T19:14:55Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 500/9999 (5%) speed=322 pts/s elapsed=2s
+[2026-08-10T19:14:57Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 1000/9999 (10%) speed=302 pts/s elapsed=3s
+[2026-08-10T19:14:59Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 1500/9999 (15%) speed=278 pts/s elapsed=5s
+[2026-08-10T19:15:01Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 2000/9999 (20%) speed=272 pts/s elapsed=7s
+[2026-08-10T19:15:03Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 2500/9999 (25%) speed=267 pts/s elapsed=9s
+[2026-08-10T19:15:05Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 3000/9999 (30%) speed=265 pts/s elapsed=11s
+[2026-08-10T19:15:07Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 3500/9999 (35%) speed=262 pts/s elapsed=13s
+[2026-08-10T19:15:09Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 4000/9999 (40%) speed=262 pts/s elapsed=15s
+[2026-08-10T19:15:11Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 4500/9999 (45%) speed=253 pts/s elapsed=18s
+[2026-08-10T19:15:13Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 5000/9999 (50%) speed=252 pts/s elapsed=20s
+[2026-08-10T19:15:15Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 5500/9999 (55%) speed=254 pts/s elapsed=22s
+[2026-08-10T19:15:17Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 6000/9999 (60%) speed=255 pts/s elapsed=24s
+[2026-08-10T19:15:19Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 6500/9999 (65%) speed=255 pts/s elapsed=25s
+[2026-08-10T19:15:21Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 7000/9999 (70%) speed=255 pts/s elapsed=27s
+[2026-08-10T19:15:23Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 7500/9999 (75%) speed=255 pts/s elapsed=29s
+[2026-08-10T19:15:25Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 8000/9999 (80%) speed=255 pts/s elapsed=31s
+[2026-08-10T19:15:27Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 8500/9999 (85%) speed=254 pts/s elapsed=33s
+[2026-08-10T19:15:29Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 9000/9999 (90%) speed=254 pts/s elapsed=35s
+[2026-08-10T19:15:31Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv point 9500/9999 (95%) speed=254 pts/s elapsed=37s
+[2026-08-10T19:15:33Z]   [23/48] 235_SED_id_2_Medical_tr_2499_1st_3840.csv DONE VUS-PR=0.0562 VUS-ROC=0.4379 elapsed=39.4s
+[2026-08-10T19:15:33Z]   >> Running aggregate: [23/48] ok=23 err=0 mean VUS-PR=0.2218 VUS-ROC=0.6683 total elapsed=645s
+[2026-08-10T19:15:33Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv START n=9495 pos=176
+[2026-08-10T19:15:34Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 500/9495 (5%) speed=335 pts/s elapsed=1s
+[2026-08-10T19:15:36Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 1000/9495 (10%) speed=304 pts/s elapsed=3s
+[2026-08-10T19:15:38Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 1500/9495 (15%) speed=281 pts/s elapsed=5s
+[2026-08-10T19:15:40Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 2000/9495 (21%) speed=257 pts/s elapsed=8s
+[2026-08-10T19:15:43Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 2500/9495 (26%) speed=246 pts/s elapsed=10s
+[2026-08-10T19:15:45Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 3000/9495 (31%) speed=248 pts/s elapsed=12s
+[2026-08-10T19:15:47Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 3500/9495 (36%) speed=248 pts/s elapsed=14s
+[2026-08-10T19:15:49Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 4000/9495 (42%) speed=247 pts/s elapsed=16s
+[2026-08-10T19:15:51Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 4500/9495 (47%) speed=246 pts/s elapsed=18s
+[2026-08-10T19:15:53Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 5000/9495 (52%) speed=247 pts/s elapsed=20s
+[2026-08-10T19:15:55Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 5500/9495 (57%) speed=247 pts/s elapsed=22s
+[2026-08-10T19:15:57Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 6000/9495 (63%) speed=247 pts/s elapsed=24s
+[2026-08-10T19:15:59Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 6500/9495 (68%) speed=246 pts/s elapsed=26s
+[2026-08-10T19:16:01Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 7000/9495 (73%) speed=247 pts/s elapsed=28s
+[2026-08-10T19:16:03Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 7500/9495 (78%) speed=247 pts/s elapsed=30s
+[2026-08-10T19:16:05Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 8000/9495 (84%) speed=247 pts/s elapsed=32s
+[2026-08-10T19:16:07Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 8500/9495 (89%) speed=247 pts/s elapsed=34s
+[2026-08-10T19:16:09Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv point 9000/9495 (94%) speed=248 pts/s elapsed=36s
+[2026-08-10T19:16:11Z]   [24/48] 242_SVDB_id_6_Medical_tr_10726_1st_10826.csv DONE VUS-PR=0.1402 VUS-ROC=0.6691 elapsed=38.4s
+[2026-08-10T19:16:11Z]   >> Running aggregate: [24/48] ok=24 err=0 mean VUS-PR=0.2184 VUS-ROC=0.6683 total elapsed=683s
+[2026-08-10T19:16:11Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv START n=9600 pos=314
+[2026-08-10T19:16:13Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 500/9600 (5%) speed=324 pts/s elapsed=2s
+[2026-08-10T19:16:14Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 1000/9600 (10%) speed=299 pts/s elapsed=3s
+[2026-08-10T19:16:16Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 1500/9600 (15%) speed=278 pts/s elapsed=5s
+[2026-08-10T19:16:18Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 2000/9600 (20%) speed=272 pts/s elapsed=7s
+[2026-08-10T19:16:20Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 2500/9600 (26%) speed=267 pts/s elapsed=9s
+[2026-08-10T19:16:22Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 3000/9600 (31%) speed=264 pts/s elapsed=11s
+[2026-08-10T19:16:24Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 3500/9600 (36%) speed=263 pts/s elapsed=13s
+[2026-08-10T19:16:26Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 4000/9600 (41%) speed=262 pts/s elapsed=15s
+[2026-08-10T19:16:28Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 4500/9600 (46%) speed=261 pts/s elapsed=17s
+[2026-08-10T19:16:30Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 5000/9600 (52%) speed=259 pts/s elapsed=19s
+[2026-08-10T19:16:32Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 5500/9600 (57%) speed=259 pts/s elapsed=21s
+[2026-08-10T19:16:34Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 6000/9600 (62%) speed=259 pts/s elapsed=23s
+[2026-08-10T19:16:36Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 6500/9600 (67%) speed=258 pts/s elapsed=25s
+[2026-08-10T19:16:41Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 7000/9600 (72%) speed=230 pts/s elapsed=30s
+[2026-08-10T19:16:45Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 7500/9600 (78%) speed=222 pts/s elapsed=34s
+[2026-08-10T19:16:48Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 8000/9600 (83%) speed=217 pts/s elapsed=37s
+[2026-08-10T19:16:51Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 8500/9600 (88%) speed=214 pts/s elapsed=40s
+[2026-08-10T19:16:53Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 9000/9600 (93%) speed=215 pts/s elapsed=42s
+[2026-08-10T19:16:55Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv point 9500/9600 (98%) speed=217 pts/s elapsed=44s
+[2026-08-10T19:16:55Z]   [25/48] 252_SVDB_id_16_Medical_tr_12167_1st_12267.csv DONE VUS-PR=0.1248 VUS-ROC=0.5063 elapsed=44.4s
+[2026-08-10T19:16:55Z]   >> Running aggregate: [25/48] ok=25 err=0 mean VUS-PR=0.2147 VUS-ROC=0.6618 total elapsed=727s
+[2026-08-10T19:16:55Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv START n=10000 pos=488
+[2026-08-10T19:16:57Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 500/10000 (5%) speed=311 pts/s elapsed=2s
+[2026-08-10T19:16:59Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 1000/10000 (10%) speed=288 pts/s elapsed=3s
+[2026-08-10T19:17:01Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 1500/10000 (15%) speed=274 pts/s elapsed=5s
+[2026-08-10T19:17:03Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 2000/10000 (20%) speed=264 pts/s elapsed=8s
+[2026-08-10T19:17:05Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 2500/10000 (25%) speed=260 pts/s elapsed=10s
+[2026-08-10T19:17:07Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 3000/10000 (30%) speed=257 pts/s elapsed=12s
+[2026-08-10T19:17:09Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 3500/10000 (35%) speed=255 pts/s elapsed=14s
+[2026-08-10T19:17:11Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 4000/10000 (40%) speed=252 pts/s elapsed=16s
+[2026-08-10T19:17:13Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 4500/10000 (45%) speed=252 pts/s elapsed=18s
+[2026-08-10T19:17:15Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 5000/10000 (50%) speed=251 pts/s elapsed=20s
+[2026-08-10T19:17:17Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 5500/10000 (55%) speed=250 pts/s elapsed=22s
+[2026-08-10T19:17:19Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 6000/10000 (60%) speed=250 pts/s elapsed=24s
+[2026-08-10T19:17:22Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 6500/10000 (65%) speed=246 pts/s elapsed=26s
+[2026-08-10T19:17:24Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 7000/10000 (70%) speed=243 pts/s elapsed=29s
+[2026-08-10T19:17:27Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 7500/10000 (75%) speed=240 pts/s elapsed=31s
+[2026-08-10T19:17:29Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 8000/10000 (80%) speed=237 pts/s elapsed=34s
+[2026-08-10T19:17:32Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 8500/10000 (85%) speed=235 pts/s elapsed=36s
+[2026-08-10T19:17:34Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 9000/10000 (90%) speed=234 pts/s elapsed=39s
+[2026-08-10T19:17:36Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 9500/10000 (95%) speed=232 pts/s elapsed=41s
+[2026-08-10T19:17:39Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv point 10000/10000 (100%) speed=230 pts/s elapsed=43s
+[2026-08-10T19:17:39Z]   [26/48] 259_TAO_id_3_Environment_tr_500_1st_7.csv DONE VUS-PR=0.6668 VUS-ROC=0.6985 elapsed=43.6s
+[2026-08-10T19:17:39Z]   >> Running aggregate: [26/48] ok=26 err=0 mean VUS-PR=0.2321 VUS-ROC=0.6633 total elapsed=771s
+[2026-08-10T19:17:39Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv START n=9907 pos=17
+[2026-08-10T19:17:41Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 500/9907 (5%) speed=270 pts/s elapsed=2s
+[2026-08-10T19:17:43Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 1000/9907 (10%) speed=254 pts/s elapsed=4s
+[2026-08-10T19:17:45Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 1500/9907 (15%) speed=247 pts/s elapsed=6s
+[2026-08-10T19:17:47Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 2000/9907 (20%) speed=250 pts/s elapsed=8s
+[2026-08-10T19:17:49Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 2500/9907 (25%) speed=251 pts/s elapsed=10s
+[2026-08-10T19:17:51Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 3000/9907 (30%) speed=254 pts/s elapsed=12s
+[2026-08-10T19:17:53Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 3500/9907 (35%) speed=255 pts/s elapsed=14s
+[2026-08-10T19:17:55Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 4000/9907 (40%) speed=255 pts/s elapsed=16s
+[2026-08-10T19:17:57Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 4500/9907 (45%) speed=256 pts/s elapsed=18s
+[2026-08-10T19:17:59Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 5000/9907 (50%) speed=255 pts/s elapsed=20s
+[2026-08-10T19:18:01Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 5500/9907 (55%) speed=255 pts/s elapsed=22s
+[2026-08-10T19:18:03Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 6000/9907 (60%) speed=255 pts/s elapsed=24s
+[2026-08-10T19:18:05Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 6500/9907 (65%) speed=255 pts/s elapsed=26s
+[2026-08-10T19:18:06Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 7000/9907 (70%) speed=256 pts/s elapsed=27s
+[2026-08-10T19:18:08Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 7500/9907 (75%) speed=256 pts/s elapsed=29s
+[2026-08-10T19:18:10Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 8000/9907 (80%) speed=256 pts/s elapsed=31s
+[2026-08-10T19:18:12Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 8500/9907 (85%) speed=256 pts/s elapsed=33s
+[2026-08-10T19:18:14Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 9000/9907 (90%) speed=256 pts/s elapsed=35s
+[2026-08-10T19:18:16Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv point 9500/9907 (95%) speed=257 pts/s elapsed=37s
+[2026-08-10T19:18:18Z]   [27/48] 265_IOPS_id_6_WebService_tr_6453_1st_6553.csv DONE VUS-PR=0.1049 VUS-ROC=0.8722 elapsed=38.7s
+[2026-08-10T19:18:18Z]   >> Running aggregate: [27/48] ok=27 err=0 mean VUS-PR=0.2273 VUS-ROC=0.6710 total elapsed=810s
+[2026-08-10T19:18:18Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv START n=10000 pos=34
+[2026-08-10T19:18:19Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 500/10000 (5%) speed=328 pts/s elapsed=2s
+[2026-08-10T19:18:21Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 1000/10000 (10%) speed=309 pts/s elapsed=3s
+[2026-08-10T19:18:23Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 1500/10000 (15%) speed=289 pts/s elapsed=5s
+[2026-08-10T19:18:25Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 2000/10000 (20%) speed=277 pts/s elapsed=7s
+[2026-08-10T19:18:27Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 2500/10000 (25%) speed=272 pts/s elapsed=9s
+[2026-08-10T19:18:29Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 3000/10000 (30%) speed=266 pts/s elapsed=11s
+[2026-08-10T19:18:31Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 3500/10000 (35%) speed=262 pts/s elapsed=13s
+[2026-08-10T19:18:33Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 4000/10000 (40%) speed=260 pts/s elapsed=15s
+[2026-08-10T19:18:35Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 4500/10000 (45%) speed=259 pts/s elapsed=17s
+[2026-08-10T19:18:37Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 5000/10000 (50%) speed=257 pts/s elapsed=19s
+[2026-08-10T19:18:39Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 5500/10000 (55%) speed=256 pts/s elapsed=21s
+[2026-08-10T19:18:41Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 6000/10000 (60%) speed=255 pts/s elapsed=24s
+[2026-08-10T19:18:43Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 6500/10000 (65%) speed=254 pts/s elapsed=26s
+[2026-08-10T19:18:45Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 7000/10000 (70%) speed=254 pts/s elapsed=28s
+[2026-08-10T19:18:47Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 7500/10000 (75%) speed=254 pts/s elapsed=30s
+[2026-08-10T19:18:49Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 8000/10000 (80%) speed=254 pts/s elapsed=31s
+[2026-08-10T19:18:51Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 8500/10000 (85%) speed=254 pts/s elapsed=33s
+[2026-08-10T19:18:53Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 9000/10000 (90%) speed=253 pts/s elapsed=36s
+[2026-08-10T19:18:55Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 9500/10000 (95%) speed=253 pts/s elapsed=38s
+[2026-08-10T19:18:57Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv point 10000/10000 (100%) speed=253 pts/s elapsed=40s
+[2026-08-10T19:18:57Z]   [28/48] 270_IOPS_id_11_WebService_tr_5638_1st_5738.csv DONE VUS-PR=0.0191 VUS-ROC=0.4990 elapsed=39.7s
+[2026-08-10T19:18:57Z]   >> Running aggregate: [28/48] ok=28 err=0 mean VUS-PR=0.2199 VUS-ROC=0.6649 total elapsed=849s
+[2026-08-10T19:18:57Z]   [29/48] 280_NEK_id_4_WebService_tr_500_1st_231.csv START n=1073 pos=57
+[2026-08-10T19:18:59Z]   [29/48] 280_NEK_id_4_WebService_tr_500_1st_231.csv point 500/1073 (46%) speed=320 pts/s elapsed=2s
+[2026-08-10T19:19:01Z]   [29/48] 280_NEK_id_4_WebService_tr_500_1st_231.csv point 1000/1073 (93%) speed=300 pts/s elapsed=3s
+[2026-08-10T19:19:01Z]   [29/48] 280_NEK_id_4_WebService_tr_500_1st_231.csv DONE VUS-PR=0.6634 VUS-ROC=0.8417 elapsed=3.7s
+[2026-08-10T19:19:01Z]   >> Running aggregate: [29/48] ok=29 err=0 mean VUS-PR=0.2352 VUS-ROC=0.6709 total elapsed=853s
+[2026-08-10T19:19:01Z]   [30/48] 291_TODS_id_5_Synthetic_tr_500_1st_11.csv START n=5000 pos=261
+[2026-08-10T19:19:03Z]   [30/48] 291_TODS_id_5_Synthetic_tr_500_1st_11.csv point 500/5000 (10%) speed=324 pts/s elapsed=2s
+[2026-08-10T19:19:04Z]   [30/48] 291_TODS_id_5_Synthetic_tr_500_1st_11.csv point 1000/5000 (20%) speed=305 pts/s elapsed=3s
+[2026-08-10T19:19:06Z]   [30/48] 291_TODS_id_5_Synthetic_tr_500_1st_11.csv point 1500/5000 (30%) speed=284 pts/s elapsed=5s
+[2026-08-10T19:19:08Z]   [30/48] 291_TODS_id_5_Synthetic_tr_500_1st_11.csv point 2000/5000 (40%) speed=274 pts/s elapsed=7s
+[2026-08-10T19:19:11Z]   [30/48] 291_TODS_id_5_Synthetic_tr_500_1st_11.csv point 2500/5000 (50%) speed=263 pts/s elapsed=10s
+[2026-08-10T19:19:13Z]   [30/48] 291_TODS_id_5_Synthetic_tr_500_1st_11.csv point 3000/5000 (60%) speed=258 pts/s elapsed=12s
+[2026-08-10T19:19:15Z]   [30/48] 291_TODS_id_5_Synthetic_tr_500_1st_11.csv point 3500/5000 (70%) speed=258 pts/s elapsed=14s
+[2026-08-10T19:19:17Z]   [30/48] 291_TODS_id_5_Synthetic_tr_500_1st_11.csv point 4000/5000 (80%) speed=257 pts/s elapsed=16s
+[2026-08-10T19:19:19Z]   [30/48] 291_TODS_id_5_Synthetic_tr_500_1st_11.csv point 4500/5000 (90%) speed=254 pts/s elapsed=18s
+[2026-08-10T19:19:21Z]   [30/48] 291_TODS_id_5_Synthetic_tr_500_1st_11.csv point 5000/5000 (100%) speed=252 pts/s elapsed=20s
+[2026-08-10T19:19:21Z]   [30/48] 291_TODS_id_5_Synthetic_tr_500_1st_11.csv DONE VUS-PR=0.6407 VUS-ROC=0.6021 elapsed=19.9s
+[2026-08-10T19:19:21Z]   >> Running aggregate: [30/48] ok=30 err=0 mean VUS-PR=0.2487 VUS-ROC=0.6687 total elapsed=873s
+[2026-08-10T19:19:21Z]   [31/48] 300_TODS_id_14_Synthetic_tr_1250_1st_2555.csv START n=5000 pos=400
+[2026-08-10T19:19:22Z]   [31/48] 300_TODS_id_14_Synthetic_tr_1250_1st_2555.csv point 500/5000 (10%) speed=325 pts/s elapsed=2s
+[2026-08-10T19:19:24Z]   [31/48] 300_TODS_id_14_Synthetic_tr_1250_1st_2555.csv point 1000/5000 (20%) speed=309 pts/s elapsed=3s
+[2026-08-10T19:19:26Z]   [31/48] 300_TODS_id_14_Synthetic_tr_1250_1st_2555.csv point 1500/5000 (30%) speed=288 pts/s elapsed=5s
+[2026-08-10T19:19:28Z]   [31/48] 300_TODS_id_14_Synthetic_tr_1250_1st_2555.csv point 2000/5000 (40%) speed=279 pts/s elapsed=7s
+[2026-08-10T19:19:30Z]   [31/48] 300_TODS_id_14_Synthetic_tr_1250_1st_2555.csv point 2500/5000 (50%) speed=268 pts/s elapsed=9s
+[2026-08-10T19:19:32Z]   [31/48] 300_TODS_id_14_Synthetic_tr_1250_1st_2555.csv point 3000/5000 (60%) speed=263 pts/s elapsed=11s
+[2026-08-10T19:19:34Z]   [31/48] 300_TODS_id_14_Synthetic_tr_1250_1st_2555.csv point 3500/5000 (70%) speed=261 pts/s elapsed=13s
+[2026-08-10T19:19:36Z]   [31/48] 300_TODS_id_14_Synthetic_tr_1250_1st_2555.csv point 4000/5000 (80%) speed=258 pts/s elapsed=15s
+[2026-08-10T19:19:39Z]   [31/48] 300_TODS_id_14_Synthetic_tr_1250_1st_2555.csv point 4500/5000 (90%) speed=255 pts/s elapsed=18s
+[2026-08-10T19:19:41Z]   [31/48] 300_TODS_id_14_Synthetic_tr_1250_1st_2555.csv point 5000/5000 (100%) speed=255 pts/s elapsed=20s
+[2026-08-10T19:19:41Z]   [31/48] 300_TODS_id_14_Synthetic_tr_1250_1st_2555.csv DONE VUS-PR=0.5986 VUS-ROC=0.8716 elapsed=19.7s
+[2026-08-10T19:19:41Z]   >> Running aggregate: [31/48] ok=31 err=0 mean VUS-PR=0.2600 VUS-ROC=0.6752 total elapsed=893s
+[2026-08-10T19:19:41Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv START n=6000 pos=23
+[2026-08-10T19:19:42Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv point 500/6000 (8%) speed=318 pts/s elapsed=2s
+[2026-08-10T19:19:44Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv point 1000/6000 (16%) speed=295 pts/s elapsed=3s
+[2026-08-10T19:19:46Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv point 1500/6000 (25%) speed=276 pts/s elapsed=5s
+[2026-08-10T19:19:48Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv point 2000/6000 (33%) speed=267 pts/s elapsed=7s
+[2026-08-10T19:19:50Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv point 2500/6000 (41%) speed=254 pts/s elapsed=10s
+[2026-08-10T19:19:52Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv point 3000/6000 (50%) speed=254 pts/s elapsed=12s
+[2026-08-10T19:19:54Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv point 3500/6000 (58%) speed=254 pts/s elapsed=14s
+[2026-08-10T19:19:56Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv point 4000/6000 (66%) speed=253 pts/s elapsed=16s
+[2026-08-10T19:19:59Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv point 4500/6000 (75%) speed=251 pts/s elapsed=18s
+[2026-08-10T19:20:01Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv point 5000/6000 (83%) speed=251 pts/s elapsed=20s
+[2026-08-10T19:20:03Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv point 5500/6000 (91%) speed=250 pts/s elapsed=22s
+[2026-08-10T19:20:05Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv point 6000/6000 (100%) speed=250 pts/s elapsed=24s
+[2026-08-10T19:20:05Z]   [32/48] 305_UCR_id_3_Medical_tr_3000_1st_5948.csv DONE VUS-PR=0.0264 VUS-ROC=0.7865 elapsed=24.0s
+[2026-08-10T19:20:05Z]   >> Running aggregate: [32/48] ok=32 err=0 mean VUS-PR=0.2527 VUS-ROC=0.6787 total elapsed=917s
+[2026-08-10T19:20:05Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv START n=9975 pos=78
+[2026-08-10T19:20:06Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 500/9975 (5%) speed=321 pts/s elapsed=2s
+[2026-08-10T19:20:08Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 1000/9975 (10%) speed=297 pts/s elapsed=3s
+[2026-08-10T19:20:10Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 1500/9975 (15%) speed=284 pts/s elapsed=5s
+[2026-08-10T19:20:12Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 2000/9975 (20%) speed=275 pts/s elapsed=7s
+[2026-08-10T19:20:14Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 2500/9975 (25%) speed=266 pts/s elapsed=9s
+[2026-08-10T19:20:16Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 3000/9975 (30%) speed=265 pts/s elapsed=11s
+[2026-08-10T19:20:18Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 3500/9975 (35%) speed=263 pts/s elapsed=13s
+[2026-08-10T19:20:20Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 4000/9975 (40%) speed=262 pts/s elapsed=15s
+[2026-08-10T19:20:22Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 4500/9975 (45%) speed=262 pts/s elapsed=17s
+[2026-08-10T19:20:24Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 5000/9975 (50%) speed=260 pts/s elapsed=19s
+[2026-08-10T19:20:26Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 5500/9975 (55%) speed=261 pts/s elapsed=21s
+[2026-08-10T19:20:28Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 6000/9975 (60%) speed=260 pts/s elapsed=23s
+[2026-08-10T19:20:30Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 6500/9975 (65%) speed=258 pts/s elapsed=25s
+[2026-08-10T19:20:32Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 7000/9975 (70%) speed=259 pts/s elapsed=27s
+[2026-08-10T19:20:34Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 7500/9975 (75%) speed=257 pts/s elapsed=29s
+[2026-08-10T19:20:36Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 8000/9975 (80%) speed=257 pts/s elapsed=31s
+[2026-08-10T19:20:38Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 8500/9975 (85%) speed=257 pts/s elapsed=33s
+[2026-08-10T19:20:40Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 9000/9975 (90%) speed=256 pts/s elapsed=35s
+[2026-08-10T19:20:42Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv point 9500/9975 (95%) speed=256 pts/s elapsed=37s
+[2026-08-10T19:20:44Z]   [33/48] 312_UCR_id_10_Facility_tr_19948_1st_52000.csv DONE VUS-PR=0.0489 VUS-ROC=0.8031 elapsed=39.3s
+[2026-08-10T19:20:44Z]   >> Running aggregate: [33/48] ok=33 err=0 mean VUS-PR=0.2465 VUS-ROC=0.6825 total elapsed=956s
+[2026-08-10T19:20:44Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv START n=9763 pos=1
+[2026-08-10T19:20:45Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 500/9763 (5%) speed=325 pts/s elapsed=2s
+[2026-08-10T19:20:47Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 1000/9763 (10%) speed=306 pts/s elapsed=3s
+[2026-08-10T19:20:49Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 1500/9763 (15%) speed=285 pts/s elapsed=5s
+[2026-08-10T19:20:51Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 2000/9763 (20%) speed=276 pts/s elapsed=7s
+[2026-08-10T19:20:53Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 2500/9763 (25%) speed=268 pts/s elapsed=9s
+[2026-08-10T19:20:55Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 3000/9763 (30%) speed=263 pts/s elapsed=11s
+[2026-08-10T19:20:57Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 3500/9763 (35%) speed=261 pts/s elapsed=13s
+[2026-08-10T19:20:59Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 4000/9763 (40%) speed=258 pts/s elapsed=15s
+[2026-08-10T19:21:01Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 4500/9763 (46%) speed=257 pts/s elapsed=17s
+[2026-08-10T19:21:03Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 5000/9763 (51%) speed=256 pts/s elapsed=20s
+[2026-08-10T19:21:05Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 5500/9763 (56%) speed=255 pts/s elapsed=22s
+[2026-08-10T19:21:07Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 6000/9763 (61%) speed=255 pts/s elapsed=24s
+[2026-08-10T19:21:09Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 6500/9763 (66%) speed=254 pts/s elapsed=26s
+[2026-08-10T19:21:12Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 7000/9763 (71%) speed=251 pts/s elapsed=28s
+[2026-08-10T19:21:14Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 7500/9763 (76%) speed=248 pts/s elapsed=30s
+[2026-08-10T19:21:16Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 8000/9763 (81%) speed=248 pts/s elapsed=32s
+[2026-08-10T19:21:18Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 8500/9763 (87%) speed=248 pts/s elapsed=34s
+[2026-08-10T19:21:20Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 9000/9763 (92%) speed=248 pts/s elapsed=36s
+[2026-08-10T19:21:22Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv point 9500/9763 (97%) speed=248 pts/s elapsed=38s
+[2026-08-10T19:21:23Z]   [34/48] 323_UCR_id_21_HumanActivity_tr_48812_1st_128430.csv DONE VUS-PR=0.0049 VUS-ROC=0.7847 elapsed=39.4s
+[2026-08-10T19:21:23Z]   >> Running aggregate: [34/48] ok=34 err=0 mean VUS-PR=0.2394 VUS-ROC=0.6855 total elapsed=995s
+[2026-08-10T19:21:23Z]   [35/48] 347_UCR_id_45_Sensor_tr_2851_1st_5365.csv START n=5703 pos=8
+[2026-08-10T19:21:25Z]   [35/48] 347_UCR_id_45_Sensor_tr_2851_1st_5365.csv point 500/5703 (8%) speed=337 pts/s elapsed=1s
+[2026-08-10T19:21:26Z]   [35/48] 347_UCR_id_45_Sensor_tr_2851_1st_5365.csv point 1000/5703 (17%) speed=315 pts/s elapsed=3s
+[2026-08-10T19:21:28Z]   [35/48] 347_UCR_id_45_Sensor_tr_2851_1st_5365.csv point 1500/5703 (26%) speed=291 pts/s elapsed=5s
+[2026-08-10T19:21:30Z]   [35/48] 347_UCR_id_45_Sensor_tr_2851_1st_5365.csv point 2000/5703 (35%) speed=278 pts/s elapsed=7s
+[2026-08-10T19:21:32Z]   [35/48] 347_UCR_id_45_Sensor_tr_2851_1st_5365.csv point 2500/5703 (43%) speed=273 pts/s elapsed=9s
+[2026-08-10T19:21:34Z]   [35/48] 347_UCR_id_45_Sensor_tr_2851_1st_5365.csv point 3000/5703 (52%) speed=268 pts/s elapsed=11s
+[2026-08-10T19:21:36Z]   [35/48] 347_UCR_id_45_Sensor_tr_2851_1st_5365.csv point 3500/5703 (61%) speed=267 pts/s elapsed=13s
+[2026-08-10T19:21:38Z]   [35/48] 347_UCR_id_45_Sensor_tr_2851_1st_5365.csv point 4000/5703 (70%) speed=265 pts/s elapsed=15s
+[2026-08-10T19:21:40Z]   [35/48] 347_UCR_id_45_Sensor_tr_2851_1st_5365.csv point 4500/5703 (78%) speed=263 pts/s elapsed=17s
+[2026-08-10T19:21:42Z]   [35/48] 347_UCR_id_45_Sensor_tr_2851_1st_5365.csv point 5000/5703 (87%) speed=262 pts/s elapsed=19s
+[2026-08-10T19:21:44Z]   [35/48] 347_UCR_id_45_Sensor_tr_2851_1st_5365.csv point 5500/5703 (96%) speed=259 pts/s elapsed=21s
+[2026-08-10T19:21:45Z]   [35/48] 347_UCR_id_45_Sensor_tr_2851_1st_5365.csv DONE VUS-PR=0.0047 VUS-ROC=0.2814 elapsed=22.1s
+[2026-08-10T19:21:45Z]   >> Running aggregate: [35/48] ok=35 err=0 mean VUS-PR=0.2327 VUS-ROC=0.6739 total elapsed=1017s
+[2026-08-10T19:21:45Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv START n=8184 pos=24
+[2026-08-10T19:21:47Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 500/8184 (6%) speed=321 pts/s elapsed=2s
+[2026-08-10T19:21:49Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 1000/8184 (12%) speed=261 pts/s elapsed=4s
+[2026-08-10T19:21:52Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 1500/8184 (18%) speed=233 pts/s elapsed=6s
+[2026-08-10T19:21:54Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 2000/8184 (24%) speed=226 pts/s elapsed=9s
+[2026-08-10T19:21:57Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 2500/8184 (30%) speed=222 pts/s elapsed=11s
+[2026-08-10T19:21:59Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 3000/8184 (36%) speed=218 pts/s elapsed=14s
+[2026-08-10T19:22:02Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 3500/8184 (42%) speed=216 pts/s elapsed=16s
+[2026-08-10T19:22:04Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 4000/8184 (48%) speed=215 pts/s elapsed=19s
+[2026-08-10T19:22:06Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 4500/8184 (54%) speed=214 pts/s elapsed=21s
+[2026-08-10T19:22:09Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 5000/8184 (61%) speed=215 pts/s elapsed=23s
+[2026-08-10T19:22:11Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 5500/8184 (67%) speed=214 pts/s elapsed=26s
+[2026-08-10T19:22:14Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 6000/8184 (73%) speed=208 pts/s elapsed=29s
+[2026-08-10T19:22:18Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 6500/8184 (79%) speed=197 pts/s elapsed=33s
+[2026-08-10T19:22:21Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 7000/8184 (85%) speed=199 pts/s elapsed=35s
+[2026-08-10T19:22:23Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 7500/8184 (91%) speed=200 pts/s elapsed=37s
+[2026-08-10T19:22:25Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv point 8000/8184 (97%) speed=201 pts/s elapsed=40s
+[2026-08-10T19:22:26Z]   [36/48] 386_UCR_id_84_Environment_tr_2046_1st_5703.csv DONE VUS-PR=0.0127 VUS-ROC=0.6238 elapsed=40.6s
+[2026-08-10T19:22:26Z]   >> Running aggregate: [36/48] ok=36 err=0 mean VUS-PR=0.2266 VUS-ROC=0.6725 total elapsed=1058s
+[2026-08-10T19:22:26Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv START n=9884 pos=17
+[2026-08-10T19:22:29Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 500/9884 (5%) speed=180 pts/s elapsed=3s
+[2026-08-10T19:22:32Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 1000/9884 (10%) speed=176 pts/s elapsed=6s
+[2026-08-10T19:22:35Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 1500/9884 (15%) speed=159 pts/s elapsed=9s
+[2026-08-10T19:22:40Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 2000/9884 (20%) speed=147 pts/s elapsed=14s
+[2026-08-10T19:22:42Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 2500/9884 (25%) speed=155 pts/s elapsed=16s
+[2026-08-10T19:22:45Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 3000/9884 (30%) speed=155 pts/s elapsed=19s
+[2026-08-10T19:22:49Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 3500/9884 (35%) speed=151 pts/s elapsed=23s
+[2026-08-10T19:22:51Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 4000/9884 (40%) speed=159 pts/s elapsed=25s
+[2026-08-10T19:22:53Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 4500/9884 (45%) speed=166 pts/s elapsed=27s
+[2026-08-10T19:22:55Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 5000/9884 (50%) speed=169 pts/s elapsed=30s
+[2026-08-10T19:22:58Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 5500/9884 (55%) speed=173 pts/s elapsed=32s
+[2026-08-10T19:23:00Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 6000/9884 (60%) speed=177 pts/s elapsed=34s
+[2026-08-10T19:23:02Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 6500/9884 (65%) speed=181 pts/s elapsed=36s
+[2026-08-10T19:23:05Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 7000/9884 (70%) speed=178 pts/s elapsed=39s
+[2026-08-10T19:23:08Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 7500/9884 (75%) speed=177 pts/s elapsed=42s
+[2026-08-10T19:23:11Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 8000/9884 (80%) speed=178 pts/s elapsed=45s
+[2026-08-10T19:23:14Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 8500/9884 (85%) speed=178 pts/s elapsed=48s
+[2026-08-10T19:23:16Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 9000/9884 (91%) speed=178 pts/s elapsed=50s
+[2026-08-10T19:23:22Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv point 9500/9884 (96%) speed=170 pts/s elapsed=56s
+[2026-08-10T19:23:26Z]   [37/48] 429_UCR_id_127_Medical_tr_14825_1st_29000.csv DONE VUS-PR=0.0049 VUS-ROC=0.4197 elapsed=59.8s
+[2026-08-10T19:23:26Z]   >> Running aggregate: [37/48] ok=37 err=0 mean VUS-PR=0.2206 VUS-ROC=0.6657 total elapsed=1118s
+[2026-08-10T19:23:26Z]   [38/48] 535_SMAP_id_5_Sensor_tr_1113_1st_1890.csv START n=4453 pos=41
+[2026-08-10T19:23:29Z]   [38/48] 535_SMAP_id_5_Sensor_tr_1113_1st_1890.csv point 500/4453 (11%) speed=134 pts/s elapsed=4s
+[2026-08-10T19:23:31Z]   [38/48] 535_SMAP_id_5_Sensor_tr_1113_1st_1890.csv point 1000/4453 (22%) speed=180 pts/s elapsed=6s
+[2026-08-10T19:23:35Z]   [38/48] 535_SMAP_id_5_Sensor_tr_1113_1st_1890.csv point 1500/4453 (33%) speed=171 pts/s elapsed=9s
+[2026-08-10T19:23:37Z]   [38/48] 535_SMAP_id_5_Sensor_tr_1113_1st_1890.csv point 2000/4453 (44%) speed=172 pts/s elapsed=12s
+[2026-08-10T19:23:39Z]   [38/48] 535_SMAP_id_5_Sensor_tr_1113_1st_1890.csv point 2500/4453 (56%) speed=183 pts/s elapsed=14s
+[2026-08-10T19:23:42Z]   [38/48] 535_SMAP_id_5_Sensor_tr_1113_1st_1890.csv point 3000/4453 (67%) speed=184 pts/s elapsed=16s
+[2026-08-10T19:23:44Z]   [38/48] 535_SMAP_id_5_Sensor_tr_1113_1st_1890.csv point 3500/4453 (78%) speed=191 pts/s elapsed=18s
+[2026-08-10T19:23:46Z]   [38/48] 535_SMAP_id_5_Sensor_tr_1113_1st_1890.csv point 4000/4453 (89%) speed=198 pts/s elapsed=20s
+[2026-08-10T19:23:48Z]   [38/48] 535_SMAP_id_5_Sensor_tr_1113_1st_1890.csv DONE VUS-PR=0.5193 VUS-ROC=0.7579 elapsed=22.0s
+[2026-08-10T19:23:48Z]   >> Running aggregate: [38/48] ok=38 err=0 mean VUS-PR=0.2285 VUS-ROC=0.6681 total elapsed=1140s
+[2026-08-10T19:23:48Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv START n=8080 pos=111
+[2026-08-10T19:23:49Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 500/8080 (6%) speed=312 pts/s elapsed=2s
+[2026-08-10T19:23:51Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 1000/8080 (12%) speed=293 pts/s elapsed=3s
+[2026-08-10T19:23:53Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 1500/8080 (18%) speed=282 pts/s elapsed=5s
+[2026-08-10T19:23:55Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 2000/8080 (24%) speed=277 pts/s elapsed=7s
+[2026-08-10T19:23:57Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 2500/8080 (30%) speed=265 pts/s elapsed=9s
+[2026-08-10T19:23:59Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 3000/8080 (37%) speed=264 pts/s elapsed=11s
+[2026-08-10T19:24:01Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 3500/8080 (43%) speed=262 pts/s elapsed=13s
+[2026-08-10T19:24:03Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 4000/8080 (49%) speed=260 pts/s elapsed=15s
+[2026-08-10T19:24:05Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 4500/8080 (55%) speed=260 pts/s elapsed=17s
+[2026-08-10T19:24:07Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 5000/8080 (61%) speed=260 pts/s elapsed=19s
+[2026-08-10T19:24:09Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 5500/8080 (68%) speed=262 pts/s elapsed=21s
+[2026-08-10T19:24:11Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 6000/8080 (74%) speed=261 pts/s elapsed=23s
+[2026-08-10T19:24:13Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 6500/8080 (80%) speed=260 pts/s elapsed=25s
+[2026-08-10T19:24:15Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 7000/8080 (86%) speed=260 pts/s elapsed=27s
+[2026-08-10T19:24:17Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 7500/8080 (92%) speed=260 pts/s elapsed=29s
+[2026-08-10T19:24:19Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv point 8000/8080 (99%) speed=260 pts/s elapsed=31s
+[2026-08-10T19:24:19Z]   [39/48] 543_SMAP_id_13_Sensor_tr_2020_1st_4550.csv DONE VUS-PR=0.1627 VUS-ROC=0.5926 elapsed=31.1s
+[2026-08-10T19:24:19Z]   >> Running aggregate: [39/48] ok=39 err=0 mean VUS-PR=0.2268 VUS-ROC=0.6662 total elapsed=1171s
+[2026-08-10T19:24:19Z]   [40/48] 560_YAHOO_id_10_Synthetic_tr_500_1st_893.csv START n=1421 pos=1
+[2026-08-10T19:24:20Z]   [40/48] 560_YAHOO_id_10_Synthetic_tr_500_1st_893.csv point 500/1421 (35%) speed=345 pts/s elapsed=1s
+[2026-08-10T19:24:22Z]   [40/48] 560_YAHOO_id_10_Synthetic_tr_500_1st_893.csv point 1000/1421 (70%) speed=315 pts/s elapsed=3s
+[2026-08-10T19:24:24Z]   [40/48] 560_YAHOO_id_10_Synthetic_tr_500_1st_893.csv DONE VUS-PR=0.2203 VUS-ROC=0.8558 elapsed=4.8s
+[2026-08-10T19:24:24Z]   >> Running aggregate: [40/48] ok=40 err=0 mean VUS-PR=0.2266 VUS-ROC=0.6709 total elapsed=1176s
+[2026-08-10T19:24:24Z]   [41/48] 568_YAHOO_id_18_WebService_tr_500_1st_333.csv START n=1680 pos=3
+[2026-08-10T19:24:25Z]   [41/48] 568_YAHOO_id_18_WebService_tr_500_1st_333.csv point 500/1680 (29%) speed=340 pts/s elapsed=1s
+[2026-08-10T19:24:27Z]   [41/48] 568_YAHOO_id_18_WebService_tr_500_1st_333.csv point 1000/1680 (59%) speed=309 pts/s elapsed=3s
+[2026-08-10T19:24:29Z]   [41/48] 568_YAHOO_id_18_WebService_tr_500_1st_333.csv point 1500/1680 (89%) speed=292 pts/s elapsed=5s
+[2026-08-10T19:24:30Z]   [41/48] 568_YAHOO_id_18_WebService_tr_500_1st_333.csv DONE VUS-PR=0.2926 VUS-ROC=0.7228 elapsed=5.9s
+[2026-08-10T19:24:30Z]   >> Running aggregate: [41/48] ok=41 err=0 mean VUS-PR=0.2282 VUS-ROC=0.6722 total elapsed=1182s
+[2026-08-10T19:24:30Z]   [42/48] 573_YAHOO_id_23_Synthetic_tr_500_1st_623.csv START n=1421 pos=9
+[2026-08-10T19:24:31Z]   [42/48] 573_YAHOO_id_23_Synthetic_tr_500_1st_623.csv point 500/1421 (35%) speed=339 pts/s elapsed=1s
+[2026-08-10T19:24:33Z]   [42/48] 573_YAHOO_id_23_Synthetic_tr_500_1st_623.csv point 1000/1421 (70%) speed=313 pts/s elapsed=3s
+[2026-08-10T19:24:34Z]   [42/48] 573_YAHOO_id_23_Synthetic_tr_500_1st_623.csv DONE VUS-PR=0.5057 VUS-ROC=0.8063 elapsed=4.8s
+[2026-08-10T19:24:34Z]   >> Running aggregate: [42/48] ok=42 err=0 mean VUS-PR=0.2348 VUS-ROC=0.6754 total elapsed=1186s
+[2026-08-10T19:24:34Z]   [43/48] 583_YAHOO_id_33_WebService_tr_500_1st_1616.csv START n=1680 pos=1
+[2026-08-10T19:24:36Z]   [43/48] 583_YAHOO_id_33_WebService_tr_500_1st_1616.csv point 500/1680 (29%) speed=348 pts/s elapsed=1s
+[2026-08-10T19:24:37Z]   [43/48] 583_YAHOO_id_33_WebService_tr_500_1st_1616.csv point 1000/1680 (59%) speed=327 pts/s elapsed=3s
+[2026-08-10T19:24:39Z]   [43/48] 583_YAHOO_id_33_WebService_tr_500_1st_1616.csv point 1500/1680 (89%) speed=309 pts/s elapsed=5s
+[2026-08-10T19:24:40Z]   [43/48] 583_YAHOO_id_33_WebService_tr_500_1st_1616.csv DONE VUS-PR=0.3705 VUS-ROC=0.6393 elapsed=5.6s
+[2026-08-10T19:24:40Z]   >> Running aggregate: [43/48] ok=43 err=0 mean VUS-PR=0.2380 VUS-ROC=0.6745 total elapsed=1192s
+[2026-08-10T19:24:40Z]   [44/48] 643_YAHOO_id_93_WebService_tr_500_1st_1038.csv START n=1680 pos=1
+[2026-08-10T19:24:41Z]   [44/48] 643_YAHOO_id_93_WebService_tr_500_1st_1038.csv point 500/1680 (29%) speed=339 pts/s elapsed=1s
+[2026-08-10T19:24:43Z]   [44/48] 643_YAHOO_id_93_WebService_tr_500_1st_1038.csv point 1000/1680 (59%) speed=318 pts/s elapsed=3s
+[2026-08-10T19:24:45Z]   [44/48] 643_YAHOO_id_93_WebService_tr_500_1st_1038.csv point 1500/1680 (89%) speed=304 pts/s elapsed=5s
+[2026-08-10T19:24:46Z]   [44/48] 643_YAHOO_id_93_WebService_tr_500_1st_1038.csv DONE VUS-PR=0.3681 VUS-ROC=0.9851 elapsed=5.6s
+[2026-08-10T19:24:46Z]   >> Running aggregate: [44/48] ok=44 err=0 mean VUS-PR=0.2410 VUS-ROC=0.6816 total elapsed=1198s
+[2026-08-10T19:24:46Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv START n=8614 pos=1090
+[2026-08-10T19:24:47Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 500/8614 (5%) speed=359 pts/s elapsed=1s
+[2026-08-10T19:24:49Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 1000/8614 (11%) speed=336 pts/s elapsed=3s
+[2026-08-10T19:24:50Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 1500/8614 (17%) speed=314 pts/s elapsed=5s
+[2026-08-10T19:24:52Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 2000/8614 (23%) speed=302 pts/s elapsed=7s
+[2026-08-10T19:24:54Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 2500/8614 (29%) speed=293 pts/s elapsed=9s
+[2026-08-10T19:24:56Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 3000/8614 (34%) speed=290 pts/s elapsed=10s
+[2026-08-10T19:24:58Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 3500/8614 (40%) speed=288 pts/s elapsed=12s
+[2026-08-10T19:25:00Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 4000/8614 (46%) speed=286 pts/s elapsed=14s
+[2026-08-10T19:25:01Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 4500/8614 (52%) speed=284 pts/s elapsed=16s
+[2026-08-10T19:25:03Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 5000/8614 (58%) speed=280 pts/s elapsed=18s
+[2026-08-10T19:25:05Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 5500/8614 (63%) speed=278 pts/s elapsed=20s
+[2026-08-10T19:25:07Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 6000/8614 (69%) speed=278 pts/s elapsed=22s
+[2026-08-10T19:25:09Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 6500/8614 (75%) speed=279 pts/s elapsed=23s
+[2026-08-10T19:25:11Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 7000/8614 (81%) speed=279 pts/s elapsed=25s
+[2026-08-10T19:25:12Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 7500/8614 (87%) speed=278 pts/s elapsed=27s
+[2026-08-10T19:25:14Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 8000/8614 (92%) speed=278 pts/s elapsed=29s
+[2026-08-10T19:25:16Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv point 8500/8614 (98%) speed=278 pts/s elapsed=31s
+[2026-08-10T19:25:17Z]   [45/48] 813_Exathlon_id_4_Facility_tr_10766_1st_12590.csv DONE VUS-PR=0.2060 VUS-ROC=0.6108 elapsed=31.0s
+[2026-08-10T19:25:17Z]   >> Running aggregate: [45/48] ok=45 err=0 mean VUS-PR=0.2402 VUS-ROC=0.6800 total elapsed=1229s
+[2026-08-10T19:25:17Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv START n=8614 pos=1090
+[2026-08-10T19:25:18Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 500/8614 (5%) speed=366 pts/s elapsed=1s
+[2026-08-10T19:25:20Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 1000/8614 (11%) speed=340 pts/s elapsed=3s
+[2026-08-10T19:25:21Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 1500/8614 (17%) speed=313 pts/s elapsed=5s
+[2026-08-10T19:25:23Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 2000/8614 (23%) speed=302 pts/s elapsed=7s
+[2026-08-10T19:25:25Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 2500/8614 (29%) speed=297 pts/s elapsed=8s
+[2026-08-10T19:25:27Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 3000/8614 (34%) speed=295 pts/s elapsed=10s
+[2026-08-10T19:25:29Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 3500/8614 (40%) speed=293 pts/s elapsed=12s
+[2026-08-10T19:25:30Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 4000/8614 (46%) speed=291 pts/s elapsed=14s
+[2026-08-10T19:25:32Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 4500/8614 (52%) speed=290 pts/s elapsed=16s
+[2026-08-10T19:25:34Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 5000/8614 (58%) speed=288 pts/s elapsed=17s
+[2026-08-10T19:25:36Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 5500/8614 (63%) speed=288 pts/s elapsed=19s
+[2026-08-10T19:25:37Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 6000/8614 (69%) speed=288 pts/s elapsed=21s
+[2026-08-10T19:25:39Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 6500/8614 (75%) speed=287 pts/s elapsed=23s
+[2026-08-10T19:25:41Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 7000/8614 (81%) speed=286 pts/s elapsed=24s
+[2026-08-10T19:25:44Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 7500/8614 (87%) speed=278 pts/s elapsed=27s
+[2026-08-10T19:25:46Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 8000/8614 (92%) speed=274 pts/s elapsed=29s
+[2026-08-10T19:25:48Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv point 8500/8614 (98%) speed=273 pts/s elapsed=31s
+[2026-08-10T19:25:48Z]   [46/48] 825_Exathlon_id_16_Facility_tr_10766_1st_12590.csv DONE VUS-PR=0.1619 VUS-ROC=0.4860 elapsed=31.6s
+[2026-08-10T19:25:48Z]   >> Running aggregate: [46/48] ok=46 err=0 mean VUS-PR=0.2385 VUS-ROC=0.6758 total elapsed=1260s
+[2026-08-10T19:25:48Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv START n=7827 pos=485
+[2026-08-10T19:25:50Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 500/7827 (6%) speed=290 pts/s elapsed=2s
+[2026-08-10T19:25:52Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 1000/7827 (12%) speed=276 pts/s elapsed=4s
+[2026-08-10T19:25:54Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 1500/7827 (19%) speed=269 pts/s elapsed=6s
+[2026-08-10T19:25:56Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 2000/7827 (25%) speed=267 pts/s elapsed=8s
+[2026-08-10T19:25:58Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 2500/7827 (31%) speed=268 pts/s elapsed=9s
+[2026-08-10T19:25:59Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 3000/7827 (38%) speed=266 pts/s elapsed=11s
+[2026-08-10T19:26:02Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 3500/7827 (44%) speed=263 pts/s elapsed=13s
+[2026-08-10T19:26:03Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 4000/7827 (51%) speed=262 pts/s elapsed=15s
+[2026-08-10T19:26:05Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 4500/7827 (57%) speed=263 pts/s elapsed=17s
+[2026-08-10T19:26:07Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 5000/7827 (63%) speed=265 pts/s elapsed=19s
+[2026-08-10T19:26:09Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 5500/7827 (70%) speed=264 pts/s elapsed=21s
+[2026-08-10T19:26:11Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 6000/7827 (76%) speed=264 pts/s elapsed=23s
+[2026-08-10T19:26:13Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 6500/7827 (83%) speed=263 pts/s elapsed=25s
+[2026-08-10T19:26:15Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 7000/7827 (89%) speed=263 pts/s elapsed=27s
+[2026-08-10T19:26:17Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv point 7500/7827 (95%) speed=264 pts/s elapsed=28s
+[2026-08-10T19:26:18Z]   [47/48] 852_OPPORTUNITY_id_11_HumanActivity_tr_500_1st_566.csv DONE VUS-PR=0.0725 VUS-ROC=0.5123 elapsed=29.6s
+[2026-08-10T19:26:18Z]   >> Running aggregate: [47/48] ok=47 err=0 mean VUS-PR=0.2349 VUS-ROC=0.6723 total elapsed=1290s
+[2026-08-10T19:26:18Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv START n=7376 pos=220
+[2026-08-10T19:26:19Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 500/7376 (6%) speed=362 pts/s elapsed=1s
+[2026-08-10T19:26:21Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 1000/7376 (13%) speed=331 pts/s elapsed=3s
+[2026-08-10T19:26:23Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 1500/7376 (20%) speed=304 pts/s elapsed=5s
+[2026-08-10T19:26:25Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 2000/7376 (27%) speed=287 pts/s elapsed=7s
+[2026-08-10T19:26:27Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 2500/7376 (33%) speed=283 pts/s elapsed=9s
+[2026-08-10T19:26:29Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 3000/7376 (40%) speed=281 pts/s elapsed=11s
+[2026-08-10T19:26:30Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 3500/7376 (47%) speed=278 pts/s elapsed=13s
+[2026-08-10T19:26:32Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 4000/7376 (54%) speed=276 pts/s elapsed=14s
+[2026-08-10T19:26:34Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 4500/7376 (61%) speed=274 pts/s elapsed=16s
+[2026-08-10T19:26:36Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 5000/7376 (67%) speed=274 pts/s elapsed=18s
+[2026-08-10T19:26:38Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 5500/7376 (74%) speed=274 pts/s elapsed=20s
+[2026-08-10T19:26:40Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 6000/7376 (81%) speed=271 pts/s elapsed=22s
+[2026-08-10T19:26:42Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 6500/7376 (88%) speed=270 pts/s elapsed=24s
+[2026-08-10T19:26:44Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv point 7000/7376 (94%) speed=268 pts/s elapsed=26s
+[2026-08-10T19:26:45Z]   [48/48] 864_OPPORTUNITY_id_23_HumanActivity_tr_895_1st_995.csv DONE VUS-PR=0.0000 VUS-ROC=0.5000 elapsed=27.4s
+[2026-08-10T19:26:45Z]   >> Running aggregate: [48/48] ok=48 err=0 mean VUS-PR=0.2300 VUS-ROC=0.6687 total elapsed=1317s
+[2026-08-10T19:26:45Z] 
+============================================================
+[2026-08-10T19:26:45Z]   COMPLETED: 48/48 (48 success, 0 errors)
+[2026-08-10T19:26:45Z]   Total elapsed: 1317s (22.0 min)
+[2026-08-10T19:26:45Z] 
+  Aggregate metrics (48 successful series):
+[2026-08-10T19:26:45Z]     persistence_vus_pr_mean                       0.2294
+[2026-08-10T19:26:45Z]     persistence_vus_roc_mean                      0.5639
+[2026-08-10T19:26:45Z]     vus_pr_mean                                   0.2300
+[2026-08-10T19:26:45Z]     vus_roc_mean                                  0.6687
+[2026-08-10T19:26:45Z] 
+  Final result saved to results/benchmarks/step2_fastsubset/TSB-AD-U_train_resumable/final_result_train.json
+[2026-08-10T19:26:45Z]   Run log saved to results/benchmarks/step2_fastsubset/TSB-AD-U_train_resumable/run_log.json
+[2026-08-10T19:26:45Z]   Checkpoint at results/benchmarks/step2_fastsubset/TSB-AD-U_train_resumable/checkpoint.jsonl
+[2026-08-10T19:26:45Z] ============================================================

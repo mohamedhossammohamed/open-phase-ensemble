@@ -8,7 +8,7 @@ open-phase-ensemble was evaluated on two industry-standard benchmarks:
 
 2. **NAB** (Numenta Anomaly Benchmark) — 29 series. The model achieves **VUS-PR 0.1808**, decisively beating the persistence baseline on all metrics (VUS-PR 0.1808 vs 0.0902; VUS-ROC 0.7937 vs 0.5950).
 
-The TSB-AD-U tuning split (48 series) was also initiated but could not be completed within a practical timeframe — several series in the tuning split exceed 100K rows, and the O(n²) TSB-AD metric computation made full completion intractable. The eval split results, which are the primary benchmark used for leaderboard ranking, are complete.
+The TSB-AD-U tuning split (48 series) has been completed with default hyperparameters using a resumable checkpointed runner (22 min, 48/48 series successful). TSB-AD's O(n²) metrics were skipped on the tuning split (only fast VUS-PR/VUS-ROC computed) to avoid the runtime bottleneck; the eval split results include the full TSB-AD metric set and are the primary benchmark used for leaderboard ranking.
 
 ---
 
@@ -136,7 +136,7 @@ The official TSB-AD-U leaderboard (https://thedatumorg.github.io/TSB-AD/) ranks 
 
 2. **VUS-ROC ranking**: open-phase-ensemble (0.66) is mid-to-lower pack, comparable to TimesNet (0.72) and AutoEncoder (0.69), but above the persistence baseline (0.57).
 
-3. **Tuning caveat**: The leaderboard results benefit from hyperparameter tuning on the 48-series tuning split. Our results use default hyperparameters. The TSB-AD paper emphasizes that proper tuning can significantly improve results.
+3. **Tuning caveat (partially tested)**: The leaderboard results benefit from hyperparameter tuning on the 48-series tuning split; our eval-split results use default hyperparameters. A fast-subset feasibility check (18 series) showed tuning yields +23.9% VUS-PR improvement (0.2165→0.2682), beating the persistence baseline (0.2144) on that subset. The full 48-series tuning split has been run with default hyperparameters (VUS-PR=0.2300 vs persistence=0.2294 — essentially a tie, not a confirmation the fast-subset gain generalizes) — the tuned configuration itself has not yet been run on the full tuning split or on the 350-series eval split, which is the benchmark the leaderboard rank and reported gap are based on. See Section 5 for the fast-subset feasibility check and `results/benchmarks/EXPERIMENT_LOG.md` for full details.
 
 4. **Precision vs Recall tradeoff**: Open-phase-ensemble shows better ranking quality (VUS-ROC) but worse precision (VUS-PR, AUC-PR). This suggests the model can distinguish anomalous from normal regions but struggles with precise anomaly boundary localization.
 
@@ -164,7 +164,6 @@ Open-phase-ensemble excels on WebService and synthetic series with clear anomaly
 ### Strengths
 - **Ranking quality**: VUS-ROC of 0.66 (70% win rate vs persistence) shows the model can rank anomalous regions above normal ones
 - **Robustness**: 100% success rate across 350 diverse series with no crashes
-- **No hyperparameter tuning**: Results are with default config; tuning could improve performance
 - **Specific domains**: Strong performance on WebService and synthetic anomaly series
 
 ### Weaknesses
@@ -172,6 +171,7 @@ Open-phase-ensemble excels on WebService and synthetic series with clear anomaly
 - **Poor precision**: AUC-PR of 0.17 vs 0.26 for persistence indicates the model produces many false positives
 - **Bottom-tier leaderboard position**: ~#28 of 30+ methods
 - **Event detection**: Event-based-F1 of 0.43 vs 0.60 for persistence shows weak anomaly segment localization
+- **Untuned while near baseline (partially tested, inconclusive at scale)**: On the fast subset (18 series), tuning improved VUS-PR by +23.9% (0.2165→0.2682), beating persistence (0.2144). On the full 48-series tuning split with default hyperparameters, the model essentially ties persistence on VUS-PR (0.2300 vs 0.2294) but beats it clearly on VUS-ROC (0.6687 vs 0.5639) — this tuning-split result is a soft caution sign that the fast-subset gain may not fully generalize, not a confirmation either way. The tuned configuration has not been validated on the full tuning split or on the 350-series eval split, which is what the reported leaderboard rank is based on. Being untuned while only tying a trivial baseline on the primary metric remains a weakness.
 
 ### Root Cause Hypotheses
 1. **Threshold calibration**: The model may produce well-ranked scores but with poorly calibrated absolute thresholds, leading to low precision at default operating points
@@ -218,10 +218,12 @@ The system is well-suited for real-time deployment at typical monitoring samplin
 - **TSB-AD-U eval split**: 350/350 series, 100% success rate, ~2.5 hours runtime
 - **NAB eval**: 29/29 series, 100% success rate, ~10 minutes runtime
 
-### Tuning split (not completed)
-The TSB-AD-U tuning split (48 series) was initiated but could not be completed within a practical timeframe. The tuning split contains several series with extremely high row counts (e.g., 650K, 230K, 195K rows). Even after downsampling to 10K points per series, the TSB-AD metric library's O(n²) point-adjusted F1 and VUS computations made full completion intractable — the process ran for over 2 hours without finishing the final large series.
+### Tuning split (completed, default hyperparameters)
+The TSB-AD-U tuning split (48 series) has been completed with default hyperparameters using a new resumable checkpointed runner (`scripts/run_benchmarks_resumable.py`). The runner saves progress every 500 points (intra-series checkpointing) and after each series completes, enabling crash-safe resumption. Total runtime: 22 min, 48/48 series successful.
 
-This does not affect the validity of the eval split results, which are the primary benchmark used for leaderboard ranking. The tuning split is supplementary and primarily used for hyperparameter optimization, which was outside the scope of this evaluation (default configuration was used throughout).
+TSB-AD's O(n²) metric suite was skipped on the tuning split (only fast VUS-PR/VUS-ROC computed) to avoid the runtime bottleneck that previously made completion intractable. The tuning split is used for hyperparameter optimization; a fast-subset feasibility check (18 series) showed a +23.9% VUS-PR improvement from tuning, but this has not yet been confirmed at full tuning-split or eval-split scale — the full tuning split's default-hyperparameter result (VUS-PR 0.2300 vs persistence 0.2294) is essentially a tie, which does not by itself confirm the fast-subset gain generalizes.
+
+Results: VUS-PR=0.2300 (mean), VUS-ROC=0.6687 (mean), persistence VUS-PR=0.2294. See `results/benchmarks/EXPERIMENT_LOG.md` for full details.
 
 ---
 
