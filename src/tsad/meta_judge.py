@@ -57,6 +57,10 @@ class StratifiedReplayBuffer:
     Stratified Replay Buffer storing past state vectors Z_t and fused scores A_t.
     Divides storage into quantile bins based on anomaly score A_t to preserve
     statistically representative samples of both rare anomalies and nominal states.
+
+    NOTE: Currently write-only in the live pipeline — add() is called every step
+    but sample() is never invoked. Retained for future replay-based training.
+    Does not affect any pipeline output or benchmark score.
     """
     def __init__(self, capacity: int = REPLAY_BUFFER_SIZE, n_quantiles: int = 5):
         self.capacity = capacity

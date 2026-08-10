@@ -5,7 +5,7 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
 
-**open-phase-ensemble** is an open-source, non-parametric, multi-tool ensemble system for streaming time-series anomaly detection and forecasting. It combines six orthogonal detection paradigms — Empirical Dynamic Modeling (Simplex Projection), Ledoit-Wolf Mahalanobis distance, single-window Matrix Profile, Isolation Forest, AR Linear Ridge Filter, and MSE Transformer Autoencoder — under an online Hedge multiplicative-weights Meta-Judge (fixed learning rate $\eta = 0.10$, Pearson correlation loss) with CUSUM change gating, strictly enforcing zero-lookahead stream processing and deterministic execution.
+**open-phase-ensemble** is an open-source, heterogeneous multi-tool ensemble system for streaming time-series anomaly detection and forecasting. It combines six detection paradigms — Empirical Dynamic Modeling (Simplex Projection), Ledoit-Wolf Mahalanobis distance, single-window Matrix Profile, Isolation Forest, AR Linear Ridge Filter, and MSE Transformer Autoencoder — under an online Hedge multiplicative-weights Meta-Judge (fixed learning rate $\eta = 0.10$, Pearson correlation loss) with CUSUM change gating, strictly enforcing zero-lookahead stream processing and deterministic execution.
 
 ---
 
@@ -105,8 +105,8 @@ No headline performance numbers are treated as validated results yet. The benchm
 
 | Dataset | $N$ | System VUS-ROC | System VUS-PR | IAAFT Null VUS-ROC | Edge ($\Delta$) | Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| **PhysioNet MIT-BIH (rec 100)** | 5,000 | **0.9354** | 0.0303 | 0.5030 | **+0.4324** | Validated (+43.2% edge) |
-| **CWRU Bearing Transition Proxy** | 5,000 | **0.6434** | 0.5223 | 0.3347 | **+0.3087** | Validated (+30.9% edge, p=0.047) |
+| **PhysioNet MIT-BIH (rec 100)** | 5,000 | **0.9354** | 0.0303 | 0.5030 | **+0.4324** | Surrogate-significant (+43.2% edge) |
+| **CWRU Bearing Transition Proxy** | 5,000 | **0.6434** | 0.5223 | 0.3347 | **+0.3087** | Surrogate-significant (+30.9% edge, p=0.047) |
 
 The CWRU input produced by `data/download.py` is explicitly a healthy-to-fault transition proxy built from real records.
 
@@ -247,6 +247,17 @@ result.save("results/benchmarks/tsb_ad_u_eval.json")
    - **Robust Mahalanobis**: Fixed 1000-sample block buffer with full covariance recomputation and Ledoit-Wolf shrinkage (not EWMA; no exponential weighting parameter $\alpha$).
    - **Matrix Profile**: Single-window ($w_{\text{mp}} = \max(5, \tau \cdot d)$) subsequence discord search using raw (non-z-normalized) Euclidean distance via `numpy.lib.stride_tricks.sliding_window_view` (not STUMPY/STOMP; not dual-scale).
 
+4. **Detector Orthogonality**: The six detectors' score streams exhibit low pairwise Pearson correlation on a 2,000-point sine-wave fixture. All 15 unique pairs have $|r| < 0.3$ (max $|r| = 0.14$, mean off-diagonal $|r| = 0.04$), supporting the "orthogonal" characterization. The threshold $|r| < 0.3$ follows Cohen (1988)'s convention for weak correlation. Full matrix: [`results/detector_correlation_matrix.json`](results/detector_correlation_matrix.json).
+
+   |  | Simplex | Mahal | MP | IForest | AR | Transformer |
+   |:---|:---:|:---:|:---:|:---:|:---:|:---:|
+   | **Simplex** | 1.00 | 0.03 | -0.00 | -0.00 | -0.01 | -0.02 |
+   | **Mahalanobis** | 0.03 | 1.00 | 0.14 | 0.11 | -0.02 | -0.07 |
+   | **MatrixProfile** | -0.00 | 0.14 | 1.00 | 0.13 | -0.01 | -0.03 |
+   | **IForest** | -0.00 | 0.11 | 0.13 | 1.00 | -0.02 | -0.05 |
+   | **ARFilter** | -0.01 | -0.02 | -0.01 | -0.02 | 1.00 | -0.02 |
+   | **Transformer** | -0.02 | -0.07 | -0.03 | -0.05 | -0.02 | 1.00 |
+
 ---
 
 ## Known Limitations
@@ -286,7 +297,7 @@ Licensed under [Apache License 2.0](LICENSE).
 
 ```bibtex
 @software{open_phase_ensemble2026,
-  title  = {open-phase-ensemble: Non-Parametric Multi-Tool Ensemble for Time-Series Anomaly Detection},
+  title  = {open-phase-ensemble: Heterogeneous Multi-Tool Ensemble for Time-Series Anomaly Detection},
   author = {open-phase-ensemble Contributors},
   year   = {2026},
   url    = {https://github.com/mohamedhossammohamed/open-phase-ensemble}

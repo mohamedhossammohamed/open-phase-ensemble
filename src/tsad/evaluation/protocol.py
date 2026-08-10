@@ -150,4 +150,6 @@ def evaluate_stream(
         else 0.0,
         "predictive_edge": system_metrics["vus_roc"] - float(np.mean(surrogate_array)),
         "surrogate_p_value": p_value,
+        "system_scores": system_scores,
+        "detector_scores": detector_scores,
     }

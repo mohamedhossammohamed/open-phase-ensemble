@@ -120,8 +120,8 @@ def compress_projection(X: np.ndarray, target_d: int = D_TARGET, seed: int = SEE
         padded[:, :d] = X
         return padded
     else:
-        np.random.seed(seed)
-        R = np.random.randn(d, target_d) / np.sqrt(target_d)
+        rng = np.random.RandomState(seed)
+        R = rng.randn(d, target_d) / np.sqrt(target_d)
         return np.dot(X, R)
 
 class HNSWIndex:

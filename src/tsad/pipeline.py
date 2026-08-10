@@ -54,6 +54,9 @@ class TSADPipeline:
         
         # Module 4: Meta-Judge & Replay Buffer
         self.meta_judge = MetaJudge(k_detectors=K_DETECTORS, eta=HEDGE_ETA, sigma=FIXED_SHARE_SIGMA)
+        # NOTE: StratifiedReplayBuffer is currently write-only — add() is called
+        # every step but sample() is never invoked in the live pipeline. Retained
+        # for future replay-based training; does not affect any output or score.
         self.replay_buffer = StratifiedReplayBuffer(capacity=REPLAY_BUFFER_SIZE)
         
         # Module 5: Online Learning Loop

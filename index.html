@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>open-phase-ensemble — Non-Parametric Streaming Anomaly Detection</title>
-  <meta name="description" content="An open-source, non-parametric, multi-tool ensemble for streaming time-series anomaly detection and forecasting.">
+  <title>open-phase-ensemble — Heterogeneous Streaming Anomaly Detection</title>
+  <meta name="description" content="An open-source, heterogeneous multi-tool ensemble for streaming time-series anomaly detection and forecasting.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://mohamedhossammohamed.github.io/open-phase-ensemble/">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -14,24 +14,24 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:domain" content="mohamedhossammohamed.github.io">
   <meta name="twitter:url" content="https://mohamedhossammohamed.github.io/open-phase-ensemble/">
-  <meta name="twitter:title" content="open-phase-ensemble — Non-Parametric Streaming Anomaly Detection">
-  <meta name="twitter:description" content="An open-source, non-parametric, multi-tool ensemble for streaming time-series anomaly detection and forecasting. Evaluated with VUS-ROC/PR metrics.">
+  <meta name="twitter:title" content="open-phase-ensemble — Heterogeneous Streaming Anomaly Detection">
+  <meta name="twitter:description" content="An open-source, heterogeneous multi-tool ensemble for streaming time-series anomaly detection and forecasting. Evaluated with VUS-ROC/PR metrics.">
   <meta name="twitter:image" content="https://mohamedhossammohamed.github.io/open-phase-ensemble/assets/og-preview.jpg">
   <meta name="twitter:image:src" content="https://mohamedhossammohamed.github.io/open-phase-ensemble/assets/og-preview.jpg">
-  <meta name="twitter:image:alt" content="open-phase-ensemble — Non-Parametric Streaming Anomaly Detection Social Card">
+  <meta name="twitter:image:alt" content="open-phase-ensemble — Heterogeneous Streaming Anomaly Detection Social Card">
 
   <!-- Open Graph (OG) / Social Media Preview Meta Tags -->
   <meta property="og:site_name" content="open-phase-ensemble">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="open-phase-ensemble — Non-Parametric Streaming Anomaly Detection">
-  <meta property="og:description" content="An open-source, non-parametric, multi-tool ensemble for streaming time-series anomaly detection and forecasting. Evaluated with VUS-ROC/PR metrics.">
+  <meta property="og:title" content="open-phase-ensemble — Heterogeneous Streaming Anomaly Detection">
+  <meta property="og:description" content="An open-source, heterogeneous multi-tool ensemble for streaming time-series anomaly detection and forecasting. Evaluated with VUS-ROC/PR metrics.">
   <meta property="og:url" content="https://mohamedhossammohamed.github.io/open-phase-ensemble/">
   <meta property="og:image" content="https://mohamedhossammohamed.github.io/open-phase-ensemble/assets/og-preview.jpg">
   <meta property="og:image:secure_url" content="https://mohamedhossammohamed.github.io/open-phase-ensemble/assets/og-preview.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="open-phase-ensemble — Non-Parametric Streaming Anomaly Detection Social Card">
+  <meta property="og:image:alt" content="open-phase-ensemble — Heterogeneous Streaming Anomaly Detection Social Card">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -50,7 +50,7 @@
   <main>
     <article>
       <h1>open-phase-ensemble</h1>
-      <p class="subtitle">An open-source, non-parametric, multi-tool ensemble for streaming time-series anomaly detection and forecasting.</p>
+      <p class="subtitle">An open-source, heterogeneous multi-tool ensemble for streaming time-series anomaly detection and forecasting.</p>
 
       <p style="margin-bottom: 2rem;">
         <span class="badge badge-preliminary"><span class="badge-dot"></span> Preliminary Research</span>
@@ -58,21 +58,21 @@
       </p>
 
       <p class="lead">
-        Time-series anomaly detection suffers from methodological fragmentation and evaluation pitfalls. Many academic benchmarks rely on flawed point-adjustment protocols that artificially inflate random guessers to >90% accuracy. Meanwhile, heavily parameterized deep neural models remain opaque, computationally expensive, and sensitive to hyperparameter tuning.
+        Time-series anomaly detection suffers from methodological fragmentation and evaluation pitfalls. Many academic benchmarks rely on flawed point-adjustment protocols that artificially inflate random guessers to >90% accuracy.
       </p>
 
       <p>
-        <strong>open-phase-ensemble</strong> takes a fundamentally different path: constructing an open-source, non-parametric streaming pipeline that maps scalar temporal observations into phase-space manifolds via Takens' delay embedding, combined with a battery of six orthogonal expert detectors governed by an online multiplicative-weights Meta-Judge.
+        <strong>open-phase-ensemble</strong> is a heterogeneous ensemble that maps scalar temporal observations into phase-space manifolds via Takens' delay embedding, combined with a battery of six expert detectors — spanning non-parametric phase-space methods, covariance geometry, and parametric models including a transformer autoencoder and isolation forest — governed by an online multiplicative-weights Meta-Judge. On the TSB-AD-U industry benchmark, the system does not yet outperform simpler baselines on the primary metric (VUS-PR); see the <a href="results.html#tsb-ad-u">TSB-AD-U results section</a> for details.
       </p>
 
       <div class="inline-stats">
         <div class="stat-item">
-          <span class="stat-num">0.9354</span>
-          <span class="stat-label">MIT-BIH VUS-ROC (<span class="num-cell">+0.4324</span> over null)</span>
+          <span class="stat-num">0.0303</span>
+          <span class="stat-label">MIT-BIH VUS-PR (primary) — VUS-ROC 0.9354 (<span class="num-cell">+0.4324</span> over null)</span>
         </div>
         <div class="stat-item">
-          <span class="stat-num">0.6434</span>
-          <span class="stat-label">CWRU Bearing VUS-ROC (<span class="num-cell">+0.3087</span> over null)</span>
+          <span class="stat-num">0.5223</span>
+          <span class="stat-label">CWRU VUS-PR (primary) — VUS-ROC 0.6434 (<span class="num-cell">+0.3087</span> over null)</span>
         </div>
         <div class="stat-item">
           <span class="stat-num">0.0000</span>
@@ -82,18 +82,18 @@
 
       <h2>System Foundation & Architecture</h2>
       <p>
-        Rather than attempting to train a single deep network to recognize all possible anomaly signatures, the system decomposes time-series evaluation into six modular, causal compartments:
+        The system decomposes time-series evaluation into six modular, causal compartments:
       </p>
 
       <div class="def-list">
         <div class="def-item">
-          <div class="def-term">Non-Parametric Foundation</div>
-          <div class="def-desc">Reconstructs underlying phase-space manifolds via Takens' delay embedding instead of training millions of opaque parameters.</div>
+          <div class="def-term">Heterogeneous Ensemble Foundation</div>
+          <div class="def-desc">Combines non-parametric phase-space methods (Simplex, Mahalanobis, Matrix Profile) with parametric models (Isolation Forest, AR ridge filter, Transformer autoencoder) under a unified online fusion framework.</div>
         </div>
 
         <div class="def-item">
           <div class="def-term">Orthogonal 6-Detector Battery</div>
-          <div class="def-desc">Combines phase-space trajectory prediction, covariance geometry, subsequence motifs, subspace isolation, linear autoregression, and neural MSE reconstruction error.</div>
+          <div class="def-desc">Combines phase-space trajectory prediction, covariance geometry, subsequence motifs, subspace isolation, linear autoregression, and neural MSE reconstruction error. Pairwise Pearson correlation between detector score streams is low (all pairs $|r| &lt; 0.3$, max $|r| = 0.14$); see the <a href="https://github.com/mohamedhossammohamed/open-phase-ensemble/blob/main/results/detector_correlation_matrix.json">correlation matrix</a>.</div>
         </div>
 
         <div class="def-item">

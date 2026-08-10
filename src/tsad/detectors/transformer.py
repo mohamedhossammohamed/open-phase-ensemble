@@ -120,5 +120,6 @@ class MSETransformerAutoencoder(DetectorABC):
         self.optimizer.step()
         self.model.eval()
 
-# Backward compatibility alias
+# Deprecated backward-compatibility alias. The implementation uses standard MSE
+# reconstruction, not association discrepancy. Use MSETransformerAutoencoder directly.
 AnomalyTransformerDetector = MSETransformerAutoencoder

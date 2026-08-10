@@ -4,6 +4,9 @@ import numpy as np
 class QuantileScoreCalibrator:
     """
     eCDF Quantile Mapping for preserving anomaly score comparability across configuration changes.
+
+    NOTE: Currently unused in the live pipeline — not imported by any module in src/tsad/.
+    Retained as a utility for future score calibration work (e.g. adaptive thresholding).
     """
     def __init__(self):
         self.old_ecdf_x = None

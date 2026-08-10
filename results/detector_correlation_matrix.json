@@ -1,0 +1,63 @@
+{
+  "n_points": 2000,
+  "metric": "pearson",
+  "detectors": [
+    "Simplex",
+    "Mahalanobis",
+    "MatrixProfile",
+    "IForest",
+    "ARFilter",
+    "Transformer"
+  ],
+  "matrix": {
+    "Simplex": {
+      "Simplex": 1.0,
+      "Mahalanobis": 0.028,
+      "MatrixProfile": -0.0017,
+      "IForest": -0.0049,
+      "ARFilter": -0.0071,
+      "Transformer": -0.0218
+    },
+    "Mahalanobis": {
+      "Simplex": 0.028,
+      "Mahalanobis": 1.0,
+      "MatrixProfile": 0.1396,
+      "IForest": 0.1107,
+      "ARFilter": -0.0183,
+      "Transformer": -0.0722
+    },
+    "MatrixProfile": {
+      "Simplex": -0.0017,
+      "Mahalanobis": 0.1396,
+      "MatrixProfile": 1.0,
+      "IForest": 0.1276,
+      "ARFilter": -0.0072,
+      "Transformer": -0.0273
+    },
+    "IForest": {
+      "Simplex": -0.0049,
+      "Mahalanobis": 0.1107,
+      "MatrixProfile": 0.1276,
+      "IForest": 1.0,
+      "ARFilter": -0.0152,
+      "Transformer": -0.0525
+    },
+    "ARFilter": {
+      "Simplex": -0.0071,
+      "Mahalanobis": -0.0183,
+      "MatrixProfile": -0.0072,
+      "IForest": -0.0152,
+      "ARFilter": 1.0,
+      "Transformer": -0.0249
+    },
+    "Transformer": {
+      "Simplex": -0.0218,
+      "Mahalanobis": -0.0722,
+      "MatrixProfile": -0.0273,
+      "IForest": -0.0525,
+      "ARFilter": -0.0249,
+      "Transformer": 1.0
+    }
+  },
+  "max_off_diagonal_abs_r": 0.13962574330644378
+}

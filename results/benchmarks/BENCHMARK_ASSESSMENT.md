@@ -228,7 +228,7 @@ This does not affect the validity of the eval split results, which are the prima
 ## 8. Reproducibility
 
 ### Environment
-- Python 3.14
+- Python 3.14.6 (pre-release; note: CI tests against 3.10–3.12 only — results were produced on a version not covered by CI)
 - TSB-AD library (NeurIPS 2024)
 - scikit-learn, numpy, scipy
 - Full provenance in result JSON files

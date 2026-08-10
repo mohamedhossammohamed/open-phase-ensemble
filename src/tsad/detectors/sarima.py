@@ -59,5 +59,6 @@ class ARFilterDetector(DetectorABC):
         except np.linalg.LinAlgError:
             pass
 
-# Backward compatibility alias
+# Deprecated backward-compatibility alias. The implementation is a batch AR(p)
+# ridge regression filter, not full SARIMA. Use ARFilterDetector directly.
 SARIMADetector = ARFilterDetector

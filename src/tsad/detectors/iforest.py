@@ -21,7 +21,7 @@ class IsolationForestDetector(DetectorABC):
             max_samples=min(subsample, 256),
             random_state=SEED,
             warm_start=False,
-            n_jobs=-1
+            n_jobs=1
         )
         self.is_fitted = False
         self.step_counter = 0

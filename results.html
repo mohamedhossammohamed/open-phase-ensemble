@@ -62,13 +62,15 @@
         <span class="toc-sep">/</span>
         <a href="#benchmarks" class="toc-link">2. Benchmark Table</a>
         <span class="toc-sep">/</span>
-        <a href="#audit" class="toc-link">3. Audit Findings</a>
+        <a href="#tsb-ad-u" class="toc-link">3. TSB-AD-U Industry Benchmark</a>
         <span class="toc-sep">/</span>
-        <a href="#definitions" class="toc-link">4. Metric Definitions</a>
+        <a href="#audit" class="toc-link">4. Audit Findings</a>
         <span class="toc-sep">/</span>
-        <a href="#replication" class="toc-link">5. Replication Guide</a>
+        <a href="#definitions" class="toc-link">5. Metric Definitions</a>
         <span class="toc-sep">/</span>
-        <a href="#citations" class="toc-link">6. Academic References</a>
+        <a href="#replication" class="toc-link">6. Replication Guide</a>
+        <span class="toc-sep">/</span>
+        <a href="#citations" class="toc-link">7. Academic References</a>
       </nav>
 
       <h2 id="summary">1. Summary Benchmark Metrics</h2>
@@ -78,12 +80,12 @@
 
       <div class="inline-stats">
         <div class="stat-item">
-          <span class="stat-num">0.9354</span>
-          <span class="stat-label">MIT-BIH VUS-ROC (<span class="num-cell">+0.4324</span> edge)</span>
+          <span class="stat-num">0.0303</span>
+          <span class="stat-label">MIT-BIH VUS-PR (primary) — VUS-ROC 0.9354 (<span class="num-cell">+0.4324</span> edge)</span>
         </div>
         <div class="stat-item">
-          <span class="stat-num">0.6434</span>
-          <span class="stat-label">CWRU Bearing VUS-ROC (<span class="num-cell">+0.3087</span> edge)</span>
+          <span class="stat-num">0.5223</span>
+          <span class="stat-label">CWRU Bearing VUS-PR (primary) — VUS-ROC 0.6434 (<span class="num-cell">+0.3087</span> edge)</span>
         </div>
         <div class="stat-item">
           <span class="stat-num">0.0000</span>
@@ -121,7 +123,7 @@
               <td class="num-cell">0.0303</td>
               <td class="num-cell">0.5030</td>
               <td class="num-cell">+0.4324</td>
-              <td><span class="badge badge-self-reported"><span class="badge-dot"></span> Validated (+43.2% edge)</span></td>
+              <td><span class="badge badge-self-reported"><span class="badge-dot"></span> Surrogate-significant (+43.2% edge)</span></td>
             </tr>
             <tr>
               <td><strong>CWRU Bearing Transition Proxy</strong></td>
@@ -130,7 +132,7 @@
               <td class="num-cell">0.5223</td>
               <td class="num-cell">0.3347</td>
               <td class="num-cell">+0.3087</td>
-              <td><span class="badge badge-self-reported"><span class="badge-dot"></span> Validated (+30.9% edge, p=0.047)</span></td>
+              <td><span class="badge badge-self-reported"><span class="badge-dot"></span> Surrogate-significant (+30.9% edge, p=0.047)</span></td>
             </tr>
           </tbody>
         </table>
@@ -140,7 +142,110 @@
         A positive predictive edge is only an empirical comparison against the chosen surrogate null; it does not by itself confirm nonlinear pattern recognition. That interpretation requires repeated surrogates, a pre-specified protocol, uncertainty intervals, and independent replication.
       </p>
 
-      <h2 id="audit">3. Known Limitations & Audit Findings</h2>
+      <h2 id="tsb-ad-u">3. TSB-AD-U Industry Benchmark (350 Eval Series)</h2>
+      <p>
+        The TSB-AD-U benchmark (NeurIPS 2024 Datasets &amp; Benchmarks Track) is the current field-standard univariate time-series anomaly detection benchmark, comprising 350 evaluation series. open-phase-ensemble was evaluated on the full eval split with default hyperparameters (no tuning), 5% warm-up, and the full TSB-AD metric suite. VUS-PR is the primary metric per the NeurIPS 2024 TSB-AD paper.
+      </p>
+
+      <div class="inline-stats">
+        <div class="stat-item">
+          <span class="stat-num">0.1995</span>
+          <span class="stat-label">TSB-AD-U VUS-PR (primary) — <span class="num-cell">below</span> persistence baseline (0.2249)</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">0.6614</span>
+          <span class="stat-label">TSB-AD-U VUS-ROC — above persistence baseline (0.5723)</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">#28</span>
+          <span class="stat-label">Leaderboard rank of 30+ methods (default config, untuned)</span>
+        </div>
+      </div>
+
+      <p>
+        On the primary metric (VUS-PR), open-phase-ensemble scores <strong>0.1995</strong>, which is <strong>below the persistence baseline</strong> (0.2249) — a trivial absolute-first-difference baseline. The system ranks approximately <strong>#28 out of 30+</strong> methods on the <a href="https://thedatumorg.github.io/TSB-AD/">official TSB-AD-U leaderboard</a>, comparable to Donut (0.20) and below the persistence baseline. On VUS-ROC (a secondary ranking metric), the system scores 0.6614, above the persistence baseline (0.5723) but still in the mid-to-lower pack of the leaderboard.
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>open-phase-ensemble</th>
+              <th>Persistence Baseline</th>
+              <th>Delta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>VUS-PR</strong> (primary)</td>
+              <td class="num-cell">0.1995</td>
+              <td class="num-cell">0.2249</td>
+              <td class="num-cell">-0.0254</td>
+            </tr>
+            <tr>
+              <td>VUS-ROC</td>
+              <td class="num-cell">0.6614</td>
+              <td class="num-cell">0.5723</td>
+              <td class="num-cell">+0.0891</td>
+            </tr>
+            <tr>
+              <td>TSB-AD VUS-PR</td>
+              <td class="num-cell">0.1938</td>
+              <td class="num-cell">0.2726</td>
+              <td class="num-cell">-0.0788</td>
+            </tr>
+            <tr>
+              <td>TSB-AD VUS-ROC</td>
+              <td class="num-cell">0.7308</td>
+              <td class="num-cell">0.6829</td>
+              <td class="num-cell">+0.0479</td>
+            </tr>
+            <tr>
+              <td>AUC-PR</td>
+              <td class="num-cell">0.1727</td>
+              <td class="num-cell">0.2561</td>
+              <td class="num-cell">-0.0834</td>
+            </tr>
+            <tr>
+              <td>AUC-ROC</td>
+              <td class="num-cell">0.6992</td>
+              <td class="num-cell">0.6291</td>
+              <td class="num-cell">+0.0701</td>
+            </tr>
+            <tr>
+              <td>Standard-F1</td>
+              <td class="num-cell">0.2481</td>
+              <td class="num-cell">0.3174</td>
+              <td class="num-cell">-0.0693</td>
+            </tr>
+            <tr>
+              <td>PA-F1</td>
+              <td class="num-cell">0.6409</td>
+              <td class="num-cell">0.7665</td>
+              <td class="num-cell">-0.1256</td>
+            </tr>
+            <tr>
+              <td>Event-based-F1</td>
+              <td class="num-cell">0.4255</td>
+              <td class="num-cell">0.6050</td>
+              <td class="num-cell">-0.1795</td>
+            </tr>
+            <tr>
+              <td>Affiliation-F</td>
+              <td class="num-cell">0.8166</td>
+              <td class="num-cell">0.8789</td>
+              <td class="num-cell">-0.0623</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        These results are with default hyperparameters; the TSB-AD-U tuning split (48 series) was not completed. Full per-series analysis, SOTA comparison, win-rate breakdowns, and completion notes are in <a href="https://github.com/mohamedhossammohamed/open-phase-ensemble/blob/main/results/benchmarks/BENCHMARK_ASSESSMENT.md">BENCHMARK_ASSESSMENT.md</a>.
+      </p>
+
+      <h2 id="audit">4. Known Limitations & Audit Findings</h2>
       <p>
         An internal code and scientific integrity audit identified and remediated three major issues prior to release:
       </p>
@@ -162,7 +267,7 @@
         </div>
       </div>
 
-      <h2 id="definitions">4. Metric Definitions</h2>
+      <h2 id="definitions">5. Metric Definitions</h2>
       <p>
         <strong>Volume Under Surface ROC (VUS-ROC)</strong> integrates AUC-ROC curves across a continuum of temporal buffer thresholds $l \in [0, L_{\max}]$ ($L_{\max} = 15$). Range buffering expands ground-truth label regions only:
       </p>
@@ -173,7 +278,7 @@
         <strong>Predictive Edge ($\Delta$):</strong> Defined as $\Delta = \text{VUS-ROC}_{\text{system}} - \text{VUS-ROC}_{\text{IAAFT}}$. A positive edge $\Delta > 0$ indicates non-linear predictive power beyond phase-randomized linear autocorrelation.
       </p>
 
-      <h2 id="replication">5. Independent Replication</h2>
+      <h2 id="replication">6. Independent Replication</h2>
       <p>
         To reproduce these benchmark numbers independently:
       </p>
@@ -185,7 +290,7 @@ pip install -e .
 python data/download.py --physionet-record 100
 PYTHONPATH=src python scripts/run_benchmark.py --surrogates 20</code></pre>
 
-      <h2 id="citations">6. Academic &amp; Open-Source References</h2>
+      <h2 id="citations">7. Academic &amp; Open-Source References</h2>
       
       <h3>Phase Space & Dynamic Systems Theory</h3>
       <ol>

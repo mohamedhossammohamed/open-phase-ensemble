@@ -7,8 +7,10 @@ from tsad.detectors.base import DetectorABC
 
 class MatrixProfileDetector(DetectorABC):
     """
-    Detector 3: Fast Subsequence Distance Search (STOMP Matrix Profile).
-    Calibrated score outputs 0.0 for normal historical patterns.
+    Detector 3: Single-Window Matrix Profile (raw Euclidean subsequence discord search).
+    Not STUMPY/STOMP; not dual-scale. Uses numpy sliding_window_view for nearest
+    non-overlapping historical neighbor distance. Calibrated score outputs 0.0 for
+    normal historical patterns.
     """
     def __init__(self, w_mp: int = 10, max_history: int = 500):
         self.w_mp = max(3, w_mp)

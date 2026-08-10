@@ -8,6 +8,10 @@ class BayesianHyperparameterTuner:
     Slow-speed Bayesian Hyperparameter Optimizer with Hysteresis Rule.
     Clamps tau in [1, 100], d in [1, 20].
     Adopts proposed configuration only if Expected Improvement exceeds hysteresis margin.
+
+    NOTE: Currently unused in the live pipeline — not imported by any module in src/tsad/
+    or any script. The config constant HYPER_EVAL_INTERVAL is also unused. Retained as
+    a utility for future hyperparameter tuning work.
     """
     def __init__(self, hysteresis_margin: float = 0.02, seed: int = SEED):
         self.hysteresis_margin = hysteresis_margin

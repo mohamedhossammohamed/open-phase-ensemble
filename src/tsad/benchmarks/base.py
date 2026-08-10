@@ -162,6 +162,7 @@ class SeriesResult:
     n_positive: int = 0
     elapsed_seconds: float = 0.0
     error: str | None = None
+    raw_scores: list[float] | None = None  # Full per-point anomaly scores before thresholding/aggregation
 
 
 @dataclass(frozen=True)
@@ -186,6 +187,7 @@ class BenchmarkResult:
                     "n_positive": r.n_positive,
                     "elapsed_seconds": r.elapsed_seconds,
                     "error": r.error,
+                    "raw_scores": r.raw_scores,
                 }
                 for r in self.series_results
             ],
@@ -300,6 +302,7 @@ class BenchmarkRunner:
                 n_eval=len(eval_labels_warm),
                 n_positive=int(np.sum(eval_labels_warm)),
                 elapsed_seconds=elapsed,
+                raw_scores=scores.tolist(),
             )
         except Exception as exc:
             elapsed = time.perf_counter() - start
