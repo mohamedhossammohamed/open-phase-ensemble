@@ -112,21 +112,17 @@
         </div>
       </div>
 
-      <h2>The Research Journey</h2>
+      <h2>Research Background</h2>
       <p>
-        The genesis of <strong>open-phase-ensemble</strong> began with a detailed audit of a closed-source time-series verification engine. That reference demonstrated a compelling premise: raw time-series observations could be mapped into multidimensional phase-space manifolds using Takens' delay embeddings to predict future system dynamics via geometric trajectory matching.
+        <strong>open-phase-ensemble</strong> originated from an audit of a closed-source time-series verification engine that mapped raw observations into multidimensional phase-space manifolds via Takens' delay embeddings to predict future dynamics through geometric trajectory matching.
       </p>
 
       <p>
-        However, as we audited the mathematical bounds of pure phase-space trajectory matching, a critical structural limitation emerged: while trajectory projection excels at capturing non-linear dynamic shifts, it struggles with spatial covariance shifts, variance drops, and isolated global point outliers.
+        Auditing the mathematical bounds of pure phase-space trajectory matching exposed a structural limitation: trajectory projection captures non-linear dynamic shifts well, but struggles with spatial covariance shifts, variance drops, and isolated global point outliers. No single detection algorithm is universally optimal across all anomaly types; robustness requires an ensemble of mathematically orthogonal experts.
       </p>
 
-      <blockquote>
-        "No single detection algorithm can be universally optimal across all anomaly types. True robustness demands an ensemble of mathematically orthogonal experts."
-      </blockquote>
-
       <p>
-        To solve this, we designed a battery of six complementary algorithms:
+        To address this, the system combines a battery of six complementary algorithms:
       </p>
 
       <ul>
@@ -140,17 +136,17 @@
 
       <h2>Choosing to Build Openly</h2>
       <p>
-        We chose to develop and release this research entirely in the open for three primary reasons:
+        This research is developed and released entirely in the open for three primary reasons:
       </p>
       <ul>
         <li><strong>Auditable Reproducibility:</strong> Closed-source benchmarks cannot be independently audited. Open code guarantees that every score, calculation, and claim can be verified.</li>
-        <li><strong>Metric Integrity:</strong> By adopting Volume Under Surface (VUS-ROC/PR) with label-only buffering, we eliminate point-adjustment inflation.</li>
+        <li><strong>Metric Integrity:</strong> Volume Under Surface (VUS-ROC/PR) with label-only buffering eliminates point-adjustment inflation.</li>
         <li><strong>Community Collaboration:</strong> A clean, modular design allowing researchers to plug in new detectors, surrogate generators, or gating strategies.</li>
       </ul>
 
       <h2>Significance & Scientific Outlook</h2>
       <p>
-        The observations documented in this repository are offered as directions for further investigation, not as established conclusions. We believe this work demonstrates that an open, composable, online-learning ensemble can achieve meaningful predictive edges over phase-randomized null baselines while remaining fully inspectable and deterministic.
+        The observations documented in this repository are offered as directions for further investigation, not as established conclusions. The results suggest that an open, composable, online-learning ensemble can achieve meaningful predictive edges over phase-randomized null baselines while remaining fully inspectable and deterministic.
       </p>
 
       <p>

@@ -33,6 +33,11 @@
   <meta property="og:image:alt" content="open-phase-ensemble — Appendix & Developer Guide Social Card">
 
   <link rel="stylesheet" href="style.css">
+
+  <!-- KaTeX for LaTeX Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 </head>
 <body>
 
@@ -185,7 +190,7 @@
       <ol>
         <li>Open a <strong>Scientific Review Request Issue</strong> on the project GitHub repository.</li>
         <li>Submit your independent evaluation methodology, datasets, and reproduction results.</li>
-        <li>We will link all external replication reports on this site, whether they confirm or challenge our reported metrics.</li>
+        <li>All external replication reports will be linked on this site, whether they confirm or challenge the reported metrics.</li>
       </ol>
 
       <h2 id="dev-setup">5. Environment Setup</h2>

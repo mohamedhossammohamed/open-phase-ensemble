@@ -32,6 +32,10 @@ dev = [
     "ruff>=0.1.0",
     "mypy>=1.5.0"
 ]
+benchmarks = [
+    "TSB-AD>=1.0.0",
+    "pandas>=2.0.0"
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]

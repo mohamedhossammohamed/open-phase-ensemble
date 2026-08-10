@@ -1,0 +1,216 @@
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/ensemble/_iforest.py:343: UserWarning: max_samples (256) is greater than the total number of samples (50). max_samples will be set to n_samples for estimation.
+  warn(
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/Users/mohammedhossam/Documents/antigravity/gallant-chandrasekhar/.venv/lib/python3.14/site-packages/sklearn/metrics/_classification.py:1879: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+
+============================================================
+  Benchmark: NAB
+  Split: eval
+============================================================
+  Running open-phase-ensemble on NAB (eval split)...
+  Completed in 586.3s (29 success, 0 fail)
+
+  Aggregate metrics:
+    persistence_tsb_ad_affiliation-f_mean    0.8769
+    persistence_tsb_ad_auc-pr_mean           0.1498
+    persistence_tsb_ad_auc-roc_mean          0.6519
+    persistence_tsb_ad_event-based-f1_mean   0.4946
+    persistence_tsb_ad_pa-f1_mean            0.6243
+    persistence_tsb_ad_r-based-f1_mean       0.2758
+    persistence_tsb_ad_standard-f1_mean      0.2202
+    persistence_tsb_ad_vus-pr_mean           0.1284
+    persistence_tsb_ad_vus-roc_mean          0.7622
+    persistence_vus_pr_mean                  0.0902
+    persistence_vus_roc_mean                 0.5950
+    tsb_ad_affiliation-f_mean                0.8265
+    tsb_ad_auc-pr_mean                       0.1928
+    tsb_ad_auc-roc_mean                      0.8591
+    tsb_ad_event-based-f1_mean               0.3490
+    tsb_ad_pa-f1_mean                        0.4513
+    tsb_ad_r-based-f1_mean                   0.2228
+    tsb_ad_standard-f1_mean                  0.2668
+    tsb_ad_vus-pr_mean                       0.2082
+    tsb_ad_vus-roc_mean                      0.8632
+    vus_pr_mean                              0.1808
+    vus_roc_mean                             0.7937
+
+  Results saved to results/benchmarks/full/NAB_eval_20260810_050934.json
+
+============================================================
+  SUMMARY
+============================================================
+  Benchmark              VUS-PR (mean)  VUS-ROC (mean)
+  --------------------------------------------------
+  NAB                           0.1808          0.7937
+
+  Summary saved to results/benchmarks/full/summary_20260810_050934.json

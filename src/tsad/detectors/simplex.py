@@ -48,7 +48,7 @@ class SimplexProjectionDetector(DetectorABC):
         v_hat = 0.0
         valid_count = 0
         for idx, w in zip(indices, weights):
-            target_idx = idx + self.forecast_horizon
+            target_idx = int(idx) + self.forecast_horizon
             if target_idx < len(self.v_history):
                 v_hat += w * self.v_history[target_idx]
                 valid_count += 1

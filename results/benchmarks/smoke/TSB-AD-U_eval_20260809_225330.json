@@ -1,0 +1,252 @@
+{
+  "dataset_name": "TSB-AD-U",
+  "model_name": "open-phase-ensemble",
+  "series_results": [
+    {
+      "name": "001_NAB_id_1_Facility_tr_1007_1st_2014.csv",
+      "metrics": {
+        "vus_roc": 0.5966705239275145,
+        "vus_pr": 0.22384916842186936,
+        "tsb_ad_auc-pr": 0.22303079003720516,
+        "tsb_ad_auc-roc": 0.6122495073692944,
+        "tsb_ad_vus-pr": 0.21561180870523955,
+        "tsb_ad_vus-roc": 0.6249029704968667,
+        "tsb_ad_standard-f1": 0.26291966863009686,
+        "tsb_ad_pa-f1": 0.9358799454297408,
+        "tsb_ad_event-based-f1": 0.6206896551724134,
+        "tsb_ad_r-based-f1": 0.3843864702717795,
+        "tsb_ad_affiliation-f": 0.8893879150481994
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.5066445525860405,
+          "vus_pr": 0.18332014607380634,
+          "tsb_ad_auc-pr": 0.176095999354163,
+          "tsb_ad_auc-roc": 0.5064929303172426,
+          "tsb_ad_vus-pr": 0.17954515040097843,
+          "tsb_ad_vus-roc": 0.5233006669597016,
+          "tsb_ad_standard-f1": 0.21687376585914458,
+          "tsb_ad_pa-f1": 1.0,
+          "tsb_ad_event-based-f1": 0.9999999999999996,
+          "tsb_ad_r-based-f1": 0.36624328073521767,
+          "tsb_ad_affiliation-f": 0.9496732578638757
+        }
+      },
+      "n_eval": 2873,
+      "n_positive": 343,
+      "elapsed_seconds": 13.027945374999035,
+      "error": null
+    },
+    {
+      "name": "002_NAB_id_2_WebService_tr_1500_1st_4106.csv",
+      "metrics": {
+        "vus_roc": 0.47019692912765987,
+        "vus_pr": 0.19246314081343113,
+        "tsb_ad_auc-pr": 0.18973718542701334,
+        "tsb_ad_auc-roc": 0.4700389141997561,
+        "tsb_ad_vus-pr": 0.19366840177316744,
+        "tsb_ad_vus-roc": 0.4732503176217813,
+        "tsb_ad_standard-f1": 0.2946127699064714,
+        "tsb_ad_pa-f1": 0.9815100154083205,
+        "tsb_ad_event-based-f1": 0.5388601036269425,
+        "tsb_ad_r-based-f1": 0.25280371256236767,
+        "tsb_ad_affiliation-f": 0.7852543624987093
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.47717134714214837,
+          "vus_pr": 0.18629445224444605,
+          "tsb_ad_auc-pr": 0.18436418603138913,
+          "tsb_ad_auc-roc": 0.4774579853508621,
+          "tsb_ad_vus-pr": 0.18277168998854487,
+          "tsb_ad_vus-roc": 0.4799756128054723,
+          "tsb_ad_standard-f1": 0.259362563568894,
+          "tsb_ad_pa-f1": 1.0,
+          "tsb_ad_event-based-f1": 0.9999999999999996,
+          "tsb_ad_r-based-f1": 0.33780660553194664,
+          "tsb_ad_affiliation-f": 0.9835185113814436
+        }
+      },
+      "n_eval": 4275,
+      "n_positive": 637,
+      "elapsed_seconds": 18.231942541000535,
+      "error": null
+    },
+    {
+      "name": "005_NAB_id_5_Traffic_tr_594_1st_1645.csv",
+      "metrics": {
+        "vus_roc": 0.3950971387876475,
+        "vus_pr": 0.17542818844433522,
+        "tsb_ad_auc-pr": 0.1769799140460376,
+        "tsb_ad_auc-roc": 0.40711058085785756,
+        "tsb_ad_vus-pr": 0.18225603770383003,
+        "tsb_ad_vus-roc": 0.41201083059121013,
+        "tsb_ad_standard-f1": 0.2529202135981341,
+        "tsb_ad_pa-f1": 0.9896049896049897,
+        "tsb_ad_event-based-f1": 0.8780487804878044,
+        "tsb_ad_r-based-f1": 0.28980663642874194,
+        "tsb_ad_affiliation-f": 0.9297054577313582
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.439974159678803,
+          "vus_pr": 0.13712425997369976,
+          "tsb_ad_auc-pr": 0.13171618791828787,
+          "tsb_ad_auc-roc": 0.4398047284757525,
+          "tsb_ad_vus-pr": 0.13377352282455382,
+          "tsb_ad_vus-roc": 0.4479453781900727,
+          "tsb_ad_standard-f1": 0.24611986856619916,
+          "tsb_ad_pa-f1": 1.0,
+          "tsb_ad_event-based-f1": 0.9999999999999996,
+          "tsb_ad_r-based-f1": 0.33798882681564246,
+          "tsb_ad_affiliation-f": 0.9639571309953268
+        }
+      },
+      "n_eval": 1696,
+      "n_positive": 238,
+      "elapsed_seconds": 7.263759333000053,
+      "error": null
+    },
+    {
+      "name": "006_NAB_id_6_Traffic_tr_2579_1st_5839.csv",
+      "metrics": {
+        "vus_roc": 0.5323168549436144,
+        "vus_pr": 0.20670273751114296,
+        "tsb_ad_auc-pr": 0.20316327389870936,
+        "tsb_ad_auc-roc": 0.5426625557181441,
+        "tsb_ad_vus-pr": 0.20339290673202298,
+        "tsb_ad_vus-roc": 0.5520510524292284,
+        "tsb_ad_standard-f1": 0.3028903569744893,
+        "tsb_ad_pa-f1": 0.9675904180366369,
+        "tsb_ad_event-based-f1": 0.5405405405405401,
+        "tsb_ad_r-based-f1": 0.1980213610339508,
+        "tsb_ad_affiliation-f": 0.7772813656404153
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.4394946461073705,
+          "vus_pr": 0.13004583099704828,
+          "tsb_ad_auc-pr": 0.12168056409936824,
+          "tsb_ad_auc-roc": 0.4393458770492685,
+          "tsb_ad_vus-pr": 0.12018616236966903,
+          "tsb_ad_vus-roc": 0.44882745577913147,
+          "tsb_ad_standard-f1": 0.2457332615093977,
+          "tsb_ad_pa-f1": 0.7649461567025622,
+          "tsb_ad_event-based-f1": 0.5714285714285711,
+          "tsb_ad_r-based-f1": 0.3136726971704558,
+          "tsb_ad_affiliation-f": 0.6855576902469096
+        }
+      },
+      "n_eval": 7353,
+      "n_positive": 1030,
+      "elapsed_seconds": 31.84585079200042,
+      "error": null
+    },
+    {
+      "name": "008_NAB_id_8_Synthetic_tr_1007_1st_2734.csv",
+      "metrics": {
+        "vus_roc": 0.6153919970857399,
+        "vus_pr": 0.24434340977783459,
+        "tsb_ad_auc-pr": 0.24698783368105492,
+        "tsb_ad_auc-roc": 0.6138469932812667,
+        "tsb_ad_vus-pr": 0.24978427508721096,
+        "tsb_ad_vus-roc": 0.6202757225242335,
+        "tsb_ad_standard-f1": 0.3673419420973289,
+        "tsb_ad_pa-f1": 0.9962825278810409,
+        "tsb_ad_event-based-f1": 0.5714285714285711,
+        "tsb_ad_r-based-f1": 0.2800801566594541,
+        "tsb_ad_affiliation-f": 0.7906536181294316
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.6170419130229006,
+          "vus_pr": 0.3105116408995211,
+          "tsb_ad_auc-pr": 0.24909493765166052,
+          "tsb_ad_auc-roc": 0.6159862363616962,
+          "tsb_ad_vus-pr": 0.2542468984267873,
+          "tsb_ad_vus-roc": 0.6204584084754912,
+          "tsb_ad_standard-f1": 0.3304297826920679,
+          "tsb_ad_pa-f1": 0.9987577639751553,
+          "tsb_ad_event-based-f1": 0.7999999999999995,
+          "tsb_ad_r-based-f1": 0.3100420007636503,
+          "tsb_ad_affiliation-f": 0.869879347855607
+        }
+      },
+      "n_eval": 2873,
+      "n_positive": 402,
+      "elapsed_seconds": 12.119589707999694,
+      "error": null
+    }
+  ],
+  "aggregate": {
+    "vus_roc_mean": 0.5219346887744353,
+    "vus_roc_median": 0.5323168549436144,
+    "vus_roc_std": 0.09109344483428172,
+    "vus_pr_mean": 0.20855732899372265,
+    "vus_pr_median": 0.20670273751114296,
+    "vus_pr_std": 0.02680711793196989,
+    "tsb_ad_auc-pr_mean": 0.20797979941800407,
+    "tsb_ad_auc-pr_median": 0.20316327389870936,
+    "tsb_ad_auc-pr_std": 0.027681870565696952,
+    "tsb_ad_auc-roc_mean": 0.5291817102852638,
+    "tsb_ad_auc-roc_median": 0.5426625557181441,
+    "tsb_ad_auc-roc_std": 0.09034577081865353,
+    "tsb_ad_vus-pr_mean": 0.20894268600029423,
+    "tsb_ad_vus-pr_median": 0.20339290673202298,
+    "tsb_ad_vus-pr_std": 0.025926789247200162,
+    "tsb_ad_vus-roc_mean": 0.5364981787326639,
+    "tsb_ad_vus-roc_median": 0.5520510524292284,
+    "tsb_ad_vus-roc_std": 0.09296957528303912,
+    "tsb_ad_standard-f1_mean": 0.29613699024130413,
+    "tsb_ad_standard-f1_median": 0.2946127699064714,
+    "tsb_ad_standard-f1_std": 0.044969869404771566,
+    "tsb_ad_pa-f1_mean": 0.9741735792721457,
+    "tsb_ad_pa-f1_median": 0.9815100154083205,
+    "tsb_ad_pa-f1_std": 0.023929572360054947,
+    "tsb_ad_event-based-f1_mean": 0.6299135302512543,
+    "tsb_ad_event-based-f1_median": 0.5714285714285711,
+    "tsb_ad_event-based-f1_std": 0.14261392856219965,
+    "tsb_ad_r-based-f1_mean": 0.28101966739125883,
+    "tsb_ad_r-based-f1_median": 0.2800801566594541,
+    "tsb_ad_r-based-f1_std": 0.06791106023342014,
+    "tsb_ad_affiliation-f_mean": 0.8344565438096228,
+    "tsb_ad_affiliation-f_median": 0.7906536181294316,
+    "tsb_ad_affiliation-f_std": 0.07017542855586537,
+    "persistence_vus_roc_mean": 0.4960653237074526,
+    "persistence_vus_pr_mean": 0.1894592660377043,
+    "persistence_tsb_ad_auc-pr_mean": 0.17259037501097377,
+    "persistence_tsb_ad_auc-roc_mean": 0.49581755151096435,
+    "persistence_tsb_ad_vus-pr_mean": 0.1741046848021067,
+    "persistence_tsb_ad_vus-roc_mean": 0.5041015044419738,
+    "persistence_tsb_ad_standard-f1_mean": 0.2597038484391406,
+    "persistence_tsb_ad_pa-f1_mean": 0.9527407841355435,
+    "persistence_tsb_ad_event-based-f1_mean": 0.8742857142857139,
+    "persistence_tsb_ad_r-based-f1_mean": 0.3331506822033826,
+    "persistence_tsb_ad_affiliation-f_mean": 0.8905171876686324
+  },
+  "provenance": {
+    "dataset": {
+      "name": "TSB-AD-U",
+      "source": "TSB-AD (NeurIPS 2024 D&B Track)",
+      "url": "https://thedatumorg.github.io/TSB-AD/",
+      "data_url": "https://www.thedatum.org/datasets/TSB-AD-U.zip",
+      "split_list_url": "https://raw.githubusercontent.com/TheDatumOrg/TSB-AD/main/Datasets/File_List",
+      "n_series_total": 870,
+      "n_eval_series": 350,
+      "n_tuning_series": 48,
+      "primary_metric": "VUS-PR",
+      "license": "Apache-2.0"
+    },
+    "model": "open-phase-ensemble",
+    "config": {
+      "warmup_fraction": 0.05,
+      "max_buffer": 15,
+      "n_surrogates": 0,
+      "seed": 42,
+      "compute_tsb_ad_metrics": true
+    },
+    "n_series_total": 5,
+    "n_series_success": 5,
+    "timestamp_utc": "2026-08-09T22:53:30Z"
+  }
+}

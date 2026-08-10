@@ -1,0 +1,1100 @@
+{
+  "dataset_name": "NAB",
+  "model_name": "open-phase-ensemble",
+  "series_results": [
+    {
+      "name": "artificialWithAnomaly/art_daily_flatmiddle.csv",
+      "metrics": {
+        "vus_roc": 0.1478658906697548,
+        "vus_pr": 0.005065685313162252,
+        "tsb_ad_auc-pr": 0.0027241438692713806,
+        "tsb_ad_auc-roc": 0.19185401754209094,
+        "tsb_ad_vus-pr": 0.0030590657558313005,
+        "tsb_ad_vus-roc": 0.21459540218932868,
+        "tsb_ad_standard-f1": 0.008867578838804124,
+        "tsb_ad_pa-f1": 0.01100762066045724,
+        "tsb_ad_event-based-f1": 0.00844978875528111,
+        "tsb_ad_r-based-f1": 0.042762731631463005,
+        "tsb_ad_affiliation-f": 0.8225635891270113
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.17188199413988325,
+          "vus_pr": 0.005909951141530468,
+          "tsb_ad_auc-pr": 0.007578174951747546,
+          "tsb_ad_auc-roc": 0.11785462244177838,
+          "tsb_ad_vus-pr": 0.007804605803207944,
+          "tsb_ad_vus-roc": 0.19024908905864957,
+          "tsb_ad_standard-f1": 0.0588188066075871,
+          "tsb_ad_pa-f1": 0.5652173913043478,
+          "tsb_ad_event-based-f1": 0.0909090909090908,
+          "tsb_ad_r-based-f1": 0.08056872037914692,
+          "tsb_ad_affiliation-f": 0.9492658773489662
+        }
+      },
+      "n_eval": 3065,
+      "n_positive": 13,
+      "elapsed_seconds": 14.80291508299706,
+      "error": null
+    },
+    {
+      "name": "artificialWithAnomaly/art_daily_jumpsdown.csv",
+      "metrics": {
+        "vus_roc": 0.7163453946057411,
+        "vus_pr": 0.01649753757308403,
+        "tsb_ad_auc-pr": 0.013175107160360428,
+        "tsb_ad_auc-roc": 0.8360469805423933,
+        "tsb_ad_vus-pr": 0.015875004054044087,
+        "tsb_ad_vus-roc": 0.8532538301489685,
+        "tsb_ad_standard-f1": 0.03624340291814088,
+        "tsb_ad_pa-f1": 0.06735751295336788,
+        "tsb_ad_event-based-f1": 0.03552397868561275,
+        "tsb_ad_r-based-f1": 0.07421904403462551,
+        "tsb_ad_affiliation-f": 0.6665473949059594
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.5445716920459323,
+          "vus_pr": 0.010667961546899524,
+          "tsb_ad_auc-pr": 0.011327953493324994,
+          "tsb_ad_auc-roc": 0.6691702792620224,
+          "tsb_ad_vus-pr": 0.011653250663124937,
+          "tsb_ad_vus-roc": 0.7281004352392242,
+          "tsb_ad_standard-f1": 0.0588188066075871,
+          "tsb_ad_pa-f1": 0.5531914893617021,
+          "tsb_ad_event-based-f1": 0.08695652173913035,
+          "tsb_ad_r-based-f1": 0.0774487471526196,
+          "tsb_ad_affiliation-f": 0.8083197060658481
+        }
+      },
+      "n_eval": 3065,
+      "n_positive": 13,
+      "elapsed_seconds": 14.227711832994828,
+      "error": null
+    },
+    {
+      "name": "artificialWithAnomaly/art_daily_jumpsup.csv",
+      "metrics": {
+        "vus_roc": 0.8802289720874421,
+        "vus_pr": 0.6139852631538004,
+        "tsb_ad_auc-pr": 0.8268028979567441,
+        "tsb_ad_auc-roc": 0.9996723460026213,
+        "tsb_ad_vus-pr": 0.9607351622104525,
+        "tsb_ad_vus-roc": 0.9998542766046489,
+        "tsb_ad_standard-f1": 0.9629579698475638,
+        "tsb_ad_pa-f1": 0.9629629629629629,
+        "tsb_ad_event-based-f1": 0.9629629629629625,
+        "tsb_ad_r-based-f1": 0.962962962962963,
+        "tsb_ad_affiliation-f": 0.9998368412465324
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.6824273759506009,
+          "vus_pr": 0.035438555037638375,
+          "tsb_ad_auc-pr": 0.05663053881752574,
+          "tsb_ad_auc-roc": 0.7894192963000303,
+          "tsb_ad_vus-pr": 0.034307144987562474,
+          "tsb_ad_vus-roc": 0.8527598650013506,
+          "tsb_ad_standard-f1": 0.13333102226228083,
+          "tsb_ad_pa-f1": 0.9629629629629629,
+          "tsb_ad_event-based-f1": 0.6666666666666662,
+          "tsb_ad_r-based-f1": 0.3434343434343435,
+          "tsb_ad_affiliation-f": 0.981329383013485
+        }
+      },
+      "n_eval": 3065,
+      "n_positive": 13,
+      "elapsed_seconds": 14.846602874997188,
+      "error": null
+    },
+    {
+      "name": "realAWSCloudwatch/ec2_cpu_utilization_24ae8d.csv",
+      "metrics": {
+        "vus_roc": 0.787261754453906,
+        "vus_pr": 0.0373429279249787,
+        "tsb_ad_auc-pr": 0.02565390461570876,
+        "tsb_ad_auc-roc": 0.7886640342217834,
+        "tsb_ad_vus-pr": 0.037286721958911,
+        "tsb_ad_vus-roc": 0.7794006465654014,
+        "tsb_ad_standard-f1": 0.05895634391575519,
+        "tsb_ad_pa-f1": 0.05078125,
+        "tsb_ad_event-based-f1": 0.050781249999999944,
+        "tsb_ad_r-based-f1": 0.0011465361379371169,
+        "tsb_ad_affiliation-f": 0.7328130149464482
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.4880900005869582,
+          "vus_pr": 0.0714829102553451,
+          "tsb_ad_auc-pr": 0.10108504215615031,
+          "tsb_ad_auc-roc": 0.4993418887792037,
+          "tsb_ad_vus-pr": 0.05342583962892392,
+          "tsb_ad_vus-roc": 0.5961834866682635,
+          "tsb_ad_standard-f1": 0.18181319683089417,
+          "tsb_ad_pa-f1": 0.7027027027027027,
+          "tsb_ad_event-based-f1": 0.6666666666666662,
+          "tsb_ad_r-based-f1": 0.2781456953642384,
+          "tsb_ad_affiliation-f": 0.7973256012072991
+        }
+      },
+      "n_eval": 3065,
+      "n_positive": 26,
+      "elapsed_seconds": 15.829896541996277,
+      "error": null
+    },
+    {
+      "name": "realAWSCloudwatch/ec2_cpu_utilization_53ea38.csv",
+      "metrics": {
+        "vus_roc": 0.667019639655815,
+        "vus_pr": 0.039117921057976957,
+        "tsb_ad_auc-pr": 0.019913811688322958,
+        "tsb_ad_auc-roc": 0.6959652719771181,
+        "tsb_ad_vus-pr": 0.03289193401824961,
+        "tsb_ad_vus-roc": 0.8097798653659757,
+        "tsb_ad_standard-f1": 0.059878803863888184,
+        "tsb_ad_pa-f1": 0.18055555555555555,
+        "tsb_ad_event-based-f1": 0.06060606060606054,
+        "tsb_ad_r-based-f1": 0.08479797064685632,
+        "tsb_ad_affiliation-f": 0.7141901959439196
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.5573261068698053,
+          "vus_pr": 0.0235883174047788,
+          "tsb_ad_auc-pr": 0.010466632040508194,
+          "tsb_ad_auc-roc": 0.5304439719543372,
+          "tsb_ad_vus-pr": 0.020786785429787773,
+          "tsb_ad_vus-roc": 0.6701150544972589,
+          "tsb_ad_standard-f1": 0.03412807565118655,
+          "tsb_ad_pa-f1": 0.23853211009174313,
+          "tsb_ad_event-based-f1": 0.033670033670033635,
+          "tsb_ad_r-based-f1": 0.034102306920762285,
+          "tsb_ad_affiliation-f": 0.875249293495072
+        }
+      },
+      "n_eval": 3065,
+      "n_positive": 26,
+      "elapsed_seconds": 17.715962041998864,
+      "error": null
+    },
+    {
+      "name": "realAWSCloudwatch/ec2_cpu_utilization_5f5533.csv",
+      "metrics": {
+        "vus_roc": 0.8742308121652114,
+        "vus_pr": 0.3149811381335926,
+        "tsb_ad_auc-pr": 0.2917131523165232,
+        "tsb_ad_auc-roc": 0.9738400789733465,
+        "tsb_ad_vus-pr": 0.3882828901392985,
+        "tsb_ad_vus-roc": 0.9828460332832726,
+        "tsb_ad_standard-f1": 0.4242376492732116,
+        "tsb_ad_pa-f1": 0.9629629629629629,
+        "tsb_ad_event-based-f1": 0.7692307692307687,
+        "tsb_ad_r-based-f1": 0.3718104495747266,
+        "tsb_ad_affiliation-f": 0.9774696019813405
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.6820396916251235,
+          "vus_pr": 0.04011114300509896,
+          "tsb_ad_auc-pr": 0.045487192526070586,
+          "tsb_ad_auc-roc": 0.7360974004606778,
+          "tsb_ad_vus-pr": 0.033062936853637793,
+          "tsb_ad_vus-roc": 0.810680547419952,
+          "tsb_ad_standard-f1": 0.12120877878822131,
+          "tsb_ad_pa-f1": 0.6341463414634146,
+          "tsb_ad_event-based-f1": 0.3999999999999995,
+          "tsb_ad_r-based-f1": 0.20731707317073172,
+          "tsb_ad_affiliation-f": 0.9810132843173311
+        }
+      },
+      "n_eval": 3065,
+      "n_positive": 26,
+      "elapsed_seconds": 17.612553999999363,
+      "error": null
+    },
+    {
+      "name": "realAWSCloudwatch/ec2_cpu_utilization_77c1ca.csv",
+      "metrics": {
+        "vus_roc": 0.607646708027151,
+        "vus_pr": 0.011116064812176321,
+        "tsb_ad_auc-pr": 0.010647010647010647,
+        "tsb_ad_auc-roc": 0.6145150720838795,
+        "tsb_ad_vus-pr": 0.015365622794034601,
+        "tsb_ad_vus-roc": 0.6152731760230769,
+        "tsb_ad_standard-f1": 0.02106948358314866,
+        "tsb_ad_pa-f1": 0.020967741935483872,
+        "tsb_ad_event-based-f1": 0.020967741935483848,
+        "tsb_ad_r-based-f1": 0.008248730964467004,
+        "tsb_ad_affiliation-f": 0.7965169296699358
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.6981250457900559,
+          "vus_pr": 0.01626031178536012,
+          "tsb_ad_auc-pr": 0.0069561914297502836,
+          "tsb_ad_auc-roc": 0.6463857243673757,
+          "tsb_ad_vus-pr": 0.012708593294536153,
+          "tsb_ad_vus-roc": 0.7847840580917341,
+          "tsb_ad_standard-f1": 0.020832953920246103,
+          "tsb_ad_pa-f1": 0.08934707903780069,
+          "tsb_ad_event-based-f1": 0.01863354037267079,
+          "tsb_ad_r-based-f1": 0.01971977166580176,
+          "tsb_ad_affiliation-f": 0.7454410166568082
+        }
+      },
+      "n_eval": 3065,
+      "n_positive": 13,
+      "elapsed_seconds": 15.790423457998259,
+      "error": null
+    },
+    {
+      "name": "realAWSCloudwatch/ec2_cpu_utilization_825cc2.csv",
+      "metrics": {
+        "vus_roc": 0.8930971245421002,
+        "vus_pr": 0.23817362012925217,
+        "tsb_ad_auc-pr": 0.1964372413889953,
+        "tsb_ad_auc-roc": 0.9757637886956742,
+        "tsb_ad_vus-pr": 0.19599501366454267,
+        "tsb_ad_vus-roc": 0.9765596695439052,
+        "tsb_ad_standard-f1": 0.2839479225983513,
+        "tsb_ad_pa-f1": 0.6341463414634146,
+        "tsb_ad_event-based-f1": 0.5454545454545449,
+        "tsb_ad_r-based-f1": 0.23974763406940064,
+        "tsb_ad_affiliation-f": 0.9586470716230465
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.5135538199439107,
+          "vus_pr": 0.09614411932068441,
+          "tsb_ad_auc-pr": 0.05691908932961043,
+          "tsb_ad_auc-roc": 0.5422520059736249,
+          "tsb_ad_vus-pr": 0.09930099808329072,
+          "tsb_ad_vus-roc": 0.6611316777903384,
+          "tsb_ad_standard-f1": 0.1714247511055468,
+          "tsb_ad_pa-f1": 0.896551724137931,
+          "tsb_ad_event-based-f1": 0.4999999999999996,
+          "tsb_ad_r-based-f1": 0.3019538188277087,
+          "tsb_ad_affiliation-f": 0.9828205508128797
+        }
+      },
+      "n_eval": 3065,
+      "n_positive": 26,
+      "elapsed_seconds": 16.36609116600448,
+      "error": null
+    },
+    {
+      "name": "realAWSCloudwatch/ec2_cpu_utilization_fe7f93.csv",
+      "metrics": {
+        "vus_roc": 0.6401230943990794,
+        "vus_pr": 0.12234479939712356,
+        "tsb_ad_auc-pr": 0.10527749490992527,
+        "tsb_ad_auc-roc": 0.6764244311134735,
+        "tsb_ad_vus-pr": 0.0880692563181054,
+        "tsb_ad_vus-roc": 0.5712473902493657,
+        "tsb_ad_standard-f1": 0.3199954702863429,
+        "tsb_ad_pa-f1": 0.5909090909090909,
+        "tsb_ad_event-based-f1": 0.33333333333333287,
+        "tsb_ad_r-based-f1": 0.14655172413793102,
+        "tsb_ad_affiliation-f": 0.8247681351241463
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.5694984747380882,
+          "vus_pr": 0.032026764941475896,
+          "tsb_ad_auc-pr": 0.020134821061737005,
+          "tsb_ad_auc-roc": 0.5847571316475562,
+          "tsb_ad_vus-pr": 0.02290486009243616,
+          "tsb_ad_vus-roc": 0.6481469414875876,
+          "tsb_ad_standard-f1": 0.09696704212961928,
+          "tsb_ad_pa-f1": 0.3132530120481928,
+          "tsb_ad_event-based-f1": 0.10126582278480994,
+          "tsb_ad_r-based-f1": 0.05406434418427565,
+          "tsb_ad_affiliation-f": 0.6781480052149277
+        }
+      },
+      "n_eval": 3065,
+      "n_positive": 26,
+      "elapsed_seconds": 15.803162208998401,
+      "error": null
+    },
+    {
+      "name": "realAWSCloudwatch/ec2_network_in_257a54.csv",
+      "metrics": {
+        "vus_roc": 0.9248035690412251,
+        "vus_pr": 0.20640105662613023,
+        "tsb_ad_auc-pr": 0.33457419852204795,
+        "tsb_ad_auc-roc": 0.9917330376045972,
+        "tsb_ad_vus-pr": 0.2692735198580981,
+        "tsb_ad_vus-roc": 0.9917858800412477,
+        "tsb_ad_standard-f1": 0.454540619886134,
+        "tsb_ad_pa-f1": 0.9629629629629629,
+        "tsb_ad_event-based-f1": 0.7499999999999994,
+        "tsb_ad_r-based-f1": 0.36893203883495146,
+        "tsb_ad_affiliation-f": 0.8455170140805276
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.7066902591651623,
+          "vus_pr": 0.29140199054819466,
+          "tsb_ad_auc-pr": 0.5281953127888425,
+          "tsb_ad_auc-roc": 0.792557213428773,
+          "tsb_ad_vus-pr": 0.3343912907583573,
+          "tsb_ad_vus-roc": 0.86018050652106,
+          "tsb_ad_standard-f1": 0.6363588016896236,
+          "tsb_ad_pa-f1": 1.0,
+          "tsb_ad_event-based-f1": 0.9999999999999996,
+          "tsb_ad_r-based-f1": 0.5227272727272727,
+          "tsb_ad_affiliation-f": 0.9996736292428193
+        }
+      },
+      "n_eval": 3065,
+      "n_positive": 13,
+      "elapsed_seconds": 15.527121791004902,
+      "error": null
+    },
+    {
+      "name": "realAWSCloudwatch/ec2_network_in_5abac7.csv",
+      "metrics": {
+        "vus_roc": 0.938879190097599,
+        "vus_pr": 0.2473271792770428,
+        "tsb_ad_auc-pr": 0.3295842771768843,
+        "tsb_ad_auc-roc": 0.9789857102829924,
+        "tsb_ad_vus-pr": 0.2865742442115358,
+        "tsb_ad_vus-roc": 0.9838524149632064,
+        "tsb_ad_standard-f1": 0.35999615204113045,
+        "tsb_ad_pa-f1": 0.9629629629629629,
+        "tsb_ad_event-based-f1": 0.7999999999999995,
+        "tsb_ad_r-based-f1": 0.3756906077348066,
+        "tsb_ad_affiliation-f": 0.9611312285248704
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.7609535455065385,
+          "vus_pr": 0.06909512841382445,
+          "tsb_ad_auc-pr": 0.08163421562734166,
+          "tsb_ad_auc-roc": 0.8892223635148824,
+          "tsb_ad_vus-pr": 0.08402090606627408,
+          "tsb_ad_vus-roc": 0.9195633394862239,
+          "tsb_ad_standard-f1": 0.18181370899855043,
+          "tsb_ad_pa-f1": 0.6753246753246753,
+          "tsb_ad_event-based-f1": 0.33333333333333287,
+          "tsb_ad_r-based-f1": 0.22007722007722008,
+          "tsb_ad_affiliation-f": 0.8867613107602753
+        }
+      },
+      "n_eval": 3595,
+      "n_positive": 26,
+      "elapsed_seconds": 18.316504124995845,
+      "error": null
+    },
+    {
+      "name": "realAWSCloudwatch/rds_cpu_utilization_cc0c53.csv",
+      "metrics": {
+        "vus_roc": 0.6456888084461592,
+        "vus_pr": 0.320601609676057,
+        "tsb_ad_auc-pr": 0.412051124275925,
+        "tsb_ad_auc-roc": 0.7824815855418027,
+        "tsb_ad_vus-pr": 0.2529346473857994,
+        "tsb_ad_vus-roc": 0.7821074181326912,
+        "tsb_ad_standard-f1": 0.5128160684145865,
+        "tsb_ad_pa-f1": 0.6666666666666666,
+        "tsb_ad_event-based-f1": 0.6666666666666662,
+        "tsb_ad_r-based-f1": 0.3610503282275711,
+        "tsb_ad_affiliation-f": 0.7604672588063198
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.686291704531335,
+          "vus_pr": 0.10913502284740693,
+          "tsb_ad_auc-pr": 0.16496263793007343,
+          "tsb_ad_auc-roc": 0.741609081934847,
+          "tsb_ad_vus-pr": 0.0996275667166728,
+          "tsb_ad_vus-roc": 0.8243282615480909,
+          "tsb_ad_standard-f1": 0.22221760812049804,
+          "tsb_ad_pa-f1": 1.0,
+          "tsb_ad_event-based-f1": 0.9999999999999996,
+          "tsb_ad_r-based-f1": 0.4523809523809524,
+          "tsb_ad_affiliation-f": 0.9956278180111251
+        }
+      },
+      "n_eval": 3065,
+      "n_positive": 26,
+      "elapsed_seconds": 15.639647583004262,
+      "error": null
+    },
+    {
+      "name": "realAWSCloudwatch/rds_cpu_utilization_e47b3b.csv",
+      "metrics": {
+        "vus_roc": 0.8664450176919098,
+        "vus_pr": 0.6316779822720517,
+        "tsb_ad_auc-pr": 0.8131499143811043,
+        "tsb_ad_auc-roc": 0.9976056054037705,
+        "tsb_ad_vus-pr": 0.8234653225879094,
+        "tsb_ad_vus-roc": 0.9991026603775056,
+        "tsb_ad_standard-f1": 0.7999950080311499,
+        "tsb_ad_pa-f1": 1.0,
+        "tsb_ad_event-based-f1": 0.9999999999999996,
+        "tsb_ad_r-based-f1": 0.5227272727272727,
+        "tsb_ad_affiliation-f": 0.9995292049841493
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.5932472609721546,
+          "vus_pr": 0.05412981068238302,
+          "tsb_ad_auc-pr": 0.08987360965491356,
+          "tsb_ad_auc-roc": 0.6576897872769433,
+          "tsb_ad_vus-pr": 0.09196212446972252,
+          "tsb_ad_vus-roc": 0.746676657472062,
+          "tsb_ad_standard-f1": 0.14285581633884828,
+          "tsb_ad_pa-f1": 1.0,
+          "tsb_ad_event-based-f1": 0.9999999999999996,
+          "tsb_ad_r-based-f1": 0.41463414634146345,
+          "tsb_ad_affiliation-f": 0.9981897266990163
+        }
+      },
+      "n_eval": 3065,
+      "n_positive": 13,
+      "elapsed_seconds": 15.640307041998312,
+      "error": null
+    },
+    {
+      "name": "realKnownCause/ambient_temperature_system_failure.csv",
+      "metrics": {
+        "vus_roc": 0.9291850336971537,
+        "vus_pr": 0.04457314453799935,
+        "tsb_ad_auc-pr": 0.009061344820339502,
+        "tsb_ad_auc-roc": 0.9507699275362319,
+        "tsb_ad_vus-pr": 0.025624120369011294,
+        "tsb_ad_vus-roc": 0.9510268454165581,
+        "tsb_ad_standard-f1": 0.023255359662741476,
+        "tsb_ad_pa-f1": 0.023809523809523808,
+        "tsb_ad_event-based-f1": 0.022346368715083754,
+        "tsb_ad_r-based-f1": 0.05504587155963303,
+        "tsb_ad_affiliation-f": 0.6666288733287294
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.5154895849694386,
+          "vus_pr": 0.006521248684010892,
+          "tsb_ad_auc-pr": 0.0012908452684654076,
+          "tsb_ad_auc-roc": 0.4105525362318841,
+          "tsb_ad_vus-pr": 0.0032651565173680854,
+          "tsb_ad_vus-roc": 0.7042738953453703,
+          "tsb_ad_standard-f1": 0.005813723643483862,
+          "tsb_ad_pa-f1": 0.010610079575596816,
+          "tsb_ad_event-based-f1": 0.005347593582887691,
+          "tsb_ad_r-based-f1": 0.005893909626719057,
+          "tsb_ad_affiliation-f": 0.6757879894528198
+        }
+      },
+      "n_eval": 5524,
+      "n_positive": 4,
+      "elapsed_seconds": 28.757196833998023,
+      "error": null
+    },
+    {
+      "name": "realKnownCause/cpu_utilization_asg_misconfiguration.csv",
+      "metrics": {
+        "vus_roc": 0.46534997339699885,
+        "vus_pr": 0.007772565976929203,
+        "tsb_ad_auc-pr": 0.003626722790977593,
+        "tsb_ad_auc-roc": 0.488552645309402,
+        "tsb_ad_vus-pr": 0.004735212838408524,
+        "tsb_ad_vus-roc": 0.3959719299371502,
+        "tsb_ad_standard-f1": 0.016829909543022936,
+        "tsb_ad_pa-f1": 0.027131782945736434,
+        "tsb_ad_event-based-f1": 0.01650618982118291,
+        "tsb_ad_r-based-f1": 0.0832282471626734,
+        "tsb_ad_affiliation-f": 0.6680696614592622
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.4739933608684207,
+          "vus_pr": 0.005819484613845964,
+          "tsb_ad_auc-pr": 0.002047217541410241,
+          "tsb_ad_auc-roc": 0.4820306793279766,
+          "tsb_ad_vus-pr": 0.003419234533933344,
+          "tsb_ad_vus-roc": 0.6125421521426259,
+          "tsb_ad_standard-f1": 0.0058499895569002845,
+          "tsb_ad_pa-f1": 0.011824324324324325,
+          "tsb_ad_event-based-f1": 0.005828779599271396,
+          "tsb_ad_r-based-f1": 0.004408199250606128,
+          "tsb_ad_affiliation-f": 0.6845860615309542
+        }
+      },
+      "n_eval": 6859,
+      "n_positive": 14,
+      "elapsed_seconds": 36.51890420799464,
+      "error": null
+    },
+    {
+      "name": "realKnownCause/ec2_request_latency_system_failure.csv",
+      "metrics": {
+        "vus_roc": 0.8162274556366115,
+        "vus_pr": 0.18416090422949674,
+        "tsb_ad_auc-pr": 0.23720076420870478,
+        "tsb_ad_auc-roc": 0.9796039603960396,
+        "tsb_ad_vus-pr": 0.24444250645351528,
+        "tsb_ad_vus-roc": 0.9784573976287797,
+        "tsb_ad_standard-f1": 0.35502630163046417,
+        "tsb_ad_pa-f1": 0.5,
+        "tsb_ad_event-based-f1": 0.3773584905660373,
+        "tsb_ad_r-based-f1": 0.19314205738278517,
+        "tsb_ad_affiliation-f": 0.8182316058340976
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.6177419430854494,
+          "vus_pr": 0.27326121028932204,
+          "tsb_ad_auc-pr": 0.40676232303563326,
+          "tsb_ad_auc-roc": 0.7275388967468175,
+          "tsb_ad_vus-pr": 0.43205915325316185,
+          "tsb_ad_vus-roc": 0.7991782416668521,
+          "tsb_ad_standard-f1": 0.509799615568858,
+          "tsb_ad_pa-f1": 0.9859154929577465,
+          "tsb_ad_event-based-f1": 0.9599999999999995,
+          "tsb_ad_r-based-f1": 0.5575141487329225,
+          "tsb_ad_affiliation-f": 0.996696497740327
+        }
+      },
+      "n_eval": 3065,
+      "n_positive": 35,
+      "elapsed_seconds": 16.065180541998416,
+      "error": null
+    },
+    {
+      "name": "realKnownCause/machine_temperature_system_failure.csv",
+      "metrics": {
+        "vus_roc": 0.7008310009815559,
+        "vus_pr": 0.010546400339557924,
+        "tsb_ad_auc-pr": 0.0030864978278112142,
+        "tsb_ad_auc-roc": 0.7065853658536585,
+        "tsb_ad_vus-pr": 0.005312429339349965,
+        "tsb_ad_vus-roc": 0.698317833215459,
+        "tsb_ad_standard-f1": 0.008517718660570344,
+        "tsb_ad_pa-f1": 0.008865248226950355,
+        "tsb_ad_event-based-f1": 0.00837520938023449,
+        "tsb_ad_r-based-f1": 0.007436747623563769,
+        "tsb_ad_affiliation-f": 0.7620681102132203
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.4523307092676777,
+          "vus_pr": 0.005791108448648434,
+          "tsb_ad_auc-pr": 0.0016986500021151881,
+          "tsb_ad_auc-roc": 0.46325783972125434,
+          "tsb_ad_vus-pr": 0.0029077312374708618,
+          "tsb_ad_vus-roc": 0.6091876404516019,
+          "tsb_ad_standard-f1": 0.0041728168700343625,
+          "tsb_ad_pa-f1": 0.012004801920768308,
+          "tsb_ad_event-based-f1": 0.003963011889035663,
+          "tsb_ad_r-based-f1": 0.005730285863124308,
+          "tsb_ad_affiliation-f": 0.7581668828781452
+        }
+      },
+      "n_eval": 5750,
+      "n_positive": 10,
+      "elapsed_seconds": 29.34726529099862,
+      "error": null
+    },
+    {
+      "name": "realKnownCause/nyc_taxi.csv",
+      "metrics": {
+        "vus_roc": 0.9384407541651874,
+        "vus_pr": 0.2553301424288791,
+        "tsb_ad_auc-pr": 0.045489900639407624,
+        "tsb_ad_auc-roc": 0.9677914110429447,
+        "tsb_ad_vus-pr": 0.16167923120163588,
+        "tsb_ad_vus-roc": 0.9832970437426518,
+        "tsb_ad_standard-f1": 0.08988564579606238,
+        "tsb_ad_pa-f1": 0.16,
+        "tsb_ad_event-based-f1": 0.10526315789473643,
+        "tsb_ad_r-based-f1": 0.06185567010309279,
+        "tsb_ad_affiliation-f": 0.8556266849811123
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.3830473023405796,
+          "vus_pr": 0.04613933272638954,
+          "tsb_ad_auc-pr": 0.0018184412910757554,
+          "tsb_ad_auc-roc": 0.2893149284253579,
+          "tsb_ad_vus-pr": 0.02337013462356232,
+          "tsb_ad_vus-roc": 0.5377485718060155,
+          "tsb_ad_standard-f1": 0.005150605335322009,
+          "tsb_ad_pa-f1": 0.006329113924050633,
+          "tsb_ad_event-based-f1": 0.005087763927753747,
+          "tsb_ad_r-based-f1": 0.00990304286846759,
+          "tsb_ad_affiliation-f": 0.6666824969263427
+        }
+      },
+      "n_eval": 3922,
+      "n_positive": 10,
+      "elapsed_seconds": 20.59796520799864,
+      "error": null
+    },
+    {
+      "name": "realTraffic/TravelTime_387.csv",
+      "metrics": {
+        "vus_roc": 0.7548775991654999,
+        "vus_pr": 0.0881798441281603,
+        "tsb_ad_auc-pr": 0.0541777790617689,
+        "tsb_ad_auc-roc": 0.8017989417989417,
+        "tsb_ad_vus-pr": 0.07585433705763435,
+        "tsb_ad_vus-roc": 0.8872018862852689,
+        "tsb_ad_standard-f1": 0.1818156106883337,
+        "tsb_ad_pa-f1": 0.3333333333333333,
+        "tsb_ad_event-based-f1": 0.17142857142857115,
+        "tsb_ad_r-based-f1": 0.20689655172413793,
+        "tsb_ad_affiliation-f": 0.9512932482149299
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.6335030848197563,
+          "vus_pr": 0.1071267655174592,
+          "tsb_ad_auc-pr": 0.22236052759961114,
+          "tsb_ad_auc-roc": 0.6968783068783069,
+          "tsb_ad_vus-pr": 0.10499460867724147,
+          "tsb_ad_vus-roc": 0.8272234146874925,
+          "tsb_ad_standard-f1": 0.3333305555787035,
+          "tsb_ad_pa-f1": 0.75,
+          "tsb_ad_event-based-f1": 0.6666666666666662,
+          "tsb_ad_r-based-f1": 0.37837837837837834,
+          "tsb_ad_affiliation-f": 0.8725897467563053
+        }
+      },
+      "n_eval": 1900,
+      "n_positive": 10,
+      "elapsed_seconds": 9.548481041994819,
+      "error": null
+    },
+    {
+      "name": "realTraffic/TravelTime_451.csv",
+      "metrics": {
+        "vus_roc": 0.9030882487969522,
+        "vus_pr": 0.0467421321536905,
+        "tsb_ad_auc-pr": 0.027777777777777776,
+        "tsb_ad_auc-roc": 0.9786975045648204,
+        "tsb_ad_vus-pr": 0.025000000000000005,
+        "tsb_ad_vus-roc": 0.9780888618381011,
+        "tsb_ad_standard-f1": 0.054053528127834434,
+        "tsb_ad_pa-f1": 0.05405405405405406,
+        "tsb_ad_event-based-f1": 0.054054054054053995,
+        "tsb_ad_r-based-f1": 0.08333333333333333,
+        "tsb_ad_affiliation-f": 0.8424228056153755
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.5674717879788906,
+          "vus_pr": 0.25253944216354346,
+          "tsb_ad_auc-pr": 1.0,
+          "tsb_ad_auc-roc": 1.0,
+          "tsb_ad_vus-pr": 1.0,
+          "tsb_ad_vus-roc": 1.0,
+          "tsb_ad_standard-f1": 0.9999950000249999,
+          "tsb_ad_pa-f1": 1.0,
+          "tsb_ad_event-based-f1": 0.9999999999999996,
+          "tsb_ad_r-based-f1": 1.0,
+          "tsb_ad_affiliation-f": 0.9999999999999996
+        }
+      },
+      "n_eval": 1644,
+      "n_positive": 1,
+      "elapsed_seconds": 8.15268783299689,
+      "error": null
+    },
+    {
+      "name": "realTraffic/occupancy_t4013.csv",
+      "metrics": {
+        "vus_roc": 0.8732188207789202,
+        "vus_pr": 0.3171435233864005,
+        "tsb_ad_auc-pr": 0.4047537786426426,
+        "tsb_ad_auc-roc": 0.9888213333333333,
+        "tsb_ad_vus-pr": 0.48639277443192014,
+        "tsb_ad_vus-roc": 0.9922249855414609,
+        "tsb_ad_standard-f1": 0.698407911345485,
+        "tsb_ad_pa-f1": 0.8064516129032258,
+        "tsb_ad_event-based-f1": 0.7169811320754712,
+        "tsb_ad_r-based-f1": 0.33272924972816237,
+        "tsb_ad_affiliation-f": 0.9110298536074517
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.7302497489681941,
+          "vus_pr": 0.22307639370146592,
+          "tsb_ad_auc-pr": 0.30979969839374777,
+          "tsb_ad_auc-roc": 0.8396373333333333,
+          "tsb_ad_vus-pr": 0.2757133528158901,
+          "tsb_ad_vus-roc": 0.8969578439495123,
+          "tsb_ad_standard-f1": 0.3783739956680039,
+          "tsb_ad_pa-f1": 1.0,
+          "tsb_ad_event-based-f1": 0.9999999999999996,
+          "tsb_ad_r-based-f1": 0.45544554455445546,
+          "tsb_ad_affiliation-f": 0.9918967795930956
+        }
+      },
+      "n_eval": 1900,
+      "n_positive": 25,
+      "elapsed_seconds": 9.627530999998271,
+      "error": null
+    },
+    {
+      "name": "realTraffic/speed_7578.csv",
+      "metrics": {
+        "vus_roc": 0.8869188090964739,
+        "vus_pr": 0.636576309494946,
+        "tsb_ad_auc-pr": 0.6265308580293555,
+        "tsb_ad_auc-roc": 0.9498636926889715,
+        "tsb_ad_vus-pr": 0.6613345539403274,
+        "tsb_ad_vus-roc": 0.949386136515383,
+        "tsb_ad_standard-f1": 0.5842647393420842,
+        "tsb_ad_pa-f1": 0.8131868131868132,
+        "tsb_ad_event-based-f1": 0.7894736842105257,
+        "tsb_ad_r-based-f1": 0.5815748174369226,
+        "tsb_ad_affiliation-f": 0.8537046312238843
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.6062045719862788,
+          "vus_pr": 0.26054817293263044,
+          "tsb_ad_auc-pr": 0.23326853495747824,
+          "tsb_ad_auc-roc": 0.6807930607187114,
+          "tsb_ad_vus-pr": 0.29811384264541346,
+          "tsb_ad_vus-roc": 0.7764886498481142,
+          "tsb_ad_standard-f1": 0.2786836872648305,
+          "tsb_ad_pa-f1": 1.0,
+          "tsb_ad_event-based-f1": 0.9999999999999996,
+          "tsb_ad_r-based-f1": 0.418141592920354,
+          "tsb_ad_affiliation-f": 0.9761211963374967
+        }
+      },
+      "n_eval": 857,
+      "n_positive": 50,
+      "elapsed_seconds": 4.43943779199617,
+      "error": null
+    },
+    {
+      "name": "realTweets/Twitter_volume_AMZN.csv",
+      "metrics": {
+        "vus_roc": 0.9286014133035101,
+        "vus_pr": 0.04441274387985395,
+        "tsb_ad_auc-pr": 0.02799566251932729,
+        "tsb_ad_auc-roc": 0.9513100592560862,
+        "tsb_ad_vus-pr": 0.030838165078075443,
+        "tsb_ad_vus-roc": 0.9532985460828548,
+        "tsb_ad_standard-f1": 0.07406908126933666,
+        "tsb_ad_pa-f1": 0.42424242424242425,
+        "tsb_ad_event-based-f1": 0.1333333333333331,
+        "tsb_ad_r-based-f1": 0.10891089108910891,
+        "tsb_ad_affiliation-f": 0.725430468593718
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.5965581020342727,
+          "vus_pr": 0.0263397233121064,
+          "tsb_ad_auc-pr": 0.024341908290454475,
+          "tsb_ad_auc-roc": 0.5777349420527832,
+          "tsb_ad_vus-pr": 0.03600038594330684,
+          "tsb_ad_vus-roc": 0.7681378882364176,
+          "tsb_ad_standard-f1": 0.1249950783187912,
+          "tsb_ad_pa-f1": 0.4,
+          "tsb_ad_event-based-f1": 0.1818181818181815,
+          "tsb_ad_r-based-f1": 0.116331096196868,
+          "tsb_ad_affiliation-f": 0.845182249549099
+        }
+      },
+      "n_eval": 6017,
+      "n_positive": 14,
+      "elapsed_seconds": 31.314043375001347,
+      "error": null
+    },
+    {
+      "name": "realTweets/Twitter_volume_CVS.csv",
+      "metrics": {
+        "vus_roc": 0.9532010329523617,
+        "vus_pr": 0.33221315988681366,
+        "tsb_ad_auc-pr": 0.3397166159089349,
+        "tsb_ad_auc-roc": 0.9914917888632745,
+        "tsb_ad_vus-pr": 0.3931542282902184,
+        "tsb_ad_vus-roc": 0.9960984654616644,
+        "tsb_ad_standard-f1": 0.4736795568324242,
+        "tsb_ad_pa-f1": 0.7777777777777778,
+        "tsb_ad_event-based-f1": 0.6666666666666662,
+        "tsb_ad_r-based-f1": 0.35437881873727095,
+        "tsb_ad_affiliation-f": 0.9452303138448204
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.7104167145869956,
+          "vus_pr": 0.10676783365371725,
+          "tsb_ad_auc-pr": 0.18657476436745704,
+          "tsb_ad_auc-roc": 0.7898376785417212,
+          "tsb_ad_vus-pr": 0.13559235131688474,
+          "tsb_ad_vus-roc": 0.9004386691702859,
+          "tsb_ad_standard-f1": 0.24999781251914044,
+          "tsb_ad_pa-f1": 0.6666666666666666,
+          "tsb_ad_event-based-f1": 0.6666666666666662,
+          "tsb_ad_r-based-f1": 0.3529411764705882,
+          "tsb_ad_affiliation-f": 0.8445713702773315
+        }
+      },
+      "n_eval": 6025,
+      "n_positive": 14,
+      "elapsed_seconds": 30.55090100000234,
+      "error": null
+    },
+    {
+      "name": "realTweets/Twitter_volume_FB.csv",
+      "metrics": {
+        "vus_roc": 0.8424617937195029,
+        "vus_pr": 0.06205664711020252,
+        "tsb_ad_auc-pr": 0.08174143497574024,
+        "tsb_ad_auc-roc": 0.9797396973446273,
+        "tsb_ad_vus-pr": 0.08662092284013746,
+        "tsb_ad_vus-roc": 0.9827941978366935,
+        "tsb_ad_standard-f1": 0.1818138430787447,
+        "tsb_ad_pa-f1": 0.6086956521739131,
+        "tsb_ad_event-based-f1": 0.24999999999999975,
+        "tsb_ad_r-based-f1": 0.21019108280254778,
+        "tsb_ad_affiliation-f": 0.7010167579566863
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.577788270638772,
+          "vus_pr": 0.13666726881726415,
+          "tsb_ad_auc-pr": 0.3234005577023651,
+          "tsb_ad_auc-roc": 0.69053964023984,
+          "tsb_ad_vus-pr": 0.10986535714153442,
+          "tsb_ad_vus-roc": 0.8185255816311212,
+          "tsb_ad_standard-f1": 0.44444098768120693,
+          "tsb_ad_pa-f1": 1.0,
+          "tsb_ad_event-based-f1": 0.9999999999999996,
+          "tsb_ad_r-based-f1": 0.6,
+          "tsb_ad_affiliation-f": 0.9993197129511496
+        }
+      },
+      "n_eval": 6018,
+      "n_positive": 14,
+      "elapsed_seconds": 30.660024542004976,
+      "error": null
+    },
+    {
+      "name": "realTweets/Twitter_volume_GOOG.csv",
+      "metrics": {
+        "vus_roc": 0.8530104314689525,
+        "vus_pr": 0.08230321117429934,
+        "tsb_ad_auc-pr": 0.04378704002427249,
+        "tsb_ad_auc-roc": 0.9026542871445257,
+        "tsb_ad_vus-pr": 0.0784775800533557,
+        "tsb_ad_vus-roc": 0.9359577695585686,
+        "tsb_ad_standard-f1": 0.11428251437531178,
+        "tsb_ad_pa-f1": 0.19858156028368795,
+        "tsb_ad_event-based-f1": 0.121212121212121,
+        "tsb_ad_r-based-f1": 0.07174887892376682,
+        "tsb_ad_affiliation-f": 0.8751210395339588
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.6521037288486059,
+          "vus_pr": 0.11138076954963813,
+          "tsb_ad_auc-pr": 0.11158764434052322,
+          "tsb_ad_auc-roc": 0.712316154561274,
+          "tsb_ad_vus-pr": 0.13453088057385537,
+          "tsb_ad_vus-roc": 0.8563596250231751,
+          "tsb_ad_standard-f1": 0.29786752384429527,
+          "tsb_ad_pa-f1": 0.5957446808510638,
+          "tsb_ad_event-based-f1": 0.47058823529411714,
+          "tsb_ad_r-based-f1": 0.2553191489361702,
+          "tsb_ad_affiliation-f": 0.9222018605298294
+        }
+      },
+      "n_eval": 6021,
+      "n_positive": 28,
+      "elapsed_seconds": 30.837317249999614,
+      "error": null
+    },
+    {
+      "name": "realTweets/Twitter_volume_IBM.csv",
+      "metrics": {
+        "vus_roc": 0.9535444145753516,
+        "vus_pr": 0.09999731316750089,
+        "tsb_ad_auc-pr": 0.09418681409798675,
+        "tsb_ad_auc-roc": 0.9862049349356468,
+        "tsb_ad_vus-pr": 0.11161211870291943,
+        "tsb_ad_vus-roc": 0.9894936439513069,
+        "tsb_ad_standard-f1": 0.18181550623772072,
+        "tsb_ad_pa-f1": 0.5714285714285714,
+        "tsb_ad_event-based-f1": 0.2127659574468083,
+        "tsb_ad_r-based-f1": 0.22774327122153207,
+        "tsb_ad_affiliation-f": 0.7698286875767446
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.6905216181276068,
+          "vus_pr": 0.11546533217370963,
+          "tsb_ad_auc-pr": 0.25309053126390657,
+          "tsb_ad_auc-roc": 0.8334636990684775,
+          "tsb_ad_vus-pr": 0.13546309257378833,
+          "tsb_ad_vus-roc": 0.9265388387660222,
+          "tsb_ad_standard-f1": 0.33332987657905766,
+          "tsb_ad_pa-f1": 1.0,
+          "tsb_ad_event-based-f1": 0.9999999999999996,
+          "tsb_ad_r-based-f1": 0.4782608695652174,
+          "tsb_ad_affiliation-f": 0.9991009951816657
+        }
+      },
+      "n_eval": 6041,
+      "n_positive": 14,
+      "elapsed_seconds": 30.726906959003827,
+      "error": null
+    },
+    {
+      "name": "realTweets/Twitter_volume_KO.csv",
+      "metrics": {
+        "vus_roc": 0.8697049468400111,
+        "vus_pr": 0.2132968322392752,
+        "tsb_ad_auc-pr": 0.20259811547856835,
+        "tsb_ad_auc-roc": 0.9772930994820049,
+        "tsb_ad_vus-pr": 0.2659432602001478,
+        "tsb_ad_vus-roc": 0.9914598239286229,
+        "tsb_ad_standard-f1": 0.3768073598459451,
+        "tsb_ad_pa-f1": 0.6885245901639344,
+        "tsb_ad_event-based-f1": 0.45454545454545414,
+        "tsb_ad_r-based-f1": 0.30536912751677847,
+        "tsb_ad_affiliation-f": 0.8650451926305277
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.7369000726124251,
+          "vus_pr": 0.0632724144108529,
+          "tsb_ad_auc-pr": 0.05696659677974232,
+          "tsb_ad_auc-roc": 0.8295415784171407,
+          "tsb_ad_vus-pr": 0.10136002125889408,
+          "tsb_ad_vus-roc": 0.9337947184197031,
+          "tsb_ad_standard-f1": 0.19999580008819814,
+          "tsb_ad_pa-f1": 0.5675675675675675,
+          "tsb_ad_event-based-f1": 0.22950819672131126,
+          "tsb_ad_r-based-f1": 0.19178082191780818,
+          "tsb_ad_affiliation-f": 0.7513192371783508
+        }
+      },
+      "n_eval": 6024,
+      "n_positive": 21,
+      "elapsed_seconds": 30.675090874996386,
+      "error": null
+    },
+    {
+      "name": "realTweets/Twitter_volume_UPS.csv",
+      "metrics": {
+        "vus_roc": 0.7576603457455411,
+        "vus_pr": 0.013877405744934661,
+        "tsb_ad_auc-pr": 0.00715848353434296,
+        "tsb_ad_auc-roc": 0.8094189304711246,
+        "tsb_ad_vus-pr": 0.011718838438021559,
+        "tsb_ad_vus-roc": 0.8098228183140558,
+        "tsb_ad_standard-f1": 0.018705941588881354,
+        "tsb_ad_pa-f1": 0.016786570743405275,
+        "tsb_ad_event-based-f1": 0.016577856719952613,
+        "tsb_ad_r-based-f1": 0.017488076311605726,
+        "tsb_ad_affiliation-f": 0.6963957385287866
+      },
+      "baselines": {
+        "persistence": {
+          "vus_roc": 0.6553706072354373,
+          "vus_pr": 0.021039615299477024,
+          "tsb_ad_auc-pr": 0.02803664329222513,
+          "tsb_ad_auc-roc": 0.6845792173252281,
+          "tsb_ad_vus-pr": 0.022399677300149173,
+          "tsb_ad_vus-roc": 0.84314433506102,
+          "tsb_ad_standard-f1": 0.15384118359253007,
+          "tsb_ad_pa-f1": 0.4666666666666667,
+          "tsb_ad_event-based-f1": 0.24999999999999964,
+          "tsb_ad_r-based-f1": 0.16176470588235295,
+          "tsb_ad_affiliation-f": 0.7655110068586278
+        }
+      },
+      "n_eval": 6030,
+      "n_positive": 14,
+      "elapsed_seconds": 30.207850500002678,
+      "error": null
+    }
+  ],
+  "aggregate": {
+    "tsb_ad_affiliation-f_mean": 0.8264531432450868,
+    "tsb_ad_affiliation-f_median": 0.8247681351241463,
+    "tsb_ad_affiliation-f_std": 0.10597605350489545,
+    "tsb_ad_affiliation-f_n": 29,
+    "tsb_ad_auc-pr_mean": 0.19277909893954417,
+    "tsb_ad_auc-pr_median": 0.08174143497574024,
+    "tsb_ad_auc-pr_std": 0.23805797091709194,
+    "tsb_ad_auc-pr_n": 29,
+    "tsb_ad_auc-roc_mean": 0.8591086048278337,
+    "tsb_ad_auc-roc_median": 0.9513100592560862,
+    "tsb_ad_auc-roc_std": 0.18775947155305636,
+    "tsb_ad_auc-roc_n": 29,
+    "tsb_ad_event-based-f1_mean": 0.3489953567483085,
+    "tsb_ad_event-based-f1_median": 0.2127659574468083,
+    "tsb_ad_event-based-f1_std": 0.336261589560344,
+    "tsb_ad_event-based-f1_n": 29,
+    "tsb_ad_pa-f1_mean": 0.4512797636989394,
+    "tsb_ad_pa-f1_median": 0.5,
+    "tsb_ad_pa-f1_std": 0.36536052824981524,
+    "tsb_ad_pa-f1_n": 29,
+    "tsb_ad_r-based-f1_mean": 0.22281795601178922,
+    "tsb_ad_r-based-f1_median": 0.19314205738278517,
+    "tsb_ad_r-based-f1_std": 0.21399185413509,
+    "tsb_ad_r-based-f1_n": 29,
+    "tsb_ad_standard-f1_mean": 0.26678389660424723,
+    "tsb_ad_standard-f1_median": 0.18181550623772072,
+    "tsb_ad_standard-f1_std": 0.2622587862223008,
+    "tsb_ad_standard-f1_n": 29,
+    "tsb_ad_vus-pr_mean": 0.20822581669625834,
+    "tsb_ad_vus-pr_median": 0.0880692563181054,
+    "tsb_ad_vus-pr_std": 0.25225137981457246,
+    "tsb_ad_vus-pr_n": 29,
+    "tsb_ad_vus-roc_mean": 0.8631916154739026,
+    "tsb_ad_vus-roc_median": 0.9532985460828548,
+    "tsb_ad_vus-roc_std": 0.1962806068079425,
+    "tsb_ad_vus-roc_n": 29,
+    "vus_pr_mean": 0.18082120914570238,
+    "vus_pr_median": 0.09999731316750089,
+    "vus_pr_std": 0.1893882270651082,
+    "vus_pr_n": 29,
+    "vus_roc_mean": 0.7936537258690923,
+    "vus_roc_median": 0.8664450176919098,
+    "vus_roc_std": 0.1746006826732427,
+    "vus_roc_n": 29,
+    "persistence_tsb_ad_affiliation-f_mean": 0.8768585960892203,
+    "persistence_tsb_ad_auc-pr_mean": 0.14980332054944162,
+    "persistence_tsb_ad_auc-roc_mean": 0.6518902503080056,
+    "persistence_tsb_ad_event-based-f1_mean": 0.4946060955968375,
+    "persistence_tsb_ad_pa-f1_mean": 0.6242951338927559,
+    "persistence_tsb_ad_r-based-f1_mean": 0.27580645978588175,
+    "persistence_tsb_ad_standard-f1_mean": 0.22021474555810502,
+    "persistence_tsb_ad_vus-pr_mean": 0.12844868562965478,
+    "persistence_tsb_ad_vus-roc_mean": 0.7621875857409354,
+    "persistence_vus_pr_mean": 0.09024648631809319,
+    "persistence_vus_roc_mean": 0.5949789027667017
+  },
+  "provenance": {
+    "dataset": {
+      "name": "NAB",
+      "source": "Numenta Anomaly Benchmark (2015)",
+      "url": "https://github.com/numenta/NAB",
+      "n_series_total": 58,
+      "primary_metric": "VUS-PR",
+      "license": "AGPL-3.0",
+      "notes": "Historical benchmark; superseded by TSB-AD. NAB is a subset of TSB-AD-U."
+    },
+    "model": "open-phase-ensemble",
+    "config": {
+      "warmup_fraction": 0.05,
+      "max_buffer": 15,
+      "n_surrogates": 0,
+      "seed": 42,
+      "compute_tsb_ad_metrics": true
+    },
+    "n_series_total": 29,
+    "n_series_success": 29,
+    "timestamp_utc": "2026-08-10T05:09:34Z"
+  }
+}

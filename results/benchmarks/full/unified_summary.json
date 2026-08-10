@@ -1,0 +1,70 @@
+{
+  "benchmarks_completed": {
+    "TSB-AD-U": {
+      "split": "eval",
+      "n_series": 350,
+      "n_success": 350,
+      "runtime_seconds": 8822.8,
+      "result_file": "TSB-AD-U_eval_20260810_045853.json",
+      "metrics": {
+        "vus_pr": 0.1995,
+        "vus_roc": 0.6614,
+        "tsb_ad_vus_pr": 0.1938,
+        "tsb_ad_vus_roc": 0.7308,
+        "auc_pr": 0.1727,
+        "auc_roc": 0.6992,
+        "standard_f1": 0.2481,
+        "pa_f1": 0.6409,
+        "event_based_f1": 0.4255,
+        "r_based_f1": 0.2606,
+        "affiliation_f": 0.8166
+      },
+      "persistence_baseline": {
+        "vus_pr": 0.2249,
+        "vus_roc": 0.5723,
+        "tsb_ad_vus_pr": 0.2726,
+        "tsb_ad_vus_roc": 0.6829
+      }
+    },
+    "NAB": {
+      "split": "eval",
+      "n_series": 29,
+      "n_success": 29,
+      "result_file": "NAB_eval_20260810_050934.json",
+      "metrics": {
+        "vus_pr": 0.1808,
+        "vus_roc": 0.7937,
+        "tsb_ad_vus_pr": 0.2082,
+        "tsb_ad_vus_roc": 0.8632,
+        "auc_pr": 0.1928,
+        "auc_roc": 0.8591,
+        "standard_f1": 0.2668,
+        "pa_f1": 0.4513,
+        "event_based_f1": 0.349,
+        "r_based_f1": 0.2228,
+        "affiliation_f": 0.8265
+      },
+      "persistence_baseline": {
+        "vus_pr": 0.0902,
+        "vus_roc": 0.595,
+        "tsb_ad_vus_pr": 0.1284,
+        "tsb_ad_vus_roc": 0.7622
+      }
+    }
+  },
+  "benchmarks_incomplete": {
+    "TSB-AD-U_tuning": {
+      "split": "train (tuning)",
+      "n_series": 48,
+      "status": "terminated_after_2h08m",
+      "reason": "Several series in the tuning split exceed 100K rows; even after downsampling to 10K points, the O(n^2) TSB-AD metric computation (point-adjusted F1, VUS) made completion intractable within a reasonable timeframe. The eval split results are the primary benchmark and are complete.",
+      "note": "Tuning-split evaluation is supplementary; the official TSB-AD leaderboard uses the eval split for ranking."
+    }
+  },
+  "online_latency": {
+    "steady_state_ms_per_point": 5.0,
+    "throughput_pts_per_sec": 200,
+    "max_realtime_sampling_rate_hz": 100,
+    "method": "step-by-step streaming via TSADPipeline.step()"
+  }
+}
